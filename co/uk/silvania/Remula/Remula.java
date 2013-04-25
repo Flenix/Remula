@@ -15,6 +15,7 @@ import co.uk.silvania.Remula.items.AdvancedRemulaChip;
 import co.uk.silvania.Remula.items.RemulaDust;
 import co.uk.silvania.Remula.items.RemulaIngot;
 import co.uk.silvania.Remula.items.RobotSpawningItem;
+import co.uk.silvania.roads.WorldGen;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.Init;
@@ -57,20 +58,24 @@ public class Remula {
     	NetworkRegistry.instance().registerGuiHandler(this,  this.proxy);
     	instance = this;    	
     }
-    //Blocks
-    public final static Block remulaOre = new RemulaOre(860, 0).setBlockName("remulaOre");
-    public final static Block remulaLiquidizer = new RemulaLiquidizer(861, 0, Material.iron).setBlockName("remulaLiquidizer");
-    public final static Block remulaCraftingTable = new RemulaCraftingTable(862, 0, Material.iron).setBlockName("remulaCraftingTable");
-    public final static Block remulaStorageUnit = new RemulaStorageUnit(863, 0, Material.iron).setBlockName("remulaStorageUnit");
+    //Blocks (IDs 1800-2000 to avoid clash with top 100 mods)
+    public final static Block remulaOre = new RemulaOre(1800, 0).setBlockName("remulaOre");
+    public final static Block remulaLiquidizer = new RemulaLiquidizer(1801, 0, Material.iron).setBlockName("remulaLiquidizer");
+    public final static Block remulaCraftingTable = new RemulaCraftingTable(1802, 0, Material.iron).setBlockName("remulaCraftingTable");
+    public final static Block remulaStorageUnit = new RemulaStorageUnit(1803, 0, Material.iron).setBlockName("remulaStorageUnit");
     
     //Liquids
     
-    //Items
-	public final static Item advancedRemulaChip = new AdvancedRemulaChip(16800).setItemName("advancedRemulaChip");
-	public final static Item remulaDust = new RemulaDust(16801).setItemName("remulaDust");
-	public final static Item remulaIngot = new RemulaIngot(16802).setItemName("remulaIngot");
-	public final static Item robotSpawner = new RobotSpawningItem(16803).setItemName("robotSpawner");
+    //Items (IDs 17000 - 17300)
+	public final static Item advancedRemulaChip = new AdvancedRemulaChip(17000).setItemName("advancedRemulaChip");
+	public final static Item remulaDust = new RemulaDust(17001).setItemName("remulaDust");
+	public final static Item remulaIngot = new RemulaIngot(17002).setItemName("remulaIngot");
+	public final static Item robotSpawner = new RobotSpawningItem(17003).setItemName("robotSpawner");
     
+	
+	//And finally the worldgen
+	public static WorldGen worldGen = new WorldGen();
+	
     @Init
     public void load(FMLInitializationEvent event) {
             proxy.registerRenderThings();
@@ -85,14 +90,19 @@ public class Remula {
             LanguageRegistry.addName(advancedRemulaChip, "Advanced Remula Chip");
             LanguageRegistry.addName(remulaDust, "Remula Dust");
             LanguageRegistry.addName(remulaIngot, "Remula Ingot");
+            LanguageRegistry.addName(robotSpawner, "Flendroid 5000");
             
             GameRegistry.registerItem(advancedRemulaChip, "advancedRemulaChip");
             GameRegistry.registerItem(remulaDust, "remulaDust");
             GameRegistry.registerItem(remulaIngot, "remulaIngot");
+            GameRegistry.registerItem(robotSpawner, "robotSpawner");
             
             
             //Other
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabRemula", "en_US", "Remula");
+            
+            //Setup the world generator
+            GameRegistry.registerWorldGenerator(new WorldGen());
     }
 
 

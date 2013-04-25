@@ -12,8 +12,8 @@ public class AdvancedRemulaChip extends Item {
 		        this.setMaxStackSize(64);
 		        this.setIconIndex(0);
 		        this.setCreativeTab(Remula.tabRemula);
-
 	}
+	    
     public String getTextureFile() {
         return CommonProxy.ITEMS_PNG;
     }
