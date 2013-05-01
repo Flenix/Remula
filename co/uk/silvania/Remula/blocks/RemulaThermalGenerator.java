@@ -5,9 +5,9 @@ import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public class RemulaCraftingTable extends Block {
+public class RemulaThermalGenerator extends Block {
 
-	public RemulaCraftingTable(int id, Material material) {
+	public RemulaThermalGenerator(int id, Material material) {
 		super(id, material);
         this.setCreativeTab(Remula.tabRemula);
         this.setHardness(1.0F);

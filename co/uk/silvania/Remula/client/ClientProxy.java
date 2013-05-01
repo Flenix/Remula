@@ -4,15 +4,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
-import co.uk.silvania.Remula.EntityRobot;
 import co.uk.silvania.Remula.CommonProxy;
+import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	
 	public void registerRenderInformation() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityRobot.class, new RenderRobot(new ModelRobot(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAdvRobot.class, new RenderRobot(new ModelRobot(), 0.5F));
 	}
         
         @Override

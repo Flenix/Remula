@@ -4,12 +4,12 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.item.Item;
 
-public class RemulaDust extends Item{
+public class MerciliteDust extends Item{
 
-	public RemulaDust(int id) {
+	public MerciliteDust(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(9);
+		this.setIconIndex(5);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

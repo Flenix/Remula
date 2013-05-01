@@ -1,5 +1,6 @@
 package co.uk.silvania.Remula;
 
+import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -11,7 +12,7 @@ public class CommonProxy implements IGuiHandler {
 	public void registerRenderInformation() {}
 	
 		public void init () {
-			EntityRegistry.registerGlobalEntityID(EntityRobot.class, "Robot", EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
+			EntityRegistry.registerGlobalEntityID(EntityAdvRobot.class, "Robot", EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
 			registerRenderInformation();
         }
 
@@ -36,6 +37,7 @@ public class CommonProxy implements IGuiHandler {
 		
         public static String ITEMS_PNG = "/co/uk/silvania/remula/items.png";
         public static String BLOCK_PNG = "/co/uk/silvania/remula/blocks.png";
+        public static String AKATOEBLOCKS_PNG = "/co/uk/silvania/remula/akatoeblocks.png";
         
         public void registerRenderThings() {
         }

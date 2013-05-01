@@ -1,5 +1,6 @@
-package co.uk.silvania.Remula;
+package co.uk.silvania.Remula.entity;
 
+import co.uk.silvania.Remula.Remula;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
@@ -20,9 +21,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityRobot extends EntityTameable implements IInventory {
+public class EntityAdvRobot extends EntityTameable implements IInventory {
 	
-	public EntityRobot(World par1World) {
+	public EntityAdvRobot(World par1World) {
 		super(par1World);
 		this.texture = "/co/uk/silvania/Remula/mobrobot.png";
 		this.getNavigator().setAvoidsWater(true);
