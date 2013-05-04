@@ -38,6 +38,9 @@ public class CommonProxy implements IGuiHandler {
         public static String ITEMS_PNG = "/co/uk/silvania/remula/items.png";
         public static String BLOCK_PNG = "/co/uk/silvania/remula/blocks.png";
         public static String AKATOEBLOCKS_PNG = "/co/uk/silvania/remula/akatoeblocks.png";
+        public static String AKATOEITEMS_PNG = "/co/uk/silvania/remula/akatoeitems.png";
+        public static String BALOINUSBLOCKS_PNG = "/co/uk/silvania/remula/baloinusblocks.png";
+        public static String BALOINUSITEMS_PNG = "/co/uk/silvania/remula/baloinusitems.png";
         
         public void registerRenderThings() {
         }

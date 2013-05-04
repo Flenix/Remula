@@ -5,14 +5,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
-public class SilvaniteGuiHandler implements IGuiHandler {
+public class RemulaGuiHandler implements IGuiHandler {
         //returns an instance of the Container you made earlier
         @Override
         public Object getServerGuiElement(int id, EntityPlayer player, World world,
                         int x, int y, int z) {
                 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-                if(tileEntity instanceof TileEntitySilvaniteChest){
-                        return new ContainerSilvaniteChest(player.inventory, (TileEntitySilvaniteChest) tileEntity);
+                if(tileEntity instanceof TileEntityRemulaChest){
+                        return new ContainerRemulaChest(player.inventory, (TileEntityRemulaChest) tileEntity);
                 }
                 return null;
         }
@@ -22,8 +22,8 @@ public class SilvaniteGuiHandler implements IGuiHandler {
         public Object getClientGuiElement(int id, EntityPlayer player, World world,
                         int x, int y, int z) {
                 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-                if(tileEntity instanceof TileEntitySilvaniteChest){
-                        return new SilvaniteGuiChest(player.inventory, (TileEntitySilvaniteChest) tileEntity);
+                if(tileEntity instanceof TileEntityRemulaChest){
+                        return new RemulaGuiChest(player.inventory, (TileEntityRemulaChest) tileEntity);
                 }
                 return null;
 

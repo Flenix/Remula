@@ -6,12 +6,12 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-public class SilvaniteGuiChest extends GuiContainer {
+public class RemulaGuiChest extends GuiContainer {
 
-        public SilvaniteGuiChest (InventoryPlayer inventoryPlayer,
-                        TileEntitySilvaniteChest tileEntity) {
+        public RemulaGuiChest (InventoryPlayer inventoryPlayer,
+                        TileEntityRemulaChest tileEntity) {
                 //the container is instanciated and passed to the superclass for handling
-                super(new ContainerSilvaniteChest(inventoryPlayer, tileEntity));
+                super(new ContainerRemulaChest(inventoryPlayer, tileEntity));
         }
         
         /** The X size of the inventory window in pixels. */
@@ -24,7 +24,7 @@ public class SilvaniteGuiChest extends GuiContainer {
         protected void drawGuiContainerForegroundLayer(int param1, int param2) {
                 //draw text and stuff here
                 //the parameters for drawString are: string, x, y, color
-                fontRenderer.drawString("Silvanite Chest", 0, -22, 4210752);
+                fontRenderer.drawString("Remula Chest", 0, -22, 4210752);
                 //draws "Inventory" or your regional equivalent
                 fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 0, ySize - 122, 4210752);
         }
@@ -33,7 +33,7 @@ public class SilvaniteGuiChest extends GuiContainer {
         protected void drawGuiContainerBackgroundLayer(float par1, int par2,
                         int par3) {
                 //draw your Gui here, only thing you need to change is the path
-                int texture = mc.renderEngine.getTexture("/co/uk/silvania/Remula/gui/silvanitechest.png");
+                int texture = mc.renderEngine.getTexture("/co/uk/silvania/Remula/gui/Remulachest.png");
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                 this.mc.renderEngine.bindTexture(texture);
                 //Position?

@@ -140,6 +140,7 @@ public class AkatoePortalBlock extends BlockPortal {
 				}
 				else
 				{
+					//thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.akatoeDimension, new TeleporterAkatoe(thePlayer.mcServer.worldServerForDimension(Remula.akatoeDimension)));
 					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterAkatoe(thePlayer.mcServer.worldServerForDimension(0)));
 					
 				}
