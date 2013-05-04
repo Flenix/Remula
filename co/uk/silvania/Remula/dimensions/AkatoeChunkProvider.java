@@ -1,21 +1,7 @@
 package co.uk.silvania.Remula.dimensions;
 
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.MINESHAFT;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.SCATTERED_FEATURE;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.STRONGHOLD;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.VILLAGE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.DUNGEON;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAVA;
-
 import java.util.List;
 import java.util.Random;
-
-import co.uk.silvania.Remula.Remula;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -37,52 +23,82 @@ import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraft.world.gen.structure.MapGenVillage;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.Event.Result;
-import net.minecraftforge.event.terraingen.ChunkProviderEvent;
-import net.minecraftforge.event.terraingen.PopulateChunkEvent;
-import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class AkatoeChunkProvider implements IChunkProvider {
+import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.*;
+import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.*;
+import net.minecraftforge.common.*;
+import net.minecraftforge.event.Event.*;
+import net.minecraftforge.event.terraingen.*;
+
+public class AkatoeChunkProvider implements IChunkProvider
+{
+    /** RNG. */
     private Random rand;
 
+    /** A NoiseGeneratorOctaves used in generating terrain */
     private NoiseGeneratorOctaves noiseGen1;
+
+    /** A NoiseGeneratorOctaves used in generating terrain */
     private NoiseGeneratorOctaves noiseGen2;
+
+    /** A NoiseGeneratorOctaves used in generating terrain */
     private NoiseGeneratorOctaves noiseGen3;
+
+    /** A NoiseGeneratorOctaves used in generating terrain */
     private NoiseGeneratorOctaves noiseGen4;
+
+    /** A NoiseGeneratorOctaves used in generating terrain */
     public NoiseGeneratorOctaves noiseGen5;
+
+    /** A NoiseGeneratorOctaves used in generating terrain */
     public NoiseGeneratorOctaves noiseGen6;
     public NoiseGeneratorOctaves mobSpawnerNoise;
 
+    /** Reference to the World object. */
     private World worldObj;
 
+    /** are map structures going to be generated (e.g. strongholds) */
     private final boolean mapFeaturesEnabled;
 
+    /** Holds the overall noise array used in chunk generation */
     private double[] noiseArray;
     private double[] stoneNoise = new double[256];
     private MapGenBase caveGenerator = new MapGenCaves();
 
+    /** Holds Stronghold Generator */
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
 
+    /** Holds Village Generator */
     private MapGenVillage villageGenerator = new MapGenVillage();
 
+    /** Holds Mineshaft Generator */
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 
+    /** Holds ravine generator */
     private MapGenBase ravineGenerator = new MapGenRavine();
 
+    /** The biomes that are used to generate the chunk */
     private BiomeGenBase[] biomesForGeneration;
 
+    /** A double array that hold terrain noise from noiseGen3 */
     double[] noise3;
 
+    /** A double array that hold terrain noise */
     double[] noise1;
 
+    /** A double array that hold terrain noise from noiseGen2 */
     double[] noise2;
 
+    /** A double array that hold terrain noise from noiseGen5 */
     double[] noise5;
 
+    /** A double array that holds terrain noise from noiseGen6 */
     double[] noise6;
 
+    /**
+     * Used to store the 5x5 parabolic field that is used during terrain generation.
+     */
     float[] parabolicField;
     int[][] field_73219_j = new int[32][32];
 
@@ -119,6 +135,10 @@ public class AkatoeChunkProvider implements IChunkProvider {
         this.mobSpawnerNoise = noiseGens[6];
     }
 
+    /**
+     * Generates the shape of the terrain for the chunk though its all stone though the water is frozen if the
+     * temperature is low enough
+     */
     public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
     {
         byte var4 = 4;
@@ -167,7 +187,7 @@ public class AkatoeChunkProvider implements IChunkProvider {
                             {
                                 if ((var47 += var49) > 0.0D)
                                 {
-                                    par3ArrayOfByte[var43 += var44] = (byte)Remula.akatoeStone.blockID;
+                                    par3ArrayOfByte[var43 += var44] = (byte)Block.stone.blockID;
                                 }
                                 else if (var12 * 8 + var31 < var6)
                                 {
@@ -233,14 +253,14 @@ public class AkatoeChunkProvider implements IChunkProvider {
                         {
                             var13 = -1;
                         }
-                        else if (var18 == Remula.akatoeStone.blockID)
+                        else if (var18 == Block.stone.blockID)
                         {
                             if (var13 == -1)
                             {
                                 if (var12 <= 0)
                                 {
                                     var14 = 0;
-                                    var15 = (byte)Remula.akatoeStone.blockID;
+                                    var15 = (byte)Block.stone.blockID;
                                 }
                                 else if (var16 >= var5 - 4 && var16 <= var5 + 1)
                                 {
@@ -276,10 +296,10 @@ public class AkatoeChunkProvider implements IChunkProvider {
                                 --var13;
                                 par3ArrayOfByte[var17] = var15;
 
-                                if (var13 == 0 && var15 == Remula.akatoeSand.blockID)
+                                if (var13 == 0 && var15 == Block.sand.blockID)
                                 {
                                     var13 = this.rand.nextInt(4);
-                                    var15 = (byte)Remula.akatoeStone.blockID;
+                                    var15 = (byte)Block.sandStone.blockID;
                                 }
                             }
                         }
