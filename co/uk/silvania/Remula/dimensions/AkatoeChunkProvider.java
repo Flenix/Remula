@@ -2,6 +2,8 @@ package co.uk.silvania.Remula.dimensions;
 
 import java.util.List;
 import java.util.Random;
+
+import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -187,7 +189,7 @@ public class AkatoeChunkProvider implements IChunkProvider
                             {
                                 if ((var47 += var49) > 0.0D)
                                 {
-                                    par3ArrayOfByte[var43 += var44] = (byte)Block.stone.blockID;
+                                    par3ArrayOfByte[var43 += var44] = (byte)Remula.akatoeStone.blockID;
                                 }
                                 else if (var12 * 8 + var31 < var6)
                                 {
@@ -253,14 +255,14 @@ public class AkatoeChunkProvider implements IChunkProvider
                         {
                             var13 = -1;
                         }
-                        else if (var18 == Block.stone.blockID)
+                        else if (var18 == Remula.akatoeStone.blockID)
                         {
                             if (var13 == -1)
                             {
                                 if (var12 <= 0)
                                 {
                                     var14 = 0;
-                                    var15 = (byte)Block.stone.blockID;
+                                    var15 = (byte)Remula.akatoeStone.blockID;
                                 }
                                 else if (var16 >= var5 - 4 && var16 <= var5 + 1)
                                 {

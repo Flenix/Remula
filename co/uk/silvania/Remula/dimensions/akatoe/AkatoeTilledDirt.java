@@ -22,10 +22,7 @@ public class AkatoeTilledDirt extends Block {
         this.setTickRandomly(true);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
         this.setLightOpacity(255);
-<<<<<<< HEAD
-=======
         this.setCreativeTab(Remula.tabRemula);
->>>>>>> Loads of stuff I did via laptop
 	}
 	
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
@@ -52,11 +49,7 @@ public class AkatoeTilledDirt extends Block {
                 par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 - 1);
             }
             else if (!this.isCropsNearby(par1World, par2, par3, par4)) {
-<<<<<<< HEAD
-                par1World.setBlockWithNotify(par2, par3, par4, Block.dirt.blockID);
-=======
                 par1World.setBlockWithNotify(par2, par3, par4, Remula.akatoeDirt.blockID);
->>>>>>> Loads of stuff I did via laptop
             }
         }
         else

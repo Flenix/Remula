@@ -40,8 +40,6 @@ public class RemulaChest extends BlockContainer
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z,
                     EntityPlayer player, int idk, float what, float these, float are) {
@@ -54,7 +52,6 @@ public class RemulaChest extends BlockContainer
             return true;
     }
 
->>>>>>> Loads of stuff I did via laptop
     public boolean isOpaqueCube()
     {
         return false;
@@ -203,9 +200,6 @@ public class RemulaChest extends BlockContainer
     /**
      * Called upon block activation (right click on the block.)
      */
-<<<<<<< HEAD
-    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
-=======
     /*public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
 >>>>>>> Loads of stuff I did via laptop
     {
@@ -236,8 +230,4 @@ public class RemulaChest extends BlockContainer
     {
         return new TileEntityChest();
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> Loads of stuff I did via laptop
 }

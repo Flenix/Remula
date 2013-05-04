@@ -135,11 +135,11 @@ public class Remula {
     public final static Block remulaChest = new RemulaChest(1852).setBlockName("remulaChest");
     
     public final static Block akatoePortal = new AkatoePortalBlock(1900, 48).setBlockName("akatoePortal");
-    public final static Block akatoeStone = new AkatoeStone(1901, 0, Material.rock).setBlockName("akatoeStone");
+    public final static Block akatoeStone = new AkatoeStone(200, 0, Material.rock).setBlockName("akatoeStone");
     public final static Block akatoeCobble = new AkatoeCobble(1902, 1, Material.rock).setBlockName("akatoeCobble");
-    public final static Block akatoeGrass = new AkatoeGrass(1903).setBlockName("akatoeGrass");
-    public final static Block akatoeDirt = new AkatoeDirt(1904, 2, Material.ground).setBlockName("akatoeGround");
-    public final static Block akatoeSand = new AkatoeSand(1905, 49, Material.sand).setBlockName("akatoeSand");
+    public final static Block akatoeGrass = new AkatoeGrass(201).setBlockName("akatoeGrass");
+    public final static Block akatoeDirt = new AkatoeDirt(202, 2, Material.ground).setBlockName("akatoeGround");
+    public final static Block akatoeSand = new AkatoeSand(203, 49, Material.sand).setBlockName("akatoeSand");
     public final static Block akatoeRefinedStone = new AkatoeRefinedStone(1906, 16, Material.rock).setBlockName("akatoeRefinedStone");
     public final static Block akatoeBricks = new AkatoeBricks(1907, 17, Material.rock).setBlockName("akatoeBricks");
     public final static Block akatoeLargeBricks = new AkatoeLargeBricks(1908, 18, Material.rock).setBlockName("akatoeBricks");
