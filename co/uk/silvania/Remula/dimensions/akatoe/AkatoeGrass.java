@@ -21,7 +21,7 @@ public class AkatoeGrass extends Block
         super(id, Material.grass);
         this.blockIndexInTexture = 3;
         this.setTickRandomly(true);
-        this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabAkatoe);
         this.setStepSound(Block.soundGrassFootstep);
         this.setHardness(0.4F);
     }

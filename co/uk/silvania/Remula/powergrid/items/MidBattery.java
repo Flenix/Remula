@@ -9,7 +9,7 @@ public class MidBattery extends Item {
 	public MidBattery(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(2);
+		this.setIconIndex(113);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

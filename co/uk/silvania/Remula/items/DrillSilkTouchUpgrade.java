@@ -9,7 +9,7 @@ public class DrillSilkTouchUpgrade extends Item {
 	public DrillSilkTouchUpgrade(int id) {
 		super(id);
 		this.setMaxStackSize(1);
-		this.setIconIndex(2);
+		this.setIconIndex(97);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

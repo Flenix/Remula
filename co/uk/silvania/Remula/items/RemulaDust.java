@@ -9,7 +9,7 @@ public class RemulaDust extends Item{
 	public RemulaDust(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(9);
+		this.setIconIndex(19);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

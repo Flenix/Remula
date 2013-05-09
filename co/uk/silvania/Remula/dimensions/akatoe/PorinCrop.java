@@ -61,16 +61,16 @@ public class PorinCrop extends Block {
         }
     }
 
-    /*@Override
-    public boolean canBlockStay (World world, int x, int y, int z) {
+    @Override
+    /*public boolean canBlockStay (World world, int x, int y, int z) {
         Block soil = blocksList[world.getBlockId(x, y - 1, z)];
         return (world.getFullBlockLightValue(x, y, z) >= 8 || world
                 .canBlockSeeTheSky(x, y, z))
                 && (soil != null && soil.canSustainPlant(world, x, y - 1, z,
-                        ForgeDirection.UP, Remula.porinSeeds));
-    }*/
+                        ForgeDirection.UP, Remula.porinCrop));
+    }
 
-    @Override
+    @Override*/
     public int idDropped (int metadata, Random random, int par2) {
         switch (metadata) {
         case 0:

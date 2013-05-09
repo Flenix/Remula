@@ -3,59 +3,27 @@ package co.uk.silvania.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.blocks.*;
-import co.uk.silvania.Remula.dimensions.AkatoePortalBlock;
-import co.uk.silvania.Remula.dimensions.AkatoeWorldProvider;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeBricks;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeCoal;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeCobble;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeCopper;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeDecorBricks;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeDirt;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeGold;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeGrass;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeIron;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeLapis;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeLargeBricks;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeRefinedStone;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeSand;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeStone;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeTilledDirt;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeTin;
-import co.uk.silvania.Remula.dimensions.akatoe.PorinCrop;
-import co.uk.silvania.Remula.dimensions.akatoe.PorinFruit;
-import co.uk.silvania.Remula.dimensions.akatoe.PorinSeeds;
-import co.uk.silvania.Remula.dimensions.akatoe.PoriniteOre;
-import co.uk.silvania.Remula.entity.MerciliteChest;
-import co.uk.silvania.Remula.entity.RemulaChest;
-import co.uk.silvania.Remula.entity.RemulaGuiHandler;
-import co.uk.silvania.Remula.entity.SilvaniteChest;
-import co.uk.silvania.Remula.entity.SilvaniteGuiHandler;
+import co.uk.silvania.Remula.client.ClientProxy;
+import co.uk.silvania.Remula.dimensions.*;
+import co.uk.silvania.Remula.dimensions.akatoe.*;
+import co.uk.silvania.Remula.entity.EntityAdvRobot;
+import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
+import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
+import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import co.uk.silvania.Remula.items.*;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaAdvancedGenerator;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaAdvancedSolarPanel;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaBasicStorageUnit;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaExcessiveStorageUnit;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaExperimentalStorageUnit;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaGrinder;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaHighStorageUnit;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaReactorCore;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaSimpleGenerator;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaSimpleSolarPanel;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaSimpleStorageUnit;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaThermalGenerator;
-import co.uk.silvania.Remula.powergrid.items.AdvancedPRSU;
-import co.uk.silvania.Remula.powergrid.items.HighBattery;
-import co.uk.silvania.Remula.powergrid.items.MidBattery;
-import co.uk.silvania.Remula.powergrid.items.MidPRSU;
-import co.uk.silvania.Remula.powergrid.items.SimpleBattery;
-import co.uk.silvania.Remula.powergrid.items.SimplePRSU;
+import co.uk.silvania.Remula.items.weapons.ItemPistol;
+import co.uk.silvania.Remula.powergrid.blocks.*;
+import co.uk.silvania.Remula.powergrid.items.*;
+import co.uk.silvania.Remula.tileentity.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.Init;
@@ -67,6 +35,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -78,8 +47,13 @@ public class Remula {
 	
 	public static CreativeTabs tabRemula = new CreativeTabs("tabRemula") {
 		public ItemStack getIconItemStack() {
-				return new ItemStack(Remula.advancedRemulaChip, 1, 0);
-			}
+			return new ItemStack(Remula.advancedP5RobotSpawner, 1, 0);
+		}
+	};
+	public static CreativeTabs tabAkatoe = new CreativeTabs("tabAkatoe") {
+		public ItemStack getIconItemStack() {
+			return new ItemStack(Remula.akatoeBricks, 1, 0);
+		}
 	};
 	
     @Instance("Remula")
@@ -117,12 +91,8 @@ public class Remula {
     public final static Block remulaHighStorageUnit = new RemulaHighStorageUnit(1815, Material.iron).setBlockName("remulaHighStorageUnit");
     public final static Block remulaExcessiveStorageUnit = new RemulaExcessiveStorageUnit(1816, Material.iron).setBlockName("remulaExcessiveStorageUnit");
     public final static Block remulaExperimentalStorageUnit = new RemulaExperimentalStorageUnit(1817, Material.iron).setBlockName("remulaExperimentalStorageUnit");
-    public final static Block remulaSimpleGenerator = new RemulaSimpleGenerator(1818, Material.iron).setBlockName("remulaSimpleGenerator");
-    //public final static Block remulaMidGenerator = new RemulaMidGenerator(1819, Material.iron).setBlockName("remulaMidGenerator");
-    public final static Block remulaAdvancedGenerator = new RemulaAdvancedGenerator(1820, Material.iron).setBlockName("remulaAdvancedGenerator");
-    public final static Block remulaSimpleSolarPanel = new RemulaSimpleSolarPanel(1821, Material.iron).setBlockName("remulaSimpleSolarPanel");
-    //public final static Block remulaMidSolarPanel = new RemulaMidSolarPanel(1822, Material.iron).setBlockName("remulaMidSolarPanel");
-    public final static Block remulaAdvancedSolarPanel = new RemulaAdvancedSolarPanel(1823, Material.iron).setBlockName("remulaAdvancedSolarPanel");
+    public final static Block remulaGenerator = new RemulaSimpleGenerator(1818, Material.iron).setBlockName("remulaSimpleGenerator");
+    public final static Block remulaSolarPanel = new RemulaSolarPanel(1821, Material.iron).setBlockName("remulaSolarPanel");
     public final static Block remulaThermalGenerator = new RemulaThermalGenerator(1824, Material.iron).setBlockName("remulaThermalGenerator");
     public final static Block remulaGrinder = new RemulaGrinder(1825, Material.iron).setBlockName("remulaGrinder");
     public final static Block remulaReactorCore = new RemulaReactorCore(1826, Material.iron).setBlockName("remulaReactorCore");
@@ -134,26 +104,33 @@ public class Remula {
     public final static Block merciliteChest = new MerciliteChest(1851).setBlockName("merciliteChest");
     public final static Block remulaChest = new RemulaChest(1852).setBlockName("remulaChest");
     
-    public final static Block akatoePortal = new AkatoePortalBlock(1900, 48).setBlockName("akatoePortal");
+    //Akatoe WGEN stuff
     public final static Block akatoeStone = new AkatoeStone(200, 0, Material.rock).setBlockName("akatoeStone");
-    public final static Block akatoeCobble = new AkatoeCobble(1902, 1, Material.rock).setBlockName("akatoeCobble");
     public final static Block akatoeGrass = new AkatoeGrass(201).setBlockName("akatoeGrass");
     public final static Block akatoeDirt = new AkatoeDirt(202, 2, Material.ground).setBlockName("akatoeGround");
-    public final static Block akatoeSand = new AkatoeSand(203, 49, Material.sand).setBlockName("akatoeSand");
-    public final static Block akatoeRefinedStone = new AkatoeRefinedStone(1906, 16, Material.rock).setBlockName("akatoeRefinedStone");
-    public final static Block akatoeBricks = new AkatoeBricks(1907, 17, Material.rock).setBlockName("akatoeBricks");
-    public final static Block akatoeLargeBricks = new AkatoeLargeBricks(1908, 18, Material.rock).setBlockName("akatoeBricks");
-    public final static Block akatoeDecorBricks = new AkatoeDecorBricks(1909, 19, Material.rock).setBlockName("akatoeDecorBricks");
-    public final static Block akatoeCoal = new AkatoeCoal(1910, 32).setBlockName("akatoeCoal");
-    public final static Block akatoeIron = new AkatoeIron(1911, 33).setBlockName("akatoeIron");
-    public final static Block akatoeGold = new AkatoeGold(1912, 34).setBlockName("akatoeGold");
-    public final static Block akatoeCopper = new AkatoeCopper(1913, 35).setBlockName("akatoeCopper");
-    public final static Block akatoeTin = new AkatoeTin(1914, 36).setBlockName("akatoeTin");
-    public final static Block akatoeLapis = new AkatoeLapis(1915, 37).setBlockName("akatoeLapis");
-    public final static Block poriniteOre = new PoriniteOre(1916, 38).setBlockName("poriniteOre");
-    //Ore 2
-    public final static Block akatoeTilledDirt = new AkatoeTilledDirt(1919).setBlockName("akatoeTilledDirt");
+    public final static Block akatoeSand = new AkatoeSand(203, 47, Material.sand).setBlockName("akatoeSand");
+    //Rest of Akatoe blocks
+    public final static Block akatoePortal = new AkatoePortalBlock(1900, 30).setBlockName("akatoePortal");
+    public final static Block akatoeTilledDirt = new AkatoeTilledDirt(1901).setBlockName("akatoeTilledDirt");
+    public final static Block akatoeCobble = new AkatoeCobble(1902, 1, Material.rock).setBlockName("akatoeCobble");
+    public final static Block akatoeRefinedStone = new AkatoeRefinedStone(1906, 5, Material.rock).setBlockName("akatoeRefinedStone");
+    public final static Block akatoeBricks = new AkatoeBricks(1907, 6, Material.rock).setBlockName("akatoeBricks");
+    public final static Block akatoeLargeBricks = new AkatoeLargeBricks(1908, 7, Material.rock).setBlockName("akatoeBricks");
+    public final static Block akatoeDecorBricks = new AkatoeDecorBricks(1909, 8, Material.rock).setBlockName("akatoeDecorBricks");
+    public final static Block akatoeCoal = new AkatoeCoal(1910, 16).setBlockName("akatoeCoal");
+    public final static Block akatoeIron = new AkatoeIron(1911, 17).setBlockName("akatoeIron");
+    public final static Block akatoeGold = new AkatoeGold(1912, 18).setBlockName("akatoeGold");
+    public final static Block akatoeCopper = new AkatoeCopper(1913, 19).setBlockName("akatoeCopper");
+    public final static Block akatoeTin = new AkatoeTin(1914, 20).setBlockName("akatoeTin");
+    public final static Block akatoeLapis = new AkatoeLapis(1915, 21).setBlockName("akatoeLapis");
+    public final static Block poriniteOre = new PoriniteOre(1916, 22).setBlockName("poriniteOre");
+    public final static Block pilkOre = new PilkOre(1917, 23).setBlockName("pilkOre");
+    public final static Block akatiteOre = new AkatiteOre(1918, 24).setBlockName("akatiteOre");
+    public final static Block akatoeRemulaOre = new AkatoeRemulaOre(1919, 25).setBlockName("akatoeRemulaOre");
     public final static Block porinCrop = new PorinCrop(1920).setBlockName("porinCrop");
+    public final static Block ulinCrop = new UlinCrop(1921).setBlockName("ulinCrop");
+    public final static Block cirCrop = new CirCrop(1922).setBlockName("cirCrop");
+    public final static Block boskinCrop = new BoskinCrop(1923).setBlockName("boskinCrop");
     
     //Liquids
     //Silvanite
@@ -212,7 +189,23 @@ public class Remula {
 	public final static Item advancedP9RobotSpawner = new AdvancedP9RobotSpawner(17039).setItemName("advancedP9RobotSpawner");
 	//TODO find a decent plant tutorial o.O
 	public final static Item porinSeeds = new PorinSeeds(17040, porinCrop.blockID, akatoeTilledDirt.blockID).setItemName("porinSeeds");
-	public final static Item porinFruit = new PorinFruit(17041).setItemName("porinFruit");
+	public final static Item ulinSeeds = new UlinSeeds(17041, ulinCrop.blockID, akatoeTilledDirt.blockID).setItemName("ulinSeeds");
+	public final static Item cirSeeds = new CirSeeds(17042, cirCrop.blockID, akatoeTilledDirt.blockID).setItemName("cirSeeds");
+	public final static Item boskinSeeds = new BoskinSeeds(17043, cirCrop.blockID, akatoeTilledDirt.blockID).setItemName("boskinSeeds");
+	public final static Item porinFruit = new PorinFruit(17044).setItemName("porinFruit");
+	public final static Item ulinFruit = new UlinFruit(17045).setItemName("ulinFruit");
+	public final static Item itemCir = new ItemCir(17046).setItemName("itemCir");
+	public final static Item itemBoskin = new ItemBoskin(17046).setItemName("itemBoskin");
+	public final static Item poriniteCell = new PoriniteCell(17047).setItemName("poriniteCell");
+	public final static Item pilkCell = new PilkCell(17048).setItemName("pilkCell");
+	public final static Item akatiteCell = new AkatiteCell(17049).setItemName("akatiteCell");
+	public final static Item poriniteDust = new PoriniteDust(17050).setItemName("poriniteDust");
+	public final static Item pilkDust = new PilkDust(17051).setItemName("pilkDust");
+	public final static Item akatiteDust = new AkatiteDust(17052).setItemName("akatiteDust");
+	public final static Item poriniteIngot = new PoriniteIngot(17053).setItemName("poriniteIngot");
+	public final static Item pilkIngot = new PilkIngot(17054).setItemName("pilkIngot");
+	public final static Item akatiteIngot = new AkatiteIngot(17055).setItemName("akatiteIngot");
+	//public final static Item standardPistol = new ItemPistol(17042).setItemName("standardPistol");
 	//InfusionUpgrade
 	//StorageUpgrade
 	//SpeedUpgrade
@@ -245,6 +238,9 @@ public class Remula {
             OreDictionary.registerOre("oreTin", new ItemStack (akatoeTin));
             OreDictionary.registerOre("oreLapisLazuli", new ItemStack (akatoeLapis));
             OreDictionary.registerOre("orePorinite", new ItemStack (poriniteOre));
+            OreDictionary.registerOre("orePilk", new ItemStack (pilkOre));
+            OreDictionary.registerOre("oreAkatite", new ItemStack (akatiteOre));
+            OreDictionary.registerOre("oreRemula", new ItemStack (akatoeRemulaOre));
             
             //Register names for blocks
             //Ores
@@ -255,6 +251,19 @@ public class Remula {
             LanguageRegistry.addName(tinOre, "Tin Ore");
             LanguageRegistry.addName(zincOre, "Zinc Ore");
             LanguageRegistry.addName(silverOre, "Silver Ore");
+            LanguageRegistry.addName(akatoeCoal, "Akatonian Coal Ore");
+            LanguageRegistry.addName(akatoeIron, "Akatonian Iron Ore");
+            LanguageRegistry.addName(akatoeGold, "Akationian Gold Ore");
+            LanguageRegistry.addName(akatoeCopper, "Akatonian Copper Ore");
+            LanguageRegistry.addName(akatoeTin, "Akatonian Tin Ore");
+            LanguageRegistry.addName(akatoeLapis, "Akatonian Lapis Lazuli Ore");
+            LanguageRegistry.addName(poriniteOre, "Porinite Ore");
+            LanguageRegistry.addName(pilkOre, "Pilk Ore");
+            LanguageRegistry.addName(akatoeRemulaOre, "Akatonian Remula Ore");
+            LanguageRegistry.addName(akatiteOre, "Akatite Ore");
+            
+            
+            //Tree Stuff
             LanguageRegistry.addName(rubberLog, "Rubber Log");
             LanguageRegistry.addName(rubberLeaves, "Rubber Leaves");
             LanguageRegistry.addName(rubberSapling, "Rubber Sapling");
@@ -266,18 +275,17 @@ public class Remula {
             LanguageRegistry.addName(remulaHighStorageUnit, "Advanced RSU");
             LanguageRegistry.addName(remulaExcessiveStorageUnit, "Excessive RSU");
             LanguageRegistry.addName(remulaExperimentalStorageUnit, "Experimental RSU");
-            LanguageRegistry.addName(remulaSimpleGenerator, "Simple Generator");
-            //LanguageRegistry.addName(remulaMidGenerator, "Mid Generator");
-            LanguageRegistry.addName(remulaAdvancedGenerator, "Advanced Generator");
-            LanguageRegistry.addName(remulaSimpleSolarPanel, "Simple Solar Panel");
-            //LanguageRegistry.addName(remulaMidSolarPanel, "Mid Solar Panel");
-            LanguageRegistry.addName(remulaAdvancedSolarPanel, "Advanced Solar Panel");
+            LanguageRegistry.addName(remulaGenerator, "Remula Generator");
+            LanguageRegistry.addName(remulaSolarPanel, "Remula Solar Panel");
             LanguageRegistry.addName(remulaThermalGenerator, "Thermal Generator");
             LanguageRegistry.addName(remulaGrinder, "Grinder");
             LanguageRegistry.addName(remulaReactorCore, "Reactor Core");
             
             //Nature and Plant Stuff
             LanguageRegistry.addName(porinCrop, "Porin Crop");
+            LanguageRegistry.addName(ulinCrop, "Ulin Crop");
+            LanguageRegistry.addName(cirCrop, "Cir Crop");
+            LanguageRegistry.addName(boskinCrop, "Boskin Crop");
             
             //Storage and Tile Entites
             LanguageRegistry.addName(silvaniteChest, "Silvanite Chest");
@@ -297,12 +305,6 @@ public class Remula {
             LanguageRegistry.addName(akatoeBricks, "Akatonian Bricks");
             LanguageRegistry.addName(akatoeLargeBricks, "Akatonian Large Bricks");
             LanguageRegistry.addName(akatoeDecorBricks, "Akatonian Decorative Brick");
-            LanguageRegistry.addName(akatoeCoal, "Akatonian Coal Ore");
-            LanguageRegistry.addName(akatoeIron, "Akatonian Iron Ore");
-            LanguageRegistry.addName(akatoeGold, "Akationian Gold Ore");
-            LanguageRegistry.addName(akatoeCopper, "Akatonian Copper Ore");
-            LanguageRegistry.addName(akatoeTin, "Akatonian Tin Ore");
-            LanguageRegistry.addName(akatoeLapis, "Akatonian Lapis Lazuli Ore");
             LanguageRegistry.addName(akatoeTilledDirt, "Akatonian Tilled Dirt");
             
             //Register Blocks
@@ -314,12 +316,21 @@ public class Remula {
             GameRegistry.registerBlock(tinOre, "tinOre");
             GameRegistry.registerBlock(zincOre, "zincOre");
             GameRegistry.registerBlock(silverOre, "silverOre");
+            GameRegistry.registerBlock(poriniteOre, "poriniteOre");
+            GameRegistry.registerBlock(pilkOre, "pilkOre");
+            GameRegistry.registerBlock(akatoeRemulaOre, "akatoeRemulaOre");
+            GameRegistry.registerBlock(akatiteOre, "akatiteOre");
+            
+            
             GameRegistry.registerBlock(rubberLog, "rubberLog");
             GameRegistry.registerBlock(rubberLeaves, "rubberLeaves");
             GameRegistry.registerBlock(rubberSapling, "rubberSapling");
             
             //Plants and Nature
             GameRegistry.registerBlock(porinCrop, "porinCrop");
+            GameRegistry.registerBlock(ulinCrop, "ulinCrop");
+            GameRegistry.registerBlock(cirCrop, "cirCrop");
+            GameRegistry.registerBlock(boskinCrop, "boskinCrop");
             
             //Powergrid
             GameRegistry.registerBlock(remulaBasicStorageUnit, "remulaBasicStorageUnit");
@@ -328,12 +339,8 @@ public class Remula {
             GameRegistry.registerBlock(remulaHighStorageUnit, "remulaHighStorageUnit");
             GameRegistry.registerBlock(remulaExcessiveStorageUnit, "remulaExcessiveStorageUnit");
             GameRegistry.registerBlock(remulaExperimentalStorageUnit, "remulaExperimentalStorageUnit");
-            GameRegistry.registerBlock(remulaSimpleGenerator, "remulaSimpleGenerator");
-            //GameRegistry.registerBlock(remulaMidGenerator, "remulaMidGenerator");
-            GameRegistry.registerBlock(remulaAdvancedGenerator, "remulaAdvancedGenerator");
-            GameRegistry.registerBlock(remulaSimpleSolarPanel, "remulaSimpleSolarPanel");
-            //GameRegistry.registerBlock(remulaMidSolarPanel, "remulaMidSolarPanel");
-            GameRegistry.registerBlock(remulaAdvancedSolarPanel, "remulaAdvancedSolarPanel");
+            GameRegistry.registerBlock(remulaGenerator, "remulaGenerator");
+            GameRegistry.registerBlock(remulaSolarPanel, "remulaSolarPanel");
             GameRegistry.registerBlock(remulaThermalGenerator, "remulaThermalGenerator");
             GameRegistry.registerBlock(remulaGrinder, "remulaGrinder");
             GameRegistry.registerBlock(remulaReactorCore, "remulaReactorCore");
@@ -394,6 +401,15 @@ public class Remula {
             LanguageRegistry.addName(remulaDust, "Remula Dust");
             LanguageRegistry.addName(remulaIngot, "Remula Ingot");
             LanguageRegistry.addName(remulaCell, "RemulaCell");
+            LanguageRegistry.addName(poriniteCell, "Porinite Cell");
+            LanguageRegistry.addName(pilkCell, "Pilk Cell");
+            LanguageRegistry.addName(akatiteCell, "Akatite Cell");
+            LanguageRegistry.addName(poriniteDust, "Porinite Dust");
+            LanguageRegistry.addName(pilkDust, "Pilk Dust");
+            LanguageRegistry.addName(akatiteDust, "Akatite Dust");
+            LanguageRegistry.addName(poriniteIngot, "Porinite Ingot");
+            LanguageRegistry.addName(pilkIngot, "Pilk Ingot");
+            LanguageRegistry.addName(akatiteIngot, "Akatite Ingot");
             
             //General Items            
             LanguageRegistry.addName(simpleSilvaniteChip, "Simple Silvanite Chip");
@@ -414,6 +430,15 @@ public class Remula {
             //Foods and Plant Stuff
             LanguageRegistry.addName(porinFruit, "Porin");
             LanguageRegistry.addName(porinSeeds, "Porin Seeds");
+            LanguageRegistry.addName(ulinFruit, "Ulin");
+            LanguageRegistry.addName(ulinSeeds, "Ulin Seeds");
+            LanguageRegistry.addName(itemCir, "Cir");
+            LanguageRegistry.addName(cirSeeds, "Cir Seeds");
+            LanguageRegistry.addName(itemBoskin, "Boskin");
+            LanguageRegistry.addName(boskinSeeds, "Boskin Seeds");
+            
+            //Weapons and Armour
+            //LanguageRegistry.addName(standardPistol, "Standard Pistol");
             
             //Robot Spawners
             LanguageRegistry.addName(simpleP1RobotSpawner, "Helper Droid");
@@ -454,6 +479,15 @@ public class Remula {
             GameRegistry.registerItem(remulaDust, "remulaDust");
             GameRegistry.registerItem(remulaIngot, "remulaIngot");
             GameRegistry.registerItem(remulaCell, "remulaCell");
+            GameRegistry.registerItem(poriniteCell, "poriniteCell");
+            GameRegistry.registerItem(pilkCell, "pilkCell");
+            GameRegistry.registerItem(akatiteCell, "akatiteCell");
+            GameRegistry.registerItem(poriniteDust, "poriniteDust");
+            GameRegistry.registerItem(pilkDust, "pilkDust");
+            GameRegistry.registerItem(akatiteDust, "akatiteDust");
+            GameRegistry.registerItem(poriniteIngot, "poriniteIngot");
+            GameRegistry.registerItem(pilkIngot, "pilkIngot");
+            GameRegistry.registerItem(akatiteIngot, "akatiteIngot");
             
             GameRegistry.registerItem(simpleSilvaniteChip, "simpleSilvaniteChip");
             //GameRegistry.registerItem(midSilvaniteChip, "midSilvaniteChip");
@@ -490,6 +524,15 @@ public class Remula {
             //Food and Plant Stuff
             GameRegistry.registerItem(porinFruit, "porinFruit");
             GameRegistry.registerItem(porinSeeds, "porinSeeds");
+            GameRegistry.registerItem(ulinFruit, "ulinFruit");
+            GameRegistry.registerItem(ulinSeeds, "ulinSeeds");
+            GameRegistry.registerItem(itemCir, "itemCir");
+            GameRegistry.registerItem(cirSeeds, "cirSeeds");
+            GameRegistry.registerItem(itemBoskin, "itemBoskin");
+            GameRegistry.registerItem(boskinSeeds, "boskinSeeds");
+            
+            //Weapons and Armour
+            //GameRegistry.registerItem(standardPistol, "standardPistol");
             
             //Power Grid
             GameRegistry.registerItem(simpleBattery, "simpleBattery");
@@ -499,6 +542,7 @@ public class Remula {
             GameRegistry.registerItem(midPRSU, "midPRSU");
             GameRegistry.registerItem(advancedPRSU, "advancedPRSU");
             
+            
             //Other Registry Stuff
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabRemula", "en_US", "Remula");
             DimensionManager.registerProviderType(akatoeDimension, AkatoeWorldProvider.class, false);
@@ -506,6 +550,19 @@ public class Remula {
             GameRegistry.registerWorldGenerator(new WorldGen());
             NetworkRegistry.instance().registerGuiHandler(this, new SilvaniteGuiHandler());
             NetworkRegistry.instance().registerGuiHandler(this, new RemulaGuiHandler());
+            
+            //Entites
+            EntityRegistry.registerModEntity(EntityAkatonian.class, "Akatonian", 1, this, 80, 3, true);
+            EntityRegistry.registerModEntity(EntityGlog.class, "Glog", 2, this, 80, 3, true);
+            EntityRegistry.registerModEntity(EntityAdvRobot.class, "AdvancedRobot", 3, this, 80, 3, true);
+            EntityRegistry.registerModEntity(EntityXylexian.class, "Xylexian", 4, this, 80, 3, true);
+            
+            EntityRegistry.addSpawn(EntityGlog.class, 5, 2, 10, EnumCreatureType.creature, BiomeGenBase.plains);
+            
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.Akatonian.name", "Akatonian");
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.Glog.name", "Glog");
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.AdvancedRobot.name", "Flendroid 5000");
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.Xylexian.name", "Xylexian");
     }
 
 
@@ -513,5 +570,5 @@ public class Remula {
     public void postInit(FMLPostInitializationEvent event) {
             // Stub Method
     		}
-	};
+	}
 

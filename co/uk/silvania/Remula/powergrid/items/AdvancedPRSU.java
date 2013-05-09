@@ -9,7 +9,7 @@ public class AdvancedPRSU extends Item {
 	public AdvancedPRSU(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(2);
+		this.setIconIndex(117);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

@@ -10,7 +10,7 @@ public class AdvancedRemulaChip extends Item {
 	    public AdvancedRemulaChip(int id) {
 		        super(id);
 		        this.setMaxStackSize(16);
-		        this.setIconIndex(32);
+		        this.setIconIndex(56);
 		        this.setCreativeTab(Remula.tabRemula);
 	}
 	    

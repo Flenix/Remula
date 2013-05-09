@@ -9,7 +9,7 @@ public class AkatoeLargeBricks extends Block {
 	
     public AkatoeLargeBricks(int id, int texture, Material material) {
 		super(id, texture, material);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabAkatoe);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}

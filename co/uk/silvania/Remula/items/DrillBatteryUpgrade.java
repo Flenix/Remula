@@ -9,7 +9,7 @@ public class DrillBatteryUpgrade extends Item {
 	public DrillBatteryUpgrade(int id) {
 		super(id);
 		this.setMaxStackSize(1);
-		this.setIconIndex(2);
+		this.setIconIndex(96);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

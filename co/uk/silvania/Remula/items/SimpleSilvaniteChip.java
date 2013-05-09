@@ -8,7 +8,7 @@ public class SimpleSilvaniteChip extends Item {
 
 	public SimpleSilvaniteChip(int id) {
 		super(id);
-		this.setMaxStackSize(16);
+		this.setMaxStackSize(48);
 		this.setIconIndex(2);
 		this.setCreativeTab(Remula.tabRemula);
 	}

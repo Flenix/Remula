@@ -9,7 +9,7 @@ public class SilvaniteDust extends Item {
 	public SilvaniteDust(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(1);
+		this.setIconIndex(17);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

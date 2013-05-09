@@ -8,8 +8,8 @@ public class PorinSeeds extends ItemSeeds {
 
 	public PorinSeeds(int id, int plantId, int soilId) {
 		super(id, plantId, soilId);
-		this.setCreativeTab(Remula.tabRemula);
-		this.setIconIndex(8);
+		this.setCreativeTab(Remula.tabAkatoe);
+		this.setIconIndex(4);
 		this.setMaxStackSize(64);
 	}
 	

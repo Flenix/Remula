@@ -11,7 +11,7 @@ public class PoriniteOre extends BlockOre {
 
 	public PoriniteOre(int id, int texture) {
 		super(id, texture);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabAkatoe);
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}

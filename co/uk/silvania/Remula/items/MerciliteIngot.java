@@ -9,7 +9,7 @@ public class MerciliteIngot extends Item {
 	public MerciliteIngot(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(2);
+		this.setIconIndex(34);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

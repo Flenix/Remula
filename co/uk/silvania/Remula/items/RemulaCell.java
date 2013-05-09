@@ -9,7 +9,7 @@ public class RemulaCell extends Item {
 	public RemulaCell(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(2);
+		this.setIconIndex(3);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

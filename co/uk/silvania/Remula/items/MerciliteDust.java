@@ -9,7 +9,7 @@ public class MerciliteDust extends Item{
 	public MerciliteDust(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(5);
+		this.setIconIndex(18);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

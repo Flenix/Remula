@@ -22,7 +22,7 @@ public class AkatoeTilledDirt extends Block {
         this.setTickRandomly(true);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
         this.setLightOpacity(255);
-        this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabAkatoe);
 	}
 	
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {

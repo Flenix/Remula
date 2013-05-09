@@ -9,7 +9,7 @@ public class DrillSpeedControlUpgrade extends Item {
 	public DrillSpeedControlUpgrade(int id) {
 		super(id);
 		this.setMaxStackSize(1);
-		this.setIconIndex(2);
+		this.setIconIndex(98);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

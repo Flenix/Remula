@@ -25,7 +25,7 @@ public class EntityAdvRobot extends EntityTameable implements IInventory {
 	
 	public EntityAdvRobot(World par1World) {
 		super(par1World);
-		this.texture = "/co/uk/silvania/Remula/mobrobot.png";
+		this.texture = "/co/uk/silvania/Remula/resources/robot.png";
 		this.getNavigator().setAvoidsWater(true);
 		this.setTamed(true);
 		this.setSize(0.4F,  2.0F);
@@ -60,7 +60,7 @@ public class EntityAdvRobot extends EntityTameable implements IInventory {
 	}
 	
 	public int getMaxHealth() {
-		return 30;
+		return 300;
 	}
 	
 	protected String getLivingSound() {

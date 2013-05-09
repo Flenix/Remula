@@ -9,7 +9,7 @@ public class AdvancedP7RobotSpawner extends Item {
 	public AdvancedP7RobotSpawner(int id) {
 		super(id);
 		this.setMaxStackSize(1);
-		this.setIconIndex(2);
+		this.setIconIndex(91);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

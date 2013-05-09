@@ -9,7 +9,7 @@ public class SimpleP3RobotSpawner extends Item {
 	public SimpleP3RobotSpawner(int id) {
 		super(id);
 		this.setMaxStackSize(1);
-		this.setIconIndex(2);
+		this.setIconIndex(83);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

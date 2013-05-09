@@ -9,7 +9,7 @@ public class DrillTransformerUpgrade extends Item {
 	public DrillTransformerUpgrade(int id) {
 		super(id);
 		this.setMaxStackSize(1);
-		this.setIconIndex(2);
+		this.setIconIndex(99);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

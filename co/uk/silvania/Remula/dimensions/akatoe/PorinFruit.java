@@ -8,8 +8,8 @@ public class PorinFruit extends Item {
 
 	public PorinFruit(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabRemula);
-		this.setIconIndex(9);
+		this.setCreativeTab(Remula.tabAkatoe);
+		this.setIconIndex(20);
 		this.setMaxStackSize(16);
 	}
 	

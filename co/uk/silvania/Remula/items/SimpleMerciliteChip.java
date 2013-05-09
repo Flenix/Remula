@@ -9,7 +9,7 @@ public class SimpleMerciliteChip extends Item {
 	public SimpleMerciliteChip(int id) {
 		super(id);
 		this.setMaxStackSize(16);
-		this.setIconIndex(2);
+		this.setIconIndex(51);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

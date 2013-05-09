@@ -9,7 +9,7 @@ public class SilvaniteIngot extends Item {
 	public SilvaniteIngot(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(2);
+		this.setIconIndex(33);
 		this.setCreativeTab(Remula.tabRemula);
 	}
 	

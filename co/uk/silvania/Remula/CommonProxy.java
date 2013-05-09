@@ -1,6 +1,8 @@
 package co.uk.silvania.Remula;
 
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
+import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
+import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -12,8 +14,8 @@ public class CommonProxy implements IGuiHandler {
 	public void registerRenderInformation() {}
 	
 		public void init () {
-			EntityRegistry.registerGlobalEntityID(EntityAdvRobot.class, "Robot", EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
 			registerRenderInformation();
+			
         }
 
 		@Override
@@ -35,12 +37,12 @@ public class CommonProxy implements IGuiHandler {
 			return null;
 		}
 		
-        public static String ITEMS_PNG = "/co/uk/silvania/remula/items.png";
-        public static String BLOCK_PNG = "/co/uk/silvania/remula/blocks.png";
-        public static String AKATOEBLOCKS_PNG = "/co/uk/silvania/remula/akatoeblocks.png";
-        public static String AKATOEITEMS_PNG = "/co/uk/silvania/remula/akatoeitems.png";
-        public static String BALOINUSBLOCKS_PNG = "/co/uk/silvania/remula/baloinusblocks.png";
-        public static String BALOINUSITEMS_PNG = "/co/uk/silvania/remula/baloinusitems.png";
+        public static String ITEMS_PNG = "/co/uk/silvania/remula/resources/items.png";
+        public static String BLOCK_PNG = "/co/uk/silvania/remula/resources/blocks.png";
+        public static String AKATOEBLOCKS_PNG = "/co/uk/silvania/remula/resources/akatoeblocks.png";
+        public static String AKATOEITEMS_PNG = "/co/uk/silvania/remula/resources/akatoeitems.png";
+        public static String BALOINUSBLOCKS_PNG = "/co/uk/silvania/remula/resources/baloinusblocks.png";
+        public static String BALOINUSITEMS_PNG = "/co/uk/silvania/remula/resources/baloinusitems.png";
         
         public void registerRenderThings() {
         }
