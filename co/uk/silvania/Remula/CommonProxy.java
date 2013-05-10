@@ -17,6 +17,10 @@ public class CommonProxy implements IGuiHandler {
 			registerRenderInformation();
 			
         }
+		
+		public int addArmor(String string) {
+			return 0;
+		}
 
 		@Override
 		public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -43,6 +47,8 @@ public class CommonProxy implements IGuiHandler {
         public static String AKATOEITEMS_PNG = "/co/uk/silvania/remula/resources/akatoeitems.png";
         public static String BALOINUSBLOCKS_PNG = "/co/uk/silvania/remula/resources/baloinusblocks.png";
         public static String BALOINUSITEMS_PNG = "/co/uk/silvania/remula/resources/baloinusitems.png";
+        public static String DEEPSPACEBLOCKS_PNG = "/co/uk/silvania/remula/resources/deepspaceblocks.png";
+        public static String DEEPSPACEITEMS_PNG = "/co/uk/silvania/remula/resources/deepspaceitems";
         
         public void registerRenderThings() {
         }

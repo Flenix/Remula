@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.client;
+package co.uk.silvania.Remula.client.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

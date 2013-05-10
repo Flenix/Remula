@@ -28,12 +28,4 @@ public class RemulaOre extends BlockOre {
         public String getTextureFile () {
                 return CommonProxy.BLOCK_PNG;
         }
-        
-    	@Override
-    	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float a, float b, float c) {
-    		player.openGui(Remula.instance, 0, world, x, y, z);
-    		System.out.println("Hello World");
-    		return true;
-    	}
-
 }

@@ -36,8 +36,8 @@ public class MerciliteGuiChest extends GuiContainer
      */
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
-        this.fontRenderer.drawString(StatCollector.translateToLocal(this.lowerChestInventory.getInvName()), 8, 6, 4210752);
-        this.fontRenderer.drawString(StatCollector.translateToLocal(this.upperChestInventory.getInvName()), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString("Mercilite Chest", 8, 6, 4210752);
+        this.fontRenderer.drawString("Mercilite Chest", 8, this.ySize - 96 + 2, 4210752);
     }
 
     /**

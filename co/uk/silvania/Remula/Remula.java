@@ -4,10 +4,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import co.uk.silvania.Remula.CommonProxy;
@@ -15,11 +17,15 @@ import co.uk.silvania.Remula.blocks.*;
 import co.uk.silvania.Remula.client.ClientProxy;
 import co.uk.silvania.Remula.dimensions.*;
 import co.uk.silvania.Remula.dimensions.akatoe.*;
+import co.uk.silvania.Remula.dimensions.baloinus.BaloinusStone;
+import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceAsteroidRock;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
 import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import co.uk.silvania.Remula.items.*;
+import co.uk.silvania.Remula.items.armor.P1HUDUnit;
+//import co.uk.silvania.Remula.items.util.P1SpaceSuit;
 import co.uk.silvania.Remula.items.weapons.ItemPistol;
 import co.uk.silvania.Remula.powergrid.blocks.*;
 import co.uk.silvania.Remula.powergrid.items.*;
@@ -55,6 +61,16 @@ public class Remula {
 			return new ItemStack(Remula.akatoeBricks, 1, 0);
 		}
 	};
+	public static CreativeTabs tabBaloinus = new CreativeTabs("tabBaloinus") {
+		public ItemStack getIconItemStack() {
+			return new ItemStack(Remula.baloinusStone, 1, 0);
+		}
+	};
+	public static CreativeTabs tabDeepSpace = new CreativeTabs("tabDeepSpace") {
+		public ItemStack getIconItemSTack() {
+			return new ItemStack(Remula.deepSpaceAsteroidRock, 1, 0);
+		}
+	};
 	
     @Instance("Remula")
     public static Remula instance;
@@ -63,6 +79,8 @@ public class Remula {
     @SidedProxy(clientSide="co.uk.silvania.Remula.client.ClientProxy", serverSide="co.uk.silvania.Remula.CommonProxy")
     public static CommonProxy proxy;
     public static int akatoeDimension = 20;
+    public static int baloinusDimension = 21;
+    public static int deepSpaceDimension = 22;
     
     //public static int blockRemulaID;
     @SideOnly(Side.CLIENT)
@@ -72,6 +90,11 @@ public class Remula {
     	NetworkRegistry.instance().registerGuiHandler(this,  this.proxy);
     	instance = this;    	
     }
+	public static WorldGen worldGen = new WorldGen();
+	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);
+	
+    public BiomeGenBase akatoePlainsBiome = new BiomeAkatoePlains(60);
+    
     //Blocks (IDs 1800-2000 to avoid clash with top 100 mods)
     public final static Block silvaniteOre = new SilvaniteOre(1800, 0).setBlockName("silvaniteOre");
     public final static Block merciliteOre = new MerciliteOre(1801, 1).setBlockName("merciliteOre");
@@ -109,6 +132,13 @@ public class Remula {
     public final static Block akatoeGrass = new AkatoeGrass(201).setBlockName("akatoeGrass");
     public final static Block akatoeDirt = new AkatoeDirt(202, 2, Material.ground).setBlockName("akatoeGround");
     public final static Block akatoeSand = new AkatoeSand(203, 47, Material.sand).setBlockName("akatoeSand");
+    
+    //Baloinus WGEN stuff
+    public final static Block baloinusStone = new BaloinusStone(205, 0, Material.rock);
+    
+    //Deep Space WGEN stuff
+    public final static Block deepSpaceAsteroidRock = new DeepSpaceAsteroidRock(210, 0, Material.rock);
+    
     //Rest of Akatoe blocks
     public final static Block akatoePortal = new AkatoePortalBlock(1900, 30).setBlockName("akatoePortal");
     public final static Block akatoeTilledDirt = new AkatoeTilledDirt(1901).setBlockName("akatoeTilledDirt");
@@ -131,6 +161,12 @@ public class Remula {
     public final static Block ulinCrop = new UlinCrop(1921).setBlockName("ulinCrop");
     public final static Block cirCrop = new CirCrop(1922).setBlockName("cirCrop");
     public final static Block boskinCrop = new BoskinCrop(1923).setBlockName("boskinCrop");
+    public final static Block p1HudUnit = new P1HUDUnit(1924, 1).setBlockName("p1HudUnit");
+    //Rest of Baloinus blocks
+    public final static Block baloinusPortal = new BaloinusPortalBlock(1950, 1).setBlockName("baloinusPortal");
+    
+    //Rest of Deep Space Blocks
+    public final static Block deepSpacePortal = new DeepSpacePortalBlock(2000, 1).setBlockName("deepSpacePortal");
     
     //Liquids
     //Silvanite
@@ -205,6 +241,12 @@ public class Remula {
 	public final static Item poriniteIngot = new PoriniteIngot(17053).setItemName("poriniteIngot");
 	public final static Item pilkIngot = new PilkIngot(17054).setItemName("pilkIngot");
 	public final static Item akatiteIngot = new AkatiteIngot(17055).setItemName("akatiteIngot");
+	
+	//public final static Item p1SpaceSuitHelmet = new P1SpaceSuit(17056, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 0).setItemName("p1SpaceSuitHelmet");
+	//public final static Item p1SpaceSuitBody = new P1SpaceSuit(17057, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 1).setItemName("p1SpaceSuitBody");
+	//public final static Item p1SpaceSuitLegs = new P1SpaceSuit(17058, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 2).setItemName("p1SpaceSuitLegs");
+	//public final static Item p1SpaceSuitBoots = new P1SpaceSuit(17059, SpaceSuit1, proxy.addArmor("P1SpaceSuit"), 3).setItemName("p1SpaceSuitBoots");
+	//public final static Item p1HeadUI = new P1HeadUI(17060).setItemName("p1HeadUI");
 	//public final static Item standardPistol = new ItemPistol(17042).setItemName("standardPistol");
 	//InfusionUpgrade
 	//StorageUpgrade
@@ -212,15 +254,11 @@ public class Remula {
 	//StrengthUpgrade
 	//CCUpgrade?
     
-	
-	//And finally the worldgen
-	public static WorldGen worldGen = new WorldGen();
-	
     @Init
     public void load(FMLInitializationEvent event) {
             proxy.registerRenderThings();
             proxy.init();
-            
+                        
             //The whitespace here is simply for organisation. I like to keep it neat.
             //If you're trying to learn from my code (good luck ;)), the below section doesn't need to be in any specific order.
             OreDictionary.registerOre("oreSilvanite", new ItemStack(silvaniteOre));
@@ -307,6 +345,14 @@ public class Remula {
             LanguageRegistry.addName(akatoeDecorBricks, "Akatonian Decorative Brick");
             LanguageRegistry.addName(akatoeTilledDirt, "Akatonian Tilled Dirt");
             
+            //Baloinus
+            LanguageRegistry.addName(baloinusPortal, "Baloinus Portal");
+            LanguageRegistry.addName(baloinusStone, "Baloinus Stone");
+            
+            //DeepSpace
+            LanguageRegistry.addName(deepSpacePortal, "Deep-Space Portal");
+            LanguageRegistry.addName(deepSpaceAsteroidRock, "Deep-Space Asteroid Rock");
+            
             //Register Blocks
             //Ores
             GameRegistry.registerBlock(remulaOre, "remulaOre");
@@ -371,6 +417,14 @@ public class Remula {
             GameRegistry.registerBlock(akatoeLapis, "akatoeLapis");
             GameRegistry.registerBlock(akatoeTilledDirt, "akatoeTilledDirt");
             
+            //Baloinus
+            GameRegistry.registerBlock(baloinusPortal, "baloinusPortal");
+            GameRegistry.registerBlock(baloinusStone, "baloinusStone");
+            
+            //Deep Space
+            GameRegistry.registerBlock(deepSpacePortal, "deepSpacePortal");
+            GameRegistry.registerBlock(deepSpaceAsteroidRock, "deepSpaceAsteroidRock");
+            
             //Ore Mining Requirements
             MinecraftForge.setBlockHarvestLevel(silvaniteOre, "pickaxe", 1);
             MinecraftForge.setBlockHarvestLevel(merciliteOre, "pickaxe", 2);
@@ -385,7 +439,9 @@ public class Remula {
             MinecraftForge.setBlockHarvestLevel(akatoeCopper, "pickaxe", 1);
             MinecraftForge.setBlockHarvestLevel(akatoeTin, "pickaxe", 1);
             MinecraftForge.setBlockHarvestLevel(akatoeLapis, "pickaxe", 2);
-            
+            MinecraftForge.setBlockHarvestLevel(akatoeStone, "pickaxe", 0);
+            MinecraftForge.setBlockHarvestLevel(baloinusStone, "pickaxe", 0);
+            MinecraftForge.setBlockHarvestLevel(deepSpaceAsteroidRock, "pickaxe", 0);
             
             //Items
             //Ingots Etc
@@ -439,6 +495,7 @@ public class Remula {
             
             //Weapons and Armour
             //LanguageRegistry.addName(standardPistol, "Standard Pistol");
+            LanguageRegistry.addName(p1HudUnit, "Phase 1 HUD Unit");
             
             //Robot Spawners
             LanguageRegistry.addName(simpleP1RobotSpawner, "Helper Droid");
@@ -533,6 +590,7 @@ public class Remula {
             
             //Weapons and Armour
             //GameRegistry.registerItem(standardPistol, "standardPistol");
+            GameRegistry.registerBlock(p1HudUnit, "p1HudUnit");
             
             //Power Grid
             GameRegistry.registerItem(simpleBattery, "simpleBattery");
@@ -545,11 +603,21 @@ public class Remula {
             
             //Other Registry Stuff
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabRemula", "en_US", "Remula");
-            DimensionManager.registerProviderType(akatoeDimension, AkatoeWorldProvider.class, false);
-            DimensionManager.registerDimension(akatoeDimension, akatoeDimension);
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabAkatoe", "en_US", "Akatoe");
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabBaloinus", "en_US", "Baloinus");
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabDeepSpace", "en_US", "Deep-Space");
             GameRegistry.registerWorldGenerator(new WorldGen());
             NetworkRegistry.instance().registerGuiHandler(this, new SilvaniteGuiHandler());
-            NetworkRegistry.instance().registerGuiHandler(this, new RemulaGuiHandler());
+            //NetworkRegistry.instance().registerGuiHandler(this, new RemulaGuiHandler());
+            GameRegistry.addBiome(akatoePlainsBiome);
+            
+            DimensionManager.registerProviderType(akatoeDimension, AkatoeWorldProvider.class, false);
+            DimensionManager.registerProviderType(baloinusDimension, BaloinusWorldProvider.class, false);
+            DimensionManager.registerProviderType(deepSpaceDimension, DeepSpaceWorldProvider.class, false);
+            
+            DimensionManager.registerDimension(akatoeDimension, akatoeDimension);
+            DimensionManager.registerDimension(baloinusDimension, baloinusDimension);
+            DimensionManager.registerDimension(deepSpaceDimension, deepSpaceDimension);
             
             //Entites
             EntityRegistry.registerModEntity(EntityAkatonian.class, "Akatonian", 1, this, 80, 3, true);

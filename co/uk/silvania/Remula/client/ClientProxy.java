@@ -6,6 +6,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.client.models.ModelAkatonian;
+import co.uk.silvania.Remula.client.models.ModelGlog;
+import co.uk.silvania.Remula.client.models.ModelRobot;
+import co.uk.silvania.Remula.client.models.ModelXylexian;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
@@ -32,6 +36,10 @@ public class ClientProxy extends CommonProxy {
 		EntityRegistry.registerGlobalEntityID(EntityBronzeBullet.class, "BronzeBullet", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerGlobalEntityID(EntityXylexian.class, "Xylexian", EntityRegistry.findGlobalUniqueEntityId(), 1827364, 15243);
 	}
+	
+	public int addArmor(String armor) {
+		return RenderingRegistry.addNewArmourRendererPrefix(armor);
+	}
         
     @Override
     public void registerRenderThings() {
@@ -41,6 +49,8 @@ public class ClientProxy extends CommonProxy {
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/akatoeitems.png");
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/baloinusblocks.png");
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/baloinusitems.png");
+    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceblocks.png");
+    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceitems.png");
     ClientRegistry.bindTileEntitySpecialRenderer(co.uk.silvania.Remula.tileentity.TileEntityRemulaSolarPanel.class, new TileEntityRemulaSolarPanelRenderer());
     }
         

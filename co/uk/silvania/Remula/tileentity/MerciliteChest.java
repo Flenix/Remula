@@ -28,17 +28,15 @@ import net.minecraft.world.World;
 
 import static net.minecraftforge.common.ForgeDirection.*;
 
-public class MerciliteChest extends BlockContainer
-{
+public class MerciliteChest extends BlockContainer {
     private Random random = new Random();
 
-    public MerciliteChest(int par1)
-    {
-        super(par1, Material.wood);
-        this.blockIndexInTexture = 26;
-        this.setCreativeTab(Remula.tabRemula);
-        this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
-    }
+    	public MerciliteChest(int par1) {
+    		super(par1, Material.wood);
+    		this.blockIndexInTexture = 26;
+    		this.setCreativeTab(Remula.tabRemula);
+    		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+    	}
 
     public boolean isOpaqueCube()
     {

@@ -1,5 +1,6 @@
 package co.uk.silvania.Remula.client;
 
+import co.uk.silvania.Remula.client.models.ModelXylexian;
 import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;

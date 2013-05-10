@@ -32,7 +32,7 @@ import net.minecraftforge.common.*;
 import net.minecraftforge.event.Event.*;
 import net.minecraftforge.event.terraingen.*;
 
-public class AkatoeChunkProvider implements IChunkProvider
+public class DeepSpaceChunkProvider implements IChunkProvider
 {
     /** RNG. */
     private Random rand;
@@ -113,7 +113,7 @@ public class AkatoeChunkProvider implements IChunkProvider
         ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);
     }
 
-    public AkatoeChunkProvider(World par1World, long par2, boolean par4)
+    public DeepSpaceChunkProvider(World par1World, long par2, boolean par4)
     {
         this.worldObj = par1World;
         this.mapFeaturesEnabled = par4;
@@ -255,14 +255,14 @@ public class AkatoeChunkProvider implements IChunkProvider
                         {
                             var13 = -1;
                         }
-                        else if (var18 != Remula.akatoeStone.blockID)
+                        else if (var18 == Remula.deepSpaceAsteroidRock.blockID)
                         {
                             if (var13 == -1)
                             {
                                 if (var12 <= 0)
                                 {
                                     var14 = 0;
-                                    var15 = (byte)Remula.akatoeDirt.blockID;
+                                    var15 = (byte)Remula.deepSpaceAsteroidRock.blockID;
                                 }
                                 else if (var16 >= var5 - 4 && var16 <= var5 + 1)
                                 {

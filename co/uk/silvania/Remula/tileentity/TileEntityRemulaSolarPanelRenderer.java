@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import co.uk.silvania.Remula.Remula;
-import co.uk.silvania.Remula.client.ModelRemulaSolarPanel;
+import co.uk.silvania.Remula.client.models.ModelRemulaSolarPanel;
 
 public class TileEntityRemulaSolarPanelRenderer extends TileEntitySpecialRenderer {
 	

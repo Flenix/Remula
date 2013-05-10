@@ -40,7 +40,7 @@ public class RemulaChest extends BlockContainer
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
     }
 
-    @Override
+    /*@Override
     public boolean onBlockActivated(World world, int x, int y, int z,
                     EntityPlayer player, int idk, float what, float these, float are) {
             TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
@@ -50,7 +50,7 @@ public class RemulaChest extends BlockContainer
     //code to open gui explained later
     player.openGui(Remula.instance, 0, world, x, y, z);
             return true;
-    }
+    }*/
 
     public boolean isOpaqueCube()
     {
@@ -200,8 +200,7 @@ public class RemulaChest extends BlockContainer
     /**
      * Called upon block activation (right click on the block.)
      */
-    /*public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
->>>>>>> Loads of stuff I did via laptop
+   public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
     {
         Object var10 = (TileEntityChest)par1World.getBlockTileEntity(par2, par3, par4);
 
@@ -217,7 +216,7 @@ public class RemulaChest extends BlockContainer
             }
             else
             {
-                par5EntityPlayer.displayGUIChest((IInventory)var10);
+                par5EntityPlayer.openGui(Remula.instance, 0, par1World, par2, par3, par4);
                 return true;
             }
         }
