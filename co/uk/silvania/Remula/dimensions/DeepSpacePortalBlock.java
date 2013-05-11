@@ -15,7 +15,7 @@ public class DeepSpacePortalBlock extends BlockPortal {
 
 	public DeepSpacePortalBlock(int id, int texture) {
 		super(id, texture);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabDeepSpace);
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {

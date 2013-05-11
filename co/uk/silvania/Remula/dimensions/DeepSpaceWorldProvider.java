@@ -21,7 +21,7 @@ public class DeepSpaceWorldProvider extends WorldProvider {
 	}
 	
 	public void registerWorldChunkManager() {
-		this.worldChunkMgr = new DeepSpaceChunkManager(BiomeGenBase.sky);
+		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.sky, 0.5F, 0.0F);
 		this.dimensionId = Remula.deepSpaceDimension;
 		this.hasNoSky = true;
 	}

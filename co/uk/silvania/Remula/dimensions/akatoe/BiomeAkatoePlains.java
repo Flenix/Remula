@@ -15,6 +15,6 @@ public class BiomeAkatoePlains extends BiomeGenBase {
 		this.fillerBlock = (byte) Remula.akatoeDirt.blockID;
 		this.maxHeight = 0.5F;
 		this.minHeight = 0.0F;
-		this.waterColorMultiplier = 0XE42D17;
+		this.waterColorMultiplier = 0X00FF21;
 	}
 }

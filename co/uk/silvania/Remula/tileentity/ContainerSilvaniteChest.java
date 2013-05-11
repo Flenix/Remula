@@ -17,16 +17,16 @@ public class ContainerSilvaniteChest extends Container {
 		//Main Storage
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(tileEntity, j + i, -1 + j * 18, -10 + i * 18));
+				addSlotToContainer(new Slot(tileEntity, j + i + 11, -1 + j * 18, -10 + i * 18));
 			}
 		}
 		//Upper Bucket Slot
-        for (int i = 0; i < 1; i++) {
-            addSlotToContainer(new Slot(tileEntity, i, 163 + i * 18, -10));
+        for (int k = 0; k < 1; k++) {
+            addSlotToContainer(new Slot(tileEntity, k, 163 + k * 18, -10));
         }
         //Lower Bucket Slot
-        for (int i = 0; i < 1; i++) {
-            addSlotToContainer(new Slot(tileEntity, i, 163 + i * 18, 148));
+        for (int l = 0; l < 1; l++) {
+            addSlotToContainer(new Slot(tileEntity, l, 163 + l * 18, 148));
         }
 		bindPlayerInventory(inventoryPlayer);
 	}
@@ -38,14 +38,14 @@ public class ContainerSilvaniteChest extends Container {
 
     //Player Inventory
     protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-            for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 9; j++) {
-                            addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, -1 + j * 18, 112 + i * 18));
+            for (int m = 0; m < 3; m++) {
+                    for (int n = 0; n < 9; n++) {
+                            addSlotToContainer(new Slot(inventoryPlayer, n + m * 9 + 9, -1 + n * 18, 112 + m * 18));
                     }
             }
             //Player's hotbar
-            for (int i = 0; i < 9; i++) {
-                    addSlotToContainer(new Slot(inventoryPlayer, i, -1 + i * 18, 170));
+            for (int o = 0; o < 9; o++) {
+                    addSlotToContainer(new Slot(inventoryPlayer, o, -1 + o * 18, 170));
             }
     }
 
@@ -68,7 +68,7 @@ public class ContainerSilvaniteChest extends Container {
                             return null;
                     }
 
-                    if (stackInSlot.stackSize == 0) {
+                    if (stackInSlot.stackSize == 10) {
                             slotObject.putStack(null);
                     } else {
                             slotObject.onSlotChanged();
