@@ -38,6 +38,8 @@ public class AkatoeChunkProvider implements IChunkProvider
 {
     /** RNG. */
     private Random rand;
+    
+    public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(Remula.akatoePlainsBiome));
 
     /** A NoiseGeneratorOctaves used in generating terrain */
     private NoiseGeneratorOctaves noiseGen1;

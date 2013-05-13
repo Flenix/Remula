@@ -11,8 +11,8 @@ public class BiomeAkatoePlains extends BiomeGenBase {
 		super(id);
 		this.setBiomeName("Akatonian Plain");
 		this.setDisableRain();
-		this.topBlock = (byte) Remula.akatoeGrass.blockID;
-		this.fillerBlock = (byte) Remula.akatoeDirt.blockID;
+		//this.topBlock = (byte) Remula.akatoeGrass.blockID;
+		//this.fillerBlock = (byte) Remula.akatoeDirt.blockID;
 		this.maxHeight = 0.5F;
 		this.minHeight = 0.0F;
 		this.waterColorMultiplier = 0X00FF21;

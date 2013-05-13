@@ -2,11 +2,10 @@ package co.uk.silvania.Remula.tileentity;
 
 import java.util.Iterator;
 import java.util.List;
-import net.minecraft.block.Block;
+
+import co.uk.silvania.Remula.Remula;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -15,56 +14,75 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityMerciliteChest extends TileEntity implements IInventory
 {
-    private ItemStack[] chestContents = new ItemStack[36];
+    private ItemStack[] merciliteChestContents = new ItemStack[56];
 
+    /** Determines if the check for adjacent chests has taken place. */
     public boolean adjacentChestChecked = false;
 
+    /** Contains the chest tile located adjacent to this one (if any) */
     public TileEntityMerciliteChest adjacentChestZNeg;
 
+    /** Contains the chest tile located adjacent to this one (if any) */
     public TileEntityMerciliteChest adjacentChestXPos;
 
+    /** Contains the chest tile located adjacent to this one (if any) */
     public TileEntityMerciliteChest adjacentChestXNeg;
 
+    /** Contains the chest tile located adjacent to this one (if any) */
     public TileEntityMerciliteChest adjacentChestZPosition;
 
+    /** The current angle of the lid (between 0 and 1) */
     public float lidAngle;
 
+    /** The angle of the lid last tick */
     public float prevLidAngle;
 
+    /** The number of players currently using this chest */
     public int numUsingPlayers;
 
+    /** Server sync counter (once per 20 ticks) */
     private int ticksSinceSync;
 
+    /**
+     * Returns the number of slots in the inventory.
+     */
     public int getSizeInventory()
     {
-        return 27;
+        return 56;
     }
 
+    /**
+     * Returns the stack in slot i
+     */
     public ItemStack getStackInSlot(int par1)
     {
-        return this.chestContents[par1];
+        return this.merciliteChestContents[par1];
     }
 
+    /**
+     * Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a
+     * new stack.
+     */
     public ItemStack decrStackSize(int par1, int par2)
     {
-        if (this.chestContents[par1] != null)
+        if (this.merciliteChestContents[par1] != null)
         {
             ItemStack var3;
 
-            if (this.chestContents[par1].stackSize <= par2)
+            if (this.merciliteChestContents[par1].stackSize <= par2)
             {
-                var3 = this.chestContents[par1];
-                this.chestContents[par1] = null;
+                var3 = this.merciliteChestContents[par1];
+                this.merciliteChestContents[par1] = null;
                 this.onInventoryChanged();
                 return var3;
             }
             else
             {
-                var3 = this.chestContents[par1].splitStack(par2);
+                var3 = this.merciliteChestContents[par1].splitStack(par2);
 
-                if (this.chestContents[par1].stackSize == 0)
+                if (this.merciliteChestContents[par1].stackSize == 0)
                 {
-                    this.chestContents[par1] = null;
+                    this.merciliteChestContents[par1] = null;
                 }
 
                 this.onInventoryChanged();
@@ -77,12 +95,16 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
         }
     }
 
+    /**
+     * When some containers are closed they call this on each slot, then drop whatever it returns as an EntityItem -
+     * like when you close a workbench GUI.
+     */
     public ItemStack getStackInSlotOnClosing(int par1)
     {
-        if (this.chestContents[par1] != null)
+        if (this.merciliteChestContents[par1] != null)
         {
-            ItemStack var2 = this.chestContents[par1];
-            this.chestContents[par1] = null;
+            ItemStack var2 = this.merciliteChestContents[par1];
+            this.merciliteChestContents[par1] = null;
             return var2;
         }
         else
@@ -91,9 +113,12 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
         }
     }
 
+    /**
+     * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
+     */
     public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
     {
-        this.chestContents[par1] = par2ItemStack;
+        this.merciliteChestContents[par1] = par2ItemStack;
 
         if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
         {
@@ -103,41 +128,50 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
         this.onInventoryChanged();
     }
 
+    /**
+     * Returns the name of the inventory.
+     */
     public String getInvName()
     {
-        return "container.chest";
+        return "Mercilite Chest";
     }
 
+    /**
+     * Reads a tile entity from NBT.
+     */
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
-        this.chestContents = new ItemStack[this.getSizeInventory()];
+        this.merciliteChestContents = new ItemStack[this.getSizeInventory()];
 
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
         {
             NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
             int var5 = var4.getByte("Slot") & 255;
 
-            if (var5 >= 0 && var5 < this.chestContents.length)
+            if (var5 >= 0 && var5 < this.merciliteChestContents.length)
             {
-                this.chestContents[var5] = ItemStack.loadItemStackFromNBT(var4);
+                this.merciliteChestContents[var5] = ItemStack.loadItemStackFromNBT(var4);
             }
         }
     }
 
+    /**
+     * Writes a tile entity to NBT.
+     */
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
         NBTTagList var2 = new NBTTagList();
 
-        for (int var3 = 0; var3 < this.chestContents.length; ++var3)
+        for (int var3 = 0; var3 < this.merciliteChestContents.length; ++var3)
         {
-            if (this.chestContents[var3] != null)
+            if (this.merciliteChestContents[var3] != null)
             {
                 NBTTagCompound var4 = new NBTTagCompound();
                 var4.setByte("Slot", (byte)var3);
-                this.chestContents[var3].writeToNBT(var4);
+                this.merciliteChestContents[var3].writeToNBT(var4);
                 var2.appendTag(var4);
             }
         }
@@ -145,16 +179,27 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
         par1NBTTagCompound.setTag("Items", var2);
     }
 
+    /**
+     * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended. *Isn't
+     * this more of a set than a get?*
+     */
     public int getInventoryStackLimit()
     {
         return 64;
     }
 
+    /**
+     * Do not make give this method the name canInteractWith because it clashes with Container
+     */
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
     {
         return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
+    /**
+     * Causes the TileEntity to reset all it's cached values for it's container block, blockID, metaData and in the case
+     * of Chests, the adjcacent Chest check
+     */
     public void updateContainingBlockInfo()
     {
         super.updateContainingBlockInfo();
@@ -201,6 +246,9 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
         }
     }
 
+    /**
+     * Performs the check for adjacent Chests to determine if this Chest is double or not.
+     */
     public void checkForAdjacentChests()
     {
         if (!this.adjacentChestChecked)
@@ -211,22 +259,22 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
             this.adjacentChestXNeg = null;
             this.adjacentChestZPosition = null;
 
-            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Remula.merciliteChest.blockID)
             {
                 this.adjacentChestXNeg = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord - 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Remula.merciliteChest.blockID)
             {
                 this.adjacentChestXPos = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord + 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Remula.merciliteChest.blockID)
             {
                 this.adjacentChestZNeg = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord - 1);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Remula.merciliteChest.blockID)
             {
                 this.adjacentChestZPosition = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord + 1);
             }
@@ -253,6 +301,10 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
         }
     }
 
+    /**
+     * Allows the entity to update its state. Overridden in most subclasses, e.g. the mob spawner uses this to count
+     * ticks and creates a new spawn inside its implementation.
+     */
     public void updateEntity()
     {
         super.updateEntity();
@@ -271,14 +323,11 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
             {
                 EntityPlayer var4 = (EntityPlayer)var3.next();
 
-                if (var4.openContainer instanceof ContainerChest)
+                if (var4.openContainer instanceof ContainerMerciliteChest)
                 {
-                    IInventory var5 = ((ContainerChest)var4.openContainer).getLowerChestInventory();
+                    IInventory var5 = ((ContainerMerciliteChest)var4.openContainer).getMerciliteChestInventory();
 
-                    if (var5 == this || var5 instanceof InventoryLargeChest && ((InventoryLargeChest)var5).isPartOfLargeChest(this))
-                    {
-                        ++this.numUsingPlayers;
-                    }
+                    ++this.numUsingPlayers;
                 }
             }
         }
@@ -350,6 +399,9 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
         }
     }
 
+    /**
+     * Called when a client event is received with the event number and argument, see World.sendClientEvent
+     */
     public void receiveClientEvent(int par1, int par2)
     {
         if (par1 == 1)
@@ -361,15 +413,18 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
     public void openChest()
     {
         ++this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Block.chest.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.merciliteChest.blockID, 1, this.numUsingPlayers);
     }
 
     public void closeChest()
     {
         --this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Block.chest.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.merciliteChest.blockID, 1, this.numUsingPlayers);
     }
 
+    /**
+     * invalidates a tile entity
+     */
     public void invalidate()
     {
         super.invalidate();

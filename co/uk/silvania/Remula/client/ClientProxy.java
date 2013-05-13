@@ -51,6 +51,7 @@ public class ClientProxy extends CommonProxy {
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/baloinusitems.png");
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceblocks.png");
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceitems.png");
+    MinecraftForgeClient.preloadTexture("/co/uk/silvania/Remula/resources/SilvaniteChest1.png");
     ClientRegistry.bindTileEntitySpecialRenderer(co.uk.silvania.Remula.tileentity.TileEntityRemulaSolarPanel.class, new TileEntityRemulaSolarPanelRenderer());
     }
         

@@ -11,13 +11,14 @@ import net.minecraft.item.ItemStack;
 public class ContainerSilvaniteChest extends Container {
 	
 	protected TileEntitySilvaniteChest tileEntity;
+	private IInventory silvaniteChestInventory;
 	
 	public ContainerSilvaniteChest (InventoryPlayer inventoryPlayer, TileEntitySilvaniteChest te) {
 		tileEntity = te;
 		//Main Storage
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(tileEntity, j + i + 11, -1 + j * 18, -10 + i * 18));
+				addSlotToContainer(new Slot(tileEntity, j + i * 9 + 2, -1 + j * 18, -10 + i * 18));
 			}
 		}
 		//Upper Bucket Slot
@@ -80,5 +81,9 @@ public class ContainerSilvaniteChest extends Container {
                     slotObject.onPickupFromSlot(player, stackInSlot);
             }
             return stack;
+    }
+    public IInventory getSilvaniteChestInventory()
+    {
+        return this.silvaniteChestInventory;
     }
 }

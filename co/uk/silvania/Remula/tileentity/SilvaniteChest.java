@@ -127,29 +127,6 @@ public class SilvaniteChest extends BlockContainer {
                 }
             }
         }
-        
-        @Override
-        public String getTextureFile () {
-                return CommonProxy.BLOCK_PNG;
-        }
-
-        @SideOnly(Side.CLIENT)
-
-        /**
-         * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
-         */
-        public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-        {
-            return 4;
-        }
-
-        /**
-         * Returns the block texture based on the side being looked at.  Args: side
-         */
-        public int getBlockTextureFromSide(int par1)
-        {
-            return 4;
-        }
 
         private void dropItems(World world, int x, int y, int z){
                 Random rand = new Random();

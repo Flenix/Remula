@@ -10,8 +10,6 @@ import net.minecraft.world.chunk.IChunkProvider;
 
 public class DeepSpaceWorldProvider extends WorldProvider {
 	
-	
-
 	public String getDimensionName() {
 		return "Deep Space";
 	}
@@ -23,12 +21,14 @@ public class DeepSpaceWorldProvider extends WorldProvider {
 	public void registerWorldChunkManager() {
 		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.sky, 0.5F, 0.0F);
 		this.dimensionId = Remula.deepSpaceDimension;
-		this.hasNoSky = true;
+		this.hasNoSky = false;
+		this.setWorldTime(0);
+		this.setFogColor();
 	}
 	
 	@Override
 	public IChunkProvider createChunkGenerator() {
-		return new DeepSpaceChunkProvider(worldObj, worldObj.getSeed(), true);
+		return new DeepSpaceChunkProvider(worldObj, worldObj.getSeed());
 	}
 	
 	public String getSaveFolder() {
@@ -52,7 +52,7 @@ public class DeepSpaceWorldProvider extends WorldProvider {
 	}
 	
 	public int setFogColor() {
-		return 123456;
+		return 000000;
 	}
 	
     public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)

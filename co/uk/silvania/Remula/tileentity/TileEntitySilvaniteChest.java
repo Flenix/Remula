@@ -2,11 +2,10 @@ package co.uk.silvania.Remula.tileentity;
 
 import java.util.Iterator;
 import java.util.List;
-import net.minecraft.block.Block;
+
+import co.uk.silvania.Remula.Remula;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -15,7 +14,7 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntitySilvaniteChest extends TileEntity implements IInventory
 {
-    private ItemStack[] chestContents = new ItemStack[36];
+    private ItemStack[] silvaniteChestContents = new ItemStack[56];
 
     /** Determines if the check for adjacent chests has taken place. */
     public boolean adjacentChestChecked = false;
@@ -57,7 +56,7 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
      */
     public ItemStack getStackInSlot(int par1)
     {
-        return this.chestContents[par1];
+        return this.silvaniteChestContents[par1];
     }
 
     /**
@@ -66,24 +65,24 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
      */
     public ItemStack decrStackSize(int par1, int par2)
     {
-        if (this.chestContents[par1] != null)
+        if (this.silvaniteChestContents[par1] != null)
         {
             ItemStack var3;
 
-            if (this.chestContents[par1].stackSize <= par2)
+            if (this.silvaniteChestContents[par1].stackSize <= par2)
             {
-                var3 = this.chestContents[par1];
-                this.chestContents[par1] = null;
+                var3 = this.silvaniteChestContents[par1];
+                this.silvaniteChestContents[par1] = null;
                 this.onInventoryChanged();
                 return var3;
             }
             else
             {
-                var3 = this.chestContents[par1].splitStack(par2);
+                var3 = this.silvaniteChestContents[par1].splitStack(par2);
 
-                if (this.chestContents[par1].stackSize == 0)
+                if (this.silvaniteChestContents[par1].stackSize == 0)
                 {
-                    this.chestContents[par1] = null;
+                    this.silvaniteChestContents[par1] = null;
                 }
 
                 this.onInventoryChanged();
@@ -102,10 +101,10 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
      */
     public ItemStack getStackInSlotOnClosing(int par1)
     {
-        if (this.chestContents[par1] != null)
+        if (this.silvaniteChestContents[par1] != null)
         {
-            ItemStack var2 = this.chestContents[par1];
-            this.chestContents[par1] = null;
+            ItemStack var2 = this.silvaniteChestContents[par1];
+            this.silvaniteChestContents[par1] = null;
             return var2;
         }
         else
@@ -119,7 +118,7 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
      */
     public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
     {
-        this.chestContents[par1] = par2ItemStack;
+        this.silvaniteChestContents[par1] = par2ItemStack;
 
         if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
         {
@@ -134,7 +133,7 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
      */
     public String getInvName()
     {
-        return "container.chest";
+        return "Silvanite Chest";
     }
 
     /**
@@ -144,16 +143,16 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
     {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
-        this.chestContents = new ItemStack[this.getSizeInventory()];
+        this.silvaniteChestContents = new ItemStack[this.getSizeInventory()];
 
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
         {
             NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
             int var5 = var4.getByte("Slot") & 255;
 
-            if (var5 >= 0 && var5 < this.chestContents.length)
+            if (var5 >= 0 && var5 < this.silvaniteChestContents.length)
             {
-                this.chestContents[var5] = ItemStack.loadItemStackFromNBT(var4);
+                this.silvaniteChestContents[var5] = ItemStack.loadItemStackFromNBT(var4);
             }
         }
     }
@@ -166,13 +165,13 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
         super.writeToNBT(par1NBTTagCompound);
         NBTTagList var2 = new NBTTagList();
 
-        for (int var3 = 0; var3 < this.chestContents.length; ++var3)
+        for (int var3 = 0; var3 < this.silvaniteChestContents.length; ++var3)
         {
-            if (this.chestContents[var3] != null)
+            if (this.silvaniteChestContents[var3] != null)
             {
                 NBTTagCompound var4 = new NBTTagCompound();
                 var4.setByte("Slot", (byte)var3);
-                this.chestContents[var3].writeToNBT(var4);
+                this.silvaniteChestContents[var3].writeToNBT(var4);
                 var2.appendTag(var4);
             }
         }
@@ -199,7 +198,7 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
 
     /**
      * Causes the TileEntity to reset all it's cached values for it's container block, blockID, metaData and in the case
-     * of chests, the adjcacent chest check
+     * of Chests, the adjcacent Chest check
      */
     public void updateContainingBlockInfo()
     {
@@ -248,7 +247,7 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
     }
 
     /**
-     * Performs the check for adjacent chests to determine if this chest is double or not.
+     * Performs the check for adjacent silvaniteChests to determine if this silvaniteChest is double or not.
      */
     public void checkForAdjacentChests()
     {
@@ -260,22 +259,22 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
             this.adjacentChestXNeg = null;
             this.adjacentChestZPosition = null;
 
-            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Remula.silvaniteChest.blockID)
             {
                 this.adjacentChestXNeg = (TileEntitySilvaniteChest)this.worldObj.getBlockTileEntity(this.xCoord - 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Remula.silvaniteChest.blockID)
             {
                 this.adjacentChestXPos = (TileEntitySilvaniteChest)this.worldObj.getBlockTileEntity(this.xCoord + 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Remula.silvaniteChest.blockID)
             {
                 this.adjacentChestZNeg = (TileEntitySilvaniteChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord - 1);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Block.chest.blockID)
+            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Remula.silvaniteChest.blockID)
             {
                 this.adjacentChestZPosition = (TileEntitySilvaniteChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord + 1);
             }
@@ -324,14 +323,11 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
             {
                 EntityPlayer var4 = (EntityPlayer)var3.next();
 
-                if (var4.openContainer instanceof ContainerChest)
+                if (var4.openContainer instanceof ContainerSilvaniteChest)
                 {
-                    IInventory var5 = ((ContainerChest)var4.openContainer).getLowerChestInventory();
+                    IInventory var5 = ((ContainerSilvaniteChest)var4.openContainer).getSilvaniteChestInventory();
 
-                    if (var5 == this || var5 instanceof InventoryLargeChest && ((InventoryLargeChest)var5).isPartOfLargeChest(this))
-                    {
-                        ++this.numUsingPlayers;
-                    }
+                    ++this.numUsingPlayers;
                 }
             }
         }
@@ -417,13 +413,13 @@ public class TileEntitySilvaniteChest extends TileEntity implements IInventory
     public void openChest()
     {
         ++this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Block.chest.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.silvaniteChest.blockID, 1, this.numUsingPlayers);
     }
 
     public void closeChest()
     {
         --this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Block.chest.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.silvaniteChest.blockID, 1, this.numUsingPlayers);
     }
 
     /**

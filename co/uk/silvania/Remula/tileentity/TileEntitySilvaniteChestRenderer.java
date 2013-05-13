@@ -1,27 +1,26 @@
 package co.uk.silvania.Remula.tileentity;
 
+import java.util.Calendar;
+
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import java.util.Calendar;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
-import net.minecraft.client.model.ModelChest;
-import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import co.uk.silvania.Remula.client.models.ModelSilvaniteChest;
+
 @SideOnly(Side.CLIENT)
 public class TileEntitySilvaniteChestRenderer extends TileEntitySpecialRenderer
 {
     /** The normal small chest model. */
-    private ModelChest chestModel = new ModelChest();
+    private ModelSilvaniteChest modelSilvaniteChest = new ModelSilvaniteChest();
 
-    /** The large double chest model. */
-    private ModelChest largeChestModel = new ModelLargeChest();
     private boolean field_92061_d;
 
     public TileEntitySilvaniteChestRenderer()
@@ -69,32 +68,19 @@ public class TileEntitySilvaniteChestRenderer extends TileEntitySpecialRenderer
 
         if (par1TileEntityChest.adjacentChestZNeg == null && par1TileEntityChest.adjacentChestXNeg == null)
         {
-            ModelChest var14;
+            ModelSilvaniteChest var14;
 
             if (par1TileEntityChest.adjacentChestXPos == null && par1TileEntityChest.adjacentChestZPosition == null)
             {
-                var14 = this.chestModel;
+                var14 = this.modelSilvaniteChest;
 
                 if (this.field_92061_d)
                 {
-                    this.bindTextureByName("/item/xmaschest.png");
+                    this.bindTextureByName("/co/uk/silvania/Remula/resources/SilvaniteChest1.png");
                 }
                 else
                 {
-                    this.bindTextureByName("/item/chest.png");
-                }
-            }
-            else
-            {
-                var14 = this.largeChestModel;
-
-                if (this.field_92061_d)
-                {
-                    this.bindTextureByName("/item/largexmaschest.png");
-                }
-                else
-                {
-                    this.bindTextureByName("/item/largechest.png");
+                    this.bindTextureByName("/co/uk/silvania/Remula/resources/SilvaniteChest1.png");
                 }
             }
 
@@ -163,8 +149,6 @@ public class TileEntitySilvaniteChestRenderer extends TileEntitySpecialRenderer
 
             var12 = 1.0F - var12;
             var12 = 1.0F - var12 * var12 * var12;
-            var14.chestLid.rotateAngleX = -(var12 * (float)Math.PI / 2.0F);
-            var14.renderAll();
             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
             GL11.glPopMatrix();
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

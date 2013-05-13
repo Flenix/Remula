@@ -10,6 +10,5 @@ public class BaloinusStone extends Block {
 		super(id, texture, material);
 		this.setCreativeTab(Remula.tabBaloinus);
 		this.setHardness(2.0F);
-		this.setStepSound(null);
 	}
 }

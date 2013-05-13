@@ -19,6 +19,7 @@ import co.uk.silvania.Remula.dimensions.*;
 import co.uk.silvania.Remula.dimensions.akatoe.*;
 import co.uk.silvania.Remula.dimensions.baloinus.BaloinusStone;
 import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceAsteroidRock;
+import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceMeteoriteRock;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
@@ -93,7 +94,7 @@ public class Remula {
 	public static WorldGen worldGen = new WorldGen();
 	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);
 	
-    public BiomeGenBase akatoePlainsBiome = new BiomeAkatoePlains(60);
+    public static BiomeGenBase akatoePlainsBiome = new BiomeAkatoePlains(60);
     
     //Blocks (IDs 1800-2000 to avoid clash with top 100 mods)
     public final static Block silvaniteOre = new SilvaniteOre(1800, 0).setBlockName("silvaniteOre");
@@ -137,7 +138,8 @@ public class Remula {
     public final static Block baloinusStone = new BaloinusStone(205, 0, Material.rock);
     
     //Deep Space WGEN stuff
-    public final static Block deepSpaceAsteroidRock = new DeepSpaceAsteroidRock(210, 0, Material.rock);
+    public final static Block deepSpaceAsteroidRock = new DeepSpaceAsteroidRock(210, 0, Material.rock).setBlockName("deepSpaceAsteroidRock");
+    public final static Block deepSpaceMeteoriteRock = new DeepSpaceMeteoriteRock(211, 1, Material.rock).setBlockName("deepSpaceMeteoriteRock");
     
     //Rest of Akatoe blocks
     public final static Block akatoePortal = new AkatoePortalBlock(1900, 30).setBlockName("akatoePortal");
@@ -161,12 +163,12 @@ public class Remula {
     public final static Block ulinCrop = new UlinCrop(1921).setBlockName("ulinCrop");
     public final static Block cirCrop = new CirCrop(1922).setBlockName("cirCrop");
     public final static Block boskinCrop = new BoskinCrop(1923).setBlockName("boskinCrop");
-    public final static Block p1HudUnit = new P1HUDUnit(1924, 1).setBlockName("p1HudUnit");
+    //public final static Item p1HudUnit = new P1HUDUnit(1924, 1).setBlockName("p1HudUnit");
     //Rest of Baloinus blocks
-    public final static Block baloinusPortal = new BaloinusPortalBlock(1950, 1).setBlockName("baloinusPortal");
+    public final static Block baloinusPortal = new BaloinusPortalBlock(1950, 255).setBlockName("baloinusPortal");
     
     //Rest of Deep Space Blocks
-    public final static Block deepSpacePortal = new DeepSpacePortalBlock(2000, 1).setBlockName("deepSpacePortal");
+    public final static Block deepSpacePortal = new DeepSpacePortalBlock(2000, 255).setBlockName("deepSpacePortal");
     
     //Liquids
     //Silvanite
@@ -174,7 +176,7 @@ public class Remula {
     //Remula
     //Redstone
     //Lapis
-    
+       
     //Items (IDs 17000 - 17300)
     public final static Item emptyCell = new EmptyCell(17000).setItemName("emptyCell");
 	public final static Item silvaniteDust = new SilvaniteDust(17001).setItemName("silvaniteDust");
@@ -352,6 +354,7 @@ public class Remula {
             //DeepSpace
             LanguageRegistry.addName(deepSpacePortal, "Deep-Space Portal");
             LanguageRegistry.addName(deepSpaceAsteroidRock, "Deep-Space Asteroid Rock");
+            LanguageRegistry.addName(deepSpaceMeteoriteRock, "Deep-Space Meteorite Rock");
             
             //Register Blocks
             //Ores
@@ -424,6 +427,7 @@ public class Remula {
             //Deep Space
             GameRegistry.registerBlock(deepSpacePortal, "deepSpacePortal");
             GameRegistry.registerBlock(deepSpaceAsteroidRock, "deepSpaceAsteroidRock");
+            GameRegistry.registerBlock(deepSpaceMeteoriteRock, "deepSpaceMeteoriteRock");
             
             //Ore Mining Requirements
             MinecraftForge.setBlockHarvestLevel(silvaniteOre, "pickaxe", 1);
@@ -601,6 +605,11 @@ public class Remula {
             GameRegistry.registerItem(advancedPRSU, "advancedPRSU");
             
             
+            //Tile Entities
+            GameRegistry.registerTileEntity(TileEntitySilvaniteChest.class, "tileEntitySilvaniteChest");
+            GameRegistry.registerTileEntity(TileEntityMerciliteChest.class, "tileEntityMerciliteChest");
+            GameRegistry.registerTileEntity(TileEntityRemulaChest.class, "tileEntityRemulaChest");
+            
             //Other Registry Stuff
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabRemula", "en_US", "Remula");
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabAkatoe", "en_US", "Akatoe");
@@ -625,7 +634,7 @@ public class Remula {
             EntityRegistry.registerModEntity(EntityAdvRobot.class, "AdvancedRobot", 3, this, 80, 3, true);
             EntityRegistry.registerModEntity(EntityXylexian.class, "Xylexian", 4, this, 80, 3, true);
             
-            EntityRegistry.addSpawn(EntityGlog.class, 5, 2, 10, EnumCreatureType.creature, BiomeGenBase.plains);
+            EntityRegistry.addSpawn(EntityGlog.class, 5, 2, 10, EnumCreatureType.creature, Remula.akatoePlainsBiome);
             
             LanguageRegistry.instance().addStringLocalization("entity.Remula.Akatonian.name", "Akatonian");
             LanguageRegistry.instance().addStringLocalization("entity.Remula.Glog.name", "Glog");

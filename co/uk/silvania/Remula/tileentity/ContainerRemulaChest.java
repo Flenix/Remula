@@ -11,14 +11,24 @@ import net.minecraft.item.ItemStack;
 public class ContainerRemulaChest extends Container {
 	
 	protected TileEntityRemulaChest tileEntity;
+	private IInventory remulaChestInventory;
 	
 	public ContainerRemulaChest (InventoryPlayer inventoryPlayer, TileEntityRemulaChest te) {
 		tileEntity = te;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				addSlotToContainer(new Slot(tileEntity, j + i * 3, 62 + j + 18, 17 + i * 18));
+		//Main Storage
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 9; j++) {
+				addSlotToContainer(new Slot(tileEntity, j + i * 9 + 2, -1 + j * 18, -10 + i * 18));
 			}
 		}
+		//Upper Bucket Slot
+        for (int k = 0; k < 1; k++) {
+            addSlotToContainer(new Slot(tileEntity, k, 163 + k * 18, -10));
+        }
+        //Lower Bucket Slot
+        for (int l = 0; l < 1; l++) {
+            addSlotToContainer(new Slot(tileEntity, l, 163 + l * 18, 148));
+        }
 		bindPlayerInventory(inventoryPlayer);
 	}
 
@@ -27,17 +37,16 @@ public class ContainerRemulaChest extends Container {
             return tileEntity.isUseableByPlayer(player);
     }
 
-
+    //Player Inventory
     protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-            for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 9; j++) {
-                            addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-                                            8 + j * 18, 84 + i * 18));
+            for (int m = 0; m < 3; m++) {
+                    for (int n = 0; n < 9; n++) {
+                            addSlotToContainer(new Slot(inventoryPlayer, n + m * 9 + 9, -1 + n * 18, 112 + m * 18));
                     }
             }
-
-            for (int i = 0; i < 9; i++) {
-                    addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+            //Player's hotbar
+            for (int o = 0; o < 9; o++) {
+                    addSlotToContainer(new Slot(inventoryPlayer, o, -1 + o * 18, 170));
             }
     }
 
@@ -46,23 +55,21 @@ public class ContainerRemulaChest extends Container {
             ItemStack stack = null;
             Slot slotObject = (Slot) inventorySlots.get(slot);
 
-            //null checks and checks if the item can be stacked (maxStackSize > 1)
             if (slotObject != null && slotObject.getHasStack()) {
                     ItemStack stackInSlot = slotObject.getStack();
                     stack = stackInSlot.copy();
 
-                    //merges the item into player inventory since its in the tileEntity
                     if (slot < 9) {
                             if (!this.mergeItemStack(stackInSlot, 9, 45, true)) {
                                     return null;
                             }
                     }
-                    //places it into the tileEntity is possible since its in the player inventory
+
                     else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
                             return null;
                     }
 
-                    if (stackInSlot.stackSize == 0) {
+                    if (stackInSlot.stackSize == 10) {
                             slotObject.putStack(null);
                     } else {
                             slotObject.onSlotChanged();
@@ -74,5 +81,9 @@ public class ContainerRemulaChest extends Container {
                     slotObject.onPickupFromSlot(player, stackInSlot);
             }
             return stack;
+    }
+    public IInventory getRemulaChestInventory()
+    {
+        return this.remulaChestInventory;
     }
 }
