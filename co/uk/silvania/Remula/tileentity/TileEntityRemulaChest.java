@@ -14,7 +14,7 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityRemulaChest extends TileEntity implements IInventory
 {
-    private ItemStack[] remulaChestContents = new ItemStack[56];
+    private ItemStack[] remulaChestContents = new ItemStack[60];
 
     /** Determines if the check for adjacent chests has taken place. */
     public boolean adjacentChestChecked = false;
@@ -48,7 +48,7 @@ public class TileEntityRemulaChest extends TileEntity implements IInventory
      */
     public int getSizeInventory()
     {
-        return 56;
+        return 60;
     }
 
     /**

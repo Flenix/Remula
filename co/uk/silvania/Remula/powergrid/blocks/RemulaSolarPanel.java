@@ -3,7 +3,7 @@ package co.uk.silvania.Remula.powergrid.blocks;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import co.uk.silvania.Remula.client.ClientProxy;
-import co.uk.silvania.Remula.tileentity.TileEntityRemulaSolarPanel;
+import co.uk.silvania.Remula.powergrid.blocks.tileentity.TileEntityRemulaSolarPanel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

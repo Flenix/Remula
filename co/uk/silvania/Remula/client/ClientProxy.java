@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.blocks.render.RenderRemulaSolarPanel;
 import co.uk.silvania.Remula.client.models.ModelAkatonian;
 import co.uk.silvania.Remula.client.models.ModelGlog;
 import co.uk.silvania.Remula.client.models.ModelRobot;
@@ -16,7 +17,6 @@ import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
 import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import co.uk.silvania.Remula.items.weapons.EntityBronzeBullet;
 import co.uk.silvania.Remula.powergrid.blocks.RemulaSolarPanel;
-import co.uk.silvania.Remula.tileentity.TileEntityRemulaSolarPanelRenderer;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -52,7 +52,7 @@ public class ClientProxy extends CommonProxy {
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceblocks.png");
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceitems.png");
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/Remula/resources/SilvaniteChest1.png");
-    ClientRegistry.bindTileEntitySpecialRenderer(co.uk.silvania.Remula.tileentity.TileEntityRemulaSolarPanel.class, new TileEntityRemulaSolarPanelRenderer());
+    //ClientRegistry.bindTileEntitySpecialRenderer(co.uk.silvania.Remula.powergrid.blocks.tileentity.TileEntityRemulaSolarPanel.class, new RenderRemulaSolarPanel(0));
     }
         
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {

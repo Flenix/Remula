@@ -17,9 +17,55 @@ import co.uk.silvania.Remula.blocks.*;
 import co.uk.silvania.Remula.client.ClientProxy;
 import co.uk.silvania.Remula.dimensions.*;
 import co.uk.silvania.Remula.dimensions.akatoe.*;
-import co.uk.silvania.Remula.dimensions.baloinus.BaloinusStone;
-import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceAsteroidRock;
-import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceMeteoriteRock;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeBricks;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeCobble;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeDecorBricks;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeDirt;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeGrass;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeLargeBricks;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeRefinedStone;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeSand;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeStone;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.AkatoeTilledDirt;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.BoskinCrop;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.CirCrop;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.PlantFuxii;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.PorinCrop;
+import co.uk.silvania.Remula.dimensions.akatoe.blocks.UlinCrop;
+import co.uk.silvania.Remula.dimensions.akatoe.items.AkatiteCell;
+import co.uk.silvania.Remula.dimensions.akatoe.items.AkatiteDust;
+import co.uk.silvania.Remula.dimensions.akatoe.items.AkatiteIngot;
+import co.uk.silvania.Remula.dimensions.akatoe.items.BoskinSeeds;
+import co.uk.silvania.Remula.dimensions.akatoe.items.CirSeeds;
+import co.uk.silvania.Remula.dimensions.akatoe.items.ItemBoskin;
+import co.uk.silvania.Remula.dimensions.akatoe.items.ItemCir;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PilkCell;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PilkDust;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PilkIngot;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PorinFruit;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PorinSeeds;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PoriniteCell;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PoriniteDust;
+import co.uk.silvania.Remula.dimensions.akatoe.items.PoriniteIngot;
+import co.uk.silvania.Remula.dimensions.akatoe.items.UlinFruit;
+import co.uk.silvania.Remula.dimensions.akatoe.items.UlinSeeds;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatiteOre;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatoeCoal;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatoeCopper;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatoeGold;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatoeIron;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatoeLapis;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatoeRemulaOre;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatoeTin;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.PilkOre;
+import co.uk.silvania.Remula.dimensions.akatoe.ores.PoriniteOre;
+import co.uk.silvania.Remula.dimensions.baloinus.BaloinusPortalBlock;
+import co.uk.silvania.Remula.dimensions.baloinus.BaloinusWorldProvider;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusStone;
+import co.uk.silvania.Remula.dimensions.deepspace.DeepSpacePortalBlock;
+import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceWorldProvider;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceAsteroidRock;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceMeteoriteRock;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
@@ -41,6 +87,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -49,7 +96,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid="Remula", name="Remula", version="0.0.1")
-@NetworkMod(clientSideRequired=true, serverSideRequired=false)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false)// channels=("RemulaGui"), packetHandler = PacketHandler.class)
 public class Remula { 
 	
 	public static CreativeTabs tabRemula = new CreativeTabs("tabRemula") {
@@ -75,6 +122,11 @@ public class Remula {
 	
     @Instance("Remula")
     public static Remula instance;
+    
+    //GUIs
+    public static SilvaniteGuiHandler silvaniteGuiHandler = new SilvaniteGuiHandler();
+    public static MerciliteGuiHandler merciliteGuiHandler = new MerciliteGuiHandler();
+    public static RemulaGuiHandler remulaGuiHandler = new RemulaGuiHandler();
 
     // Says where the client and server proxy code is loaded.
     @SidedProxy(clientSide="co.uk.silvania.Remula.client.ClientProxy", serverSide="co.uk.silvania.Remula.CommonProxy")
@@ -88,8 +140,9 @@ public class Remula {
 
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
-    	NetworkRegistry.instance().registerGuiHandler(this,  this.proxy);
-    	instance = this;    	
+    	NetworkRegistry.instance().registerGuiHandler(this, remulaGuiHandler);
+    	NetworkRegistry.instance().registerGuiHandler(this, merciliteGuiHandler);
+    	NetworkRegistry.instance().registerGuiHandler(this, silvaniteGuiHandler);
     }
 	public static WorldGen worldGen = new WorldGen();
 	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);
@@ -163,8 +216,8 @@ public class Remula {
     public final static Block ulinCrop = new UlinCrop(1921).setBlockName("ulinCrop");
     public final static Block cirCrop = new CirCrop(1922).setBlockName("cirCrop");
     public final static Block boskinCrop = new BoskinCrop(1923).setBlockName("boskinCrop");
-    //public final static Item p1HudUnit = new P1HUDUnit(1924, 1).setBlockName("p1HudUnit");
-    //Rest of Baloinus blocks
+	public final static Block plantFuxii = new PlantFuxii(1924, 56).setBlockName("plantFuxii");
+        //Rest of Baloinus blocks
     public final static Block baloinusPortal = new BaloinusPortalBlock(1950, 255).setBlockName("baloinusPortal");
     
     //Rest of Deep Space Blocks
@@ -233,17 +286,19 @@ public class Remula {
 	public final static Item porinFruit = new PorinFruit(17044).setItemName("porinFruit");
 	public final static Item ulinFruit = new UlinFruit(17045).setItemName("ulinFruit");
 	public final static Item itemCir = new ItemCir(17046).setItemName("itemCir");
-	public final static Item itemBoskin = new ItemBoskin(17046).setItemName("itemBoskin");
-	public final static Item poriniteCell = new PoriniteCell(17047).setItemName("poriniteCell");
-	public final static Item pilkCell = new PilkCell(17048).setItemName("pilkCell");
-	public final static Item akatiteCell = new AkatiteCell(17049).setItemName("akatiteCell");
-	public final static Item poriniteDust = new PoriniteDust(17050).setItemName("poriniteDust");
-	public final static Item pilkDust = new PilkDust(17051).setItemName("pilkDust");
-	public final static Item akatiteDust = new AkatiteDust(17052).setItemName("akatiteDust");
-	public final static Item poriniteIngot = new PoriniteIngot(17053).setItemName("poriniteIngot");
-	public final static Item pilkIngot = new PilkIngot(17054).setItemName("pilkIngot");
-	public final static Item akatiteIngot = new AkatiteIngot(17055).setItemName("akatiteIngot");
+	public final static Item itemBoskin = new ItemBoskin(17047).setItemName("itemBoskin");
+	public final static Item poriniteCell = new PoriniteCell(17050).setItemName("poriniteCell");
+	public final static Item pilkCell = new PilkCell(17051).setItemName("pilkCell");
+	public final static Item akatiteCell = new AkatiteCell(17052).setItemName("akatiteCell");
+	public final static Item poriniteDust = new PoriniteDust(17053).setItemName("poriniteDust");
+	public final static Item pilkDust = new PilkDust(17054).setItemName("pilkDust");
+	public final static Item akatiteDust = new AkatiteDust(17055).setItemName("akatiteDust");
+	public final static Item poriniteIngot = new PoriniteIngot(17056).setItemName("poriniteIngot");
+	public final static Item pilkIngot = new PilkIngot(17057).setItemName("pilkIngot");
+	public final static Item akatiteIngot = new AkatiteIngot(17058).setItemName("akatiteIngot");
 	
+	
+	public final static Item p1HudUnit = new P1HUDUnit(17060, SpaceSuit1, 1, 0, false).setItemName("p1HudUnit");
 	//public final static Item p1SpaceSuitHelmet = new P1SpaceSuit(17056, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 0).setItemName("p1SpaceSuitHelmet");
 	//public final static Item p1SpaceSuitBody = new P1SpaceSuit(17057, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 1).setItemName("p1SpaceSuitBody");
 	//public final static Item p1SpaceSuitLegs = new P1SpaceSuit(17058, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 2).setItemName("p1SpaceSuitLegs");
@@ -326,6 +381,7 @@ public class Remula {
             LanguageRegistry.addName(ulinCrop, "Ulin Crop");
             LanguageRegistry.addName(cirCrop, "Cir Crop");
             LanguageRegistry.addName(boskinCrop, "Boskin Crop");
+            LanguageRegistry.addName(plantFuxii, "Fuxii");
             
             //Storage and Tile Entites
             LanguageRegistry.addName(silvaniteChest, "Silvanite Chest");
@@ -380,6 +436,7 @@ public class Remula {
             GameRegistry.registerBlock(ulinCrop, "ulinCrop");
             GameRegistry.registerBlock(cirCrop, "cirCrop");
             GameRegistry.registerBlock(boskinCrop, "boskinCrop");
+            GameRegistry.registerBlock(plantFuxii, "plantFuxii");
             
             //Powergrid
             GameRegistry.registerBlock(remulaBasicStorageUnit, "remulaBasicStorageUnit");
@@ -594,7 +651,7 @@ public class Remula {
             
             //Weapons and Armour
             //GameRegistry.registerItem(standardPistol, "standardPistol");
-            GameRegistry.registerBlock(p1HudUnit, "p1HudUnit");
+            GameRegistry.registerItem(p1HudUnit, "p1HudUnit");
             
             //Power Grid
             GameRegistry.registerItem(simpleBattery, "simpleBattery");
@@ -617,8 +674,17 @@ public class Remula {
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabDeepSpace", "en_US", "Deep-Space");
             GameRegistry.registerWorldGenerator(new WorldGen());
             NetworkRegistry.instance().registerGuiHandler(this, new SilvaniteGuiHandler());
-            //NetworkRegistry.instance().registerGuiHandler(this, new RemulaGuiHandler());
+            NetworkRegistry.instance().registerGuiHandler(this, new MerciliteGuiHandler());
+            NetworkRegistry.instance().registerGuiHandler(this, new RemulaGuiHandler());
             GameRegistry.addBiome(akatoePlainsBiome);
+            GameRegistry.removeBiome(BiomeGenBase.ocean);
+            GameRegistry.removeBiome(BiomeGenBase.jungle);
+            GameRegistry.removeBiome(BiomeGenBase.forest);
+            GameRegistry.removeBiome(BiomeGenBase.plains);
+            GameRegistry.removeBiome(BiomeGenBase.desert);
+            GameRegistry.removeBiome(BiomeGenBase.extremeHills);
+            GameRegistry.removeBiome(BiomeGenBase.taiga);
+            GameRegistry.removeBiome(BiomeGenBase.swampland);
             
             DimensionManager.registerProviderType(akatoeDimension, AkatoeWorldProvider.class, false);
             DimensionManager.registerProviderType(baloinusDimension, BaloinusWorldProvider.class, false);

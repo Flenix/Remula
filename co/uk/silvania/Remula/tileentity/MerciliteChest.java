@@ -29,6 +29,7 @@ public class MerciliteChest extends BlockContainer {
                 setResistance(5.0F);
                 setCreativeTab(Remula.tabRemula);
                 this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+        		this.currentTexture = "/co/uk/silvania/Remula/resources/SilvaniteChest1.png";
         }
 
         @Override
@@ -38,7 +39,7 @@ public class MerciliteChest extends BlockContainer {
                 if (tileEntity == null || player.isSneaking()) {
                         return false;
                 }
-        player.openGui(Remula.instance, 0, world, x, y, z);
+        player.openGui(Remula.merciliteGuiHandler, 0, world, x, y, z);
                 return true;
         }
 
