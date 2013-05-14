@@ -38,7 +38,7 @@ public class RemulaChest extends BlockContainer {
                 if (tileEntity == null || player.isSneaking()) {
                         return false;
                 }
-        player.openGui(Remula.remulaGuiHandler, 0, world, x, y, z);
+        player.openGui(Remula.instance, 0, world, x, y, z);
                 return true;
         }
 

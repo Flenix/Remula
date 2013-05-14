@@ -39,7 +39,7 @@ public class MerciliteChest extends BlockContainer {
                 if (tileEntity == null || player.isSneaking()) {
                         return false;
                 }
-        player.openGui(Remula.merciliteGuiHandler, 0, world, x, y, z);
+        player.openGui(Remula.instance, 0, world, x, y, z);
                 return true;
         }
 

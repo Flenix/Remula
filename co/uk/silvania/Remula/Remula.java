@@ -96,7 +96,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid="Remula", name="Remula", version="0.0.1")
-@NetworkMod(clientSideRequired=true, serverSideRequired=false)// channels=("RemulaGui"), packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class Remula { 
 	
 	public static CreativeTabs tabRemula = new CreativeTabs("tabRemula") {
