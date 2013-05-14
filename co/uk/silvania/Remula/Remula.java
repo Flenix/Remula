@@ -74,6 +74,8 @@ import co.uk.silvania.Remula.items.*;
 import co.uk.silvania.Remula.items.armor.P1HUDUnit;
 //import co.uk.silvania.Remula.items.util.P1SpaceSuit;
 import co.uk.silvania.Remula.items.weapons.ItemPistol;
+import co.uk.silvania.Remula.network.ClientPacketHandler;
+import co.uk.silvania.Remula.network.ServerPacketHandler;
 import co.uk.silvania.Remula.powergrid.blocks.*;
 import co.uk.silvania.Remula.powergrid.items.*;
 import co.uk.silvania.Remula.tileentity.*;
@@ -96,7 +98,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid="Remula", name="Remula", version="0.0.1")
-@NetworkMod(clientSideRequired=true, serverSideRequired=false)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false, clientPacketHandlerSpec = @SidedPacketHandler(channels = "RemulaCltPacket", packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @SidedPacketHandler(channels = "RemulaSrvPacket", packetHandler = ServerPacketHandler.class))
 public class Remula { 
 	
 	public static CreativeTabs tabRemula = new CreativeTabs("tabRemula") {
