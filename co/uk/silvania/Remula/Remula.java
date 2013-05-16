@@ -37,6 +37,11 @@ import co.uk.silvania.Remula.dimensions.akatoe.items.AkatiteDust;
 import co.uk.silvania.Remula.dimensions.akatoe.items.AkatiteIngot;
 import co.uk.silvania.Remula.dimensions.akatoe.items.BoskinSeeds;
 import co.uk.silvania.Remula.dimensions.akatoe.items.CirSeeds;
+import co.uk.silvania.Remula.dimensions.akatoe.items.CookedGarfinMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.CookedGlogMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.CookedHermustMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.CookedLignisMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.CookedSkitterlingStick;
 import co.uk.silvania.Remula.dimensions.akatoe.items.ItemBoskin;
 import co.uk.silvania.Remula.dimensions.akatoe.items.ItemCir;
 import co.uk.silvania.Remula.dimensions.akatoe.items.PilkCell;
@@ -47,6 +52,13 @@ import co.uk.silvania.Remula.dimensions.akatoe.items.PorinSeeds;
 import co.uk.silvania.Remula.dimensions.akatoe.items.PoriniteCell;
 import co.uk.silvania.Remula.dimensions.akatoe.items.PoriniteDust;
 import co.uk.silvania.Remula.dimensions.akatoe.items.PoriniteIngot;
+import co.uk.silvania.Remula.dimensions.akatoe.items.RawGarfinMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.RawGlogMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.RawHermustMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.RawLignisMeat;
+import co.uk.silvania.Remula.dimensions.akatoe.items.RawSkitterlingStick;
+import co.uk.silvania.Remula.dimensions.akatoe.items.SkitterlingDead;
+import co.uk.silvania.Remula.dimensions.akatoe.items.SkitterlingItem;
 import co.uk.silvania.Remula.dimensions.akatoe.items.UlinFruit;
 import co.uk.silvania.Remula.dimensions.akatoe.items.UlinSeeds;
 import co.uk.silvania.Remula.dimensions.akatoe.ores.AkatiteOre;
@@ -68,14 +80,17 @@ import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceAsteroidRock;
 import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceMeteoriteRock;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
+import co.uk.silvania.Remula.entity.akatoe.EntityGarfin;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
+import co.uk.silvania.Remula.entity.akatoe.EntityHermust;
+import co.uk.silvania.Remula.entity.akatoe.EntityLignis;
+import co.uk.silvania.Remula.entity.akatoe.EntitySkitterling;
 import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import co.uk.silvania.Remula.items.*;
 import co.uk.silvania.Remula.items.armor.P1HUDUnit;
 //import co.uk.silvania.Remula.items.util.P1SpaceSuit;
 import co.uk.silvania.Remula.items.weapons.ItemPistol;
-import co.uk.silvania.Remula.network.ClientPacketHandler;
-import co.uk.silvania.Remula.network.ServerPacketHandler;
+import co.uk.silvania.Remula.network.PacketHandler;
 import co.uk.silvania.Remula.powergrid.blocks.*;
 import co.uk.silvania.Remula.powergrid.items.*;
 import co.uk.silvania.Remula.tileentity.*;
@@ -98,7 +113,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid="Remula", name="Remula", version="0.0.1")
-@NetworkMod(clientSideRequired=true, serverSideRequired=false, clientPacketHandlerSpec = @SidedPacketHandler(channels = "RemulaCltPacket", packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @SidedPacketHandler(channels = "RemulaSrvPacket", packetHandler = ServerPacketHandler.class))
+@NetworkMod(channels = { "Remula" }, clientSideRequired=true, serverSideRequired=false, packetHandler = PacketHandler.class)
 public class Remula { 
 	
 	public static CreativeTabs tabRemula = new CreativeTabs("tabRemula") {
@@ -149,8 +164,6 @@ public class Remula {
 	public static WorldGen worldGen = new WorldGen();
 	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);
 	
-    public static BiomeGenBase akatoePlainsBiome = new BiomeAkatoePlains(60);
-    
     //Blocks (IDs 1800-2000 to avoid clash with top 100 mods)
     public final static Block silvaniteOre = new SilvaniteOre(1800, 0).setBlockName("silvaniteOre");
     public final static Block merciliteOre = new MerciliteOre(1801, 1).setBlockName("merciliteOre");
@@ -285,8 +298,8 @@ public class Remula {
 	public final static Item ulinSeeds = new UlinSeeds(17041, ulinCrop.blockID, akatoeTilledDirt.blockID).setItemName("ulinSeeds");
 	public final static Item cirSeeds = new CirSeeds(17042, cirCrop.blockID, akatoeTilledDirt.blockID).setItemName("cirSeeds");
 	public final static Item boskinSeeds = new BoskinSeeds(17043, cirCrop.blockID, akatoeTilledDirt.blockID).setItemName("boskinSeeds");
-	public final static Item porinFruit = new PorinFruit(17044).setItemName("porinFruit");
-	public final static Item ulinFruit = new UlinFruit(17045).setItemName("ulinFruit");
+	public final static Item porinFruit = new PorinFruit(17044, 5, 3.0F, false).setItemName("porinFruit");
+	public final static Item ulinFruit = new UlinFruit(17045, 2, 1.0F, false).setItemName("ulinFruit");
 	public final static Item itemCir = new ItemCir(17046).setItemName("itemCir");
 	public final static Item itemBoskin = new ItemBoskin(17047).setItemName("itemBoskin");
 	public final static Item poriniteCell = new PoriniteCell(17050).setItemName("poriniteCell");
@@ -298,9 +311,21 @@ public class Remula {
 	public final static Item poriniteIngot = new PoriniteIngot(17056).setItemName("poriniteIngot");
 	public final static Item pilkIngot = new PilkIngot(17057).setItemName("pilkIngot");
 	public final static Item akatiteIngot = new AkatiteIngot(17058).setItemName("akatiteIngot");
+	public final static Item rawGlogMeat = new RawGlogMeat(17059, 0, 0.0F, false).setItemName("rawGlogMeat");
+	public final static Item cookedGlogMeat = new CookedGlogMeat(17060, 8, 14.0F, true).setItemName("cookedGlogMeat");
+	public final static Item skitterling = new SkitterlingItem(17061, 3, 6.0F, false).setItemName("skitterling");
+	public final static Item skitterlingDead = new SkitterlingDead(17062, 1, 3.0F, false).setItemName("skitterlingDead");
+	public final static Item rawSkitterlingStick = new RawSkitterlingStick(17063, 9, 6.0F, false).setItemName("rawSkitterlingStick");
+	public final static Item cookedSkitterlingStick = new CookedSkitterlingStick(17064, 12, 6.0F, false).setItemName("cookedSkitterlingStick");
+	public final static Item rawHermustMeat = new RawHermustMeat(17065, 4, 4.0F, true).setItemName("rawHermustMeat");
+	public final static Item cookedHermustMeat = new CookedHermustMeat(17066, 10, 10.0F, true).setItemName("cookedHermustMeat");
+	public final static Item rawGarfinMeat = new RawGarfinMeat(17067, 5, 3.5F, false).setItemName("rawGarfinMeat");
+	public final static Item cookedGarfinMeat = new CookedGarfinMeat(17068, 12, 12.0F, false).setItemName("cookedGarfinMeat");
+	public final static Item rawLignisMeat = new RawLignisMeat(17069, 8, 8.0F, false).setItemName("rawLingisMeat");
+	public final static Item cookedLignisMeat = new CookedLignisMeat(17070, 16, 15.0F, false).setItemName("cookedLingisMeat");
 	
 	
-	public final static Item p1HudUnit = new P1HUDUnit(17060, SpaceSuit1, 1, 0, false).setItemName("p1HudUnit");
+	public final static Item p1HudUnit = new P1HUDUnit(17071, SpaceSuit1, 1, 0, false).setItemName("p1HudUnit");
 	//public final static Item p1SpaceSuitHelmet = new P1SpaceSuit(17056, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 0).setItemName("p1SpaceSuitHelmet");
 	//public final static Item p1SpaceSuitBody = new P1SpaceSuit(17057, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 1).setItemName("p1SpaceSuitBody");
 	//public final static Item p1SpaceSuitLegs = new P1SpaceSuit(17058, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 2).setItemName("p1SpaceSuitLegs");
@@ -312,6 +337,10 @@ public class Remula {
 	//SpeedUpgrade
 	//StrengthUpgrade
 	//CCUpgrade?
+	
+    public static BiomeGenBase akatoePlainsBiome = new BiomeAkatoePlains(60);
+    public static BiomeGenBase akatoeDesertBiome = new BiomeAkatoeDesert(61);
+    public static BiomeGenBase akatoeOceanBiome = new BiomeAkatoeOcean(62);
     
     @Init
     public void load(FMLInitializationEvent event) {
@@ -555,6 +584,18 @@ public class Remula {
             LanguageRegistry.addName(cirSeeds, "Cir Seeds");
             LanguageRegistry.addName(itemBoskin, "Boskin");
             LanguageRegistry.addName(boskinSeeds, "Boskin Seeds");
+            LanguageRegistry.addName(rawGlogMeat, "Raw Glog");
+            LanguageRegistry.addName(cookedGlogMeat, "Cooked Glog");
+            LanguageRegistry.addName(skitterling, "Skitterling");
+            LanguageRegistry.addName(skitterlingDead, "Skitterling (Dead)");
+            LanguageRegistry.addName(rawSkitterlingStick, "Raw Skitterling (Stick)");
+            LanguageRegistry.addName(cookedSkitterlingStick, "Roasted Skitterling");
+            LanguageRegistry.addName(rawHermustMeat, "Raw Hermust");
+            LanguageRegistry.addName(cookedHermustMeat, "Cooked Hermust");
+            LanguageRegistry.addName(rawGarfinMeat, "Raw Garfin");
+            LanguageRegistry.addName(cookedGarfinMeat, "Cooked Garfin");
+            LanguageRegistry.addName(rawLignisMeat, "Raw Lignis");
+            LanguageRegistry.addName(cookedLignisMeat, "Cooked Lignis");
             
             //Weapons and Armour
             //LanguageRegistry.addName(standardPistol, "Standard Pistol");
@@ -650,6 +691,18 @@ public class Remula {
             GameRegistry.registerItem(cirSeeds, "cirSeeds");
             GameRegistry.registerItem(itemBoskin, "itemBoskin");
             GameRegistry.registerItem(boskinSeeds, "boskinSeeds");
+            GameRegistry.registerItem(rawGlogMeat, "rawGlogMeat");
+            GameRegistry.registerItem(cookedGlogMeat, "cookedGlogMeat");
+            GameRegistry.registerItem(skitterling, "skitterling");
+            GameRegistry.registerItem(skitterlingDead, "skitterlingDead");
+            GameRegistry.registerItem(rawSkitterlingStick, "rawSkitterlingStick");
+            GameRegistry.registerItem(cookedSkitterlingStick, "cookedSkitterlingStick");
+            GameRegistry.registerItem(rawHermustMeat, "rawHermustMeat");
+            GameRegistry.registerItem(cookedHermustMeat, "cookedHermustMeat");
+            GameRegistry.registerItem(rawGarfinMeat, "rawGarfinMeat");
+            GameRegistry.registerItem(cookedGarfinMeat, "cookedGarfinMeat");
+            GameRegistry.registerItem(rawLignisMeat, "rawLignisMeat");
+            GameRegistry.registerItem(cookedLignisMeat, "cookedLignisMeat");
             
             //Weapons and Armour
             //GameRegistry.registerItem(standardPistol, "standardPistol");
@@ -678,15 +731,9 @@ public class Remula {
             NetworkRegistry.instance().registerGuiHandler(this, new SilvaniteGuiHandler());
             NetworkRegistry.instance().registerGuiHandler(this, new MerciliteGuiHandler());
             NetworkRegistry.instance().registerGuiHandler(this, new RemulaGuiHandler());
-            GameRegistry.addBiome(akatoePlainsBiome);
-            GameRegistry.removeBiome(BiomeGenBase.ocean);
-            GameRegistry.removeBiome(BiomeGenBase.jungle);
-            GameRegistry.removeBiome(BiomeGenBase.forest);
-            GameRegistry.removeBiome(BiomeGenBase.plains);
-            GameRegistry.removeBiome(BiomeGenBase.desert);
-            GameRegistry.removeBiome(BiomeGenBase.extremeHills);
-            GameRegistry.removeBiome(BiomeGenBase.taiga);
-            GameRegistry.removeBiome(BiomeGenBase.swampland);
+            GameRegistry.removeBiome(akatoePlainsBiome);
+            GameRegistry.removeBiome(akatoeDesertBiome);
+            GameRegistry.removeBiome(akatoeOceanBiome);
             
             DimensionManager.registerProviderType(akatoeDimension, AkatoeWorldProvider.class, false);
             DimensionManager.registerProviderType(baloinusDimension, BaloinusWorldProvider.class, false);
@@ -701,13 +748,25 @@ public class Remula {
             EntityRegistry.registerModEntity(EntityGlog.class, "Glog", 2, this, 80, 3, true);
             EntityRegistry.registerModEntity(EntityAdvRobot.class, "AdvancedRobot", 3, this, 80, 3, true);
             EntityRegistry.registerModEntity(EntityXylexian.class, "Xylexian", 4, this, 80, 3, true);
+            EntityRegistry.registerModEntity(EntitySkitterling.class, "Skitterling", 5, this, 80, 3, true);
+            EntityRegistry.registerModEntity(EntityHermust.class, "Hermust", 5, this, 80, 3, true);
+            EntityRegistry.registerModEntity(EntityGarfin.class, "Garfin", 6, this, 80, 3, true);
+            EntityRegistry.registerModEntity(EntityLignis.class, "Lignis", 7, this, 80, 3, true);
             
-            EntityRegistry.addSpawn(EntityGlog.class, 5, 2, 10, EnumCreatureType.creature, Remula.akatoePlainsBiome);
+            EntityRegistry.addSpawn(EntityGlog.class, 5, 2, 6, EnumCreatureType.creature, Remula.akatoePlainsBiome);
+            EntityRegistry.addSpawn(EntitySkitterling.class, 5, 6, 10, EnumCreatureType.monster, Remula.akatoePlainsBiome, Remula.akatoeDesertBiome);
+            EntityRegistry.addSpawn(EntityHermust.class, 5, 2, 4, EnumCreatureType.creature, Remula.akatoePlainsBiome, Remula.akatoeDesertBiome);
+            EntityRegistry.addSpawn(EntityGarfin.class, 5, 3, 7, EnumCreatureType.waterCreature, Remula.akatoePlainsBiome, Remula.akatoeOceanBiome);
+            EntityRegistry.addSpawn(EntityLignis.class, 5, 1, 2, EnumCreatureType.creature, Remula.akatoePlainsBiome, Remula.akatoeDesertBiome, Remula.akatoeOceanBiome);
             
             LanguageRegistry.instance().addStringLocalization("entity.Remula.Akatonian.name", "Akatonian");
             LanguageRegistry.instance().addStringLocalization("entity.Remula.Glog.name", "Glog");
             LanguageRegistry.instance().addStringLocalization("entity.Remula.AdvancedRobot.name", "Flendroid 5000");
             LanguageRegistry.instance().addStringLocalization("entity.Remula.Xylexian.name", "Xylexian");
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.Skitterling.name", "Skitterling");
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.Hermust.name", "Hermust");
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.Garfin.name", "Garfin");
+            LanguageRegistry.instance().addStringLocalization("entity.Remula.Lignis.name", "Lignis");
     }
 
 

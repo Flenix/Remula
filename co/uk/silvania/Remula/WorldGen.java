@@ -22,15 +22,17 @@ public class WorldGen implements IWorldGenerator{
                 generateSurface(world, random, chunkX * 16, chunkZ * 16);
             case -1:
                 generateEnd(world, random, chunkX * 16, chunkZ * 16);
+            case 20:
+            	generateAkatoe(world, random, chunkX * 16, chunkZ * 16);
 		}
 		
 	}
     
-	private void generateEnd(World world, Random random, int chunkX, int chunkZ){
+	private void generateEnd(World world, Random random, int chunkX, int chunkZ) {
 		
 	}
     
-	private void generateSurface(World world, Random random, int chunkX, int chunkZ){
+	private void generateSurface(World world, Random random, int chunkX, int chunkZ) {
 		for(int i = 0; i < 5; i++){
 			int xCoord = chunkX + random.nextInt(16);
 			int yCoord = random.nextInt(20);
@@ -40,8 +42,18 @@ public class WorldGen implements IWorldGenerator{
 		}
 	}
     
-	private void generateNether(World world, Random random, int chunkX, int chunkZ){
+	private void generateNether(World world, Random random, int chunkX, int chunkZ) {
 		
+	}
+	
+	private void generateAkatoe(World world, Random random, int chunkX, int chunkZ) {
+		for(int i = 0; i< 32; i++) {
+			int xCoord = chunkX + random.nextInt(16);
+			int yCoord = random.nextInt(80);
+			int zCoord = chunkZ + random.nextInt(16);
+			
+			(new WorldGenMinable(Remula.akatoeCoal.blockID, 50)).generate(world, random, xCoord, yCoord, zCoord);
+		}
 	}
     
 }

@@ -129,7 +129,12 @@ public class AkatoeBiomeDecorator
         this.biome = par1BiomeGenBase;
     }
 
-    /**
+    public AkatoeBiomeDecorator() {
+	}
+
+	public AkatoeBiomeDecorator akatoebiomedecorator;
+
+	/**
      * Decorates the world. Calls code that was formerly (pre-1.8) in ChunkProviderGenerate.populate
      */
     public void decorate(World par1World, Random par2Random, int par3, int par4)

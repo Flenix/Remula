@@ -6,19 +6,21 @@ import co.uk.silvania.Remula.Remula;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
-public class PorinCrop extends Block {
+public class PorinCrop extends BlockCrops {
 
     public PorinCrop (int id) {
-        super(id, 32, Material.plants);
-        setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
-        setTickRandomly(true);
+        super(id, 32);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
+        this.setTickRandomly(true);
+        this.setCreativeTab(Remula.tabAkatoe);
     }
 
-    @Override
+    /*@Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool (World world, int x,
             int y, int z) {
         return null;
@@ -32,7 +34,7 @@ public class PorinCrop extends Block {
     @Override
     public boolean isOpaqueCube () {
         return false;
-    }
+    }*/
 
     @Override
     public int getBlockTextureFromSideAndMetadata (int side, int metadata) {

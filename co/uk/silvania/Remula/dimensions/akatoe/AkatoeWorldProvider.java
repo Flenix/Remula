@@ -21,7 +21,8 @@ public class AkatoeWorldProvider extends WorldProvider {
 	}
 	
 	public void registerWorldChunkManager() {
-		this.worldChunkMgr = new AkatoeChunkManager(BiomeGenBase.plains);
+		this.worldChunkMgr = new AkatoeChunkManager(Remula.akatoePlainsBiome);
+        //worldChunkMgr = terrainType.getChunkManager(worldObj);
 		this.dimensionId = Remula.akatoeDimension;
 	}
 	

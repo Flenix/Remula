@@ -34,9 +34,21 @@ public class AkatoeGrass extends Block
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public int getBlockTextureFromSideAndMetadata(int par1, int par2)
+    /*public int getBlockTextureFromSideAndMetadata(int par1, int par2)
     {
-        return par1 == 1 ? 4 : (par1 == 4 ? 2 : 3);
+        return par1 == 1 || par1 == 0 ? 4 : (par1 == 4 ? 2 : 3);
+    }*/
+    
+    public int getBlockTextureFromSide(int side) {
+    	if(side == 1) {
+    		return 4;
+    	} else {
+    		if(side == 0) {
+    			return 2;
+    		} else {
+    			return 3;
+    		}
+    	}
     }
 
     //@SideOnly(Side.CLIENT)

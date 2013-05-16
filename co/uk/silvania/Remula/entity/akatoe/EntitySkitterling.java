@@ -27,56 +27,50 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityGlog extends EntityAnimal {
+public class EntitySkitterling extends EntityAnimal {
 	
-	public EntityGlog(World par1World) {
+	public EntitySkitterling(World par1World) {
 		super(par1World);
-		this.texture = "/co/uk/silvania/Remula/resources/mobglog.png";
+		this.texture = "/co/uk/silvania/Remula/resources/mobskitterling.png";
 		this.getNavigator().setAvoidsWater(true);
 		this.setSize(1.5F, 0.9F);
-        this.isImmuneToFire = false;
+        this.isImmuneToFire = true;
 		float var2 = 0.25F;
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 0.38F));
         this.tasks.addTask(2, new EntityAIMate(this, var2));
-        this.tasks.addTask(3, new EntityAITempt(this, 0.3F, Remula.porinFruit.itemID, false));
-        this.tasks.addTask(4, new EntityAIFollowParent(this, 0.28F));
-        this.tasks.addTask(5, new EntityAIWander(this, var2));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.tasks.addTask(3, new EntityAIFollowParent(this, 0.28F));
+        this.tasks.addTask(4, new EntityAIWander(this, var2));
+        this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(6, new EntityAILookIdle(this));
 	}
 
 	public boolean isAIEnabled() {
 		return true;
 	}
 	
-	public boolean entityActivated(World world, int x, int y, int z, EntityPlayer player) {
-		player.openGui(Remula.instance, 0, world, x, y, z);
-		return true;
-	}
-	
 	public int getMaxHealth() {
-		return 10;
+		return 3;
 	}
 	
 	protected String getLivingSound() {
-		return "mob.glog.say";
+		return "mob.skitterling.say";
 	}
 	
 	protected String getHurtSound() {
-		return "mob.glog.say";
+		return "mob.skitterling.say";
 	}
 	
 	protected String getDeathSound() {
-		return "mob.glog.death";
+		return "mob.skitterling.death";
 	}
 	
 	protected void playStepSound(int par1, int par2, int par3, int par4) {
-		this.worldObj.playSoundAtEntity(this, "mob.glog.step", 0.15F,  1.0F);
+		this.worldObj.playSoundAtEntity(this, "mob.skitterling.step", 0.15F,  1.0F);
 	}
 	
 	protected int getDropItemId() {
-		return Remula.rawGlogMeat.itemID;
+		return Remula.skitterlingDead.itemID;
 	}
 	
 	public EntityAgeable createChild(EntityAgeable var1) {

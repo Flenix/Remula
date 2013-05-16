@@ -39,7 +39,8 @@ public class AkatoeChunkProvider implements IChunkProvider
     /** RNG. */
     private Random rand;
     
-    //public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(Remula.akatoePlainsBiome));
+    public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(Remula.akatoePlainsBiome, Remula.akatoeDesertBiome));
+    public static ArrayList<BiomeGenBase> disallowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.river));
 
     /** A NoiseGeneratorOctaves used in generating terrain */
     private NoiseGeneratorOctaves noiseGen1;
