@@ -13,7 +13,7 @@ public class MerciliteGuiChest extends GuiContainer {
         }
         
         /** The X size of the inventory window in pixels. */
-        protected int xSize = 194;
+        protected int xSize = 214;
 
         /** The Y size of the inventory window in pixels. */
         protected int ySize = 222;

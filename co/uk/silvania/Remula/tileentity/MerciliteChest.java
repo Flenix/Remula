@@ -31,15 +31,19 @@ public class MerciliteChest extends BlockContainer {
                 this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
         		this.currentTexture = "/co/uk/silvania/Remula/resources/SilvaniteChest1.png";
         }
+        
+        public String getTextureFile() {
+            return CommonProxy.BLOCK_PNG;
+        }
 
         @Override
         public boolean onBlockActivated(World world, int x, int y, int z,
-                        EntityPlayer player, int idk, float what, float these, float are) {
+                        EntityPlayer player, int i, float j, float k, float l) {
                 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
                 if (tileEntity == null || player.isSneaking()) {
                         return false;
                 }
-        player.openGui(Remula.merciliteGuiHandler, 0, world, x, y, z);
+        player.openGui(Remula.instance, 2, world, x, y, z);
                 return true;
         }
 
@@ -163,7 +167,7 @@ public class MerciliteChest extends BlockContainer {
                         }
                 }
         }
-
+        
         @Override
         public TileEntity createNewTileEntity(World world) {
                 return new TileEntityMerciliteChest();

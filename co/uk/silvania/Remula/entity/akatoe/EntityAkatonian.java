@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
+
+import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
@@ -483,18 +485,26 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         switch (this.getProfession())
         {
             case 0:
-                addMerchantItem(var2, Item.wheat.itemID, this.rand, this.func_82188_j(0.9F));
-                addMerchantItem(var2, Block.cloth.blockID, this.rand, this.func_82188_j(0.5F));
-                addMerchantItem(var2, Item.chickenRaw.itemID, this.rand, this.func_82188_j(0.5F));
-                addMerchantItem(var2, Item.fishCooked.itemID, this.rand, this.func_82188_j(0.4F));
-                addBlacksmithItem(var2, Item.bread.itemID, this.rand, this.func_82188_j(0.9F));
-                addBlacksmithItem(var2, Item.melon.itemID, this.rand, this.func_82188_j(0.3F));
-                addBlacksmithItem(var2, Item.appleRed.itemID, this.rand, this.func_82188_j(0.3F));
-                addBlacksmithItem(var2, Item.cookie.itemID, this.rand, this.func_82188_j(0.3F));
-                addBlacksmithItem(var2, Item.shears.itemID, this.rand, this.func_82188_j(0.3F));
-                addBlacksmithItem(var2, Item.flintAndSteel.itemID, this.rand, this.func_82188_j(0.3F));
-                addBlacksmithItem(var2, Item.chickenCooked.itemID, this.rand, this.func_82188_j(0.3F));
-                addBlacksmithItem(var2, Item.arrow.itemID, this.rand, this.func_82188_j(0.5F));
+                addMerchantItem(var2, Remula.porinFruit.itemID, this.rand, this.func_82188_j(0.9F));
+                addMerchantItem(var2, Remula.porinSeeds.itemID, this.rand, this.func_82188_j(0.5F));
+                addMerchantItem(var2, Remula.ulinFruit.itemID, this.rand, this.func_82188_j(0.5F));
+                addMerchantItem(var2, Remula.ulinSeeds.itemID, this.rand, this.func_82188_j(0.4F));
+                addBlacksmithItem(var2, Remula.itemCir.itemID, this.rand, this.func_82188_j(0.9F));
+                addBlacksmithItem(var2, Remula.itemBoskin.itemID, this.rand, this.func_82188_j(0.3F));
+                addBlacksmithItem(var2, Remula.cirSeeds.itemID, this.rand, this.func_82188_j(0.3F));
+                addBlacksmithItem(var2, Remula.boskinSeeds.itemID, this.rand, this.func_82188_j(0.3F));
+                addBlacksmithItem(var2, Remula.rawGlogMeat.itemID, this.rand, this.func_82188_j(0.3F));
+                addBlacksmithItem(var2, Remula.cookedGlogMeat.itemID, this.rand, this.func_82188_j(0.3F));
+                addBlacksmithItem(var2, Remula.rawGarfinMeat.itemID, this.rand, this.func_82188_j(0.3F));
+                addBlacksmithItem(var2, Remula.cookedGarfinMeat.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.rawHermustMeat.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.cookedHermustMeat.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.rawLignisMeat.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.cookedLignisMeat.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.skitterling.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.skitterlingDead.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.rawSkitterlingStick.itemID, this.rand, this.func_82188_j(0.5F));
+                addBlacksmithItem(var2, Remula.cookedSkitterlingStick.itemID, this.rand, this.func_82188_j(0.5F));
 
                 if (this.rand.nextFloat() < this.func_82188_j(0.5F))
                 {

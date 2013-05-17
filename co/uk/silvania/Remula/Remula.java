@@ -73,6 +73,7 @@ import co.uk.silvania.Remula.dimensions.akatoe.ores.PilkOre;
 import co.uk.silvania.Remula.dimensions.akatoe.ores.PoriniteOre;
 import co.uk.silvania.Remula.dimensions.baloinus.BaloinusPortalBlock;
 import co.uk.silvania.Remula.dimensions.baloinus.BaloinusWorldProvider;
+import co.uk.silvania.Remula.dimensions.baloinus.BiomeBaloinusPlains;
 import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusStone;
 import co.uk.silvania.Remula.dimensions.deepspace.DeepSpacePortalBlock;
 import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceWorldProvider;
@@ -139,11 +140,7 @@ public class Remula {
 	
     @Instance("Remula")
     public static Remula instance;
-    
-    //GUIs
-    public static SilvaniteGuiHandler silvaniteGuiHandler = new SilvaniteGuiHandler();
-    public static MerciliteGuiHandler merciliteGuiHandler = new MerciliteGuiHandler();
-    public static RemulaGuiHandler remulaGuiHandler = new RemulaGuiHandler();
+    public static GuiHandler remulaGuiHandler = new GuiHandler();
 
     // Says where the client and server proxy code is loaded.
     @SidedProxy(clientSide="co.uk.silvania.Remula.client.ClientProxy", serverSide="co.uk.silvania.Remula.CommonProxy")
@@ -158,8 +155,6 @@ public class Remula {
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
     	NetworkRegistry.instance().registerGuiHandler(this, remulaGuiHandler);
-    	NetworkRegistry.instance().registerGuiHandler(this, merciliteGuiHandler);
-    	NetworkRegistry.instance().registerGuiHandler(this, silvaniteGuiHandler);
     }
 	public static WorldGen worldGen = new WorldGen();
 	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);
@@ -232,7 +227,7 @@ public class Remula {
     public final static Block cirCrop = new CirCrop(1922).setBlockName("cirCrop");
     public final static Block boskinCrop = new BoskinCrop(1923).setBlockName("boskinCrop");
 	public final static Block plantFuxii = new PlantFuxii(1924, 56).setBlockName("plantFuxii");
-        //Rest of Baloinus blocks
+    //Rest of Baloinus blocks
     public final static Block baloinusPortal = new BaloinusPortalBlock(1950, 255).setBlockName("baloinusPortal");
     
     //Rest of Deep Space Blocks
@@ -341,6 +336,7 @@ public class Remula {
     public static BiomeGenBase akatoePlainsBiome = new BiomeAkatoePlains(60);
     public static BiomeGenBase akatoeDesertBiome = new BiomeAkatoeDesert(61);
     public static BiomeGenBase akatoeOceanBiome = new BiomeAkatoeOcean(62);
+    public static BiomeGenBase baloinusPlainsBiome = new BiomeBaloinusPlains(65);
     
     @Init
     public void load(FMLInitializationEvent event) {
@@ -728,12 +724,11 @@ public class Remula {
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabBaloinus", "en_US", "Baloinus");
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabDeepSpace", "en_US", "Deep-Space");
             GameRegistry.registerWorldGenerator(new WorldGen());
-            NetworkRegistry.instance().registerGuiHandler(this, new SilvaniteGuiHandler());
-            NetworkRegistry.instance().registerGuiHandler(this, new MerciliteGuiHandler());
-            NetworkRegistry.instance().registerGuiHandler(this, new RemulaGuiHandler());
+            NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
             GameRegistry.removeBiome(akatoePlainsBiome);
             GameRegistry.removeBiome(akatoeDesertBiome);
             GameRegistry.removeBiome(akatoeOceanBiome);
+            GameRegistry.removeBiome(baloinusPlainsBiome);
             
             DimensionManager.registerProviderType(akatoeDimension, AkatoeWorldProvider.class, false);
             DimensionManager.registerProviderType(baloinusDimension, BaloinusWorldProvider.class, false);
@@ -759,14 +754,14 @@ public class Remula {
             EntityRegistry.addSpawn(EntityGarfin.class, 5, 3, 7, EnumCreatureType.waterCreature, Remula.akatoePlainsBiome, Remula.akatoeOceanBiome);
             EntityRegistry.addSpawn(EntityLignis.class, 5, 1, 2, EnumCreatureType.creature, Remula.akatoePlainsBiome, Remula.akatoeDesertBiome, Remula.akatoeOceanBiome);
             
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.Akatonian.name", "Akatonian");
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.Glog.name", "Glog");
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.AdvancedRobot.name", "Flendroid 5000");
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.Xylexian.name", "Xylexian");
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.Skitterling.name", "Skitterling");
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.Hermust.name", "Hermust");
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.Garfin.name", "Garfin");
-            LanguageRegistry.instance().addStringLocalization("entity.Remula.Lignis.name", "Lignis");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.Akatonian.name", "Akatonian");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.Glog.name", "Glog");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.AdvancedRobot.name", "Flendroid 5000");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.Xylexian.name", "Xylexian");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.Skitterling.name", "Skitterling");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.Hermust.name", "Hermust");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.Garfin.name", "Garfin");
+            LanguageRegistry.instance().addStringLocalization("entity.instance.Lignis.name", "Lignis");
     }
 
 

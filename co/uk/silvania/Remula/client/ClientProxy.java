@@ -8,6 +8,7 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import co.uk.silvania.Remula.blocks.render.RenderRemulaSolarPanel;
 import co.uk.silvania.Remula.client.models.ModelAkatonian;
+import co.uk.silvania.Remula.client.models.ModelGarfin;
 import co.uk.silvania.Remula.client.models.ModelGlog;
 import co.uk.silvania.Remula.client.models.ModelLignis;
 import co.uk.silvania.Remula.client.models.ModelRobot;
@@ -36,7 +37,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBronzeBullet.class, new RenderBronzeBullet());
 		RenderingRegistry.registerEntityRenderingHandler(EntityXylexian.class, new RenderXylexian(new ModelXylexian(), 3.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySkitterling.class, new RenderSkitterling(new ModelSkitterling(), 0.4F));
-		//RenderingRegistry.registerEntityRenderingHandler(EntityGarfin.class, new RenderGarfin(new ModelGarfin(), 3.0F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGarfin.class, new RenderGarfin(new ModelGarfin(), 1.0F));
 		//RenderingRegistry.registerEntityRenderingHandler(EntityHermust.class, new RenderHermust(new ModelHermust(), 3.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLignis.class, new RenderLignis(new ModelLignis(), 1.0F));
 		
@@ -68,16 +69,5 @@ public class ClientProxy extends CommonProxy {
     MinecraftForgeClient.preloadTexture("/co/uk/silvania/Remula/resources/SilvaniteChest1.png");
     //ClientRegistry.bindTileEntitySpecialRenderer(co.uk.silvania.Remula.powergrid.blocks.tileentity.TileEntityRemulaSolarPanel.class, new RenderRemulaSolarPanel(0));
     }
-        
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-    TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-    	if (tileEntity != null) {
-    		switch(ID) {
-        		case 0:
-        		//GUIs go here!
-        		}
-        	}
-			return tileEntity;
-        }
         
 }

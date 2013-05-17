@@ -14,7 +14,7 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityMerciliteChest extends TileEntity implements IInventory
 {
-    private ItemStack[] merciliteChestContents = new ItemStack[56];
+    private ItemStack[] merciliteChestContents = new ItemStack[58];
 
     /** Determines if the check for adjacent chests has taken place. */
     public boolean adjacentChestChecked = false;
@@ -48,7 +48,7 @@ public class TileEntityMerciliteChest extends TileEntity implements IInventory
      */
     public int getSizeInventory()
     {
-        return 56;
+        return 58;
     }
 
     /**

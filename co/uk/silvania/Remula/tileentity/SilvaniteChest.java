@@ -33,12 +33,12 @@ public class SilvaniteChest extends BlockContainer {
 
         @Override
         public boolean onBlockActivated(World world, int x, int y, int z,
-                        EntityPlayer player, int idk, float what, float these, float are) {
+                        EntityPlayer player, int i, float j, float k, float l) {
                 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
                 if (tileEntity == null || player.isSneaking()) {
                         return false;
                 }
-        player.openGui(Remula.silvaniteGuiHandler, 0, world, x, y, z);
+        player.openGui(Remula.instance, 1, world, x, y, z);
                 return true;
         }
 

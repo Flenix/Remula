@@ -2,6 +2,7 @@ package co.uk.silvania.Remula.dimensions.akatoe.blocks;
 
 import java.util.Random;
 
+import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 
 import net.minecraft.block.material.Material;
@@ -89,4 +90,8 @@ public class PorinCrop extends BlockCrops {
     public int idPicked (World world, int x, int y, int z) {
         return Remula.porinSeeds.itemID;
     }
+    
+	public String getTextureFile() {
+		return CommonProxy.AKATOEBLOCKS_PNG;
+	}
 }
