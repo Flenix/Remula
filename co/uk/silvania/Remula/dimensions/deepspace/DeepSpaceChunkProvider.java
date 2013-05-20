@@ -105,7 +105,7 @@ public class DeepSpaceChunkProvider implements IChunkProvider
 
                                 if (var46 > 0.0D)
                                 {
-                                    var51 = Remula.deepSpaceAsteroidRock.blockID;
+                                    var51 = Remula.deepSpaceBrownAsteroidRock.blockID;
                                 }
 
                                 par3ArrayOfByte[var42] = (byte)var51;
@@ -139,8 +139,8 @@ public class DeepSpaceChunkProvider implements IChunkProvider
             {
                 byte var7 = 1;
                 int var8 = -1;
-                byte var9 = (byte)Remula.deepSpaceAsteroidRock.blockID;
-                byte var10 = (byte)Remula.deepSpaceAsteroidRock.blockID;
+                byte var9 = (byte)Remula.deepSpaceBrownAsteroidRock.blockID;
+                byte var10 = (byte)Remula.deepSpaceBrownAsteroidRock.blockID;
 
                 for (int var11 = 127; var11 >= 0; --var11)
                 {
@@ -158,7 +158,7 @@ public class DeepSpaceChunkProvider implements IChunkProvider
                             if (var7 <= 0)
                             {
                                 var9 = 0;
-                                var10 = (byte)Remula.deepSpaceAsteroidRock.blockID;
+                                var10 = (byte)Remula.deepSpaceBrownAsteroidRock.blockID;
                             }
 
                             var8 = var7;

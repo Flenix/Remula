@@ -48,7 +48,13 @@ public class CommonProxy implements IGuiHandler {
         public static String BALOINUSBLOCKS_PNG = "/co/uk/silvania/remula/resources/baloinusblocks.png";
         public static String BALOINUSITEMS_PNG = "/co/uk/silvania/remula/resources/baloinusitems.png";
         public static String DEEPSPACEBLOCKS_PNG = "/co/uk/silvania/remula/resources/deepspaceblocks.png";
-        public static String DEEPSPACEITEMS_PNG = "/co/uk/silvania/remula/resources/deepspaceitems";
+        public static String DEEPSPACEITEMS_PNG = "/co/uk/silvania/remula/resources/deepspaceitems.png";
+        public static String INDIKUBLOCKS_PNG = "/co/uk/silvania/remula/resources/indikublocks.png";
+        public static String INDIKUITEMS_PNG = "/co/uk/silvania/remula/resources/indikuitems.png";
+        public static String ELKOSTBLOCKS_PNG = "/co/uk/silvania/remula/resources/elkostblocks.png";
+        public static String ELKOSTITEMS_PNG = "/co/uk/silvania/remula/resources/elkostitems.png";
+        public static String XYLEXIABLOCKS_PNG = "/co/uk/silvania/remula/resources/xylexiablocks.png";
+        public static String XYLEXIAITEMS_PNG = "/co/uk/silvania/remula/resources/xylexiaitems.png";
         
         public void registerRenderThings() {
         }

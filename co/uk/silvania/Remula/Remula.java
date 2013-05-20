@@ -74,11 +74,130 @@ import co.uk.silvania.Remula.dimensions.akatoe.ores.PoriniteOre;
 import co.uk.silvania.Remula.dimensions.baloinus.BaloinusPortalBlock;
 import co.uk.silvania.Remula.dimensions.baloinus.BaloinusWorldProvider;
 import co.uk.silvania.Remula.dimensions.baloinus.BiomeBaloinusPlains;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusBricks;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusCoalOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusCobblestone;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusCopperOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusIronOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusPilkOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusPoriniteOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusRefinedStone;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusRemulaOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusSmallBricks;
 import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusStone;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusTinOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BaloinusTritaniteOre;
+import co.uk.silvania.Remula.dimensions.baloinus.blocks.BalumOre;
 import co.uk.silvania.Remula.dimensions.deepspace.DeepSpacePortalBlock;
 import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceWorldProvider;
-import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceAsteroidRock;
-import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceMeteoriteRock;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidBoriaOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidBricks;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidCopperOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidDragiteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidFariteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidFarithiumOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidHeriOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidIronOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidPoriniteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidRubble;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidSilvaniteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidSirianOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidSmallBricks;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidThoriOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidTinOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidVentiiumOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.BrownAsteroidZincOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceBrownAsteroidRock;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.DeepSpaceWhiteAsteroidRock;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidBoriaOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidBricks;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidCopperOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidDragiteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidFariteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidFarithiumOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidHeriOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidIronOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidPoriniteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidRubble;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidSilvaniteOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidSirianOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidSmallBricks;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidThoriOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidTinOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidVentiiumOre;
+import co.uk.silvania.Remula.dimensions.deepspace.blocks.WhiteAsteroidZincOre;
+import co.uk.silvania.Remula.dimensions.elkost.BiomeElkostPlains;
+import co.uk.silvania.Remula.dimensions.elkost.ElkostPortalBlock;
+import co.uk.silvania.Remula.dimensions.elkost.ElkostWorldProvider;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostBoriaOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostBricks;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostCoalOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostCobblestone;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostCopperOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostGlass;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostGlassPane;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostGoldOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostGrinistOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostIronOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostLapisLazuliOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostRefinedStone;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostRemulaOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostSand;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostSmallBricks;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostStone;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostTinOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostTristaniumOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostTritaniteOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostZiriniumOre;
+import co.uk.silvania.Remula.dimensions.elkost.blocks.ElkostiumOre;
+import co.uk.silvania.Remula.dimensions.indiku.BiomeIndikuJungle;
+import co.uk.silvania.Remula.dimensions.indiku.IndikuPortalBlock;
+import co.uk.silvania.Remula.dimensions.indiku.IndikuWorldProvider;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikiteOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuArithiumOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuBricks;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuCoalOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuCobblestone;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuCopperOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuDirt;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuGoldOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuGrass;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuIronOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuLapisLazuliOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuRefinedStone;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuRemulaOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuSmallBricks;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuStone;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuTilledDirt;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuTinOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuTritaniteOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuVentiiumOre;
+import co.uk.silvania.Remula.dimensions.indiku.blocks.IndikuZiriniumOre;
+import co.uk.silvania.Remula.dimensions.xylexia.BiomeXylexiaPlains;
+import co.uk.silvania.Remula.dimensions.xylexia.XylexiaPortalBlock;
+import co.uk.silvania.Remula.dimensions.xylexia.XylexiaWorldProvider;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianBricks;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianCoalOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianCobblestone;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianCopperOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianGlass;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianGlassPane;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianGoldOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianGrinistOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianHeriOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianIronOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianKzoriOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianLapisLazuliOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianRefinedStone;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianRemulaOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianSand;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianSkathaOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianSmallBricks;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianStone;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianTinOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianTritaniteOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexianZiriniumOre;
+import co.uk.silvania.Remula.dimensions.xylexia.blocks.XylexiteOre;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
 import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
 import co.uk.silvania.Remula.entity.akatoe.EntityGarfin;
@@ -134,7 +253,22 @@ public class Remula {
 	};
 	public static CreativeTabs tabDeepSpace = new CreativeTabs("tabDeepSpace") {
 		public ItemStack getIconItemSTack() {
-			return new ItemStack(Remula.deepSpaceAsteroidRock, 1, 0);
+			return new ItemStack(Remula.deepSpaceBrownAsteroidRock, 1, 0);
+		}
+	};
+	public static CreativeTabs tabIndiku = new CreativeTabs("tabIndiku") {
+		public ItemStack getIconItemSTack() {
+			return new ItemStack(Remula.deepSpaceBrownAsteroidRock, 1, 0);
+		}
+	};
+	public static CreativeTabs tabElkost = new CreativeTabs("tabElkost") {
+		public ItemStack getIconItemSTack() {
+			return new ItemStack(Remula.deepSpaceBrownAsteroidRock, 1, 0);
+		}
+	};
+	public static CreativeTabs tabXylexia = new CreativeTabs("tabXylexia") {
+		public ItemStack getIconItemSTack() {
+			return new ItemStack(Remula.deepSpaceBrownAsteroidRock, 1, 0);
 		}
 	};
 	
@@ -148,6 +282,9 @@ public class Remula {
     public static int akatoeDimension = 20;
     public static int baloinusDimension = 21;
     public static int deepSpaceDimension = 22;
+    public static int indikuDimension = 23;
+    public static int elkostDimension = 24;
+    public static int xylexiaDimension = 25;
     
     //public static int blockRemulaID;
     @SideOnly(Side.CLIENT)
@@ -200,9 +337,20 @@ public class Remula {
     //Baloinus WGEN stuff
     public final static Block baloinusStone = new BaloinusStone(205, 0, Material.rock);
     
+    //Indiku WGEN stuff
+    public final static Block indikuStone = new IndikuStone(206, 0, Material.rock).setBlockName("indikuStone");
+    public final static Block indikuDirt = new IndikuDirt(207, 1, Material.ground).setBlockName("indikuDirt");
+    public final static Block indikuGrass = new IndikuGrass(208).setBlockName("indikuGrass");
+    
+    //Elkost WGEN stuff
+    public final static Block elkostSand = new ElkostSand(209, 0, Material.sand).setBlockName("elkostSand");
+    
+    //Xylexia WGEN stuff
+    public final static Block xylexianStone = new XylexianStone(210, 0, Material.rock).setBlockName("xylexianStone");
+    
     //Deep Space WGEN stuff
-    public final static Block deepSpaceAsteroidRock = new DeepSpaceAsteroidRock(210, 0, Material.rock).setBlockName("deepSpaceAsteroidRock");
-    public final static Block deepSpaceMeteoriteRock = new DeepSpaceMeteoriteRock(211, 1, Material.rock).setBlockName("deepSpaceMeteoriteRock");
+    public final static Block deepSpaceBrownAsteroidRock = new DeepSpaceBrownAsteroidRock(220, 0, Material.rock).setBlockName("deepSpaceAsteroidRock");
+    public final static Block deepSpaceWhiteAsteroidRock = new DeepSpaceWhiteAsteroidRock(221, 16, Material.rock).setBlockName("deepSpaceMeteoriteRock");
     
     //Rest of Akatoe blocks
     public final static Block akatoePortal = new AkatoePortalBlock(1900, 30).setBlockName("akatoePortal");
@@ -227,18 +375,200 @@ public class Remula {
     public final static Block cirCrop = new CirCrop(1922).setBlockName("cirCrop");
     public final static Block boskinCrop = new BoskinCrop(1923).setBlockName("boskinCrop");
 	public final static Block plantFuxii = new PlantFuxii(1924, 56).setBlockName("plantFuxii");
+	//Tree
+	//Leaves
+	
     //Rest of Baloinus blocks
     public final static Block baloinusPortal = new BaloinusPortalBlock(1950, 255).setBlockName("baloinusPortal");
+    public final static Block baloinusCobblestone = new BaloinusCobblestone(1951, 1, Material.rock).setBlockName("baloinusCobblestone");
+    public final static Block baloinusBricks = new BaloinusBricks(1952, 2, Material.rock).setBlockName("baloinusBricks");
+    public final static Block baloinusSmallBricks = new BaloinusSmallBricks(1953, 3, Material.rock).setBlockName("baloinusSmallBricks");
+    public final static Block baloinusRefinedStone = new BaloinusRefinedStone(1954, 4, Material.rock).setBlockName("baloinusRefinedStone");
+    public final static Block baloinusCoalOre = new BaloinusCoalOre(1955, 5).setBlockName("baloinusCoalOre");
+    public final static Block baloinusCopperOre = new BaloinusCopperOre(1956, 6).setBlockName("baloinusCopperOre");
+    public final static Block baloinusTinOre = new BaloinusTinOre(1957, 7).setBlockName("baloinusTinOre");
+    public final static Block baloinusIronOre = new BaloinusIronOre(1958, 8).setBlockName("baloinusIronOre");
+    public final static Block baloinusRemulaOre = new BaloinusRemulaOre(1959, 9).setBlockName("baloinusRemulaOre");
+    public final static Block baloinusPoriniteOre = new BaloinusPoriniteOre(1960, 10).setBlockName("baloinusPoriniteOre");
+    public final static Block baloinusPilkOre = new BaloinusPilkOre(1961, 11).setBlockName("baloinusPilkOre");
+    public final static Block baloinusTritaniteOre = new BaloinusTritaniteOre(1962, 12).setBlockName("baloinusTritaniteOre");
+    public final static Block balumOre = new BalumOre(1963, 13).setBlockName("balumOre");
     
     //Rest of Deep Space Blocks
-    public final static Block deepSpacePortal = new DeepSpacePortalBlock(2000, 255).setBlockName("deepSpacePortal");
+    public final static Block deepSpacePortal = new DeepSpacePortalBlock(2200, 255).setBlockName("deepSpacePortal");
+    public final static Block brownAsteroidRubble = new BrownAsteroidRubble(2201, 1, Material.rock).setBlockName("brownAsteroidRubble");
+    public final static Block brownAsteroidBricks = new BrownAsteroidBricks(2202, 2, Material.rock).setBlockName("brownAsteroidBricks");
+    public final static Block brownAsteroidSmallBricks = new BrownAsteroidSmallBricks(2203, 3, Material.rock).setBlockName("brownAsteroidSmallBricks");
+    public final static Block brownAsteroidCopperOre = new BrownAsteroidCopperOre(2204, 4).setBlockName("brownAsteroidCopperOre");
+    public final static Block brownAsteroidTinOre = new BrownAsteroidTinOre(2205, 5).setBlockName("brownAsteroidTinOre");
+    public final static Block brownAsteroidIronOre = new BrownAsteroidIronOre(2206, 6).setBlockName("brownAsteroidIronOre");
+    public final static Block brownAsteroidSilvaniteOre = new BrownAsteroidSilvaniteOre(2207, 7).setBlockName("brownAsteroidSilvaniteOre");
+    public final static Block brownAsteroidPoriniteOre = new BrownAsteroidPoriniteOre(2208, 8).setBlockName("brownAsteroidPoriniteOre");
+    public final static Block brownAsteroidSirianOre = new BrownAsteroidSirianOre(2209, 9).setBlockName("brownAsteroidSirianOre");
+    public final static Block brownAsteroidFariteOre = new BrownAsteroidFariteOre(2210, 10).setBlockName("brownAsteroidFariteOre");
+    public final static Block brownAsteroidZincOre = new BrownAsteroidZincOre(2211, 11).setBlockName("brownAsteroidZincOre");
+    public final static Block brownAsteroidDragiteOre = new BrownAsteroidDragiteOre(2212, 12).setBlockName("brownAsteroidDragiteOre");
+    public final static Block brownAsteroidThoriOre = new BrownAsteroidThoriOre(2213, 13).setBlockName("brownAsteroidThoriOre");
+    public final static Block brownAsteroidVentiiumOre = new BrownAsteroidVentiiumOre(2214, 14).setBlockName("brownAsteroidVentiiumOre");
+    public final static Block brownAsteroidFarithiumOre = new BrownAsteroidFarithiumOre(2215, 15).setBlockName("brownAsteroidFarithiumOre");
+    public final static Block brownAsteroidBoriaOre = new BrownAsteroidBoriaOre(2216, 32).setBlockName("brownAsteroidBoriaOre");
+    public final static Block brownAsteroidHeriOre = new BrownAsteroidHeriOre(2217, 33).setBlockName("brownAsteroidHeriOre");
+    //P6 public final static Block brownAsteroidOre = new BrownAsteroidOre(2218, 34).setBlockName("brownAsteroidOre");
+    //P7 public final static Block brownAsteroidOre = new BrownAsteroidOre(2219, 35).setBlockName("brownAsteroidOre");
+    //P8 public final static Block brownAsteroidOre = new BrownAsteroidOre(2220, 36).setBlockName("brownAsteroidOre");
+    //P9 public final static Block brownAsteroidOre = new BrownAsteroidOre(2221, 37).setBlockName("brownAsteroidOre");
+    //Empty public final static Block brownAsteroidOre = new BrownAsteroidOre(2222, 38).setBlockName("brownAsteroidOre");
+    //Empty public final static Block brownAsteroidOre = new BrownAsteroidOre(2223, 39).setBlockName("brownAsteroidOre");
+    public final static Block whiteAsteroidBoriaOre = new WhiteAsteroidBoriaOre(2239, 40).setBlockName("whiteAsteroidBoriaOre");
+    public final static Block whiteAsteroidHeriOre = new WhiteAsteroidHeriOre(2240, 41).setBlockName("whiteAsteroidHeriOre");
+    //P6 public final static Block whiteAsteroidOre = new WhiteAsteroidOre(2241, 42).setBlockName("whiteAsteroidOre");
+    //P7 public final static Block whiteAsteroidOre = new WhiteAsteroidOre(2242, 43).setBlockName("whiteAsteroidOre");
+    //P8 public final static Block whiteAsteroidOre = new WhiteAsteroidOre(2243, 44).setBlockName("whiteAsteroidOre");
+    //P9 public final static Block whiteAsteroidOre = new WhiteAsteroidOre(2244, 45).setBlockName("whiteAsteroidOre");
+    //Empty public final static Block whiteAsteroidOre = new WhiteAsteroidOre(2245, 46).setBlockName("whiteAsteroidOre");
+    //Empty public final static Block whiteAsteroidOre = new WhiteAsteroidOre(2246, 47).setBlockName("whiteAsteroidOre");
+    public final static Block whiteAsteroidRubble = new WhiteAsteroidRubble(2224, 17, Material.rock).setBlockName("whiteAsteroidRubble");
+    public final static Block whiteAsteroidBricks = new WhiteAsteroidBricks(2225, 18, Material.rock).setBlockName("whiteAsteroidBricks");
+    public final static Block whiteAsteroidSmallBricks = new WhiteAsteroidSmallBricks(2226, 19, Material.rock).setBlockName("whiteAsteroidSmallBricks");
+    public final static Block whiteAsteroidCopperOre = new WhiteAsteroidCopperOre(2227, 22).setBlockName("whiteAsteroidCopperOre");
+    public final static Block whiteAsteroidTinOre = new WhiteAsteroidTinOre(2228, 21).setBlockName("whiteAsteroidTinOre");
+    public final static Block whiteAsteroidIronOre = new WhiteAsteroidIronOre(2229, 22).setBlockName("whiteAsteroidIronOre");
+    public final static Block whiteAsteroidSilvaniteOre = new WhiteAsteroidSilvaniteOre(2230, 23).setBlockName("whiteAsteroidSilvaniteOre");
+    public final static Block whiteAsteroidPoriniteOre = new WhiteAsteroidPoriniteOre(2231, 24).setBlockName("whiteAsteroidPoriniteOre");
+    public final static Block whiteAsteroidSirianOre = new WhiteAsteroidSirianOre(2232, 25).setBlockName("whiteAsteroidSirianOre");
+    public final static Block whiteAsteroidFariteOre = new WhiteAsteroidFariteOre(2233, 26).setBlockName("whiteAsteroidFariteOre");
+    public final static Block whiteAsteroidZincOre = new WhiteAsteroidZincOre(2234, 27).setBlockName("whiteAsteroidZincOre");
+    public final static Block whiteAsteroidDragiteOre = new WhiteAsteroidDragiteOre(2235, 28).setBlockName("whiteAsteroidDragiteOre");
+    public final static Block whiteAsteroidThoriOre = new WhiteAsteroidThoriOre(2236, 29).setBlockName("whiteAsteroidThoriOre");
+    public final static Block whiteAsteroidVentiiumOre = new WhiteAsteroidVentiiumOre(2237, 30).setBlockName("whiteAsteroidVentiiumOre");
+    public final static Block whiteAsteroidFarithiumOre = new WhiteAsteroidFarithiumOre(2238, 31).setBlockName("whiteAsteroidFarithiumOre");
     
-    //Liquids
-    //Silvanite
-    //Mercilite
-    //Remula
-    //Redstone
-    //Lapis
+    //Rest of Indiku Blocks
+    public final static Block indikuCobblestone = new IndikuCobblestone(1975, 4, Material.rock).setBlockName("indikuCobblestone");
+    public final static Block indikuBricks = new IndikuBricks(1976, 5, Material.rock).setBlockName("indikuBricks");
+    public final static Block indikuSmallBricks = new IndikuSmallBricks(1977, 6, Material.rock).setBlockName("indikuSmallBricks");
+    public final static Block indikuRefinedStone = new IndikuRefinedStone(1978, 7, Material.rock).setBlockName("indikuRefinedStone");
+    public final static Block indikuTilledDirt = new IndikuTilledDirt(1979, 8, Material.ground).setBlockName("indikuTilledDirt");
+    public final static Block indikuCoalOre = new IndikuCoalOre(1980, 9).setBlockName("indikuCoalOre");
+    public final static Block indikuCopperOre = new IndikuCopperOre(1981, 10).setBlockName("indikuCopperOre");
+    public final static Block indikuTinOre = new IndikuTinOre(1982, 11).setBlockName("indikuTinOre");
+    public final static Block indikuIronOre = new IndikuIronOre(1983, 12).setBlockName("indikuIronOre");
+    public final static Block indikuGoldOre = new IndikuGoldOre(1984, 13).setBlockName("indikuGoldOre");
+    public final static Block indikuLapisLazuliOre = new IndikuLapisLazuliOre(1985, 14).setBlockName("indikuLapisLazuliOre");
+    public final static Block indikuRemulaOre = new IndikuRemulaOre(1986, 15).setBlockName("indikuRemulaOre");
+    public final static Block indikuTritaniteOre = new IndikuTritaniteOre(1987, 16).setBlockName("indikuTritaniteOre");
+    public final static Block indikuVentiiumOre = new IndikuVentiiumOre(1988, 17).setBlockName("indikuVentiiumOre");
+    public final static Block indikuArithiumOre = new IndikuArithiumOre(1989, 18).setBlockName("indikuArithiumOre");
+    public final static Block indikuZiriniumOre = new IndikuZiriniumOre(1990, 19).setBlockName("indikuZiriniumOre");
+    public final static Block indikiteOre = new IndikiteOre(1991, 20).setBlockName("indikiteOre");
+    //Trees Multiblock
+    //Leaves Multiblock
+    //Crop 1
+    //Crop 2
+    //Crop 3
+    //Crop 4
+    //Crop 5
+    //Crop 6
+    //Crop 7
+    //Crop 8
+    //Plant 1
+    //Plant 2
+    //Plant 3
+    //Plant 4
+    //Plant 5
+    //Plant 6
+    //Plant 7
+    //Plant 8
+    //Plant 9
+    //Plant 10
+    //Plant 11
+    //Plant 12
+    //Plant 13
+    //Plant 14
+    //Plant 15
+    //Plant 16
+    public final static Block indikuPortalBlock = new IndikuPortalBlock(2024, 255).setBlockName("indikuPortalBlock");
+    
+    
+    //Rest of Elkost Blocks
+    public final static Block elkostStone = new ElkostStone(2025, 4, Material.rock).setBlockName("elkostStone");
+    public final static Block elkostCobblestone = new ElkostCobblestone(2026, 5, Material.rock).setBlockName("elkostCobblestone");
+    public final static Block elkostBricks = new ElkostBricks(2027, 6, Material.rock).setBlockName("elkostBricks");
+    public final static Block elkostSmallBricks = new ElkostSmallBricks(2028, 7, Material.rock).setBlockName("elkostSmallBricks");
+    public final static Block elkostRefinedStone = new ElkostRefinedStone(2029, 8, Material.rock).setBlockName("elkostRefinedStone");
+    public final static Block elkostCoalOre = new ElkostCoalOre(2030, 9).setBlockName("elkostCoalOre");
+    public final static Block elkostCopperOre = new ElkostCopperOre(2031, 10).setBlockName("elkostCopperOre");
+    public final static Block elkostTinOre = new ElkostTinOre(2032, 11).setBlockName("elkostTinOre");
+    public final static Block elkostIronOre = new ElkostIronOre(2033, 12).setBlockName("elkostIronOre");
+    public final static Block elkostGoldOre = new ElkostGoldOre(2034, 13).setBlockName("elkostGoldOre");
+    public final static Block elkostLapisLazuliOre = new ElkostLapisLazuliOre(2035, 14).setBlockName("elkostLapisLazuliOre");
+    public final static Block elkostRemulaOre = new ElkostRemulaOre(2036, 15).setBlockName("elkostRemulaOre");
+    public final static Block elkostTritaniteOre = new ElkostTritaniteOre(2037, 16).setBlockName("elkostTritaniteOre");
+    public final static Block elkostZiriniumOre = new ElkostZiriniumOre(2038, 17).setBlockName("elkostZiriniumOre");
+    public final static Block elkostBoriaOre = new ElkostBoriaOre(2039, 18).setBlockName("elkostBoriaOre");
+    public final static Block elkostTristaniumOre = new ElkostTristaniumOre(2040, 19).setBlockName("elkostTristaniumOre");
+    public final static Block elkostGrinistOre = new ElkostGrinistOre(2041, 20).setBlockName("elkostGrinistOre");
+    public final static Block elkostiumOre = new ElkostiumOre(2042, 21).setBlockName("elkostiumOre");
+    public final static Block elkostGlass = new ElkostGlass(2043, 22, Material.glass).setBlockName("elkostGlass");
+    public final static Block elkostGlassPane = new ElkostGlassPane(2044, 22, Material.glass).setBlockName("elkostGlassPane");
+    public final static Block elkostPortalBlock = new ElkostPortalBlock(2074, 255).setBlockName("elkostPotalBlock");
+    
+    //Rest of Xylexia Blocks
+    public final static Block xylexianSand = new XylexianSand(2075, 4, Material.sand).setBlockName("xylexianStone");
+    public final static Block xylexianCobblestone = new XylexianCobblestone(2076, 5, Material.rock).setBlockName("xylexianCobblestone");
+    public final static Block xylexianBricks = new XylexianBricks(2077, 6, Material.rock).setBlockName("xylexianBricks");
+    public final static Block xylexianSmallBricks = new XylexianSmallBricks(2078, 7, Material.rock).setBlockName("xylexianSmallBricks");
+    public final static Block xylexianRefinedStone = new XylexianRefinedStone(2079, 8, Material.rock).setBlockName("xylexianRefinedStone");
+    public final static Block xylexianCoalOre = new XylexianCoalOre(2080, 9).setBlockName("xylexianCoalOre");
+    public final static Block xylexianCopperOre = new XylexianCopperOre(2081, 10).setBlockName("xylexianCopperOre");
+    public final static Block xylexianTinOre = new XylexianTinOre(2082, 11).setBlockName("xylexianTinOre");
+    public final static Block xylexianIronOre = new XylexianIronOre(2083, 12).setBlockName("xylexianIronOre");
+    public final static Block xylexianGoldOre = new XylexianGoldOre(2084, 13).setBlockName("xylexianGoldOre");
+    public final static Block xylexianLapisLazuliOre = new XylexianLapisLazuliOre(2085, 14).setBlockName("xylexianLapisLazuliOre");
+    public final static Block xylexianRemulaOre = new XylexianRemulaOre(2086, 15).setBlockName("xylexianRemulaOre");
+    public final static Block xylexianTritaniteOre = new XylexianTritaniteOre(2087, 16).setBlockName("xylexianTritaniteOre");
+    public final static Block xylexianZiriniumOre = new XylexianZiriniumOre(2088, 17).setBlockName("xylexianZiriniumOre");
+    public final static Block xylexianGrinistOre = new XylexianGrinistOre(2089, 18).setBlockName("xylexianGrinistOre");
+    public final static Block xylexianHeriOre = new XylexianHeriOre(2090, 19).setBlockName("xylexianHeriOre");
+    public final static Block xylexianSkathaOre = new XylexianSkathaOre(2091, 20).setBlockName("xylexianSkathaOre");
+    public final static Block xylexianKzoriOre = new XylexianKzoriOre(2092, 21).setBlockName("xylexianKzoriOre");
+    public final static Block xylexianiumOre = new XylexiteOre(2093, 22).setBlockName("xylexianiumOre");
+    public final static Block xylexianGlass = new XylexianGlass(2094, 23, Material.glass).setBlockName("xylexianGlass");
+    public final static Block xylexianGlassPane = new XylexianGlassPane(2095, 23, Material.glass).setBlockName("xylexianGlassPane");
+    public final static Block xylexianPortalBlock = new XylexiaPortalBlock(2124, 255).setBlockName("xylexianPortalBlock");
+    
+    
+    /*Liquids:
+    Silvanite
+    Mercilite
+    Remula
+    Redstone
+    Lapis
+    Porinite
+    Pilk
+    Tritanite
+    Ventiium
+    Athirium
+    Zirinium
+    Boria
+    Tristinium
+    Grinist
+    Heri
+    Skatha
+    Kzori
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    */
        
     //Items (IDs 17000 - 17300)
     public final static Item emptyCell = new EmptyCell(17000).setItemName("emptyCell");
@@ -337,6 +667,9 @@ public class Remula {
     public static BiomeGenBase akatoeDesertBiome = new BiomeAkatoeDesert(61);
     public static BiomeGenBase akatoeOceanBiome = new BiomeAkatoeOcean(62);
     public static BiomeGenBase baloinusPlainsBiome = new BiomeBaloinusPlains(65);
+    public static BiomeGenBase elkostDesertBiome = new BiomeElkostPlains(66);
+    public static BiomeGenBase indikuJungleBiome = new BiomeIndikuJungle(67);
+    public static BiomeGenBase xylexiaPlainsBiome = new BiomeXylexiaPlains(68);
     
     @Init
     public void load(FMLInitializationEvent event) {
@@ -433,14 +766,138 @@ public class Remula {
             //Baloinus
             LanguageRegistry.addName(baloinusPortal, "Baloinus Portal");
             LanguageRegistry.addName(baloinusStone, "Baloinus Stone");
+            LanguageRegistry.addName(baloinusCobblestone, "Baloinus Cobblestone");
+            LanguageRegistry.addName(baloinusBricks, "Baloinus Bricks");
+            LanguageRegistry.addName(baloinusSmallBricks, "Baloinus Small Bricks");
+            LanguageRegistry.addName(baloinusRefinedStone, "Baloinus Refined Stone");
+            LanguageRegistry.addName(baloinusCoalOre, "Baloinus Coal Ore");
+            LanguageRegistry.addName(baloinusCopperOre, "Baloinus Copper Ore");
+            LanguageRegistry.addName(baloinusTinOre, "Baloinus Tin Ore");
+            LanguageRegistry.addName(baloinusIronOre, "Baloinus Iron Ore");
+            LanguageRegistry.addName(baloinusRemulaOre, "Baloinus Remula Ore");
+            LanguageRegistry.addName(baloinusPoriniteOre, "Baloinus Porinite Ore");
+            LanguageRegistry.addName(baloinusPilkOre, "Baloinus Pilk Ore");
+            LanguageRegistry.addName(baloinusTritaniteOre, "Baloinus Tritanite Ore");
+            LanguageRegistry.addName(balumOre, "Balum Ore");
+            
+            //Indiku
+            LanguageRegistry.addName(indikuStone, "Indiku Stone");
+            LanguageRegistry.addName(indikuDirt, "Indiku Dirt");
+            LanguageRegistry.addName(indikuGrass, "Indiku Grass");
+            LanguageRegistry.addName(indikuCobblestone, "Indiku Cobblestone");
+            LanguageRegistry.addName(indikuBricks, "Indiku Bricks");
+            LanguageRegistry.addName(indikuSmallBricks, "Indiku Small BRicks");
+            LanguageRegistry.addName(indikuRefinedStone, "Indiku Refined Stone");
+            LanguageRegistry.addName(indikuTilledDirt, "Indiku Tilled Dirt");
+            LanguageRegistry.addName(indikuCoalOre, "Indiku Coal Ore");
+            LanguageRegistry.addName(indikuCopperOre, "Indiku Copper Ore");
+            LanguageRegistry.addName(indikuTinOre, "Indiku Tin Ore");
+            LanguageRegistry.addName(indikuIronOre, "Indiku Iron Ore");
+            LanguageRegistry.addName(indikuGoldOre, "Indiku Gold Ore");
+            LanguageRegistry.addName(indikuLapisLazuliOre, "Indiku Lapis Lazuli Ore");
+            LanguageRegistry.addName(indikuRemulaOre, "Indiku Remula Ore");
+            LanguageRegistry.addName(indikuTritaniteOre, "Indiku Tritanite Ore");
+            LanguageRegistry.addName(indikuVentiiumOre, "Indiku Ventiium Ore");
+            LanguageRegistry.addName(indikuArithiumOre, "Indiku Arithium Ore");
+            LanguageRegistry.addName(indikuZiriniumOre, "Indiku Zirinium Ore");
+            LanguageRegistry.addName(indikiteOre, "Indikite Ore");
+            
+            //Elkost
+            LanguageRegistry.addName(elkostSand, "Elkost Dirt");
+            LanguageRegistry.addName(elkostStone, "Elkost Stone");
+            LanguageRegistry.addName(elkostCobblestone, "Elkost Cobblestone");
+            LanguageRegistry.addName(elkostBricks, "Elkost Bricks");
+            LanguageRegistry.addName(elkostSmallBricks, "Elkost Small BRicks");
+            LanguageRegistry.addName(elkostRefinedStone, "Elkost Refined Stone");
+            LanguageRegistry.addName(elkostCoalOre, "Elkost Coal Ore");
+            LanguageRegistry.addName(elkostCopperOre, "Elkost Copper Ore");
+            LanguageRegistry.addName(elkostTinOre, "Elkost Tin Ore");
+            LanguageRegistry.addName(elkostIronOre, "Elkost Iron Ore");
+            LanguageRegistry.addName(elkostGoldOre, "Elkost Gold Ore");
+            LanguageRegistry.addName(elkostLapisLazuliOre, "Elkost Lapis Lazuli Ore");
+            LanguageRegistry.addName(elkostRemulaOre, "Elkost Remula Ore");
+            LanguageRegistry.addName(elkostTritaniteOre, "Elkost Tritanite Ore");
+            LanguageRegistry.addName(elkostZiriniumOre, "Elkost Zirinium Ore");
+            LanguageRegistry.addName(elkostBoriaOre, "Elkost Ventiium Ore");
+            LanguageRegistry.addName(elkostTristaniumOre, "Elkost Arithium Ore");
+            LanguageRegistry.addName(elkostGrinistOre, "Elkost Zirinium Ore");
+            LanguageRegistry.addName(elkostiumOre, "Elkostium Ore");
+            LanguageRegistry.addName(elkostGlass, "Elkost Glass");
+            LanguageRegistry.addName(elkostGlassPane, "Elkost Glass Pane");
+            
+            //Xylexia
+            LanguageRegistry.addName(xylexianSand, "Xylexian Dirt");
+            LanguageRegistry.addName(xylexianStone, "Xylexian Stone");
+            LanguageRegistry.addName(xylexianCobblestone, "Xylexian Cobblestone");
+            LanguageRegistry.addName(xylexianBricks, "Xylexian Bricks");
+            LanguageRegistry.addName(xylexianSmallBricks, "Xylexian Small BRicks");
+            LanguageRegistry.addName(xylexianRefinedStone, "Xylexian Refined Stone");
+            LanguageRegistry.addName(xylexianCoalOre, "Xylexian Coal Ore");
+            LanguageRegistry.addName(xylexianCopperOre, "Xylexian Copper Ore");
+            LanguageRegistry.addName(xylexianTinOre, "Xylexian Tin Ore");
+            LanguageRegistry.addName(xylexianIronOre, "Xylexian Iron Ore");
+            LanguageRegistry.addName(xylexianGoldOre, "Xylexian Gold Ore");
+            LanguageRegistry.addName(xylexianLapisLazuliOre, "Xylexian Lapis Lazuli Ore");
+            LanguageRegistry.addName(xylexianRemulaOre, "Xylexian Remula Ore");
+            LanguageRegistry.addName(xylexianTritaniteOre, "Xylexian Tritanite Ore");
+            LanguageRegistry.addName(xylexianZiriniumOre, "Xylexian Zirinium Ore");
+            LanguageRegistry.addName(xylexianGrinistOre, "Xylexian Zirinium Ore");
+            LanguageRegistry.addName(xylexianHeriOre, "Xylexian Heri Ore");
+            LanguageRegistry.addName(xylexianSkathaOre, "Xylexian Skatha Ore");
+            LanguageRegistry.addName(xylexianKzoriOre, "Xylexian Kzori Ore");
+            LanguageRegistry.addName(xylexianiumOre, "Xylexianium Ore");
+            LanguageRegistry.addName(xylexianGlass, "Xylexian Glass");
+            LanguageRegistry.addName(xylexianGlassPane, "Xylexian Glass Pane");
             
             //DeepSpace
             LanguageRegistry.addName(deepSpacePortal, "Deep-Space Portal");
-            LanguageRegistry.addName(deepSpaceAsteroidRock, "Deep-Space Asteroid Rock");
-            LanguageRegistry.addName(deepSpaceMeteoriteRock, "Deep-Space Meteorite Rock");
+            LanguageRegistry.addName(deepSpaceBrownAsteroidRock, "Asteroid Rock");
+            LanguageRegistry.addName(deepSpaceWhiteAsteroidRock, "Asteroid Rock");
+            LanguageRegistry.addName(brownAsteroidRubble, "Asteroid Rubble");
+            LanguageRegistry.addName(brownAsteroidBricks, "Asteroid Bricks");
+            LanguageRegistry.addName(brownAsteroidSmallBricks, "Asteroid Small Bricks");
+            LanguageRegistry.addName(brownAsteroidCopperOre, "Asteroid Copper Ore");
+            LanguageRegistry.addName(brownAsteroidTinOre, "Asteroid Tin Ore");
+            LanguageRegistry.addName(brownAsteroidIronOre, "Asteroid Iron Ore");
+            LanguageRegistry.addName(brownAsteroidSilvaniteOre, "Asteroid Silvanite Ore");
+            LanguageRegistry.addName(brownAsteroidPoriniteOre, "Asteroid Porinite Ore");
+            LanguageRegistry.addName(brownAsteroidSirianOre, "Asteroid Sirian Ore");
+            LanguageRegistry.addName(brownAsteroidFariteOre, "Asteroid Farite Ore");
+            LanguageRegistry.addName(brownAsteroidZincOre, "Asteroid Zinc Ore");
+            LanguageRegistry.addName(brownAsteroidDragiteOre, "Asteroid Dragite Ore");
+            LanguageRegistry.addName(brownAsteroidThoriOre, "Asteroid Thori Ore");
+            LanguageRegistry.addName(brownAsteroidVentiiumOre, "Asteroid Ventiium Ore");
+            LanguageRegistry.addName(brownAsteroidFarithiumOre, "Asteroid Farithium Ore");
+            LanguageRegistry.addName(brownAsteroidBoriaOre, "Asteroid Boria Ore");
+            LanguageRegistry.addName(brownAsteroidHeriOre, "Asteroid Heri Ore");
+            //LanguageRegistry.addName(brownAsteroidP6, "Asteroid  Ore");
+            //LanguageRegistry.addName(brownAsteroidP7, "Asteroid  Ore");
+            //LanguageRegistry.addName(brownAsteroidP8, "Asteroid  Ore");
+            //LanguageRegistry.addName(brownAsteroidP9, "Asteroid  Ore");
+            LanguageRegistry.addName(whiteAsteroidRubble, "Asteroid Rubble");
+            LanguageRegistry.addName(whiteAsteroidBricks, "Asteroid Bricks");
+            LanguageRegistry.addName(whiteAsteroidSmallBricks, "Asteroid Small Bricks");
+            LanguageRegistry.addName(whiteAsteroidCopperOre, "Asteroid Copper Ore");
+            LanguageRegistry.addName(whiteAsteroidTinOre, "Asteroid Tin Ore");
+            LanguageRegistry.addName(whiteAsteroidIronOre, "Asteroid Iron Ore");
+            LanguageRegistry.addName(whiteAsteroidSilvaniteOre, "Asteroid Silvanite Ore");
+            LanguageRegistry.addName(whiteAsteroidPoriniteOre, "Asteroid Porinite Ore");
+            LanguageRegistry.addName(whiteAsteroidSirianOre, "Asteroid Sirian Ore");
+            LanguageRegistry.addName(whiteAsteroidFariteOre, "Asteroid Farite Ore");
+            LanguageRegistry.addName(whiteAsteroidZincOre, "Asteroid Zinc Ore");
+            LanguageRegistry.addName(whiteAsteroidDragiteOre, "Asteroid Dragite Ore");
+            LanguageRegistry.addName(whiteAsteroidThoriOre, "Asteroid Thori Ore");
+            LanguageRegistry.addName(whiteAsteroidVentiiumOre, "Asteroid Ventiium Ore");
+            LanguageRegistry.addName(whiteAsteroidFarithiumOre, "Asteroid Farithium Ore");
+            LanguageRegistry.addName(whiteAsteroidBoriaOre, "Asteroid Boria Ore");
+            LanguageRegistry.addName(whiteAsteroidHeriOre, "Asteroid Heri Ore");
+            //LanguageRegistry.addName(whiteAsteroidP6, "Asteroid  Ore");
+            //LanguageRegistry.addName(whiteAsteroidP7, "Asteroid  Ore");
+            //LanguageRegistry.addName(whiteAsteroidP8, "Asteroid  Ore");
+            //LanguageRegistry.addName(whiteAsteroidP9, "Asteroid  Ore");
             
             //Register Blocks
-            //Ores
+            //Earth Ores
             GameRegistry.registerBlock(remulaOre, "remulaOre");
             GameRegistry.registerBlock(merciliteOre, "merciliteOre");
             GameRegistry.registerBlock(silvaniteOre, "silvaniteOre");
@@ -448,17 +905,12 @@ public class Remula {
             GameRegistry.registerBlock(tinOre, "tinOre");
             GameRegistry.registerBlock(zincOre, "zincOre");
             GameRegistry.registerBlock(silverOre, "silverOre");
-            GameRegistry.registerBlock(poriniteOre, "poriniteOre");
-            GameRegistry.registerBlock(pilkOre, "pilkOre");
-            GameRegistry.registerBlock(akatoeRemulaOre, "akatoeRemulaOre");
-            GameRegistry.registerBlock(akatiteOre, "akatiteOre");
             
             
+            //Plants and Nature
             GameRegistry.registerBlock(rubberLog, "rubberLog");
             GameRegistry.registerBlock(rubberLeaves, "rubberLeaves");
             GameRegistry.registerBlock(rubberSapling, "rubberSapling");
-            
-            //Plants and Nature
             GameRegistry.registerBlock(porinCrop, "porinCrop");
             GameRegistry.registerBlock(ulinCrop, "ulinCrop");
             GameRegistry.registerBlock(cirCrop, "cirCrop");
@@ -503,15 +955,146 @@ public class Remula {
             GameRegistry.registerBlock(akatoeTin, "akatoeTin");
             GameRegistry.registerBlock(akatoeLapis, "akatoeLapis");
             GameRegistry.registerBlock(akatoeTilledDirt, "akatoeTilledDirt");
+            GameRegistry.registerBlock(poriniteOre, "poriniteOre");
+            GameRegistry.registerBlock(pilkOre, "pilkOre");
+            GameRegistry.registerBlock(akatoeRemulaOre, "akatoeRemulaOre");
+            GameRegistry.registerBlock(akatiteOre, "akatiteOre");
             
             //Baloinus
             GameRegistry.registerBlock(baloinusPortal, "baloinusPortal");
             GameRegistry.registerBlock(baloinusStone, "baloinusStone");
+            GameRegistry.registerBlock(baloinusCobblestone, "baloinusCobblestone");
+            GameRegistry.registerBlock(baloinusBricks, "baloinusBricks");
+            GameRegistry.registerBlock(baloinusSmallBricks, "baloinusSmallBricks");
+            GameRegistry.registerBlock(baloinusRefinedStone, "baloinusRefinedStone");
+            GameRegistry.registerBlock(baloinusCoalOre, "baloinusCoalOre");
+            GameRegistry.registerBlock(baloinusCopperOre, "baloinusCopperOre");
+            GameRegistry.registerBlock(baloinusTinOre, "baloinusTinOre");
+            GameRegistry.registerBlock(baloinusIronOre, "baloinusIronOre");
+            GameRegistry.registerBlock(baloinusRemulaOre, "baloinusRemulaOre");
+            GameRegistry.registerBlock(baloinusPoriniteOre, "baloinusPoriniteOre");
+            GameRegistry.registerBlock(baloinusPilkOre, "baloinusPilkOre");
+            GameRegistry.registerBlock(baloinusTritaniteOre, "baloinusTritaniteOre");
+            GameRegistry.registerBlock(balumOre, "balumOre");
+            
+            //Indiku
+            GameRegistry.registerBlock(indikuStone, "indikuStone");
+            GameRegistry.registerBlock(indikuDirt, "indikuDirt");
+            GameRegistry.registerBlock(indikuGrass, "indikuGrass");
+            GameRegistry.registerBlock(indikuCobblestone, "indikuCobblestone");
+            GameRegistry.registerBlock(indikuBricks, "indikuBricks");
+            GameRegistry.registerBlock(indikuSmallBricks, "indikuSmallBricks");
+            GameRegistry.registerBlock(indikuRefinedStone, "indikuRefinedStone");
+            GameRegistry.registerBlock(indikuTilledDirt, "indikuTilledDirt");
+            GameRegistry.registerBlock(indikuCoalOre, "indikuCoalOre");
+            GameRegistry.registerBlock(indikuCopperOre, "indikuCopperOre");
+            GameRegistry.registerBlock(indikuTinOre, "indikuTinOre");
+            GameRegistry.registerBlock(indikuIronOre, "indikuIronOre");
+            GameRegistry.registerBlock(indikuGoldOre, "indikuGoldOre");
+            GameRegistry.registerBlock(indikuLapisLazuliOre, "indikuLapisLazuliOre");
+            GameRegistry.registerBlock(indikuRemulaOre, "indikuRemulaOre");
+            GameRegistry.registerBlock(indikuTritaniteOre, "indikuTritaniteOre");
+            GameRegistry.registerBlock(indikuVentiiumOre, "indikuVentiiumOre");
+            GameRegistry.registerBlock(indikuArithiumOre, "indikuArithiumOre");
+            GameRegistry.registerBlock(indikuZiriniumOre, "indikuZiriniumOre");
+            GameRegistry.registerBlock(indikiteOre, "indikiteOre");
+            
+            //Elkost
+            GameRegistry.registerBlock(elkostSand, "elkostSand");
+            GameRegistry.registerBlock(elkostStone, "elkostStone");
+            GameRegistry.registerBlock(elkostCobblestone, "elkostCobblestone");
+            GameRegistry.registerBlock(elkostBricks, "elkostBricks");
+            GameRegistry.registerBlock(elkostSmallBricks, "elkostSmallBricks");
+            GameRegistry.registerBlock(elkostRefinedStone, "elkostRefinedStone");
+            GameRegistry.registerBlock(elkostCoalOre, "elkostCoalOre");
+            GameRegistry.registerBlock(elkostCopperOre, "elkostCopperOre");
+            GameRegistry.registerBlock(elkostTinOre, "elkostTinOre");
+            GameRegistry.registerBlock(elkostIronOre, "elkostIronOre");
+            GameRegistry.registerBlock(elkostGoldOre, "elkostGoldOre");
+            GameRegistry.registerBlock(elkostLapisLazuliOre, "elkostLapisLazuliOre");
+            GameRegistry.registerBlock(elkostRemulaOre, "elkostRemulaOre");
+            GameRegistry.registerBlock(elkostTritaniteOre, "elkostTritaniteOre");
+            GameRegistry.registerBlock(elkostZiriniumOre, "elkostZiriniumOre");
+            GameRegistry.registerBlock(elkostBoriaOre, "elkostVentiiumOre");
+            GameRegistry.registerBlock(elkostTristaniumOre, "elkostArithiumOre");
+            GameRegistry.registerBlock(elkostGrinistOre, "elkostGrinistOre");
+            GameRegistry.registerBlock(elkostiumOre, "elkostiumOre");
+            GameRegistry.registerBlock(elkostGlass, "elkostGlass");
+            GameRegistry.registerBlock(elkostGlassPane, "elkostGlassPane");
+            
+            //Xylexia
+            GameRegistry.registerBlock(xylexianSand, "xylexianSand");
+            GameRegistry.registerBlock(xylexianStone, "xylexianStone");
+            GameRegistry.registerBlock(xylexianCobblestone, "xylexianCobblestone");
+            GameRegistry.registerBlock(xylexianBricks, "xylexianBricks");
+            GameRegistry.registerBlock(xylexianSmallBricks, "xylexianSmallBricks");
+            GameRegistry.registerBlock(xylexianRefinedStone, "xylexianRefined Stone");
+            GameRegistry.registerBlock(xylexianCoalOre, "xylexianCoalOre");
+            GameRegistry.registerBlock(xylexianCopperOre, "xylexianCopperOre");
+            GameRegistry.registerBlock(xylexianTinOre, "xylexianTinOre");
+            GameRegistry.registerBlock(xylexianIronOre, "xylexianIronOre");
+            GameRegistry.registerBlock(xylexianGoldOre, "xylexianGoldOre");
+            GameRegistry.registerBlock(xylexianLapisLazuliOre, "xylexianLapisLazuliOre");
+            GameRegistry.registerBlock(xylexianRemulaOre, "xylexianRemulaOre");
+            GameRegistry.registerBlock(xylexianTritaniteOre, "xylexianTritaniteOre");
+            GameRegistry.registerBlock(xylexianZiriniumOre, "xylexianZiriniumOre");
+            GameRegistry.registerBlock(xylexianGrinistOre, "xylexianGrinistOre");
+            GameRegistry.registerBlock(xylexianHeriOre, "xylexianHeriOre");
+            GameRegistry.registerBlock(xylexianSkathaOre, "xylexianSkathaOre");
+            GameRegistry.registerBlock(xylexianKzoriOre, "xylexianKzoriOre");
+            GameRegistry.registerBlock(xylexianiumOre, "XylexianiumOre");
+            GameRegistry.registerBlock(xylexianGlass, "xylexianGlass");
+            GameRegistry.registerBlock(xylexianGlassPane, "xylexianGlassPane");
             
             //Deep Space
             GameRegistry.registerBlock(deepSpacePortal, "deepSpacePortal");
-            GameRegistry.registerBlock(deepSpaceAsteroidRock, "deepSpaceAsteroidRock");
-            GameRegistry.registerBlock(deepSpaceMeteoriteRock, "deepSpaceMeteoriteRock");
+            GameRegistry.registerBlock(deepSpaceBrownAsteroidRock, "deepSpaceAsteroidRock");
+            GameRegistry.registerBlock(deepSpaceWhiteAsteroidRock, "deepSpaceMeteoriteRock");
+            GameRegistry.registerBlock(brownAsteroidRubble, "brownAsteroidRubble");
+            GameRegistry.registerBlock(brownAsteroidBricks, "brownAsteroidBricks");
+            GameRegistry.registerBlock(brownAsteroidSmallBricks, "brownAsteroidSmallBricks");
+            GameRegistry.registerBlock(brownAsteroidCopperOre, "brownAsteroidCopperOre");
+            GameRegistry.registerBlock(brownAsteroidTinOre, "brownAsteroidTinOre");
+            GameRegistry.registerBlock(brownAsteroidIronOre, "brownAsteroidIronOre");
+            GameRegistry.registerBlock(brownAsteroidSilvaniteOre, "brownAsteroidSilvaniteOre");
+            GameRegistry.registerBlock(brownAsteroidPoriniteOre, "brownAsteroidPoriniteOre");
+            GameRegistry.registerBlock(brownAsteroidSirianOre, "brownAsteroidSirianOre");
+            GameRegistry.registerBlock(brownAsteroidFariteOre, "brownAsteroidFariteOre");
+            GameRegistry.registerBlock(brownAsteroidZincOre, "brownAsteroidZincOre");
+            GameRegistry.registerBlock(brownAsteroidDragiteOre, "brownAsteroidDragiteOre");
+            GameRegistry.registerBlock(brownAsteroidThoriOre, "brownAsteroidThoriOre");
+            GameRegistry.registerBlock(brownAsteroidVentiiumOre, "brownAsteroidVentiiumOre");
+            GameRegistry.registerBlock(brownAsteroidFarithiumOre, "brownAsteroidFarithiumOre");
+            GameRegistry.registerBlock(brownAsteroidBoriaOre, "brownAsteroidBoriaOre");
+            GameRegistry.registerBlock(brownAsteroidHeriOre, "brownAsteroidHeriOre");
+            //GameRegistry.registerBlock(brownAsteroidP6, "brownAsteroidOre");
+            //GameRegistry.registerBlock(brownAsteroidP7, "brownAsteroidOre");
+            //GameRegistry.registerBlock(brownAsteroidP8, "brownAsteroidOre");
+            //GameRegistry.registerBlock(brownAsteroidP9, "brownAsteroidOre");
+            GameRegistry.registerBlock(whiteAsteroidRubble, "whiteAsteroidRubble");
+            GameRegistry.registerBlock(whiteAsteroidBricks, "whiteAsteroidBricks");
+            GameRegistry.registerBlock(whiteAsteroidSmallBricks, "whiteAsteroidSmallBricks");
+            GameRegistry.registerBlock(whiteAsteroidCopperOre, "whiteAsteroidCopperOre");
+            GameRegistry.registerBlock(whiteAsteroidTinOre, "whiteAsteroidTinOre");
+            GameRegistry.registerBlock(whiteAsteroidIronOre, "whiteAsteroidIronOre");
+            GameRegistry.registerBlock(whiteAsteroidSilvaniteOre, "whiteAsteroidSilvaniteOre");
+            GameRegistry.registerBlock(whiteAsteroidPoriniteOre, "whiteAsteroidPoriniteOre");
+            GameRegistry.registerBlock(whiteAsteroidSirianOre, "whiteAsteroidSirianOre");
+            GameRegistry.registerBlock(whiteAsteroidFariteOre, "whiteAsteroidFariteOre");
+            GameRegistry.registerBlock(whiteAsteroidZincOre, "whiteAsteroidZincOre");
+            GameRegistry.registerBlock(whiteAsteroidDragiteOre, "whiteAsteroidDragiteOre");
+            GameRegistry.registerBlock(whiteAsteroidThoriOre, "whiteAsteroidThoriOre");
+            GameRegistry.registerBlock(whiteAsteroidVentiiumOre, "whiteAsteroidVentiiumOre");
+            GameRegistry.registerBlock(whiteAsteroidFarithiumOre, "whiteAsteroidFarithiumOre");
+            GameRegistry.registerBlock(whiteAsteroidBoriaOre, "whiteAsteroidBoriaOre");
+            GameRegistry.registerBlock(whiteAsteroidHeriOre, "whiteAsteroidHeriOre");
+            //GameRegistry.registerBlock(whiteAsteroidP6, "whiteAsteroidOre");
+            //GameRegistry.registerBlock(whiteAsteroidP7, "whiteAsteroidOre");
+            //GameRegistry.registerBlock(whiteAsteroidP8, "whiteAsteroidOre");
+            //GameRegistry.registerBlock(whiteAsteroidP9, "whiteAsteroidOre");
+            GameRegistry.registerBlock(indikuPortalBlock, "indikuPortalBlock");
+            GameRegistry.registerBlock(elkostPortalBlock, "elkostPortalBlock");
+            GameRegistry.registerBlock(xylexianPortalBlock, "xylexianPortalBlock");
             
             //Ore Mining Requirements
             MinecraftForge.setBlockHarvestLevel(silvaniteOre, "pickaxe", 1);
@@ -529,7 +1112,8 @@ public class Remula {
             MinecraftForge.setBlockHarvestLevel(akatoeLapis, "pickaxe", 2);
             MinecraftForge.setBlockHarvestLevel(akatoeStone, "pickaxe", 0);
             MinecraftForge.setBlockHarvestLevel(baloinusStone, "pickaxe", 0);
-            MinecraftForge.setBlockHarvestLevel(deepSpaceAsteroidRock, "pickaxe", 0);
+            MinecraftForge.setBlockHarvestLevel(deepSpaceBrownAsteroidRock, "pickaxe", 0);
+            MinecraftForge.setBlockHarvestLevel(deepSpaceWhiteAsteroidRock, "pickaxe", 0);
             
             //Items
             //Ingots Etc
@@ -729,14 +1313,23 @@ public class Remula {
             GameRegistry.removeBiome(akatoeDesertBiome);
             GameRegistry.removeBiome(akatoeOceanBiome);
             GameRegistry.removeBiome(baloinusPlainsBiome);
+            GameRegistry.removeBiome(elkostDesertBiome);
+            GameRegistry.removeBiome(indikuJungleBiome);
+            GameRegistry.removeBiome(xylexiaPlainsBiome);
             
             DimensionManager.registerProviderType(akatoeDimension, AkatoeWorldProvider.class, false);
             DimensionManager.registerProviderType(baloinusDimension, BaloinusWorldProvider.class, false);
             DimensionManager.registerProviderType(deepSpaceDimension, DeepSpaceWorldProvider.class, false);
+            DimensionManager.registerProviderType(indikuDimension, IndikuWorldProvider.class, false);
+            DimensionManager.registerProviderType(elkostDimension, ElkostWorldProvider.class, false);
+            DimensionManager.registerProviderType(xylexiaDimension, XylexiaWorldProvider.class, false);
             
             DimensionManager.registerDimension(akatoeDimension, akatoeDimension);
             DimensionManager.registerDimension(baloinusDimension, baloinusDimension);
             DimensionManager.registerDimension(deepSpaceDimension, deepSpaceDimension);
+            DimensionManager.registerDimension(indikuDimension, indikuDimension);
+            DimensionManager.registerDimension(elkostDimension, elkostDimension);
+            DimensionManager.registerDimension(xylexiaDimension, xylexiaDimension);
             
             //Entites
             EntityRegistry.registerModEntity(EntityAkatonian.class, "Akatonian", 1, this, 80, 3, true);
