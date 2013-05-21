@@ -152,7 +152,7 @@ public class XylexiaPortalBlock extends BlockPortal {
 	
     @Override
     public String getTextureFile () {
-            return CommonProxy.AKATOEBLOCKS_PNG;
+            return CommonProxy.XYLEXIABLOCKS_PNG;
     }
 
 }

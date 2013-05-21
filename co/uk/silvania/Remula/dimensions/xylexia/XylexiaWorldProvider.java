@@ -3,6 +3,7 @@ package co.uk.silvania.Remula.dimensions.xylexia;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
@@ -24,6 +25,9 @@ public class XylexiaWorldProvider extends WorldProvider {
 		this.worldChunkMgr = new XylexiaChunkManager(Remula.xylexiaPlainsBiome);
         //worldChunkMgr = terrainType.getChunkManager(worldObj);
 		this.dimensionId = Remula.xylexiaDimension;
+		this.setCloudColor();
+		this.setFogColor();
+		this.hasNoSky = true;
 	}
 	
 	@Override
@@ -44,7 +48,15 @@ public class XylexiaWorldProvider extends WorldProvider {
 	}
 	
 	public int setFogColor() {
-		return 123456;
+		return 000000;
+	}
+	
+	public int setSkyColor() {
+		return 100000;
+	}
+	
+	public int setCloudColor() {
+		return 123123;
 	}
 	
     public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)

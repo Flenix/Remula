@@ -52,7 +52,7 @@ public class TeleporterXylexia extends Teleporter {
 						int var18 = var10 + var16;
 						int var19 = var11 + var15 * var13 - var14 * var12;
 						boolean var20 = var16 < 0;
-						this.field_85192_a.setBlockWithNotify(var17, var18, var19, var20 ? Block.sandStone.blockID : 0);
+						this.field_85192_a.setBlockWithNotify(var17, var18, var19, var20 ? Remula.xylexianSmallBricks.blockID : 0);
 					}
 				}
 			}
@@ -395,7 +395,7 @@ public class TeleporterXylexia extends Teleporter {
       var23 = var15 + var21;
       var24 = var16 + (var20 - 1) * var18 - var19 * var30;
       var33 = var21 < 0;
-      this.field_85192_a.setBlockWithNotify(var22, var23, var24, var33 ? Block.sandStone.blockID : 0);
+      this.field_85192_a.setBlockWithNotify(var22, var23, var24, var33 ? Remula.xylexianSmallBricks.blockID : 0);
      }
     }
    }
@@ -413,7 +413,7 @@ public class TeleporterXylexia extends Teleporter {
      var23 = var15 + var21;
      var24 = var16 + (var20 - 1) * var18;
      var33 = var20 == 0 || var20 == 3 || var21 == -1 || var21 == 3;
-     this.field_85192_a.setBlockWithNotify(var22, var23, var24, var33 ? Block.sandStone.blockID : Remula.xylexianPortalBlock.blockID);
+     this.field_85192_a.setBlockWithNotify(var22, var23, var24, var33 ? Remula.xylexianSmallBricks.blockID : Remula.xylexianPortalBlock.blockID);
     }
    }
 

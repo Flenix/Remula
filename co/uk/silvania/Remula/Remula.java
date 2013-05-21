@@ -514,7 +514,7 @@ public class Remula {
     public final static Block elkostPortalBlock = new ElkostPortalBlock(2074, 255).setBlockName("elkostPotalBlock");
     
     //Rest of Xylexia Blocks
-    public final static Block xylexianSand = new XylexianSand(2075, 4, Material.sand).setBlockName("xylexianStone");
+    public final static Block xylexianSand = new XylexianSand(2075, 4, Material.sand).setBlockName("xylexianSand");
     public final static Block xylexianCobblestone = new XylexianCobblestone(2076, 5, Material.rock).setBlockName("xylexianCobblestone");
     public final static Block xylexianBricks = new XylexianBricks(2077, 6, Material.rock).setBlockName("xylexianBricks");
     public final static Block xylexianSmallBricks = new XylexianSmallBricks(2078, 7, Material.rock).setBlockName("xylexianSmallBricks");
