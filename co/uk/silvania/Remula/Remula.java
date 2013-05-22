@@ -1355,6 +1355,13 @@ public class Remula {
             LanguageRegistry.instance().addStringLocalization("entity.instance.Hermust.name", "Hermust");
             LanguageRegistry.instance().addStringLocalization("entity.instance.Garfin.name", "Garfin");
             LanguageRegistry.instance().addStringLocalization("entity.instance.Lignis.name", "Lignis");
+            
+            //CRAFTING!
+            
+            //Ingots
+            ItemStack copperOreStack = new ItemStack(Remula.copperOre);
+            ItemStack tinOreStack = new ItemStack(Remula.tinOre);
+            
     }
 
 

@@ -10,9 +10,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.AxisAlignedBB;
 
-public class TileEntityMerciliteChest extends TileEntity implements IInventory
+public class TileEntityMerciliteChest extends TileEntityChest implements IInventory
 {
     private ItemStack[] merciliteChestContents = new ItemStack[58];
 

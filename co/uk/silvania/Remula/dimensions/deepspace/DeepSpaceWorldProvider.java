@@ -3,6 +3,7 @@ package co.uk.silvania.Remula.dimensions.deepspace;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
@@ -22,14 +23,18 @@ public class DeepSpaceWorldProvider extends WorldProvider {
 		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.sky, 0.5F, 0.0F);
 		this.dimensionId = Remula.deepSpaceDimension;
 		this.hasNoSky = false;
-		this.setWorldTime(0);
-		this.setFogColor();
+		this.setWorldTime(18000);
 	}
 	
 	@Override
 	public IChunkProvider createChunkGenerator() {
 		return new DeepSpaceChunkProvider(worldObj, worldObj.getSeed());
 	}
+	
+    public Vec3 getFogColor(float par1, float par2)
+    {
+        return this.worldObj.getWorldVec3Pool().getVecFromPool(0.00000000000000000D, 0.00000000000000000D, 0.00000000000000000D);
+    }
 	
 	public String getSaveFolder() {
 		return "DIM_DEEPSPACE";

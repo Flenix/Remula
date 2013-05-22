@@ -3,6 +3,7 @@ package co.uk.silvania.Remula.dimensions.xylexia;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -25,8 +26,6 @@ public class XylexiaWorldProvider extends WorldProvider {
 		this.worldChunkMgr = new XylexiaChunkManager(Remula.xylexiaPlainsBiome);
         //worldChunkMgr = terrainType.getChunkManager(worldObj);
 		this.dimensionId = Remula.xylexiaDimension;
-		this.setCloudColor();
-		this.setFogColor();
 		this.hasNoSky = true;
 	}
 	
@@ -47,9 +46,10 @@ public class XylexiaWorldProvider extends WorldProvider {
 		return "la";
 	}
 	
-	public int setFogColor() {
-		return 000000;
-	}
+    public Vec3 getFogColor(float par1, float par2)
+    {
+        return this.worldObj.getWorldVec3Pool().getVecFromPool(0.20000000298023224D, 0.029999999329447746D, 0.029999999329447746D);
+    }
 	
 	public int setSkyColor() {
 		return 100000;
@@ -77,9 +77,9 @@ public class XylexiaWorldProvider extends WorldProvider {
     	return true;
     }
     
-    public float calculateCelestialAngle(long par1, float par3)
+    public boolean canCoordinateBeSpawn(int par1, int par2)
     {
-    	return 1.11F;	 
-    } 	
+        return false;
+    }
 
 }
