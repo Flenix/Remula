@@ -308,7 +308,7 @@ public class Remula {
     public final static Block rubberSapling = new RubberSapling(1808, 9).setBlockName("rubberSapling");
     public final static Block rubberLeaves = new RubberLeaves(1809, 10).setBlockName("rubberLeaves");
     public final static Block remulaLiquidizer = new RemulaLiquidizer(1810, Material.iron).setBlockName("remulaLiquidizer");
-    public final static Block remulaCraftingTable = new RemulaCraftingTable(1811, Material.iron).setBlockName("remulaCraftingTable");
+    public final static Block remulaCraftingTable = new RemulaCraftingTable(1811).setBlockName("remulaCraftingTable");
     public final static Block remulaBasicStorageUnit = new RemulaBasicStorageUnit(1812, Material.iron).setBlockName("remulaStorageUnit");
     public final static Block remulaSimpleStorageUnit = new RemulaSimpleStorageUnit(1813, Material.iron).setBlockName("remulaSimpleStorageUnit");
     //public final static Block remulaMidStorageUnit = new RemulaMidStorageUnit(1814, Material.iron).setBlockName("remulaMidStorageUnit");
@@ -1301,6 +1301,7 @@ public class Remula {
             GameRegistry.registerTileEntity(TileEntitySilvaniteChest.class, "tileEntitySilvaniteChest");
             GameRegistry.registerTileEntity(TileEntityMerciliteChest.class, "tileEntityMerciliteChest");
             GameRegistry.registerTileEntity(TileEntityRemulaChest.class, "tileEntityRemulaChest");
+            GameRegistry.registerTileEntity(TileEntityLITable.class, "tileEntityLITable");
             
             //Other Registry Stuff
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabRemula", "en_US", "Remula");

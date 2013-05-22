@@ -30,6 +30,12 @@ public class GuiHandler implements IGuiHandler {
                 if(tileEntity instanceof TileEntityMerciliteChest) {
                         return new ContainerMerciliteChest(player.inventory, (TileEntityMerciliteChest) tileEntity);
                 }
+            }
+            case 3: {
+                TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+                if(tileEntity instanceof TileEntityLITable) {
+                        return new ContainerLITable(player.inventory, (TileEntityLITable) tileEntity);
+                }
         	}
         }
 			return null;	
@@ -56,6 +62,12 @@ public class GuiHandler implements IGuiHandler {
                 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
                 if(tileEntity instanceof TileEntityMerciliteChest) {
                         return new MerciliteGuiChest(player.inventory, (TileEntityMerciliteChest) tileEntity);
+                }
+        	}
+            case 3: {
+                TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+                if(tileEntity instanceof TileEntityLITable) {
+                        return new LITableGui(player.inventory, (TileEntityLITable) tileEntity);
                 }
         	}
         }
