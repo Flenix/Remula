@@ -8,14 +8,15 @@ import co.uk.silvania.Remula.dimensions.TeleporterAkatoe;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 
 public class AkatoePortalBlock extends BlockPortal {
 
-	public AkatoePortalBlock(int id, int texture) {
-		super(id, texture);
+	public AkatoePortalBlock(int id) {
+		super(id);
 		this.setCreativeTab(Remula.tabAkatoe);
 	}
 	
@@ -150,9 +151,10 @@ public class AkatoePortalBlock extends BlockPortal {
 		
 	}
 	
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.AKATOEBLOCKS_PNG;
-    }
+	
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:AkatoePortalBlock");
+	}
 
 }

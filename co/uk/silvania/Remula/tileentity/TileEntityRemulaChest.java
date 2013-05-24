@@ -5,7 +5,9 @@ import java.util.List;
 
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -311,61 +313,64 @@ public class TileEntityRemulaChest extends TileEntityChest implements IInventory
         super.updateEntity();
         this.checkForAdjacentChests();
         ++this.ticksSinceSync;
-        float var1;
+        float f;
 
         if (!this.worldObj.isRemote && this.numUsingPlayers != 0 && (this.ticksSinceSync + this.xCoord + this.yCoord + this.zCoord) % 200 == 0)
         {
             this.numUsingPlayers = 0;
-            var1 = 5.0F;
-            List var2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)((float)this.xCoord - var1), (double)((float)this.yCoord - var1), (double)((float)this.zCoord - var1), (double)((float)(this.xCoord + 1) + var1), (double)((float)(this.yCoord + 1) + var1), (double)((float)(this.zCoord + 1) + var1)));
-            Iterator var3 = var2.iterator();
+            f = 5.0F;
+            List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getAABBPool().getAABB((double)((float)this.xCoord - f), (double)((float)this.yCoord - f), (double)((float)this.zCoord - f), (double)((float)(this.xCoord + 1) + f), (double)((float)(this.yCoord + 1) + f), (double)((float)(this.zCoord + 1) + f)));
+            Iterator iterator = list.iterator();
 
-            while (var3.hasNext())
+            while (iterator.hasNext())
             {
-                EntityPlayer var4 = (EntityPlayer)var3.next();
+                EntityPlayer entityplayer = (EntityPlayer)iterator.next();
 
-                if (var4.openContainer instanceof ContainerRemulaChest)
+                if (entityplayer.openContainer instanceof ContainerChest)
                 {
-                    IInventory var5 = ((ContainerRemulaChest)var4.openContainer).getRemulaChestInventory();
+                    IInventory iinventory = ((ContainerChest)entityplayer.openContainer).getLowerChestInventory();
 
-                    ++this.numUsingPlayers;
+                    if (iinventory == this || iinventory instanceof InventoryLargeChest && ((InventoryLargeChest)iinventory).isPartOfLargeChest(this))
+                    {
+                        ++this.numUsingPlayers;
+                    }
                 }
             }
         }
 
         this.prevLidAngle = this.lidAngle;
-        var1 = 0.1F;
-        double var11;
+        f = 0.1F;
+        double d0;
 
         if (this.numUsingPlayers > 0 && this.lidAngle == 0.0F && this.adjacentChestZNeg == null && this.adjacentChestXNeg == null)
         {
-            double var8 = (double)this.xCoord + 0.5D;
-            var11 = (double)this.zCoord + 0.5D;
+            double d1 = (double)this.xCoord + 0.5D;
+            d0 = (double)this.zCoord + 0.5D;
 
             if (this.adjacentChestZPosition != null)
             {
-                var11 += 0.5D;
+                d0 += 0.5D;
             }
 
             if (this.adjacentChestXPos != null)
             {
-                var8 += 0.5D;
+                d1 += 0.5D;
             }
 
-            this.worldObj.playSoundEffect(var8, (double)this.yCoord + 0.5D, var11, "random.chestopen", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+            this.worldObj.playSoundEffect(d1, (double)this.yCoord + 0.5D, d0, "random.chestopen", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
         }
 
         if (this.numUsingPlayers == 0 && this.lidAngle > 0.0F || this.numUsingPlayers > 0 && this.lidAngle < 1.0F)
         {
-            float var9 = this.lidAngle;
+            float f1 = this.lidAngle;
 
             if (this.numUsingPlayers > 0)
             {
-                this.lidAngle += var1;
+                this.lidAngle += f;
             }
             else
             {
-                this.lidAngle -= var1;
+                this.lidAngle -= f;
             }
 
             if (this.lidAngle > 1.0F)
@@ -373,24 +378,24 @@ public class TileEntityRemulaChest extends TileEntityChest implements IInventory
                 this.lidAngle = 1.0F;
             }
 
-            float var10 = 0.5F;
+            float f2 = 0.5F;
 
-            if (this.lidAngle < var10 && var9 >= var10 && this.adjacentChestZNeg == null && this.adjacentChestXNeg == null)
+            if (this.lidAngle < f2 && f1 >= f2 && this.adjacentChestZNeg == null && this.adjacentChestXNeg == null)
             {
-                var11 = (double)this.xCoord + 0.5D;
-                double var6 = (double)this.zCoord + 0.5D;
+                d0 = (double)this.xCoord + 0.5D;
+                double d2 = (double)this.zCoord + 0.5D;
 
                 if (this.adjacentChestZPosition != null)
                 {
-                    var6 += 0.5D;
+                    d2 += 0.5D;
                 }
 
                 if (this.adjacentChestXPos != null)
                 {
-                    var11 += 0.5D;
+                    d0 += 0.5D;
                 }
 
-                this.worldObj.playSoundEffect(var11, (double)this.yCoord + 0.5D, var6, "random.chestclosed", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+                this.worldObj.playSoundEffect(d0, (double)this.yCoord + 0.5D, d2, "random.chestclosed", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
             }
 
             if (this.lidAngle < 0.0F)
@@ -403,11 +408,16 @@ public class TileEntityRemulaChest extends TileEntityChest implements IInventory
     /**
      * Called when a client event is received with the event number and argument, see World.sendClientEvent
      */
-    public void receiveClientEvent(int par1, int par2)
+    public boolean receiveClientEvent(int par1, int par2)
     {
         if (par1 == 1)
         {
             this.numUsingPlayers = par2;
+            return true;
+        }
+        else
+        {
+            return super.receiveClientEvent(par1, par2);
         }
     }
 

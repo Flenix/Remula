@@ -27,9 +27,9 @@ public class LITableGui extends GuiContainer {
         @Override
         protected void drawGuiContainerBackgroundLayer(float par1, int par2,
                         int par3) {
-                int texture = mc.renderEngine.getTexture("/co/uk/silvania/Remula/gui/infuser.png");
+                int texture = mc.renderEngine.getTexture("/mods/Remula/textures/gui/infuser.png");
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-                this.mc.renderEngine.bindTexture(texture);
+                //this.mc.renderEngine.getTexture(texture);
                 int x = (width - xSize) / 2;
                 int y = (height - ySize) / 2;
                 this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

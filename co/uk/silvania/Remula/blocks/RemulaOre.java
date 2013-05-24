@@ -7,13 +7,14 @@ import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public class RemulaOre extends BlockOre {
 
-        public RemulaOre (int id, int texture) {
-                super(id, texture);
+        public RemulaOre (int id) {
+                super(id);
                 this.setCreativeTab(Remula.tabRemula);
                 this.setHardness(2.0F);
                 this.setStepSound(Block.soundStoneFootstep);
@@ -24,8 +25,8 @@ public class RemulaOre extends BlockOre {
         	
         }
         
-        @Override
-        public String getTextureFile () {
-                return CommonProxy.BLOCK_PNG;
-        }
+    	public void registerIcons(IconRegister iconRegister)
+    	{
+    	         blockIcon = iconRegister.registerIcon("Remula:RemulaOre");
+    	}
 }

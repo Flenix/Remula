@@ -8,7 +8,7 @@ import co.uk.silvania.Remula.Remula;
 public class AkatoeStone extends Block {
 	
     public AkatoeStone(int id, int texture, Material material) {
-		super(id, texture, material);
+		super(id, material);
 		this.setCreativeTab(Remula.tabAkatoe);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);

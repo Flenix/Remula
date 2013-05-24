@@ -29,7 +29,7 @@ public class MerciliteChest extends BlockContainer {
                 setResistance(5.0F);
                 setCreativeTab(Remula.tabRemula);
                 this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
-        		this.currentTexture = "/co/uk/silvania/Remula/resources/SilvaniteChest1.png";
+        		//this.currentTexture = "/co/uk/silvania/Remula/resources/SilvaniteChest1.png";
         }
         
         public String getTextureFile() {
@@ -99,7 +99,7 @@ public class MerciliteChest extends BlockContainer {
 
             if (var6 != this.blockID && var7 != this.blockID && var8 != this.blockID && var9 != this.blockID)
             {
-                par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, var10, 3);
             }
             else
             {
@@ -107,28 +107,28 @@ public class MerciliteChest extends BlockContainer {
                 {
                     if (var6 == this.blockID)
                     {
-                        par1World.setBlockMetadataWithNotify(par2, par3, par4 - 1, var10);
+                        par1World.setBlockMetadataWithNotify(par2, par3, par4 - 1, var10, 3);
                     }
                     else
                     {
-                        par1World.setBlockMetadataWithNotify(par2, par3, par4 + 1, var10);
+                        par1World.setBlockMetadataWithNotify(par2, par3, par4 + 1, var10, 3);
                     }
 
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10, 3);
                 }
 
                 if ((var8 == this.blockID || var9 == this.blockID) && (var10 == 2 || var10 == 3))
                 {
                     if (var8 == this.blockID)
                     {
-                        par1World.setBlockMetadataWithNotify(par2 - 1, par3, par4, var10);
+                        par1World.setBlockMetadataWithNotify(par2 - 1, par3, par4, var10, 3);
                     }
                     else
                     {
-                        par1World.setBlockMetadataWithNotify(par2 + 1, par3, par4, var10);
+                        par1World.setBlockMetadataWithNotify(par2 + 1, par3, par4, var10, 3);
                     }
 
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10, 3);
                 }
             }
         }

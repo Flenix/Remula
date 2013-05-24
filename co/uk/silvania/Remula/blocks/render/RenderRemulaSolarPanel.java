@@ -18,10 +18,10 @@ import co.uk.silvania.Remula.powergrid.blocks.tileentity.TileEntityRemulaSolarPa
 		}
 
 		public void renderNasaBench(RenderBlocks renderBlocks, IBlockAccess iblockaccess, Block par1Block, int par2, int par3, int par4) {
-			renderBlocks.overrideBlockTexture = par1Block.blockIndexInTexture;
+			//renderBlocks.overrideBlockTexture = par1Block.blockIndexInTexture;
 			renderBlocks.setRenderBounds(0.0D, 0.0D, 0.0D, 1.0D, 0.9200000166893005D, 1.0D);
 			renderBlocks.renderStandardBlock(par1Block, par2, par3, par4);
-			renderBlocks.overrideBlockTexture = -1;
+			//renderBlocks.overrideBlockTexture = -1;
 		}
 
 		public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {

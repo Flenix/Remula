@@ -680,4 +680,16 @@ public class AkatoeChunkProvider implements IChunkProvider
             this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
         }
     }
+
+	@Override
+	public boolean unloadQueuedChunks() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void func_104112_b() {
+		// TODO Auto-generated method stub
+		
+	}
 }

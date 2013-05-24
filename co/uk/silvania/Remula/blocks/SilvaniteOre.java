@@ -6,11 +6,12 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
+import net.minecraft.client.renderer.texture.IconRegister;
 
 public class SilvaniteOre extends BlockOre {
 
-	public SilvaniteOre(int id, int texture) {
-		super(id, texture);
+	public SilvaniteOre(int id) {
+		super(id);
 		this.setCreativeTab(Remula.tabRemula);
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);
@@ -20,15 +21,11 @@ public class SilvaniteOre extends BlockOre {
     	return (Remula.silvaniteDust.itemID);
     	
     }
-    
-    public int quantityDropped(Random par1Random)
-    {
-        return this.blockID == Remula.silvaniteOre.blockID ? 3 + par1Random.nextInt(4) : 1;
-    }
-    
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.BLOCK_PNG;
-    }
+     
+	
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:SilvaniteOre");
+	}
 
 }

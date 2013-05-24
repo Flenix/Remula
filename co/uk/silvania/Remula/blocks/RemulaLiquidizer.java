@@ -4,6 +4,7 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 
 public class RemulaLiquidizer extends Block {
 
@@ -13,9 +14,10 @@ public class RemulaLiquidizer extends Block {
 		this.setStepSound(Block.soundStoneFootstep);
 		this.setCreativeTab(Remula.tabRemula);
 	}
-	@Override
-	public String getTextureFile () {
-	        return CommonProxy.BLOCK_PNG;
+	
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:RemulaLiquidizer");
 	}
 
 }

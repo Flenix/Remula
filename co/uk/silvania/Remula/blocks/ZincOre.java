@@ -6,19 +6,21 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
+import net.minecraft.client.renderer.texture.IconRegister;
 
 public class ZincOre extends BlockOre {
 
-	public ZincOre(int id, int texture) {
-		super(id, texture);
+	public ZincOre(int id) {
+		super(id);
 		this.setCreativeTab(Remula.tabRemula);
 		this.setHardness(1.5F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}
     
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.BLOCK_PNG;
-    }
+	
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:ZincOre");
+	}
 
 }

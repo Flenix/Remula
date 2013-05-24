@@ -7,10 +7,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class RubberLog extends Block {
+	
+	@SideOnly(Side.CLIENT)
+	private Icon sides;
+	@SideOnly(Side.CLIENT)
+	private Icon top;
 
 	public RubberLog(int id, Material material) {
 		super(id, material);
@@ -19,17 +26,19 @@ public class RubberLog extends Block {
 		this.setHardness(0.7F);
 	}
 	
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.BLOCK_PNG;
-    }
+	public void registerIcons(IconRegister iconRegister) {
+         this.sides = iconRegister.registerIcon("Remula:RubberLogSide");
+         this.top = iconRegister.registerIcon("Remula:RubberLogTop");
+	}
     
-    public int getBlockTextureFromSide(int side){
-    	if(side == 0 | side ==1) {
-    		return this.blockIndexInTexture + 8;
-    	} else {
-    		return this.blockIndexInTexture + 7;
-    	}
-    }
+	public Icon getBlockTextureFromSideAndMeta(int i, int j) {
+		if(i == 0 | i == 1) {
+			return top;
+		}
+		else {
+			return sides;
+		}
+	}
+
 	
 }

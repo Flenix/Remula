@@ -94,7 +94,7 @@ public class SilvaniteChest extends BlockContainer {
 
             if (var6 != this.blockID && var7 != this.blockID && var8 != this.blockID && var9 != this.blockID)
             {
-                par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, var10, 3);
             }
             else
             {
@@ -102,28 +102,28 @@ public class SilvaniteChest extends BlockContainer {
                 {
                     if (var6 == this.blockID)
                     {
-                        par1World.setBlockMetadataWithNotify(par2, par3, par4 - 1, var10);
+                        par1World.setBlockMetadataWithNotify(par2, par3, par4 - 1, var10, 3);
                     }
                     else
                     {
-                        par1World.setBlockMetadataWithNotify(par2, par3, par4 + 1, var10);
+                        par1World.setBlockMetadataWithNotify(par2, par3, par4 + 1, var10, 3);
                     }
 
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10, 3);
                 }
 
                 if ((var8 == this.blockID || var9 == this.blockID) && (var10 == 2 || var10 == 3))
                 {
                     if (var8 == this.blockID)
                     {
-                        par1World.setBlockMetadataWithNotify(par2 - 1, par3, par4, var10);
+                        par1World.setBlockMetadataWithNotify(par2 - 1, par3, par4, var10, 3);
                     }
                     else
                     {
-                        par1World.setBlockMetadataWithNotify(par2 + 1, par3, par4, var10);
+                        par1World.setBlockMetadataWithNotify(par2 + 1, par3, par4, var10, 3);
                     }
 
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var10, 3);
                 }
             }
         }
