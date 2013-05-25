@@ -45,6 +45,7 @@ public class TileEntityRemulaChest extends TileEntityChest implements IInventory
 
     /** Server sync counter (once per 20 ticks) */
     private int ticksSinceSync;
+    private String field_94045_s;
 
     /**
      * Returns the number of slots in the inventory.
@@ -145,17 +146,22 @@ public class TileEntityRemulaChest extends TileEntityChest implements IInventory
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
         this.remulaChestContents = new ItemStack[this.getSizeInventory()];
 
-        for (int var3 = 0; var3 < var2.tagCount(); ++var3)
+        if (par1NBTTagCompound.hasKey("CustomName"))
         {
-            NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
-            int var5 = var4.getByte("Slot") & 255;
+            this.field_94045_s = par1NBTTagCompound.getString("CustomName");
+        }
 
-            if (var5 >= 0 && var5 < this.remulaChestContents.length)
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+            int j = nbttagcompound1.getByte("Slot") & 255;
+
+            if (j >= 0 && j < this.remulaChestContents.length)
             {
-                this.remulaChestContents[var5] = ItemStack.loadItemStackFromNBT(var4);
+                this.remulaChestContents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
             }
         }
     }
@@ -166,20 +172,25 @@ public class TileEntityRemulaChest extends TileEntityChest implements IInventory
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
-        NBTTagList var2 = new NBTTagList();
+        NBTTagList nbttaglist = new NBTTagList();
 
-        for (int var3 = 0; var3 < this.remulaChestContents.length; ++var3)
+        for (int i = 0; i < this.remulaChestContents.length; ++i)
         {
-            if (this.remulaChestContents[var3] != null)
+            if (this.remulaChestContents[i] != null)
             {
-                NBTTagCompound var4 = new NBTTagCompound();
-                var4.setByte("Slot", (byte)var3);
-                this.remulaChestContents[var3].writeToNBT(var4);
-                var2.appendTag(var4);
+                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+                nbttagcompound1.setByte("Slot", (byte)i);
+                this.remulaChestContents[i].writeToNBT(nbttagcompound1);
+                nbttaglist.appendTag(nbttagcompound1);
             }
         }
 
-        par1NBTTagCompound.setTag("Items", var2);
+        par1NBTTagCompound.setTag("Items", nbttaglist);
+
+        if (this.isInvNameLocalized())
+        {
+            par1NBTTagCompound.setString("CustomName", this.field_94045_s);
+        }
     }
 
     /**

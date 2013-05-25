@@ -4,19 +4,20 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 
 public class ElkostGlassPane extends Block {
 
-	public ElkostGlassPane(int id, int texture, Material material) {
-		super(id, texture, material);
+	public ElkostGlassPane(int id, Material material) {
+		super(id, material);
 		this.setCreativeTab(Remula.tabElkost);
 		this.setHardness(1.0F);
-		this.setStepSound(Block.soundStoneFootstep);
+		this.setStepSound(Block.soundGlassFootstep);
 	}
    
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.ELKOSTBLOCKS_PNG;
-    }
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:ElkostGlassPane");
+	}
 
 }

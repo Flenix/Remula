@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.dimensions.akatoe;
+/*package co.uk.silvania.Remula.dimensions.akatoe;
 
 import java.util.Random;
 import net.minecraft.block.Block;
@@ -11,13 +11,13 @@ import net.minecraftforge.common.ForgeDirection;
 public class AkatoeGenTrees extends WorldGenerator
 {
     /** The minimum height of a generated tree. */
-    private final int minTreeHeight;
+    /*private final int minTreeHeight;
 
     /** The metadata value of the wood to use in tree generation. */
-    private final int metaWood;
+    //private final int metaWood;
 
     /** The metadata value of the leaves to use in tree generation. */
-    private final int metaLeaves;
+    /*private final int metaLeaves;
 
     public AkatoeGenTrees(boolean par1)
     {
@@ -162,4 +162,4 @@ public class AkatoeGenTrees extends WorldGenerator
         	return false;
         }
     }
-}
+}*/

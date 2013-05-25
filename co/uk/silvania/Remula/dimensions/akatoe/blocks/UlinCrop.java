@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.dimensions.akatoe.blocks;
+/*package co.uk.silvania.Remula.dimensions.akatoe.blocks;
 
 import java.util.Random;
 
@@ -71,7 +71,7 @@ public class UlinCrop extends Block {
     }
 
     @Override*/
-    public int idDropped (int metadata, Random random, int par2) {
+    /*public int idDropped (int metadata, Random random, int par2) {
         switch (metadata) {
         case 0:
             return Remula.porinSeeds.itemID;
@@ -87,4 +87,4 @@ public class UlinCrop extends Block {
     public int idPicked (World world, int x, int y, int z) {
         return Remula.porinSeeds.itemID;
     }
-}
+}*/

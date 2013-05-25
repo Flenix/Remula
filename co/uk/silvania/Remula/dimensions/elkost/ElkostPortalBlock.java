@@ -8,14 +8,15 @@ import co.uk.silvania.Remula.dimensions.TeleporterElkost;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 
 public class ElkostPortalBlock extends BlockPortal {
 
-	public ElkostPortalBlock(int id, int texture) {
-		super(id, texture);
+	public ElkostPortalBlock(int id) {
+		super(id);
 		this.setCreativeTab(Remula.tabElkost);
 	}
 	
@@ -28,11 +29,11 @@ public class ElkostPortalBlock extends BlockPortal {
 		byte var5 = 0;
 		byte var6 = 0;
 		
-			if (par1World.getBlockId(par2 - 1, par3, par4) == Remula.elkostStone.blockID || par1World.getBlockId(par2 + 1, par3, par4) == Remula.elkostStone.blockID) {
+			if (par1World.getBlockId(par2 - 1, par3, par4) == Remula.elkostSand.blockID || par1World.getBlockId(par2 + 1, par3, par4) == Remula.elkostSand.blockID) {
 				var5 = 1;
 			}
 			
-			if (par1World.getBlockId(par2, par3, par4 - 1) == Remula.elkostStone.blockID || par1World.getBlockId(par2, par3, par4 + 1) == Remula.elkostStone.blockID) {
+			if (par1World.getBlockId(par2, par3, par4 - 1) == Remula.elkostSand.blockID || par1World.getBlockId(par2, par3, par4 + 1) == Remula.elkostSand.blockID) {
 				var6 = 1;
 			}
 			
@@ -55,7 +56,7 @@ public class ElkostPortalBlock extends BlockPortal {
 							int var10 = par1World.getBlockId(par2 + var5 * var7, par3 + var8, par4 + var6 * var7);
 							
 							if (var9) {
-								if (var10 != Remula.elkostStone.blockID) {
+								if (var10 != Remula.elkostSand.blockID) {
 									return false;
 								}
 							}
@@ -66,15 +67,13 @@ public class ElkostPortalBlock extends BlockPortal {
 					}
 				}
 				
-				par1World.editingBlocks = true;
 				
 				for (var7 = 0; var7 < 2; ++var7) {
 					for (var8 = 0; var8 < 3; ++var8) {
-						par1World.setBlockWithNotify(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, this.blockID);
+						par1World.setBlock(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, this.blockID);
 					}
 				}
 				
-				par1World.editingBlocks = false;
 				return true;
 			}
 	}
@@ -99,8 +98,8 @@ public class ElkostPortalBlock extends BlockPortal {
 					;
 				}
 
-			if (par1World.getBlockId(par2, var8 - 1, par4) != Remula.elkostStone.blockID) {
-				par1World.setBlockWithNotify(par2, par3, par4, 0);
+			if (par1World.getBlockId(par2, var8 - 1, par4) != Remula.elkostSand.blockID) {
+				par1World.setBlock(par2, par3, par4, 0);
 			}
 			else
 			{
@@ -110,23 +109,23 @@ public class ElkostPortalBlock extends BlockPortal {
 				;
 			}
 
-			if (var9 == 3 && par1World.getBlockId(par2, var8 + var9, par4) == Remula.elkostStone.blockID) {
+			if (var9 == 3 && par1World.getBlockId(par2, var8 + var9, par4) == Remula.elkostSand.blockID) {
 				boolean var10 = par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID;
 				boolean var11 = par1World.getBlockId(par2, par3, par4 - 1) == this.blockID || par1World.getBlockId(par2, par3, par4 + 1) == this.blockID;
 
 				if (var10 && var11) {
-					par1World.setBlockWithNotify(par2, par3, par4, 0);
+					par1World.setBlock(par2, par3, par4, 0);
 					}
 					else
 					{
-						if ((par1World.getBlockId(par2 + var6, par3, par4 + var7) != Remula.elkostStone.blockID || par1World.getBlockId(par2 - var6, par3, par4 - var7) != this.blockID) && (par1World.getBlockId(par2 - var6, par3, par4 - var7) != Remula.elkostStone.blockID || par1World.getBlockId(par2 + var6, par3, par4 + var7) != this.blockID)) {
-							par1World.setBlockWithNotify(par2, par3, par4, 0);
+						if ((par1World.getBlockId(par2 + var6, par3, par4 + var7) != Remula.elkostSand.blockID || par1World.getBlockId(par2 - var6, par3, par4 - var7) != this.blockID) && (par1World.getBlockId(par2 - var6, par3, par4 - var7) != Remula.elkostSand.blockID || par1World.getBlockId(par2 + var6, par3, par4 + var7) != this.blockID)) {
+							par1World.setBlock(par2, par3, par4, 0);
 						}
 					}
 				}
 				else
 				{
-					par1World.setBlockWithNotify(par2, par3, par4, 0);
+					par1World.setBlock(par2, par3, par4, 0);
 				}
 			}
 	 	}
@@ -150,9 +149,9 @@ public class ElkostPortalBlock extends BlockPortal {
 		
 	}
 	
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.ELKOSTBLOCKS_PNG;
-    }
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:ElkostPortalBlock");
+	}
 
 }

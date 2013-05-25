@@ -2,22 +2,23 @@ package co.uk.silvania.Remula.dimensions.xylexia.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 
 public class XylexianStone extends Block {
 	
-    public XylexianStone(int id, int texture, Material material) {
-		super(id, texture, material);
+    public XylexianStone(int id, Material material) {
+		super(id, material);
 		this.setCreativeTab(Remula.tabXylexia);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}
 
-	@Override
-    public String getTextureFile () {
-            return CommonProxy.XYLEXIABLOCKS_PNG;
-    }
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:XylexianStone");
+	}
 
 }
 

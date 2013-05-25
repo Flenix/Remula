@@ -441,4 +441,16 @@ public class DeepSpaceChunkProvider implements IChunkProvider
     }
 
     public void recreateStructures(int par1, int par2) {}
+
+	@Override
+	public boolean unloadQueuedChunks() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void func_104112_b() {
+		// TODO Auto-generated method stub
+		
+	}
 }

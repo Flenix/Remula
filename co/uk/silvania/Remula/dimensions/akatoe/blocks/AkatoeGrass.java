@@ -9,7 +9,9 @@ import co.uk.silvania.Remula.Remula;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.Icon;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -19,99 +21,34 @@ public class AkatoeGrass extends Block
     public AkatoeGrass(int id)
     {
         super(id, Material.grass);
-        this.blockIndexInTexture = 3;
         this.setTickRandomly(true);
 		this.setCreativeTab(Remula.tabAkatoe);
         this.setStepSound(Block.soundGrassFootstep);
         this.setHardness(0.4F);
     }
-
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.AKATOEBLOCKS_PNG;
-    }
     
-    /**
-     * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
-     */
-    /*public int getBlockTextureFromSideAndMetadata(int par1, int par2)
-    {
-        return par1 == 1 || par1 == 0 ? 4 : (par1 == 4 ? 2 : 3);
-    }*/
-    
-    public int getBlockTextureFromSide(int side) {
-    	if(side == 1) {
-    		return 4;
-    	} else {
-    		if(side == 0) {
-    			return 2;
-    		} else {
-    			return 3;
-    		}
-    	}
-    }
+	@SideOnly(Side.CLIENT)
+	private Icon sides;
+	@SideOnly(Side.CLIENT)
+	private Icon top;
+	@SideOnly(Side.CLIENT)
+	private Icon base;
 
-    //@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+        this.sides = iconRegister.registerIcon("Remula:AkatoeGrassSide");
+        this.top = iconRegister.registerIcon("Remula:AkatoeGrassTop");
+        this.base = iconRegister.registerIcon("Remula:AkatoeDirt");
+	}
+   
+	public Icon getBlockTextureFromSideAndMeta(int i, int j) {
+		if(i == 0 | i == 1) {
+			return top;
+		}
+		else {
+			return sides;
+		}
+	}
 
-    /**
-     * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
-     */
-    /*public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
-        if (par5 == 1)
-        {
-            return 0;
-        }
-        else if (par5 == 0)
-        {
-            return 2;
-        }
-        else
-        {
-            Material var6 = par1IBlockAccess.getBlockMaterial(par2, par3 + 1, par4);
-            return var6 != Material.snow && var6 != Material.craftedSnow ? 3 : 68;
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public int getBlockColor()
-    {
-        double var1 = 0.5D;
-        double var3 = 1.0D;
-        return ColorizerGrass.getGrassColor(var1, var3);
-    }*/
-
-     /**
-     * Returns the color this block should be rendered. Used by leaves.
-     */
-    /*public int getRenderColor(int par1)
-    {
-        return this.getBlockColor();
-    }*/
-
-    /**
-     * Returns a integer with hex for 0xrrggbb with this color multiplied against the blocks color. Note only called
-     * when first determining what to render.
-     */
-    /*public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
-    {
-        int var5 = 0;
-        int var6 = 0;
-        int var7 = 0;
-
-        for (int var8 = -1; var8 <= 1; ++var8)
-        {
-            for (int var9 = -1; var9 <= 1; ++var9)
-            {
-                int var10 = par1IBlockAccess.getBiomeGenForCoords(par2 + var9, par4 + var8).getBiomeGrassColor();
-                var5 += (var10 & 16711680) >> 16;
-                var6 += (var10 & 65280) >> 8;
-                var7 += var10 & 255;
-            }
-        }
-
-        return (var5 / 9 & 255) << 16 | (var6 / 9 & 255) << 8 | var7 / 9 & 255;
-    }*/
 
     //Checks if the grass can recieve light. If not, KILL IT!
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
@@ -120,7 +57,7 @@ public class AkatoeGrass extends Block
         {
             if (par1World.getBlockLightValue(par2, par3 + 1, par4) < 4 && par1World.getBlockLightOpacity(par2, par3 + 1, par4) > 2)
             {
-                par1World.setBlockWithNotify(par2, par3, par4, Remula.akatoeDirt.blockID);
+                par1World.setBlock(par2, par3, par4, Remula.akatoeDirt.blockID);
             }
             else if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
             {
@@ -133,7 +70,7 @@ public class AkatoeGrass extends Block
 
                     if (par1World.getBlockId(var7, var8, var9) == Remula.akatoeDirt.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2)
                     {
-                        par1World.setBlockWithNotify(var7, var8, var9, Remula.akatoeGrass.blockID);
+                        par1World.setBlock(var7, var8, var9, Remula.akatoeGrass.blockID);
                     }
                 }
             }

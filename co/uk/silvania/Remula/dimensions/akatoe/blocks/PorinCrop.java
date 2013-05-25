@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.dimensions.akatoe.blocks;
+/*package co.uk.silvania.Remula.dimensions.akatoe.blocks;
 
 import java.util.Random;
 
@@ -35,7 +35,7 @@ public class PorinCrop extends BlockCrops {
     @Override
     public boolean isOpaqueCube () {
         return false;
-    }*/
+    }
 
     @Override
     public int getBlockTextureFromSideAndMetadata (int side, int metadata) {
@@ -65,7 +65,7 @@ public class PorinCrop extends BlockCrops {
     }
 
     @Override
-    /*public boolean canBlockStay (World world, int x, int y, int z) {
+    public boolean canBlockStay (World world, int x, int y, int z) {
         Block soil = blocksList[world.getBlockId(x, y - 1, z)];
         return (world.getFullBlockLightValue(x, y, z) >= 8 || world
                 .canBlockSeeTheSky(x, y, z))
@@ -74,7 +74,7 @@ public class PorinCrop extends BlockCrops {
     }
 
     @Override*/
-    public int idDropped (int metadata, Random random, int par2) {
+    /*public int idDropped (int metadata, Random random, int par2) {
         switch (metadata) {
         case 0:
             return Remula.porinSeeds.itemID;
@@ -94,4 +94,4 @@ public class PorinCrop extends BlockCrops {
 	public String getTextureFile() {
 		return CommonProxy.AKATOEBLOCKS_PNG;
 	}
-}
+}*/

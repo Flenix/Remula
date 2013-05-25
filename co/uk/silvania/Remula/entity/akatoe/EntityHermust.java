@@ -69,9 +69,9 @@ public class EntityHermust extends EntityAnimal {
 		this.worldObj.playSoundAtEntity(this, "mob.hermust.step", 0.15F,  1.0F);
 	}
 	
-	protected int getDropItemId() {
+	/*protected int getDropItemId() {
 		return Remula.rawHermustMeat.itemID;
-	}
+	}*/
 	
 	public EntityAgeable createChild(EntityAgeable var1) {
 		return null;

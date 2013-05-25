@@ -18,22 +18,22 @@ import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
 public class TeleporterAkatoe extends Teleporter {
-	private final WorldServer field_85192_a;
+	private final WorldServer worldServerInstance;
 	private final Random random;
-	private final LongHashMap field_85191_c = new LongHashMap();
-	private final List field_85190_d = new ArrayList();
+	private final LongHashMap destinationCoordinateCache = new LongHashMap();
+	private final List destinationCoordinateKeys = new ArrayList();
 
 	public TeleporterAkatoe(WorldServer par1WorldServer) {
 		super(par1WorldServer);
-		this.field_85192_a = par1WorldServer;
+		this.worldServerInstance = par1WorldServer;
 		this.random = new Random(par1WorldServer.getSeed());
 	}
 
 	@Override
 	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8)	{
-		if (this.field_85192_a.provider.dimensionId != 1) {
+		if (this.worldServerInstance.provider.dimensionId != 1) {
 			if (!this.placeInExistingPortal(par1Entity, par2, par4, par6, par8)) {
-				this.func_85188_a(par1Entity);
+				this.makePortal(par1Entity);
 				this.placeInExistingPortal(par1Entity, par2, par4, par6, par8);
 			}
 		}
@@ -52,7 +52,7 @@ public class TeleporterAkatoe extends Teleporter {
 						int var18 = var10 + var16;
 						int var19 = var11 + var15 * var13 - var14 * var12;
 						boolean var20 = var16 < 0;
-						this.field_85192_a.setBlockWithNotify(var17, var18, var19, var20 ? Block.sandStone.blockID : 0);
+						this.worldServerInstance.setBlock(var17, var18, var19, var20 ? Block.sandStone.blockID : 0);
 					}
 				}
 			}
@@ -76,13 +76,13 @@ public class TeleporterAkatoe extends Teleporter {
 		double var27;
 		int var48;
 
-		if (this.field_85191_c.containsItem(var17)) {
-			PortalPosition var20 = (PortalPosition) this.field_85191_c.getValueByKey(var17);
+		if (this.destinationCoordinateCache.containsItem(var17)) {
+			PortalPosition var20 = (PortalPosition) this.destinationCoordinateCache.getValueByKey(var17);
 			var10 = 0.0D;
 			var12 = var20.posX;
 			var13 = var20.posY;
 			var14 = var20.posZ;
-			var20.field_85087_d = this.field_85192_a.getTotalWorldTime();
+			var20.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
 			var19 = false;
 		}
 		else
@@ -93,9 +93,9 @@ public class TeleporterAkatoe extends Teleporter {
 				for (int var23 = var16 - var9; var23 <= var16 + var9; ++var23) {
 					double var24 = (double) var23 + 0.5D - par1Entity.posZ;
 
-					for (int var26 = this.field_85192_a.getActualHeight() - 1; var26 >= 0; --var26) {
-						if (this.field_85192_a.getBlockId(var48, var26, var23) == Remula.akatoePortal.blockID) {
-							while (this.field_85192_a.getBlockId(var48, var26 - 1, var23) == Remula.akatoePortal.blockID) {
+					for (int var26 = this.worldServerInstance.getActualHeight() - 1; var26 >= 0; --var26) {
+						if (this.worldServerInstance.getBlockId(var48, var26, var23) == Remula.akatoePortal.blockID) {
+							while (this.worldServerInstance.getBlockId(var48, var26 - 1, var23) == Remula.akatoePortal.blockID) {
 								--var26;
 							}
 
@@ -116,8 +116,8 @@ public class TeleporterAkatoe extends Teleporter {
 
 		if (var10 >= 0.0D) {
 			if (var19) {
-				this.field_85191_c.add(var17, new PortalPosition(this, var12, var13, var14, this.field_85192_a.getTotalWorldTime()));
-				this.field_85190_d.add(Long.valueOf(var17));
+				this.destinationCoordinateCache.add(var17, new PortalPosition(this, var12, var13, var14, this.worldServerInstance.getTotalWorldTime()));
+				this.destinationCoordinateKeys.add(Long.valueOf(var17));
 			}
 
 			double var49 = (double) var12 + 0.5D;
@@ -125,36 +125,36 @@ public class TeleporterAkatoe extends Teleporter {
 			var27 = (double) var14 + 0.5D;
 			int var50 = -1;
 
-			if (this.field_85192_a.getBlockId(var12 - 1, var13, var14) == Remula.akatoePortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12 - 1, var13, var14) == Remula.akatoePortal.blockID) {
 				var50 = 2;
 			}
 
-			if (this.field_85192_a.getBlockId(var12 + 1, var13, var14) == Remula.akatoePortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12 + 1, var13, var14) == Remula.akatoePortal.blockID) {
 				var50 = 0;
 			}
 
-			if (this.field_85192_a.getBlockId(var12, var13, var14 - 1) == Remula.akatoePortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12, var13, var14 - 1) == Remula.akatoePortal.blockID) {
 				var50 = 3;
 			}
 
-			if (this.field_85192_a.getBlockId(var12, var13, var14 + 1) == Remula.akatoePortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12, var13, var14 + 1) == Remula.akatoePortal.blockID) {
 				var50 = 1;
 			}
 
-			int var30 = par1Entity.func_82148_at();
+			int var30 = par1Entity.getTeleportDirection();
 
 			if (var50 > -1) {
-				int var31 = Direction.field_71578_g[var50];
+				int var31 = Direction.rotateLeft[var50];
 				int var32 = Direction.offsetX[var50];
 				int var33 = Direction.offsetZ[var50];
 				int var34 = Direction.offsetX[var31];
 				int var35 = Direction.offsetZ[var31];
-				boolean var36 = !this.field_85192_a.isAirBlock(var12 + var32 + var34, var13, var14 + var33 + var35) || !this.field_85192_a.isAirBlock(var12 + var32 + var34, var13 + 1, var14 + var33 + var35);
-				boolean var37 = !this.field_85192_a.isAirBlock(var12 + var32, var13, var14 + var33) || !this.field_85192_a.isAirBlock(var12 + var32, var13 + 1, var14 + var33);
+				boolean var36 = !this.worldServerInstance.isAirBlock(var12 + var32 + var34, var13, var14 + var33 + var35) || !this.worldServerInstance.isAirBlock(var12 + var32 + var34, var13 + 1, var14 + var33 + var35);
+				boolean var37 = !this.worldServerInstance.isAirBlock(var12 + var32, var13, var14 + var33) || !this.worldServerInstance.isAirBlock(var12 + var32, var13 + 1, var14 + var33);
 
 				if (var36 && var37) {
-					var50 = Direction.footInvisibleFaceRemap[var50];
-					var31 = Direction.footInvisibleFaceRemap[var31];
+					var50 = Direction.rotateOpposite[var50];
+					var31 = Direction.rotateOpposite[var31];
 					var32 = Direction.offsetX[var50];
 					var33 = Direction.offsetZ[var50];
 					var34 = Direction.offsetX[var31];
@@ -163,8 +163,8 @@ public class TeleporterAkatoe extends Teleporter {
 					var49 -= (double) var34;
 					int var22 = var14 - var35;
 					var27 -= (double) var35;
-					var36 = !this.field_85192_a.isAirBlock(var48 + var32 + var34, var13, var22 + var33 + var35) || !this.field_85192_a.isAirBlock(var48 + var32 + var34, var13 + 1, var22 + var33 + var35);
-					var37 = !this.field_85192_a.isAirBlock(var48 + var32, var13, var22 + var33) || !this.field_85192_a.isAirBlock(var48 + var32, var13 + 1, var22 + var33);
+					var36 = !this.worldServerInstance.isAirBlock(var48 + var32 + var34, var13, var22 + var33 + var35) || !this.worldServerInstance.isAirBlock(var48 + var32 + var34, var13 + 1, var22 + var33 + var35);
+					var37 = !this.worldServerInstance.isAirBlock(var48 + var32, var13, var22 + var33) || !this.worldServerInstance.isAirBlock(var48 + var32, var13 + 1, var22 + var33);
 				}
 
 				float var38 = 0.5F;
@@ -194,12 +194,12 @@ public class TeleporterAkatoe extends Teleporter {
 					var40 = 1.0F;
 					var41 = 1.0F;
 				}
-				else if (var50 == Direction.footInvisibleFaceRemap[var30])
+				else if (var50 == Direction.rotateOpposite[var30])
 				{
 					var40 = -1.0F;
 					var41 = -1.0F;
 				}
-				else if (var50 == Direction.enderEyeMetaToDirection[var30])	{
+				else if (var50 == Direction.rotateRight[var30])	{
 					var42 = 1.0F;
 					var43 = -1.0F;
 				}
@@ -230,7 +230,7 @@ public class TeleporterAkatoe extends Teleporter {
 	}
 
 	@Override
-	public boolean func_85188_a(Entity par1Entity) {
+	public boolean makePortal(Entity par1Entity) {
 		byte var2 = 16;
 		double var3 = -1.0D;
 		int var5 = MathHelper.floor_double(par1Entity.posX);
@@ -264,9 +264,9 @@ public class TeleporterAkatoe extends Teleporter {
 				var17 = (double) var16 + 0.5D - par1Entity.posZ;
 				label274:
 
-					for (var19 = this.field_85192_a.getActualHeight() - 1; var19 >= 0; --var19) {
-						if (this.field_85192_a.isAirBlock(var13, var19, var16)) {
-							while (var19 > 0 && this.field_85192_a.isAirBlock(var13, var19 - 1, var16)) {
+					for (var19 = this.worldServerInstance.getActualHeight() - 1; var19 >= 0; --var19) {
+						if (this.worldServerInstance.isAirBlock(var13, var19, var16)) {
+							while (var19 > 0 && this.worldServerInstance.isAirBlock(var13, var19 - 1, var16)) {
 								--var19;
 							}
 
@@ -286,7 +286,7 @@ public class TeleporterAkatoe extends Teleporter {
 											var27 = var19 + var25;
 											int var28 = var16 + (var24 - 1) * var22 - var23 * var21;
 
-											if (var25 < 0 && !this.field_85192_a.getBlockMaterial(var26, var27, var28).isSolid() || var25 >= 0 && !this.field_85192_a.isAirBlock(var26, var27, var28)) {
+											if (var25 < 0 && !this.worldServerInstance.getBlockMaterial(var26, var27, var28).isSolid() || var25 >= 0 && !this.worldServerInstance.isAirBlock(var26, var27, var28)) {
 												continue label274;
 											}
 										}
@@ -318,9 +318,9 @@ public class TeleporterAkatoe extends Teleporter {
 			   var17 = (double) var16 + 0.5D - par1Entity.posZ;
 			   label222:
 
-				   for (var19 = this.field_85192_a.getActualHeight() - 1; var19 >= 0; --var19) {
-					   if (this.field_85192_a.isAirBlock(var13, var19, var16)) {
-						   while (var19 > 0 && this.field_85192_a.isAirBlock(var13, var19 - 1, var16)) {
+				   for (var19 = this.worldServerInstance.getActualHeight() - 1; var19 >= 0; --var19) {
+					   if (this.worldServerInstance.isAirBlock(var13, var19, var16)) {
+						   while (var19 > 0 && this.worldServerInstance.isAirBlock(var13, var19 - 1, var16)) {
 							   --var19;
 						   }
 
@@ -334,7 +334,7 @@ public class TeleporterAkatoe extends Teleporter {
 									   var26 = var19 + var24;
 									   var27 = var16 + (var23 - 1) * var22;
 
-									   if (var24 < 0 && !this.field_85192_a.getBlockMaterial(var25, var26, var27).isSolid() || var24 >= 0 && !this.field_85192_a.isAirBlock(var25, var26, var27)) {
+									   if (var24 < 0 && !this.worldServerInstance.getBlockMaterial(var25, var26, var27).isSolid() || var24 >= 0 && !this.worldServerInstance.isAirBlock(var25, var26, var27)) {
 										   continue label222;
 									   }
 								   }
@@ -378,9 +378,9 @@ public class TeleporterAkatoe extends Teleporter {
     var9 = 70;
    }
 
-    if (var9 > this.field_85192_a.getActualHeight() - 10)
+    if (var9 > this.worldServerInstance.getActualHeight() - 10)
    {
-    var9 = this.field_85192_a.getActualHeight() - 10;
+    var9 = this.worldServerInstance.getActualHeight() - 10;
    }
 
     var15 = var9;
@@ -395,7 +395,7 @@ public class TeleporterAkatoe extends Teleporter {
       var23 = var15 + var21;
       var24 = var16 + (var20 - 1) * var18 - var19 * var30;
       var33 = var21 < 0;
-      this.field_85192_a.setBlockWithNotify(var22, var23, var24, var33 ? Block.sandStone.blockID : 0);
+      this.worldServerInstance.setBlock(var22, var23, var24, var33 ? Block.sandStone.blockID : 0);
      }
     }
    }
@@ -403,7 +403,6 @@ public class TeleporterAkatoe extends Teleporter {
 
    for (var19 = 0; var19 < 4; ++var19)
   {
-   this.field_85192_a.editingBlocks = true;
 
     for (var20 = 0; var20 < 4; ++var20)
    {
@@ -413,11 +412,11 @@ public class TeleporterAkatoe extends Teleporter {
      var23 = var15 + var21;
      var24 = var16 + (var20 - 1) * var18;
      var33 = var20 == 0 || var20 == 3 || var21 == -1 || var21 == 3;
-     this.field_85192_a.setBlockWithNotify(var22, var23, var24, var33 ? Block.sandStone.blockID : Remula.akatoePortal.blockID);
+     this.worldServerInstance.setBlock(var22, var23, var24, var33 ? Block.sandStone.blockID : Remula.akatoePortal.blockID);
     }
    }
 
-    this.field_85192_a.editingBlocks = false;
+    //this.worldServerInstance.editingBlocks = false;
 
     for (var20 = 0; var20 < 4; ++var20)
    {
@@ -426,7 +425,7 @@ public class TeleporterAkatoe extends Teleporter {
      var22 = var29 + (var20 - 1) * var30;
      var23 = var15 + var21;
      var24 = var16 + (var20 - 1) * var18;
-     this.field_85192_a.notifyBlocksOfNeighborChange(var22, var23, var24, this.field_85192_a.getBlockId(var22, var23, var24));
+     this.worldServerInstance.notifyBlocksOfNeighborChange(var22, var23, var24, this.worldServerInstance.getBlockId(var22, var23, var24));
     }
    }
   }
@@ -435,18 +434,18 @@ public class TeleporterAkatoe extends Teleporter {
  }
 
 	@Override
-	public void func_85189_a(long par1) {
+	public void removeStalePortalLocations(long par1) {
 		if (par1 % 100L == 0L) {
-			Iterator var3 = this.field_85190_d.iterator();
+			Iterator var3 = this.destinationCoordinateKeys.iterator();
 			long var4 = par1 - 600L;
 
 			while (var3.hasNext()) {
 				Long var6 = (Long) var3.next();
-				PortalPosition var7 = (PortalPosition) this.field_85191_c.getValueByKey(var6.longValue());
+				PortalPosition var7 = (PortalPosition) this.destinationCoordinateCache.getValueByKey(var6.longValue());
 
-				if (var7 == null || var7.field_85087_d < var4) {
+				if (var7 == null || var7.lastUpdateTime < var4) {
 					var3.remove();
-					this.field_85191_c.remove(var6.longValue());
+					this.destinationCoordinateCache.remove(var6.longValue());
 				}
 			}
 		}

@@ -52,7 +52,7 @@ public class WorldGen implements IWorldGenerator{
 			int yCoord = random.nextInt(80);
 			int zCoord = chunkZ + random.nextInt(16);
 			
-			(new WorldGenMinable(Remula.akatoeCoal.blockID, 50)).generate(world, random, xCoord, yCoord, zCoord);
+			//(new WorldGenMinable(Remula.akatoeCoal.blockID, 50)).generate(world, random, xCoord, yCoord, zCoord);
 		}
 	}
     

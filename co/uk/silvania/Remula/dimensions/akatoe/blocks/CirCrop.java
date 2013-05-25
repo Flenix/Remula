@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.dimensions.akatoe.blocks;
+/*package co.uk.silvania.Remula.dimensions.akatoe.blocks;
 
 import java.util.Random;
 
@@ -70,7 +70,7 @@ public class CirCrop extends Block {
                         ForgeDirection.UP, Remula.porinCrop));
     }
 
-    @Override*/
+    @Override
     public int idDropped (int metadata, Random random, int par2) {
         switch (metadata) {
         case 0:
@@ -87,4 +87,4 @@ public class CirCrop extends Block {
     public int idPicked (World world, int x, int y, int z) {
         return Remula.porinSeeds.itemID;
     }
-}
+}*/

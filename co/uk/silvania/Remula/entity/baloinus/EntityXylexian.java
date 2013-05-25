@@ -74,7 +74,7 @@ public class EntityXylexian extends EntityMob {
 	protected void dropRareDrop(int par1) {
 		switch(this.rand.nextInt(2)) {
 		case 0:
-			this.dropItem(Item.shovelSteel.itemID, 1);
+			this.dropItem(Item.shovelIron.itemID, 1);
 		case 1:
 			this.dropItem(Block.blockDiamond.blockID, this.rand.nextInt(3) + 1);
 		}

@@ -599,12 +599,12 @@ public class XylexiaChunkProvider implements IChunkProvider
 
                 if (this.worldObj.isBlockFreezable(var12 + var4, var14 - 1, var13 + var5))
                 {
-                    this.worldObj.setBlockWithNotify(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID);
+                    this.worldObj.setBlock(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID);
                 }
 
                 if (this.worldObj.canSnowAt(var12 + var4, var14, var13 + var5))
                 {
-                    this.worldObj.setBlockWithNotify(var12 + var4, var14, var13 + var5, Block.snow.blockID);
+                    this.worldObj.setBlock(var12 + var4, var14, var13 + var5, Block.snow.blockID);
                 }
             }
         }
@@ -680,4 +680,16 @@ public class XylexiaChunkProvider implements IChunkProvider
             this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
         }
     }
+
+	@Override
+	public boolean unloadQueuedChunks() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void func_104112_b() {
+		// TODO Auto-generated method stub
+		
+	}
 }

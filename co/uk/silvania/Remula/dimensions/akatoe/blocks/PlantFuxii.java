@@ -3,15 +3,17 @@ package co.uk.silvania.Remula.dimensions.akatoe.blocks;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.BlockFlower;
+import net.minecraft.client.renderer.texture.IconRegister;
 
 public class PlantFuxii extends BlockFlower {
 
-	public PlantFuxii(int id, int texture) {
-		super(id, texture);
+	public PlantFuxii(int id) {
+		super(id);
 		this.setCreativeTab(Remula.tabAkatoe);
 	}
 	
-	public String getTextureFile() {
-		return CommonProxy.AKATOEBLOCKS_PNG;
-	}
+		public void registerIcons(IconRegister iconRegister)
+		{
+		         blockIcon = iconRegister.registerIcon("Remula:AkatoePlantFuxii");
+		}
 }

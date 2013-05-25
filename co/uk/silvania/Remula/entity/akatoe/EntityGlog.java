@@ -39,7 +39,7 @@ public class EntityGlog extends EntityAnimal {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 0.38F));
         this.tasks.addTask(2, new EntityAIMate(this, var2));
-        this.tasks.addTask(3, new EntityAITempt(this, 0.3F, Remula.porinFruit.itemID, false));
+        //this.tasks.addTask(3, new EntityAITempt(this, 0.3F, Remula.porinFruit.itemID, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 0.28F));
         this.tasks.addTask(5, new EntityAIWander(this, var2));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -75,9 +75,9 @@ public class EntityGlog extends EntityAnimal {
 		this.worldObj.playSoundAtEntity(this, "mob.glog.step", 0.15F,  1.0F);
 	}
 	
-	protected int getDropItemId() {
+	/*protected int getDropItemId() {
 		return Remula.rawGlogMeat.itemID;
-	}
+	}*/
 	
 	public EntityAgeable createChild(EntityAgeable var1) {
 		return null;

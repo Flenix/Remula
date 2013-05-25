@@ -69,9 +69,9 @@ public class EntitySkitterling extends EntityAnimal {
 		this.worldObj.playSoundAtEntity(this, "mob.skitterling.step", 0.15F,  1.0F);
 	}
 	
-	protected int getDropItemId() {
+	/*protected int getDropItemId() {
 		return Remula.skitterlingDead.itemID;
-	}
+	}*/
 	
 	public EntityAgeable createChild(EntityAgeable var1) {
 		return null;

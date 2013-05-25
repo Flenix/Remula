@@ -24,8 +24,8 @@ public class AkatoeTilledDirt extends Block {
         this.setLightOpacity(255);
 		this.setCreativeTab(Remula.tabAkatoe);
 	}
-	
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+}	
+    /*public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
         return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)(par2 + 0), (double)(par3 + 0), (double)(par4 + 0), (double)(par2 + 1), (double)(par3 + 1), (double)(par4 + 1));
     }
 
@@ -116,4 +116,4 @@ public class AkatoeTilledDirt extends Block {
     public int idPicked(World par1World, int par2, int par3, int par4) {
         return Remula.akatoeDirt.blockID;
     }
-}
+}*/

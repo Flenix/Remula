@@ -8,14 +8,15 @@ import co.uk.silvania.Remula.dimensions.TeleporterXylexia;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 
 public class XylexiaPortalBlock extends BlockPortal {
 
-	public XylexiaPortalBlock(int id, int texture) {
-		super(id, texture);
+	public XylexiaPortalBlock(int id) {
+		super(id);
 		this.setCreativeTab(Remula.tabXylexia);
 	}
 	
@@ -66,15 +67,13 @@ public class XylexiaPortalBlock extends BlockPortal {
 					}
 				}
 				
-				par1World.editingBlocks = true;
 				
 				for (var7 = 0; var7 < 2; ++var7) {
 					for (var8 = 0; var8 < 3; ++var8) {
-						par1World.setBlockWithNotify(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, this.blockID);
+						par1World.setBlock(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, this.blockID);
 					}
 				}
 				
-				par1World.editingBlocks = false;
 				return true;
 			}
 	}
@@ -100,7 +99,7 @@ public class XylexiaPortalBlock extends BlockPortal {
 				}
 
 			if (par1World.getBlockId(par2, var8 - 1, par4) != Remula.xylexianStone.blockID) {
-				par1World.setBlockWithNotify(par2, par3, par4, 0);
+				par1World.setBlock(par2, par3, par4, 0);
 			}
 			else
 			{
@@ -115,18 +114,18 @@ public class XylexiaPortalBlock extends BlockPortal {
 				boolean var11 = par1World.getBlockId(par2, par3, par4 - 1) == this.blockID || par1World.getBlockId(par2, par3, par4 + 1) == this.blockID;
 
 				if (var10 && var11) {
-					par1World.setBlockWithNotify(par2, par3, par4, 0);
+					par1World.setBlock(par2, par3, par4, 0);
 					}
 					else
 					{
 						if ((par1World.getBlockId(par2 + var6, par3, par4 + var7) != Remula.xylexianStone.blockID || par1World.getBlockId(par2 - var6, par3, par4 - var7) != this.blockID) && (par1World.getBlockId(par2 - var6, par3, par4 - var7) != Remula.xylexianStone.blockID || par1World.getBlockId(par2 + var6, par3, par4 + var7) != this.blockID)) {
-							par1World.setBlockWithNotify(par2, par3, par4, 0);
+							par1World.setBlock(par2, par3, par4, 0);
 						}
 					}
 				}
 				else
 				{
-					par1World.setBlockWithNotify(par2, par3, par4, 0);
+					par1World.setBlock(par2, par3, par4, 0);
 				}
 			}
 	 	}
@@ -150,9 +149,9 @@ public class XylexiaPortalBlock extends BlockPortal {
 		
 	}
 	
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.XYLEXIABLOCKS_PNG;
-    }
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:AkatoePortalBlock");
+	}
 
 }

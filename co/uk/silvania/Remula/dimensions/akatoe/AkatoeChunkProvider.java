@@ -599,12 +599,12 @@ public class AkatoeChunkProvider implements IChunkProvider
 
                 if (this.worldObj.isBlockFreezable(var12 + var4, var14 - 1, var13 + var5))
                 {
-                    this.worldObj.setBlockWithNotify(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID);
+                    this.worldObj.setBlock(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID);
                 }
 
                 if (this.worldObj.canSnowAt(var12 + var4, var14, var13 + var5))
                 {
-                    this.worldObj.setBlockWithNotify(var12 + var4, var14, var13 + var5, Block.snow.blockID);
+                    this.worldObj.setBlock(var12 + var4, var14, var13 + var5, Block.snow.blockID);
                 }
             }
         }

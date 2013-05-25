@@ -3,22 +3,23 @@ package co.uk.silvania.Remula.dimensions.elkost.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 
 public class ElkostSand extends BlockSand {
 	
-    public ElkostSand(int id, int texture, Material material) {
-		super(id, texture, material);
+    public ElkostSand(int id, Material material) {
+		super(id, material);
 		this.setCreativeTab(Remula.tabElkost);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}
 
-	@Override
-    public String getTextureFile () {
-            return CommonProxy.ELKOSTBLOCKS_PNG;
-    }
+	public void registerIcons(IconRegister iconRegister)
+	{
+	         blockIcon = iconRegister.registerIcon("Remula:ElkostSand");
+	}
 
 }
 

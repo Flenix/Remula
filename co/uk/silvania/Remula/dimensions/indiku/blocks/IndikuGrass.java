@@ -9,7 +9,9 @@ import co.uk.silvania.Remula.Remula;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.Icon;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -19,30 +21,33 @@ public class IndikuGrass extends Block
     public IndikuGrass(int id)
     {
         super(id, Material.grass);
-        this.blockIndexInTexture = 3;
         this.setTickRandomly(true);
-		this.setCreativeTab(Remula.tabIndiku);
+		this.setCreativeTab(Remula.tabAkatoe);
         this.setStepSound(Block.soundGrassFootstep);
         this.setHardness(0.4F);
     }
-
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.INDIKUBLOCKS_PNG;
-    }
     
-    //Texture it   
-    public int getBlockTextureFromSide(int side) {
-    	if(side == 1) {
-    		return 3;
-    	} else {
-    		if(side == 0) {
-    			return 1;
-    		} else {
-    			return 2;
-    		}
-    	}
-    }
+	@SideOnly(Side.CLIENT)
+	private Icon sides;
+	@SideOnly(Side.CLIENT)
+	private Icon top;
+	@SideOnly(Side.CLIENT)
+	private Icon base;
+
+	public void registerIcons(IconRegister iconRegister) {
+        this.sides = iconRegister.registerIcon("Remula:IndikuGrassSide");
+        this.top = iconRegister.registerIcon("Remula:IndikuGrassTop");
+        this.base = iconRegister.registerIcon("Remula:IndikuDirt");
+	}
+   
+	public Icon getBlockTextureFromSideAndMeta(int i, int j) {
+		if(i == 0 | i == 1) {
+			return top;
+		}
+		else {
+			return sides;
+		}
+	}
 
 
     //Checks if the grass can recieve light. If not, KILL IT!
@@ -52,7 +57,7 @@ public class IndikuGrass extends Block
         {
             if (par1World.getBlockLightValue(par2, par3 + 1, par4) < 4 && par1World.getBlockLightOpacity(par2, par3 + 1, par4) > 2)
             {
-                par1World.setBlockWithNotify(par2, par3, par4, Remula.indikuDirt.blockID);
+                par1World.setBlock(par2, par3, par4, Remula.akatoeDirt.blockID);
             }
             else if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
             {
@@ -63,18 +68,18 @@ public class IndikuGrass extends Block
                     int var9 = par4 + par5Random.nextInt(3) - 1;
                     int var10 = par1World.getBlockId(var7, var8 + 1, var9);
 
-                    if (par1World.getBlockId(var7, var8, var9) == Remula.indikuDirt.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2)
+                    if (par1World.getBlockId(var7, var8, var9) == Remula.akatoeDirt.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2)
                     {
-                        par1World.setBlockWithNotify(var7, var8, var9, Remula.indikuGrass.blockID);
+                        par1World.setBlock(var7, var8, var9, Remula.akatoeGrass.blockID);
                     }
                 }
             }
         }
     }
 
-    //Drop Indiku Dirt instead of itself, just like grass/dirt vanilla.
+    //Drop Akatonian Dirt instead of itself, just like grass/dirt vanilla.
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return Remula.indikuDirt.idDropped(0, par2Random, par3);
+        return Remula.akatoeDirt.idDropped(0, par2Random, par3);
     }
 }

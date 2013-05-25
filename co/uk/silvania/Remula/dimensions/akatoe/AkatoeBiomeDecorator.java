@@ -114,10 +114,10 @@ public class AkatoeBiomeDecorator
     public AkatoeBiomeDecorator(BiomeGenBase par1BiomeGenBase) {
         this.sandGen = new WorldGenSand(7, Remula.akatoeSand.blockID);
         this.dirtGen = new WorldGenMinable(Remula.akatoeDirt.blockID, 32);
-        this.coalGen = new WorldGenMinable(Remula.akatoeCoal.blockID, 16);
-        this.ironGen = new WorldGenMinable(Remula.akatoeIron.blockID, 8);
-        this.goldGen = new WorldGenMinable(Remula.akatoeGold.blockID, 8);
-        this.lapisGen = new WorldGenMinable(Remula.akatoeLapis.blockID, 6);
+        //this.coalGen = new WorldGenMinable(Remula.akatoeCoal.blockID, 16);
+        //this.ironGen = new WorldGenMinable(Remula.akatoeIron.blockID, 8);
+        //this.goldGen = new WorldGenMinable(Remula.akatoeGold.blockID, 8);
+        //this.lapisGen = new WorldGenMinable(Remula.akatoeLapis.blockID, 6);
         this.plantFuxiiGen = new WorldGenFlowers(Remula.plantFuxii.blockID);
         this.treesPerChunk = 0;
         this.flowersPerChunk = 2;

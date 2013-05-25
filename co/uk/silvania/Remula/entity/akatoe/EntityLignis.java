@@ -78,9 +78,9 @@ public class EntityLignis extends EntityAnimal {
 		return "mob.lignis.death";
 	}
 	
-	protected int getDropItemId() {
+	/*protected int getDropItemId() {
 		return Remula.rawLignisMeat.itemID;
-	}
+	}*/
 	
 	public EntityAgeable createChild(EntityAgeable var1) {
 		return null;

@@ -36,9 +36,9 @@ public class EntityGarfin extends EntityWaterMob {
 		return 16;
 	}
 	
-	protected int getDropItemId() {
+	/*protected int getDropItemId() {
 		return Remula.rawGarfinMeat.itemID;
-	}
+	}*/
 	
     /**
      * Checks if this entity is inside water (if inWater field is true as a result of handleWaterMovement() returning
