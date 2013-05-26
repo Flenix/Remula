@@ -16,7 +16,7 @@ public class XylexiaTerrainBlocks extends Block {
 
 	public XylexiaTerrainBlocks(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabXylexia);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	@SideOnly(Side.CLIENT)

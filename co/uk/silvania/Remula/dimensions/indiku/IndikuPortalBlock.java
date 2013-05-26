@@ -17,7 +17,7 @@ public class IndikuPortalBlock extends BlockPortal {
 
 	public IndikuPortalBlock(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabIndiku);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {

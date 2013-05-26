@@ -22,7 +22,7 @@ public class IndikuGrass extends Block
     {
         super(id, Material.grass);
         this.setTickRandomly(true);
-		this.setCreativeTab(Remula.tabAkatoe);
+		this.setCreativeTab(Remula.tabWorlds);
         this.setStepSound(Block.soundGrassFootstep);
         this.setHardness(0.4F);
     }

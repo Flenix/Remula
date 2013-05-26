@@ -16,7 +16,7 @@ public class IndikuOreBlocks extends BlockOre {
 
 	public IndikuOreBlocks(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabIndiku);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	@SideOnly(Side.CLIENT)

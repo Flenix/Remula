@@ -16,7 +16,7 @@ public class BaloinusOreBlocks extends BlockOre {
 
 	public BaloinusOreBlocks(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabBaloinus);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	@SideOnly(Side.CLIENT)

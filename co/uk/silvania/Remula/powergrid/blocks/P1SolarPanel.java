@@ -7,15 +7,16 @@ import co.uk.silvania.Remula.powergrid.blocks.tileentity.TileEntityRemulaSolarPa
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class RemulaSolarPanel extends BlockContainer {
+public class P1SolarPanel extends BlockContainer {
 
-	public RemulaSolarPanel(int id, Material material) {
+	public P1SolarPanel(int id, Material material) {
 		super(id, material);
-        this.setCreativeTab(Remula.tabRemula);
+        this.setCreativeTab(Remula.tabMachines);
         this.setHardness(1.0F);
         this.setStepSound(Block.soundMetalFootstep);
 	}
@@ -36,10 +37,10 @@ public class RemulaSolarPanel extends BlockContainer {
 		return false;
 	}
 	
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.BLOCK_PNG;
-    }
+
+	public void registerIcons(IconRegister iconRegister) {
+		blockIcon = iconRegister.registerIcon("Remula:P1SolarPanel");
+	}
     
     @Override
     public int getRenderBlockPass() {

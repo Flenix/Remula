@@ -16,7 +16,7 @@ public class IndikuTerrainBlocks extends Block {
 
 	public IndikuTerrainBlocks(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabIndiku);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	@SideOnly(Side.CLIENT)

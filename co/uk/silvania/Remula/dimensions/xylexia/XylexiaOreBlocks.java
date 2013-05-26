@@ -16,7 +16,7 @@ public class XylexiaOreBlocks extends BlockOre {
 
 	public XylexiaOreBlocks(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabXylexia);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	@SideOnly(Side.CLIENT)

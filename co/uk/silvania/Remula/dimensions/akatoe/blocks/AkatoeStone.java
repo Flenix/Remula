@@ -10,7 +10,7 @@ public class AkatoeStone extends Block {
 	
     public AkatoeStone(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabAkatoe);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}

@@ -9,7 +9,7 @@ public class PlantFuxii extends BlockFlower {
 
 	public PlantFuxii(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabAkatoe);
+		this.setCreativeTab(Remula.tabMisc);
 	}
 	
 		public void registerIcons(IconRegister iconRegister)

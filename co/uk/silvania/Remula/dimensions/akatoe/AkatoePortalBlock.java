@@ -17,7 +17,7 @@ public class AkatoePortalBlock extends BlockPortal {
 
 	public AkatoePortalBlock(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabAkatoe);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {

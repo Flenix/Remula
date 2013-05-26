@@ -16,7 +16,7 @@ public class ElkostOreBlocks extends BlockOre {
 
 	public ElkostOreBlocks(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabElkost);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	@SideOnly(Side.CLIENT)

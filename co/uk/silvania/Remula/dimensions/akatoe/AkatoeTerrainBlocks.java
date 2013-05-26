@@ -16,7 +16,7 @@ public class AkatoeTerrainBlocks extends Block {
 
 	public AkatoeTerrainBlocks(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabAkatoe);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -27,7 +27,7 @@ public class AkatoeTerrainBlocks extends Block {
 		icons = new Icon[6];
 		
 		for(int i = 0; i < icons.length; i++) {
-			icons[i] = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)) + i);
+			icons[i] = iconRegister.registerIcon("Remula:AkatoeTerrainBlocks" + i);
 		}
 	}
 	

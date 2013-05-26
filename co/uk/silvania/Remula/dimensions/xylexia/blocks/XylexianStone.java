@@ -10,7 +10,7 @@ public class XylexianStone extends Block {
 	
     public XylexianStone(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabXylexia);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}

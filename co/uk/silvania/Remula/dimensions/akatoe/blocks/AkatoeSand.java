@@ -11,7 +11,7 @@ public class AkatoeSand extends BlockSand {
 	
     public AkatoeSand(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabAkatoe);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundSandFootstep);
 	}

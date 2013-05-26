@@ -16,7 +16,7 @@ public class ElkostTerrainBlocks extends Block {
 
 	public ElkostTerrainBlocks(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabElkost);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -10,7 +10,7 @@ public class DeepSpaceWhiteAsteroid extends Block {
 
 	public DeepSpaceWhiteAsteroid(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabDeepSpace);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(1.0F);
 	}
    

@@ -10,7 +10,7 @@ public class IndikuStone extends Block {
 	
     public IndikuStone(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabIndiku);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}

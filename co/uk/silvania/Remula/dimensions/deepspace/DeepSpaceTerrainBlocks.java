@@ -16,7 +16,7 @@ public class DeepSpaceTerrainBlocks extends Block {
 
 	public DeepSpaceTerrainBlocks(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabDeepSpace);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	@SideOnly(Side.CLIENT)

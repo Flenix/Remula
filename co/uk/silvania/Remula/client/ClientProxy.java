@@ -23,7 +23,7 @@ import co.uk.silvania.Remula.entity.akatoe.EntityLignis;
 import co.uk.silvania.Remula.entity.akatoe.EntitySkitterling;
 import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import co.uk.silvania.Remula.items.weapons.EntityBronzeBullet;
-import co.uk.silvania.Remula.powergrid.blocks.RemulaSolarPanel;
+import co.uk.silvania.Remula.powergrid.blocks.P1SolarPanel;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -58,21 +58,6 @@ public class ClientProxy extends CommonProxy {
         
     @Override
     public void registerRenderThings() {
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/blocks.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/items.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/akatoeblocks.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/akatoeitems.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/baloinusblocks.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/baloinusitems.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceblocks.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/deepspaceitems.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/Remula/resources/SilvaniteChest1.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/indikublocks.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/indikuitems.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/elkostblocks.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/elkostitems.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/xylexiablocks.png");
-    MinecraftForgeClient.preloadTexture("/co/uk/silvania/remula/resources/xylexiaitems.png");
     //ClientRegistry.bindTileEntitySpecialRenderer(co.uk.silvania.Remula.powergrid.blocks.tileentity.TileEntityRemulaSolarPanel.class, new RenderRemulaSolarPanel(0));
     }
         

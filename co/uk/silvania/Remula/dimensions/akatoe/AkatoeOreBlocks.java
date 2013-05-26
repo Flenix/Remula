@@ -16,7 +16,7 @@ public class AkatoeOreBlocks extends BlockOre {
 
 	public AkatoeOreBlocks(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabAkatoe);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -4,20 +4,20 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 
-public class RemulaGrinder extends Block {
+public class P1Generator extends Block {
 
-	public RemulaGrinder(int id, Material material) {
+	public P1Generator(int id, Material material) {
 		super(id, material);
-        this.setCreativeTab(Remula.tabRemula);
+        this.setCreativeTab(Remula.tabMachines);
         this.setHardness(1.0F);
         this.setStepSound(Block.soundMetalFootstep);
 	}
 	
-    @Override
-    public String getTextureFile () {
-            return CommonProxy.BLOCK_PNG;
-    }
+	public void registerIcons(IconRegister iconRegister) {
+        blockIcon = iconRegister.registerIcon("Remula:P1Generator");
+	}
     
 
 }

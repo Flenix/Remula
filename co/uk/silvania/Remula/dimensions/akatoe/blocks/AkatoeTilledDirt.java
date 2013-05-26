@@ -7,6 +7,7 @@ import co.uk.silvania.Remula.Remula;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,14 +16,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
 
-public class AkatoeTilledDirt extends Block {
+public class AkatoeTilledDirt extends BlockFarmland {
 
 	public AkatoeTilledDirt(int id) {
-		super(id, Material.ground);
+		super(id);
         this.setTickRandomly(true);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
         this.setLightOpacity(255);
-		this.setCreativeTab(Remula.tabAkatoe);
 	}
 }	
     /*public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {

@@ -16,7 +16,7 @@ public class DeepSpaceWhiteOreBlocks extends BlockOre {
 
 	public DeepSpaceWhiteOreBlocks(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabDeepSpace);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	@SideOnly(Side.CLIENT)

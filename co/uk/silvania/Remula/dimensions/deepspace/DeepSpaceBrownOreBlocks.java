@@ -16,7 +16,7 @@ public class DeepSpaceBrownOreBlocks extends BlockOre {
 
 	public DeepSpaceBrownOreBlocks(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabDeepSpace);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	@SideOnly(Side.CLIENT)

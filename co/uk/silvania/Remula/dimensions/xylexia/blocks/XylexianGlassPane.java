@@ -10,7 +10,7 @@ public class XylexianGlassPane extends Block {
 
 	public XylexianGlassPane(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabXylexia);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}

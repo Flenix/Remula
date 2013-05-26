@@ -11,7 +11,7 @@ public class ElkostSand extends BlockSand {
 	
     public ElkostSand(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabElkost);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);
 	}

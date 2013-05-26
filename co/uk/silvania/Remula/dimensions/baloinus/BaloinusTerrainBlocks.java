@@ -16,7 +16,7 @@ public class BaloinusTerrainBlocks extends Block {
 
 	public BaloinusTerrainBlocks(int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(Remula.tabBaloinus);
+		this.setCreativeTab(Remula.tabWorlds);
 	}
 	
 	@SideOnly(Side.CLIENT)
