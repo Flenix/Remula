@@ -12,7 +12,7 @@ public class P1HUDUnit extends ItemArmor implements IArmorTextureProvider {
 
 	public P1HUDUnit(int par1, EnumArmorMaterial material, int i, int j, boolean breathable) {
 	   super(par1, material, i, j);
-	   setCreativeTab(Remula.tabRemula);
+	   setCreativeTab(Remula.tabEquip);
 	   this.attachedMask = breathable;
    }
  

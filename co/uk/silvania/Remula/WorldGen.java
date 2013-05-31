@@ -38,7 +38,7 @@ public class WorldGen implements IWorldGenerator{
 			int yCoord = random.nextInt(20);
 			int zCoord = chunkZ + random.nextInt(16);
 			
-			(new WorldGenMinable(Remula.remulaOre.blockID, 5)).generate(world, random, xCoord, yCoord, zCoord);
+			//(new WorldGenMinable(Remula.remulaOre.blockID, 5)).generate(world, random, xCoord, yCoord, zCoord);
 		}
 	}
     

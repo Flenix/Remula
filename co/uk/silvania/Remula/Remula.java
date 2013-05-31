@@ -85,6 +85,11 @@ public class Remula {
 			return new ItemStack(Block.stone, 1, 0);
 		}
 	};
+	public static CreativeTabs tabEquip = new CreativeTabs("tabEquip") {
+		public ItemStack getIconItemStack() {
+			return new ItemStack(Remula.p1HudUnit, 1, 0);
+		}
+	};
 	public static CreativeTabs tabMisc = new CreativeTabs("tabMisc") {
 		public ItemStack getIconItemStack() {
 			return new ItemStack(Block.stone, 1, 0);
@@ -112,18 +117,11 @@ public class Remula {
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
     	NetworkRegistry.instance().registerGuiHandler(this, remulaGuiHandler);
-    }/*
+    }
 	public static WorldGen worldGen = new WorldGen();
-	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);*/
+	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);
 	
     //Blocks (IDs 1800-2000 to avoid clash with top 100 mods)
-    public final static Block silvaniteOre = new SilvaniteOre(1800).setUnlocalizedName("silvaniteOre");
-    public final static Block merciliteOre = new MerciliteOre(1801).setUnlocalizedName("merciliteOre");
-    public final static Block remulaOre = new RemulaOre(1802).setUnlocalizedName("remulaOre");
-    public final static Block copperOre = new CopperOre(1803).setUnlocalizedName("copperOre");
-    public final static Block tinOre = new TinOre(1804).setUnlocalizedName("tinOre");
-    public final static Block zincOre = new ZincOre(1805).setUnlocalizedName("zincOre");
-    public final static Block silverOre = new SilverOre(1806).setUnlocalizedName("silverOre");
     public final static Block rubberLog = new RubberLog(1807, Material.wood).setUnlocalizedName("rubberLog");
     public final static Block rubberSapling = new RubberSapling(1808).setUnlocalizedName("rubberSapling");
     public final static Block rubberLeaves = new RubberLeaves(1809).setUnlocalizedName("rubberLeaves");
@@ -141,141 +139,69 @@ public class Remula {
     //Reactor Part 1828
     //Reactor Part 1829
     //Reactor Part 1830
-    public final static Block silvaniteChest = new SilvaniteChest(1850).setUnlocalizedName("silvaniteChest");
-    public final static Block merciliteChest = new MerciliteChest(1851).setUnlocalizedName("merciliteChest");
-    public final static Block remulaChest = new RemulaChest(1852).setUnlocalizedName("remulaChest");
+    public final static Block silvaniteChest = new SilvaniteChest(1830).setUnlocalizedName("silvaniteChest");
+    public final static Block merciliteChest = new MerciliteChest(1831).setUnlocalizedName("merciliteChest");
+    public final static Block remulaChest = new RemulaChest(1832).setUnlocalizedName("remulaChest");
     
-    //Akatoe WGEN stuff
     public final static Block akatoeStone = new AkatoeStone(200, Material.rock).setUnlocalizedName("akatoeStone");
     public final static Block akatoeGrass = new AkatoeGrass(201).setUnlocalizedName("akatoeGrass");
     public final static Block akatoeDirt = new AkatoeDirt(202).setUnlocalizedName("akatoeGround");
     public final static Block akatoeSand = new AkatoeSand(203, Material.sand).setUnlocalizedName("akatoeSand");
-    
-    //Baloinus WGEN stuff
     public final static Block baloinusStone = new BaloinusStone(205, Material.rock);
-    
-    //Indiku WGEN stuff
     public final static Block indikuStone = new IndikuStone(206, Material.rock).setUnlocalizedName("indikuStone");
     public final static Block indikuDirt = new IndikuDirt(207).setUnlocalizedName("indikuDirt");
     public final static Block indikuGrass = new IndikuGrass(208).setUnlocalizedName("indikuGrass");
-    
-    //Elkost WGEN stuff
     public final static Block elkostSand = new ElkostSand(209, Material.sand).setUnlocalizedName("elkostSand");
-    
-    //Xylexia WGEN stuff
     public final static Block xylexianStone = new XylexianStone(210, Material.rock).setUnlocalizedName("xylexianStone");
-    
-    //Deep Space WGEN stuff
+    public final static Block xylexianSand = new XylexianSand(211, Material.sand).setUnlocalizedName("xylexianSand");
     public final static Block deepSpaceBrownAsteroidRock = new DeepSpaceBrownAsteroid(220, Material.rock).setUnlocalizedName("deepSpaceAsteroidRock");
     public final static Block deepSpaceWhiteAsteroidRock = new DeepSpaceWhiteAsteroid(221, Material.rock).setUnlocalizedName("deepSpaceMeteoriteRock");
     
-    //Rest of Akatoe blocks
-    public final static Block akatoePortal = new AkatoePortalBlock(1900).setUnlocalizedName("akatoePortal");
-    public final static Block akatoeTilledDirt = new AkatoeTilledDirt(1901).setUnlocalizedName("akatoeTilledDirt");
+    //Rest of blocks
+
     //public final static Block porinCrop = new PorinCrop(1920).setUnlocalizedName("porinCrop");
     //public final static Block ulinCrop = new UlinCrop(1921).setUnlocalizedName("ulinCrop");
     //public final static Block cirCrop = new CirCrop(1922).setUnlocalizedName("cirCrop");
     //public final static Block boskinCrop = new BoskinCrop(1923).setUnlocalizedName("boskinCrop");
 	public final static Block plantFuxii = new PlantFuxii(1924).setUnlocalizedName("plantFuxii");
-	//Tree
-	//Leaves*/
-	
-    public final static Block akatoeTerrainBlocks = new AkatoeTerrainBlocks(1940, Material.rock).setUnlocalizedName("akatoeTerrainBlocks");
-    public final static Block akatoeOreBlocks = new AkatoeOreBlocks(1941).setUnlocalizedName("akatoeOreBlocks");
+	//Tree x3
+	//Leaves x3
+    public final static Block akatoeTerrainBlocks = new AkatoeTerrainBlocks(1900, Material.rock).setUnlocalizedName("akatoeTerrainBlocks");
+    public final static Block baloinusTerrainBlocks = new BaloinusTerrainBlocks(1901, Material.rock).setUnlocalizedName("baloinusTerrainBlocks");
+    public final static Block indikuTerrainBlocks = new IndikuTerrainBlocks(1902, Material.rock).setUnlocalizedName("indikuTerrainBlocks");
+    public final static Block elkostTerrainBlocks = new ElkostTerrainBlocks(1903, Material.rock).setUnlocalizedName("elkostTerrainBlocks");
+    public final static Block xylexiaTerrainBlocks = new XylexiaTerrainBlocks(1904, Material.rock).setUnlocalizedName("xylexiaTerrainBlocks");
+    public final static Block deepSpaceTerrainBlocks = new DeepSpaceTerrainBlocks(1905, Material.rock).setUnlocalizedName("deepSpaceTerrainBlocks");
+    //1905-1920 reserved for new dimensional blocks
     
-    public final static Block baloinusPortal = new BaloinusPortalBlock(1953).setUnlocalizedName("baloinusPortal");
-    public final static Block baloinusTerrainBlocks = new BaloinusTerrainBlocks(1950, Material.rock).setUnlocalizedName("baloinusTerrainBlocks");
-    public final static Block baloinusOreBlocks = new BaloinusOreBlocks(1951).setUnlocalizedName("baloinusOreBlocks");
+    public final static Block earthOreBlocks = new EarthOreBlocks(1920).setUnlocalizedName("earthOreBlocks");
+    public final static Block akatoeOreBlocks = new AkatoeOreBlocks(1921).setUnlocalizedName("akatoeOreBlocks");
+    public final static Block baloinusOreBlocks = new BaloinusOreBlocks(1923).setUnlocalizedName("baloinusOreBlocks");
+    public final static Block indikuOreBlocks = new IndikuOreBlocks(1925).setUnlocalizedName("indikuOreBlocks");
+    public final static Block elkostOreBlocks = new ElkostOreBlocks(1927).setUnlocalizedName("elkostOreBlocks");
+    public final static Block xylexiaOreBlocks = new XylexiaOreBlocks(1929).setUnlocalizedName("xylexiaOreBlocks");
+    public final static Block deepSpaceBrownOreBlocks = new DeepSpaceBrownOreBlocks(1931).setUnlocalizedName("deepSpaceBrownOreBlocks");
+    public final static Block deepSpaceWhiteOreBlocks = new DeepSpaceWhiteOreBlocks(1932).setUnlocalizedName("deepSpaceWhiteOreBlocks");
+    //public final static Block deepSpaceExtraOreBlocks = new DeepSpaceExtraOreBlocks(1933).setUnlocalizedName("deepSpaceExtraOreBlocks");
+    //1934-1950 reserved for dimensional ore blocks
     
-    public final static Block indikuTerrainBlocks = new IndikuTerrainBlocks(1942, Material.rock).setUnlocalizedName("indikuTerrainBlocks");
-    public final static Block indikuOreBlocks = new IndikuOreBlocks(1943).setUnlocalizedName("indikuOreBlocks");
-    public final static Block indikuPortal = new IndikuPortalBlock(1952).setUnlocalizedName("indikuPortal");
-    public final static Block indikuTilledDirt = new IndikuTilledDirt(1960).setUnlocalizedName("indikuTilledDirt");
+    public final static Block akatoePortal = new AkatoePortalBlock(1851).setUnlocalizedName("akatoePortal");
+    public final static Block baloinusPortal = new BaloinusPortalBlock(1852).setUnlocalizedName("baloinusPortal");
+    public final static Block indikuPortal = new IndikuPortalBlock(1853).setUnlocalizedName("indikuPortal");
+    public final static Block elkostPortal = new ElkostPortalBlock(1854).setUnlocalizedName("elkostPortal");
+    public final static Block xylexiaPortal = new XylexiaPortalBlock(1855).setUnlocalizedName("xylexiaPortal");
+    public final static Block deepSpacePortal = new DeepSpacePortalBlock(1856).setUnlocalizedName("deepSpacePortal");
+    //1955-1970 reserved for portal blocks
     
-    public final static Block elkostTerrainBlocks = new ElkostTerrainBlocks(1944, Material.rock).setUnlocalizedName("elkostTerrainBlocks");
-    public final static Block elkostOreBlocks = new ElkostOreBlocks(1945).setUnlocalizedName("elkostOreBlocks");
-    public final static Block elkostPortal = new ElkostPortalBlock(1946).setUnlocalizedName("elkostPortal");
-    
-    public final static Block xylexiaTerrainBlocks = new XylexiaTerrainBlocks(1947, Material.rock).setUnlocalizedName("xylexiaTerrainBlocks");
-    public final static Block xylexiaOreBlocks = new XylexiaOreBlocks(1948).setUnlocalizedName("xylexiaOreBlocks");
-    public final static Block xylexiaPortal = new XylexiaPortalBlock(1949).setUnlocalizedName("xylexiaPortal");
-    
-    public final static Block deepSpacePortal = new DeepSpacePortalBlock(1954).setUnlocalizedName("deepSpacePortal");
-    public final static Block deepSpaceTerrainBlocks = new DeepSpaceTerrainBlocks(1955, Material.rock).setUnlocalizedName("deepSpaceTerrainBlocks");
-    public final static Block deepSpaceBrownOreBlocks = new DeepSpaceBrownOreBlocks(1956).setUnlocalizedName("deepSpaceBrownOreBlocks");
-    public final static Block deepSpaceWhiteOreBlocks = new DeepSpaceWhiteOreBlocks(1957).setUnlocalizedName("deepSpaceWhiteOreBlocks");
-    //public final static Block deepSpaceExtraOreBlocks = new DeepSpaceExtraOreBlocks(1958).setUnlocalizedName("deepSpaceExtraOreBlocks");
-    
+    public final static Block akatoeTilledDirt = new AkatoeTilledDirt(1871).setUnlocalizedName("akatoeTilledDirt");
+    public final static Block indikuTilledDirt = new IndikuTilledDirt(1872).setUnlocalizedName("indikuTilledDirt");
+    public final static Block elkostGlassPane = new ElkostGlassPane(1873, Material.glass).setUnlocalizedName("elkostGlassPane");
+    public final static Block xylexianGlassPane = new XylexianGlassPane(1874, Material.glass).setUnlocalizedName("xylexianGlassPane");
 
-    
-    //Rest of Indiku Blocks
-    //Trees Multiblock
-    //Leaves Multiblock
-    //Crop 1
-    //Crop 2
-    //Crop 3
-    //Crop 4
-    //Crop 5
-    //Crop 6
-    //Crop 7
-    //Crop 8
-    //Plant 1
-    //Plant 2
-    //Plant 3
-    //Plant 4
-    //Plant 5
-    //Plant 6
-    //Plant 7
-    //Plant 8
-    //Plant 9
-    //Plant 10
-    //Plant 11
-    //Plant 12
-    //Plant 13
-    //Plant 14
-    //Plant 15
-    //Plant 16
-    
-    
-    //Rest of Elkost Blocks
-    public final static Block elkostGlassPane = new ElkostGlassPane(2044, Material.glass).setUnlocalizedName("elkostGlassPane");
-    
-    //Rest of Xylexia Blocks
-    public final static Block xylexianSand = new XylexianSand(2075, Material.sand).setUnlocalizedName("xylexianSand");
-    public final static Block xylexianGlassPane = new XylexianGlassPane(2095, Material.glass).setUnlocalizedName("xylexianGlassPane");
-    
-    
-    /*Liquids:
-    Silvanite
-    Mercilite
-    Remula
-    Redstone
-    Lapis
-    Porinite
-    Pilk
-    Tritanite
-    Ventiium
-    Athirium
-    Zirinium
-    Boria
-    Tristinium
-    Grinist
-    Heri
-    Skatha
-    Kzori
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    */
+    //TODO - 8 Indiku trees, 8 crops, 16 plants
+    //Liquids: Silvanite, Mercilite, Remula, Redstone, Lapis, Porinite, Pilk, Tritanite, Ventiium, Athirium, Zirinium, Boria, Tristinium, Grinist, Heri, Skatha, Kzori 
+    // + 12 more
+
        
     //Items (IDs 17000 - 17300)
     public final static Item emptyCell = new EmptyCell(17000).setUnlocalizedName("emptyCell");
@@ -326,10 +252,10 @@ public class Remula {
 	public final static Item midP9RobotSpawner = new MidP9RobotSpawner(17038).setUnlocalizedName("midP9RobotSpawner");
 	public final static Item advancedP9RobotSpawner = new AdvancedP9RobotSpawner(17039).setUnlocalizedName("advancedP9RobotSpawner");
 	//TODO find a decent plant tutorial o.O
-	public final static Item porinSeeds = new PorinSeeds(17040, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("porinSeeds");
-	public final static Item ulinSeeds = new UlinSeeds(17041, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("ulinSeeds");
-	public final static Item cirSeeds = new CirSeeds(17042, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("cirSeeds");
-	public final static Item boskinSeeds = new BoskinSeeds(17043, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("boskinSeeds");
+	//public final static Item porinSeeds = new PorinSeeds(17040, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("porinSeeds");
+	//public final static Item ulinSeeds = new UlinSeeds(17041, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("ulinSeeds");
+	//public final static Item cirSeeds = new CirSeeds(17042, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("cirSeeds");
+	//public final static Item boskinSeeds = new BoskinSeeds(17043, remulaOre.blockID, akatoeTilledDirt.blockID).setUnlocalizedName("boskinSeeds");
 	public final static Item porinFruit = new PorinFruit(17044, 5, 3.0F, false).setUnlocalizedName("porinFruit");
 	public final static Item ulinFruit = new UlinFruit(17045, 2, 1.0F, false).setUnlocalizedName("ulinFruit");
 	public final static Item itemCir = new ItemCir(17046).setUnlocalizedName("itemCir");
@@ -357,7 +283,7 @@ public class Remula {
 	public final static Item cookedLignisMeat = new CookedLignisMeat(17070, 16, 15.0F, false).setUnlocalizedName("cookedLingisMeat");
 	
 	
-	//public final static Item p1HudUnit = new P1HUDUnit(17071, SpaceSuit1, 1, 0, false).setUnlocalizedName("p1HudUnit");
+	public final static Item p1HudUnit = new P1HUDUnit(17071, SpaceSuit1, 1, 0, false).setUnlocalizedName("p1HudUnit");
 	//public final static Item p1SpaceSuitHelmet = new P1SpaceSuit(17056, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 0).setUnlocalizedName("p1SpaceSuitHelmet");
 	//public final static Item p1SpaceSuitBody = new P1SpaceSuit(17057, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 1).setUnlocalizedName("p1SpaceSuitBody");
 	//public final static Item p1SpaceSuitLegs = new P1SpaceSuit(17058, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 2).setUnlocalizedName("p1SpaceSuitLegs");
@@ -385,13 +311,6 @@ public class Remula {
                  
             //The whitespace here is simply for organisation. I like to keep it neat.
             //If you're trying to learn from my code (good luck ;)), the below section doesn't need to be in any specific order.
-            OreDictionary.registerOre("oreSilvanite", new ItemStack(silvaniteOre));
-            OreDictionary.registerOre("oreMercilite", new ItemStack (merciliteOre));
-            OreDictionary.registerOre("oreRemula", new ItemStack (remulaOre));
-            OreDictionary.registerOre("oreCopper", new ItemStack (copperOre));
-            OreDictionary.registerOre("oreTin", new ItemStack (tinOre));
-            OreDictionary.registerOre("oreZinc", new ItemStack (zincOre));
-            OreDictionary.registerOre("oreSilver", new ItemStack (silverOre));
             OreDictionary.registerOre("woodRubber", new ItemStack (rubberLog));
             OreDictionary.registerOre("oreCoal", new ItemStack(akatoeOreBlocks, 1, 0));
             OreDictionary.registerOre("oreIron", new ItemStack(akatoeOreBlocks, 1, 3));
@@ -405,14 +324,6 @@ public class Remula {
             OreDictionary.registerOre("oreAkatoe", new ItemStack(akatoeOreBlocks, 1, 9));
             
             //Register names for blocks
-            //Ores
-            LanguageRegistry.addName(silvaniteOre, "Silvanite Ore");
-            LanguageRegistry.addName(merciliteOre, "Mercilite Ore");
-            LanguageRegistry.addName(remulaOre, "Remula Ore");
-            LanguageRegistry.addName(copperOre, "Copper Ore");
-            LanguageRegistry.addName(tinOre, "Tin Ore");
-            LanguageRegistry.addName(zincOre, "Zinc Ore");
-            LanguageRegistry.addName(silverOre, "Silver Ore");
             
             //Tree Stuff
             LanguageRegistry.addName(rubberLog, "Rubber Log");
@@ -477,16 +388,6 @@ public class Remula {
             LanguageRegistry.addName(deepSpaceWhiteAsteroidRock, "Asteroid Rock");
             
             //Register Blocks
-            //Earth Ores
-            GameRegistry.registerBlock(remulaOre, "remulaOre");
-            GameRegistry.registerBlock(merciliteOre, "merciliteOre");
-            GameRegistry.registerBlock(silvaniteOre, "silvaniteOre");
-            GameRegistry.registerBlock(copperOre, "copperOre");
-            GameRegistry.registerBlock(tinOre, "tinOre");
-            GameRegistry.registerBlock(zincOre, "zincOre");
-            GameRegistry.registerBlock(silverOre, "silverOre");
-            
-            
             //Plants and Nature
             GameRegistry.registerBlock(rubberLog, "rubberLog");
             //GameRegistry.registerBlock(rubberLeaves, "rubberLeaves");
@@ -527,6 +428,15 @@ public class Remula {
             //Baloinus
             GameRegistry.registerBlock(baloinusPortal, "baloinusPortal");
             GameRegistry.registerBlock(baloinusStone, "baloinusStone");
+            
+            GameRegistry.registerBlock(earthOreBlocks, ItemEarthOreBlocks.class, "Remula" + (earthOreBlocks.getUnlocalizedName().substring(5)));
+            LanguageRegistry.addName(new ItemStack(earthOreBlocks, 1, 0), "Copper Ore");
+            LanguageRegistry.addName(new ItemStack(earthOreBlocks, 1, 1), "Tin Ore");
+            LanguageRegistry.addName(new ItemStack(earthOreBlocks, 1, 2), "Zinc Ore");
+            LanguageRegistry.addName(new ItemStack(earthOreBlocks, 1, 3), "Silver Ore");
+            LanguageRegistry.addName(new ItemStack(earthOreBlocks, 1, 4), "Silvanite Ore");
+            LanguageRegistry.addName(new ItemStack(earthOreBlocks, 1, 5), "Mercilite Ore");
+            LanguageRegistry.addName(new ItemStack(earthOreBlocks, 1, 6), "Remula Ore");
             
             GameRegistry.registerBlock(akatoeTerrainBlocks, ItemAkatoeTerrainBlocks.class, "Remula" + (akatoeTerrainBlocks.getUnlocalizedName().substring(5)));
             GameRegistry.registerBlock(akatoeOreBlocks, ItemAkatoeOreBlocks.class, "Remula" + (akatoeOreBlocks.getUnlocalizedName().substring(5)));
@@ -691,138 +601,40 @@ public class Remula {
             LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 15), "");
             
             //Indiku
-            /*GameRegistry.registerBlock(indikuStone, "indikuStone");
+            GameRegistry.registerBlock(indikuStone, "indikuStone");
             GameRegistry.registerBlock(indikuDirt, "indikuDirt");
             GameRegistry.registerBlock(indikuGrass, "indikuGrass");
-            GameRegistry.registerBlock(indikuCobblestone, "indikuCobblestone");
-            GameRegistry.registerBlock(indikuBricks, "indikuBricks");
-            GameRegistry.registerBlock(indikuSmallBricks, "indikuSmallBricks");
-            GameRegistry.registerBlock(indikuRefinedStone, "indikuRefinedStone");
             GameRegistry.registerBlock(indikuTilledDirt, "indikuTilledDirt");
-            GameRegistry.registerBlock(indikuCoalOre, "indikuCoalOre");
-            GameRegistry.registerBlock(indikuCopperOre, "indikuCopperOre");
-            GameRegistry.registerBlock(indikuTinOre, "indikuTinOre");
-            GameRegistry.registerBlock(indikuIronOre, "indikuIronOre");
-            GameRegistry.registerBlock(indikuGoldOre, "indikuGoldOre");
-            GameRegistry.registerBlock(indikuLapisLazuliOre, "indikuLapisLazuliOre");
-            GameRegistry.registerBlock(indikuRemulaOre, "indikuRemulaOre");
-            GameRegistry.registerBlock(indikuTritaniteOre, "indikuTritaniteOre");
-            GameRegistry.registerBlock(indikuVentiiumOre, "indikuVentiiumOre");
-            GameRegistry.registerBlock(indikuArithiumOre, "indikuArithiumOre");
-            GameRegistry.registerBlock(indikuZiriniumOre, "indikuZiriniumOre");
-            GameRegistry.registerBlock(indikiteOre, "indikiteOre");
             
             //Elkost
             GameRegistry.registerBlock(elkostSand, "elkostSand");
-            GameRegistry.registerBlock(elkostStone, "elkostStone");
-            GameRegistry.registerBlock(elkostCobblestone, "elkostCobblestone");
-            GameRegistry.registerBlock(elkostBricks, "elkostBricks");
-            GameRegistry.registerBlock(elkostSmallBricks, "elkostSmallBricks");
-            GameRegistry.registerBlock(elkostRefinedStone, "elkostRefinedStone");
-            GameRegistry.registerBlock(elkostCoalOre, "elkostCoalOre");
-            GameRegistry.registerBlock(elkostCopperOre, "elkostCopperOre");
-            GameRegistry.registerBlock(elkostTinOre, "elkostTinOre");
-            GameRegistry.registerBlock(elkostIronOre, "elkostIronOre");
-            GameRegistry.registerBlock(elkostGoldOre, "elkostGoldOre");
-            GameRegistry.registerBlock(elkostLapisLazuliOre, "elkostLapisLazuliOre");
-            GameRegistry.registerBlock(elkostRemulaOre, "elkostRemulaOre");
-            GameRegistry.registerBlock(elkostTritaniteOre, "elkostTritaniteOre");
-            GameRegistry.registerBlock(elkostZiriniumOre, "elkostZiriniumOre");
-            GameRegistry.registerBlock(elkostBoriaOre, "elkostVentiiumOre");
-            GameRegistry.registerBlock(elkostTristaniumOre, "elkostArithiumOre");
-            GameRegistry.registerBlock(elkostGrinistOre, "elkostGrinistOre");
-            GameRegistry.registerBlock(elkostiumOre, "elkostiumOre");
-            GameRegistry.registerBlock(elkostGlass, "elkostGlass");
             GameRegistry.registerBlock(elkostGlassPane, "elkostGlassPane");
             
             //Xylexia
             GameRegistry.registerBlock(xylexianSand, "xylexianSand");
             GameRegistry.registerBlock(xylexianStone, "xylexianStone");
-            GameRegistry.registerBlock(xylexianCobblestone, "xylexianCobblestone");
-            GameRegistry.registerBlock(xylexianBricks, "xylexianBricks");
-            GameRegistry.registerBlock(xylexianSmallBricks, "xylexianSmallBricks");
-            GameRegistry.registerBlock(xylexianRefinedStone, "xylexianRefined Stone");
-            GameRegistry.registerBlock(xylexianCoalOre, "xylexianCoalOre");
-            GameRegistry.registerBlock(xylexianCopperOre, "xylexianCopperOre");
-            GameRegistry.registerBlock(xylexianTinOre, "xylexianTinOre");
-            GameRegistry.registerBlock(xylexianIronOre, "xylexianIronOre");
-            GameRegistry.registerBlock(xylexianGoldOre, "xylexianGoldOre");
-            GameRegistry.registerBlock(xylexianLapisLazuliOre, "xylexianLapisLazuliOre");
-            GameRegistry.registerBlock(xylexianRemulaOre, "xylexianRemulaOre");
-            GameRegistry.registerBlock(xylexianTritaniteOre, "xylexianTritaniteOre");
-            GameRegistry.registerBlock(xylexianZiriniumOre, "xylexianZiriniumOre");
-            GameRegistry.registerBlock(xylexianGrinistOre, "xylexianGrinistOre");
-            GameRegistry.registerBlock(xylexianHeriOre, "xylexianHeriOre");
-            GameRegistry.registerBlock(xylexianSkathaOre, "xylexianSkathaOre");
-            GameRegistry.registerBlock(xylexianKzoriOre, "xylexianKzoriOre");
-            GameRegistry.registerBlock(xylexianiumOre, "XylexianiumOre");
-            GameRegistry.registerBlock(xylexianGlass, "xylexianGlass");
             GameRegistry.registerBlock(xylexianGlassPane, "xylexianGlassPane");
             
             //Deep Space
             GameRegistry.registerBlock(deepSpacePortal, "deepSpacePortal");
             GameRegistry.registerBlock(deepSpaceBrownAsteroidRock, "deepSpaceAsteroidRock");
             GameRegistry.registerBlock(deepSpaceWhiteAsteroidRock, "deepSpaceMeteoriteRock");
-            GameRegistry.registerBlock(brownAsteroidRubble, "brownAsteroidRubble");
-            GameRegistry.registerBlock(brownAsteroidBricks, "brownAsteroidBricks");
-            GameRegistry.registerBlock(brownAsteroidSmallBricks, "brownAsteroidSmallBricks");
-            GameRegistry.registerBlock(brownAsteroidCopperOre, "brownAsteroidCopperOre");
-            GameRegistry.registerBlock(brownAsteroidTinOre, "brownAsteroidTinOre");
-            GameRegistry.registerBlock(brownAsteroidIronOre, "brownAsteroidIronOre");
-            GameRegistry.registerBlock(brownAsteroidSilvaniteOre, "brownAsteroidSilvaniteOre");
-            GameRegistry.registerBlock(brownAsteroidPoriniteOre, "brownAsteroidPoriniteOre");
-            GameRegistry.registerBlock(brownAsteroidSirianOre, "brownAsteroidSirianOre");
-            GameRegistry.registerBlock(brownAsteroidFariteOre, "brownAsteroidFariteOre");
-            GameRegistry.registerBlock(brownAsteroidZincOre, "brownAsteroidZincOre");
-            GameRegistry.registerBlock(brownAsteroidDragiteOre, "brownAsteroidDragiteOre");
-            GameRegistry.registerBlock(brownAsteroidThoriOre, "brownAsteroidThoriOre");
-            GameRegistry.registerBlock(brownAsteroidVentiiumOre, "brownAsteroidVentiiumOre");
-            GameRegistry.registerBlock(brownAsteroidFarithiumOre, "brownAsteroidFarithiumOre");
-            GameRegistry.registerBlock(brownAsteroidBoriaOre, "brownAsteroidBoriaOre");
-            GameRegistry.registerBlock(brownAsteroidHeriOre, "brownAsteroidHeriOre");
-            //GameRegistry.registerBlock(brownAsteroidP6, "brownAsteroidOre");
-            //GameRegistry.registerBlock(brownAsteroidP7, "brownAsteroidOre");
-            //GameRegistry.registerBlock(brownAsteroidP8, "brownAsteroidOre");
-            //GameRegistry.registerBlock(brownAsteroidP9, "brownAsteroidOre");
-            GameRegistry.registerBlock(whiteAsteroidRubble, "whiteAsteroidRubble");
-            GameRegistry.registerBlock(whiteAsteroidBricks, "whiteAsteroidBricks");
-            GameRegistry.registerBlock(whiteAsteroidSmallBricks, "whiteAsteroidSmallBricks");
-            GameRegistry.registerBlock(whiteAsteroidCopperOre, "whiteAsteroidCopperOre");
-            GameRegistry.registerBlock(whiteAsteroidTinOre, "whiteAsteroidTinOre");
-            GameRegistry.registerBlock(whiteAsteroidIronOre, "whiteAsteroidIronOre");
-            GameRegistry.registerBlock(whiteAsteroidSilvaniteOre, "whiteAsteroidSilvaniteOre");
-            GameRegistry.registerBlock(whiteAsteroidPoriniteOre, "whiteAsteroidPoriniteOre");
-            GameRegistry.registerBlock(whiteAsteroidSirianOre, "whiteAsteroidSirianOre");
-            GameRegistry.registerBlock(whiteAsteroidFariteOre, "whiteAsteroidFariteOre");
-            GameRegistry.registerBlock(whiteAsteroidZincOre, "whiteAsteroidZincOre");
-            GameRegistry.registerBlock(whiteAsteroidDragiteOre, "whiteAsteroidDragiteOre");
-            GameRegistry.registerBlock(whiteAsteroidThoriOre, "whiteAsteroidThoriOre");
-            GameRegistry.registerBlock(whiteAsteroidVentiiumOre, "whiteAsteroidVentiiumOre");
-            GameRegistry.registerBlock(whiteAsteroidFarithiumOre, "whiteAsteroidFarithiumOre");
-            GameRegistry.registerBlock(whiteAsteroidBoriaOre, "whiteAsteroidBoriaOre");
-            GameRegistry.registerBlock(whiteAsteroidHeriOre, "whiteAsteroidHeriOre");
-            //GameRegistry.registerBlock(whiteAsteroidP6, "whiteAsteroidOre");
-            //GameRegistry.registerBlock(whiteAsteroidP7, "whiteAsteroidOre");
-            //GameRegistry.registerBlock(whiteAsteroidP8, "whiteAsteroidOre");
-            //GameRegistry.registerBlock(whiteAsteroidP9, "whiteAsteroidOre");
-            GameRegistry.registerBlock(indikuPortalBlock, "indikuPortalBlock");
-            GameRegistry.registerBlock(elkostPortalBlock, "elkostPortalBlock");
-            GameRegistry.registerBlock(xylexianPortalBlock, "xylexianPortalBlock");
             
             //Ore Mining Requirements
-            MinecraftForge.setBlockHarvestLevel(silvaniteOre, "pickaxe", 1);
+            /*MinecraftForge.setBlockHarvestLevel(silvaniteOre, "pickaxe", 1);
             MinecraftForge.setBlockHarvestLevel(merciliteOre, "pickaxe", 2);
             MinecraftForge.setBlockHarvestLevel(remulaOre, "pickaxe", 3);
             MinecraftForge.setBlockHarvestLevel(copperOre, "pickaxe", 1);
             MinecraftForge.setBlockHarvestLevel(tinOre, "pickaxe", 1);
             MinecraftForge.setBlockHarvestLevel(zincOre, "pickaxe", 2);
-            MinecraftForge.setBlockHarvestLevel(silverOre, "pickaxe", 2);
-            MinecraftForge.setBlockHarvestLevel(akatoeCoal, "pickaxe", 0);
-            MinecraftForge.setBlockHarvestLevel(akatoeIron, "pickaxe", 1);
-            MinecraftForge.setBlockHarvestLevel(akatoeGold, "pickaxe", 2);
-            MinecraftForge.setBlockHarvestLevel(akatoeCopper, "pickaxe", 1);
-            MinecraftForge.setBlockHarvestLevel(akatoeTin, "pickaxe", 1);
-            MinecraftForge.setBlockHarvestLevel(akatoeLapis, "pickaxe", 2);
+            MinecraftForge.setBlockHarvestLevel(silverOre, "pickaxe", 2);*/
+            //TODO fix
+            //MinecraftForge.setBlockHarvestLevel(akatoeCoal, "pickaxe", 0);
+            //MinecraftForge.setBlockHarvestLevel(akatoeIron, "pickaxe", 1);
+            //MinecraftForge.setBlockHarvestLevel(akatoeGold, "pickaxe", 2);
+            //MinecraftForge.setBlockHarvestLevel(akatoeCopper, "pickaxe", 1);
+            //MinecraftForge.setBlockHarvestLevel(akatoeTin, "pickaxe", 1);
+            //MinecraftForge.setBlockHarvestLevel(akatoeLapis, "pickaxe", 2);
             MinecraftForge.setBlockHarvestLevel(akatoeStone, "pickaxe", 0);
             MinecraftForge.setBlockHarvestLevel(baloinusStone, "pickaxe", 0);
             MinecraftForge.setBlockHarvestLevel(deepSpaceBrownAsteroidRock, "pickaxe", 0);
@@ -870,13 +682,13 @@ public class Remula {
             
             //Foods and Plant Stuff
             LanguageRegistry.addName(porinFruit, "Porin");
-            LanguageRegistry.addName(porinSeeds, "Porin Seeds");
+            //LanguageRegistry.addName(porinSeeds, "Porin Seeds");
             LanguageRegistry.addName(ulinFruit, "Ulin");
-            LanguageRegistry.addName(ulinSeeds, "Ulin Seeds");
+            //LanguageRegistry.addName(ulinSeeds, "Ulin Seeds");
             LanguageRegistry.addName(itemCir, "Cir");
-            LanguageRegistry.addName(cirSeeds, "Cir Seeds");
+            //LanguageRegistry.addName(cirSeeds, "Cir Seeds");
             LanguageRegistry.addName(itemBoskin, "Boskin");
-            LanguageRegistry.addName(boskinSeeds, "Boskin Seeds");
+            //LanguageRegistry.addName(boskinSeeds, "Boskin Seeds");
             LanguageRegistry.addName(rawGlogMeat, "Raw Glog");
             LanguageRegistry.addName(cookedGlogMeat, "Cooked Glog");
             LanguageRegistry.addName(skitterling, "Skitterling");
@@ -977,13 +789,13 @@ public class Remula {
             
             //Food and Plant Stuff
             GameRegistry.registerItem(porinFruit, "porinFruit");
-            GameRegistry.registerItem(porinSeeds, "porinSeeds");
+            //GameRegistry.registerItem(porinSeeds, "porinSeeds");
             GameRegistry.registerItem(ulinFruit, "ulinFruit");
-            GameRegistry.registerItem(ulinSeeds, "ulinSeeds");
+            //GameRegistry.registerItem(ulinSeeds, "ulinSeeds");
             GameRegistry.registerItem(itemCir, "itemCir");
-            GameRegistry.registerItem(cirSeeds, "cirSeeds");
+            //GameRegistry.registerItem(cirSeeds, "cirSeeds");
             GameRegistry.registerItem(itemBoskin, "itemBoskin");
-            GameRegistry.registerItem(boskinSeeds, "boskinSeeds");
+            //GameRegistry.registerItem(boskinSeeds, "boskinSeeds");
             GameRegistry.registerItem(rawGlogMeat, "rawGlogMeat");
             GameRegistry.registerItem(cookedGlogMeat, "cookedGlogMeat");
             GameRegistry.registerItem(skitterling, "skitterling");
@@ -1018,9 +830,11 @@ public class Remula {
             
             //Other Registry Stuff
             LanguageRegistry.instance().addStringLocalization("itemGroup.tabRemula", "en_US", "Remula");
-            LanguageRegistry.instance().addStringLocalization("itemGroup.tabAkatoe", "en_US", "Akatoe");
-            LanguageRegistry.instance().addStringLocalization("itemGroup.tabBaloinus", "en_US", "Baloinus");
-            LanguageRegistry.instance().addStringLocalization("itemGroup.tabDeepSpace", "en_US", "Deep-Space");
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabMinerals", "en_US", "Minerals");
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabMachines", "en_US", "Machines");
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabWorlds", "en_US", "Worlds");
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabEquip", "en_US", "Equipment");
+            LanguageRegistry.instance().addStringLocalization("itemGroup.tabMisc", "en_US", "Misc");
             GameRegistry.registerWorldGenerator(new WorldGen());
             NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
             GameRegistry.removeBiome(akatoePlainsBiome);
@@ -1060,6 +874,7 @@ public class Remula {
             EntityRegistry.addSpawn(EntityHermust.class, 5, 2, 4, EnumCreatureType.creature, Remula.akatoePlainsBiome, Remula.akatoeDesertBiome);
             EntityRegistry.addSpawn(EntityGarfin.class, 5, 3, 7, EnumCreatureType.waterCreature, Remula.akatoePlainsBiome, Remula.akatoeOceanBiome);
             EntityRegistry.addSpawn(EntityLignis.class, 5, 1, 2, EnumCreatureType.creature, Remula.akatoePlainsBiome, Remula.akatoeDesertBiome, Remula.akatoeOceanBiome);
+            EntityRegistry.addSpawn(EntityXylexian.class, 5, 1, 1, EnumCreatureType.monster, Remula.xylexiaPlainsBiome);
             
             LanguageRegistry.instance().addStringLocalization("entity.instance.Akatonian.name", "Akatonian");
             LanguageRegistry.instance().addStringLocalization("entity.instance.Glog.name", "Glog");
@@ -1073,8 +888,8 @@ public class Remula {
             //CRAFTING!
             
             //Ingots
-            ItemStack copperOreStack = new ItemStack(Remula.copperOre);
-            ItemStack tinOreStack = new ItemStack(Remula.tinOre);*/
+            //ItemStack copperOreStack = new ItemStack(Remula.copperOre);
+            //ItemStack tinOreStack = new ItemStack(Remula.tinOre);
             
     }
 

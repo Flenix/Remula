@@ -10,7 +10,7 @@ public class RemulaIngot extends Item {
 	public RemulaIngot(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabMinerals);
 	}
 	
 	public void registerIcons(IconRegister iconRegister)

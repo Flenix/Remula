@@ -13,7 +13,7 @@ public class EmptyCell extends Item {
 	public EmptyCell(int par1) {
 		super(par1);
 		this.setMaxStackSize(64);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabMinerals);
 
 	}
 	

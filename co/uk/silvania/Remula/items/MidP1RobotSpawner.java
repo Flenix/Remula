@@ -13,7 +13,7 @@ public class MidP1RobotSpawner extends Item {
 	public MidP1RobotSpawner(int par1) {
 		super(par1);
 		this.setMaxStackSize(1);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabMachines);
 	}
 	
 	public void registerIcons(IconRegister iconRegister)

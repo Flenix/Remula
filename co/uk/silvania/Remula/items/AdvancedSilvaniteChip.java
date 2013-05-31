@@ -10,7 +10,7 @@ public class AdvancedSilvaniteChip extends Item {
 	public AdvancedSilvaniteChip(int id) {
 		super(id);
 		this.setMaxStackSize(16);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabMachines);
 	}
 	
 	public void registerIcons(IconRegister iconRegister)

@@ -8,15 +8,14 @@ import net.minecraft.item.Item;
 
 public class AdvancedRemulaChip extends Item {
 
-	    public AdvancedRemulaChip(int id) {
-		        super(id);
-		        this.setMaxStackSize(16);
-		        this.setCreativeTab(Remula.tabRemula);
+	public AdvancedRemulaChip(int id) {
+	    super(id);
+	    this.setMaxStackSize(16);
+		this.setCreativeTab(Remula.tabMachines);
 	}
 	    
-		public void registerIcons(IconRegister iconRegister)
-		{
-		         itemIcon = iconRegister.registerIcon("Remula:AdvancedRemulaChip");
-		}
+	public void registerIcons(IconRegister iconRegister) {
+         itemIcon = iconRegister.registerIcon("Remula:AdvancedRemulaChip");
+	}
 
 }
