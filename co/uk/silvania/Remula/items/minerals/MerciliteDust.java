@@ -1,13 +1,13 @@
-package co.uk.silvania.Remula.items;
+package co.uk.silvania.Remula.items.minerals;
 
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 
-public class RemulaCell extends Item {
+public class MerciliteDust extends Item{
 
-	public RemulaCell(int id) {
+	public MerciliteDust(int id) {
 		super(id);
 		this.setMaxStackSize(64);
 		this.setCreativeTab(Remula.tabMinerals);
@@ -15,7 +15,7 @@ public class RemulaCell extends Item {
 	
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         itemIcon = iconRegister.registerIcon("Remula:RemulaCell");
+	         itemIcon = iconRegister.registerIcon("Remula:MerciliteDust");
 	}
 
 }
