@@ -8,6 +8,8 @@ import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockGlass;
+import net.minecraft.block.BlockGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -27,27 +29,27 @@ public class IndikuGrass extends Block
         this.setHardness(0.4F);
     }
     
-	@SideOnly(Side.CLIENT)
 	private Icon sides;
-	@SideOnly(Side.CLIENT)
 	private Icon top;
-	@SideOnly(Side.CLIENT)
 	private Icon base;
 
 	public void registerIcons(IconRegister iconRegister) {
-        this.sides = iconRegister.registerIcon("Remula:IndikuGrassSide");
-        this.top = iconRegister.registerIcon("Remula:IndikuGrassTop");
-        this.base = iconRegister.registerIcon("Remula:IndikuDirt");
+        sides = iconRegister.registerIcon("Remula:IndikuGrassSide");
+        top = iconRegister.registerIcon("Remula:IndikuGrassTop");
+        base = iconRegister.registerIcon("Remula:IndikuDirt");
 	}
    
-	public Icon getBlockTextureFromSideAndMeta(int i, int j) {
-		if(i == 0 | i == 1) {
-			return top;
-		}
-		else {
-			return sides;
-		}
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIcon(int side, int meta)
+    {
+    	if (side == 1)
+    		return top;
+    	if (side == 0)
+    		return base;
+    	
+    	return sides;
+    }
 
 
     //Checks if the grass can recieve light. If not, KILL IT!

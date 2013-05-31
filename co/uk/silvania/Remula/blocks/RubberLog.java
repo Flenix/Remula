@@ -14,9 +14,7 @@ import net.minecraft.world.World;
 
 public class RubberLog extends Block {
 	
-	@SideOnly(Side.CLIENT)
 	private Icon sides;
-	@SideOnly(Side.CLIENT)
 	private Icon top;
 
 	public RubberLog(int id, Material material) {
@@ -27,18 +25,19 @@ public class RubberLog extends Block {
 	}
 	
 	public void registerIcons(IconRegister iconRegister) {
-         this.sides = iconRegister.registerIcon("Remula:RubberLogSide");
-         this.top = iconRegister.registerIcon("Remula:RubberLogTop");
+         sides = iconRegister.registerIcon("Remula:RubberLogSide");
+         top = iconRegister.registerIcon("Remula:RubberLogTop");
 	}
     
-	public Icon getBlockTextureFromSideAndMeta(int i, int j) {
-		if(i == 0 | i == 1) {
-			return top;
-		}
-		else {
-			return sides;
-		}
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIcon(int side, int meta)
+    {
+    	if (side == 1 || side == 0)
+    		return top;
+    	
+    	return sides;
+    }
 
 	
 }

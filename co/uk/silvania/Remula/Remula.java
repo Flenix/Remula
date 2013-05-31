@@ -82,7 +82,7 @@ public class Remula {
 	};
 	public static CreativeTabs tabWorlds = new CreativeTabs("tabWorlds") {
 		public ItemStack getIconItemStack() {
-			return new ItemStack(Block.stone, 1, 0);
+			return new ItemStack(Remula.xylexiaTerrainBlocks, 1, 1);
 		}
 	};
 	public static CreativeTabs tabEquip = new CreativeTabs("tabEquip") {
