@@ -24,7 +24,7 @@ public class BaloinusTerrainBlocks extends Block {
 	
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		icons = new Icon[5];
+		icons = new Icon[6];
 		
 		for(int i = 0; i < icons.length; i++) {
 			icons[i] = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)) + i);
@@ -38,7 +38,7 @@ public class BaloinusTerrainBlocks extends Block {
 	
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs creativeTabs, List list) {
-		for (int var4 = 0; var4 < 5; ++var4) {
+		for (int var4 = 0; var4 < 6; ++var4) {
 			list.add(new ItemStack(par1, 1, var4));
 		}
 	}

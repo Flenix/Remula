@@ -12,12 +12,12 @@ public class XylexianStone extends Block {
 		super(id, material);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
-		this.setStepSound(Block.soundStoneFootstep);
+		this.setStepSound(Block.soundMetalFootstep);
 	}
 
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:XylexianStone");
+	         blockIcon = iconRegister.registerIcon("Remula:XylexiaStone");
 	}
 
 }

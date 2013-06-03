@@ -17,7 +17,7 @@ public class BaloinusPortalBlock extends BlockPortal {
 
 	public BaloinusPortalBlock(int id) {
 		super(id);
-		this.setCreativeTab(Remula.tabRemula);
+		this.setCreativeTab(Remula.tabMisc);
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {

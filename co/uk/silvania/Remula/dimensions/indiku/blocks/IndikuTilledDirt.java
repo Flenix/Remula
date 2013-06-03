@@ -18,8 +18,17 @@ import net.minecraft.util.Icon;
 		super(id, Material.rock);
 		setHardness(1.0F);
 		setResistance(10.0F);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
+        this.setLightOpacity(255);
 		setCreativeTab(Remula.tabWorlds);
 	}
+    public boolean isOpaqueCube() {
+    	return false;
+    }
+    
+    public boolean renderAsNormalBlock() {
+    	return false;
+    }
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {

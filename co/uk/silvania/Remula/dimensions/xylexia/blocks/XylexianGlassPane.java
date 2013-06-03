@@ -17,7 +17,7 @@ public class XylexianGlassPane extends Block {
    
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:XylexianGlass");
+	         blockIcon = iconRegister.registerIcon("Remula:XylexiaGlass");
 	}
 
 }

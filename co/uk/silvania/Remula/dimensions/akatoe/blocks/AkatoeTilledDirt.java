@@ -9,21 +9,53 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
 
-public class AkatoeTilledDirt extends BlockFarmland {
+public class AkatoeTilledDirt extends Block {
 
 	public AkatoeTilledDirt(int id) {
-		super(id);
+		super(id, Material.ground);
         this.setTickRandomly(true);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
         this.setLightOpacity(255);
+        this.setCreativeTab(Remula.tabWorlds);
 	}
+	
+	@SideOnly(Side.CLIENT)
+	private Icon sides;
+	@SideOnly(Side.CLIENT)
+	private Icon top;
+	@SideOnly(Side.CLIENT)
+	private Icon base;
+
+	public void registerIcons(IconRegister iconRegister) {
+        this.sides = iconRegister.registerIcon("Remula:AkatoeDirt");
+        this.top = iconRegister.registerIcon("Remula:AkatoeTilledDirt");
+	}
+   
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIcon(int side, int meta)
+    {
+    	if (side == 1)
+    		return top;
+    	return sides;
+    }
+    
+    public boolean isOpaqueCube() {
+    	return false;
+    }
+    
+    public boolean renderAsNormalBlock() {
+    	return false;
+    }
 }	
     /*public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
         return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)(par2 + 0), (double)(par3 + 0), (double)(par4 + 0), (double)(par2 + 1), (double)(par3 + 1), (double)(par4 + 1));

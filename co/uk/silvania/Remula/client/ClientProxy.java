@@ -22,7 +22,6 @@ import co.uk.silvania.Remula.entity.akatoe.EntityHermust;
 import co.uk.silvania.Remula.entity.akatoe.EntityLignis;
 import co.uk.silvania.Remula.entity.akatoe.EntitySkitterling;
 import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
-import co.uk.silvania.Remula.items.weapons.EntityBronzeBullet;
 import co.uk.silvania.Remula.powergrid.blocks.P1SolarPanel;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -34,7 +33,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityAdvRobot.class, new RenderRobot(new ModelRobot(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAkatonian.class, new RenderAkatonian(new ModelAkatonian(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGlog.class, new RenderGlog(new ModelGlog(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBronzeBullet.class, new RenderBronzeBullet());
 		RenderingRegistry.registerEntityRenderingHandler(EntityXylexian.class, new RenderXylexian(new ModelXylexian(), 3.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySkitterling.class, new RenderSkitterling(new ModelSkitterling(), 0.4F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGarfin.class, new RenderGarfin(new ModelGarfin(), 1.0F));
@@ -44,7 +42,6 @@ public class ClientProxy extends CommonProxy {
 		EntityRegistry.registerGlobalEntityID(EntityAdvRobot.class, "Robot", EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
 		EntityRegistry.registerGlobalEntityID(EntityAkatonian.class, "Akatonian", EntityRegistry.findGlobalUniqueEntityId(), 1234567, 12345);
 		EntityRegistry.registerGlobalEntityID(EntityGlog.class, "Glog", EntityRegistry.findGlobalUniqueEntityId(), 7654321, 54321);		
-		EntityRegistry.registerGlobalEntityID(EntityBronzeBullet.class, "BronzeBullet", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerGlobalEntityID(EntityXylexian.class, "Xylexian", EntityRegistry.findGlobalUniqueEntityId(), 1827364, 15243);
 		EntityRegistry.registerGlobalEntityID(EntitySkitterling.class, "Skitterling", EntityRegistry.findGlobalUniqueEntityId(), 185654, 35637);
 		EntityRegistry.registerGlobalEntityID(EntityGarfin.class, "Garfin", EntityRegistry.findGlobalUniqueEntityId(), 1324563, 15378);

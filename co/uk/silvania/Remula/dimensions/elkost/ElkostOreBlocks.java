@@ -6,13 +6,14 @@ import co.uk.silvania.Remula.Remula;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockOre;
+import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-public class ElkostOreBlocks extends BlockOre {
+public class ElkostOreBlocks extends BlockSand {
 
 	public ElkostOreBlocks(int id) {
 		super(id);

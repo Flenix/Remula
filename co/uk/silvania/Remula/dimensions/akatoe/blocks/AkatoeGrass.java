@@ -40,14 +40,17 @@ public class AkatoeGrass extends Block
         this.base = iconRegister.registerIcon("Remula:AkatoeDirt");
 	}
    
-	public Icon getBlockTextureFromSideAndMeta(int i, int j) {
-		if(i == 0 | i == 1) {
-			return top;
-		}
-		else {
-			return sides;
-		}
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIcon(int side, int meta)
+    {
+    	if (side == 1)
+    		return top;
+    	if (side == 0)
+    		return base;
+    	
+    	return sides;
+    }
 
 
     //Checks if the grass can recieve light. If not, KILL IT!

@@ -66,7 +66,7 @@ public class DeepSpaceWorldProvider extends WorldProvider {
     	
     	if (minecraft.thePlayer.dimension == Remula.deepSpaceDimension) 
         {
-    		if (minecraft.thePlayer.jumpMovementFactor == 1F)
+    		if (minecraft.thePlayer.jumpMovementFactor == 5F)
     		{
     			if (thePlayer.isJumping = true)
     			{
@@ -80,7 +80,7 @@ public class DeepSpaceWorldProvider extends WorldProvider {
     
     public float calculateCelestialAngle(long par1, float par3)
     {
-    	return 1.11F;	 
+    	return 1000.11F;	 
     } 	
 
 }
