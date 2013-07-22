@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.entity.akatoe;
+/*package co.uk.silvania.Remula.entity.akatoe;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,9 +14,6 @@ public class AkatoeTradePlayer extends EntityAIBase
         this.setMutexBits(5);
     }
 
-    /**
-     * Returns whether the EntityAIBase should begin execution.
-     */
     public boolean shouldExecute()
     {
         if (!this.akatonian.isEntityAlive())
@@ -42,19 +39,15 @@ public class AkatoeTradePlayer extends EntityAIBase
         }
     }
 
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
+
     public void startExecuting()
     {
         this.akatonian.getNavigator().clearPathEntity();
     }
 
-    /**
-     * Resets the task
-     */
     public void resetTask()
     {
         this.akatonian.setCustomer((EntityPlayer)null);
     }
 }
+/**/

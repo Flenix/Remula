@@ -5,9 +5,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.IArmorTextureProvider;
  
-public class P1HUDUnit extends ItemArmor implements IArmorTextureProvider {
+public class P1HUDUnit extends ItemArmor {
 	public boolean attachedMask;
 
 	public P1HUDUnit(int par1, EnumArmorMaterial material, int i, int j, boolean breathable) {

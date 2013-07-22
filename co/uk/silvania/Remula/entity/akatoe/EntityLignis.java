@@ -37,7 +37,7 @@ public class EntityLignis extends EntityAnimal {
 	
 	public EntityLignis(World par1World) {
 		super(par1World);
-		this.texture = "/co/uk/silvania/Remula/resources/moblignis.png";
+		//this.texture = "/co/uk/silvania/Remula/resources/moblignis.png";
 		this.getNavigator().setAvoidsWater(true);
 		this.setSize(1.5F, 0.9F);
         this.isImmuneToFire = true;

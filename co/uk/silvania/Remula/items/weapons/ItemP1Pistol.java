@@ -21,7 +21,7 @@ public class ItemP1Pistol extends Item {
 		}
 		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if (!world.isRemote) {
-			world.spawnEntityInWorld(new EntityP1IronBullet(world, player));
+			world.spawnEntityInWorld(new EntityP1IronBullet(world));
 		}
 		return itemStack;
 	}

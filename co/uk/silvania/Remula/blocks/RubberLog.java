@@ -17,8 +17,8 @@ public class RubberLog extends Block {
 	private Icon sides;
 	private Icon top;
 
-	public RubberLog(int id, Material material) {
-		super(id, material);
+	public RubberLog(int id) {
+		super(id, Material.wood);
 		this.setCreativeTab(Remula.tabRemula);
 		this.setStepSound(Block.soundWoodFootstep);
 		this.setHardness(0.7F);

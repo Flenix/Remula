@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.tileentity.container.ContainerLITable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
@@ -262,22 +263,22 @@ public class TileEntityLITable extends TileEntityChest implements IInventory
             this.adjacentChestXNeg = null;
             this.adjacentChestZPosition = null;
 
-            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Remula.remulaCraftingTable.blockID)
+            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Remula.p1CraftingTable.blockID)
             {
                 this.adjacentChestXNeg = (TileEntityLITable)this.worldObj.getBlockTileEntity(this.xCoord - 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Remula.remulaCraftingTable.blockID)
+            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Remula.p1CraftingTable.blockID)
             {
                 this.adjacentChestXPos = (TileEntityLITable)this.worldObj.getBlockTileEntity(this.xCoord + 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Remula.remulaCraftingTable.blockID)
+            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Remula.p1CraftingTable.blockID)
             {
                 this.adjacentChestZNeg = (TileEntityLITable)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord - 1);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Remula.remulaCraftingTable.blockID)
+            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Remula.p1CraftingTable.blockID)
             {
                 this.adjacentChestZPosition = (TileEntityLITable)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord + 1);
             }
@@ -424,13 +425,13 @@ public class TileEntityLITable extends TileEntityChest implements IInventory
     public void openChest()
     {
         ++this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.remulaCraftingTable.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.p1CraftingTable.blockID, 1, this.numUsingPlayers);
     }
 
     public void closeChest()
     {
         --this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.remulaCraftingTable.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.p1CraftingTable.blockID, 1, this.numUsingPlayers);
     }
     
     public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) {

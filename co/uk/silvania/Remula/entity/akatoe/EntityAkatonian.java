@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.entity.akatoe;
+/*package co.uk.silvania.Remula.entity.akatoe;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,6 +10,7 @@ import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -22,7 +23,7 @@ import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIFollowGolem;
 import net.minecraft.entity.ai.EntityAILookAtTradePlayer;
 import net.minecraft.entity.ai.EntityAIMoveIndoors;
-import net.minecraft.entity.ai.EntityAIMoveTwardsRestriction;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAIPlay;
 import net.minecraft.entity.ai.EntityAIRestrictOpenDoor;
@@ -43,6 +44,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
@@ -56,32 +58,23 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
     private boolean isPlaying;
     Village villageObj;
 
-    /** This villager's current customer. */
     private EntityPlayer buyingPlayer;
 
-    /** Initialises the MerchantRecipeList.java */
     private MerchantRecipeList buyingList;
     private int timeUntilReset;
 
-    /** addDefaultEquipmentAndRecipies is called if this is true */
     private boolean needsInitilization;
     private int wealth;
 
-    /** Last player to trade with this villager, used for aggressivity. */
     private String lastBuyingPlayer;
     private boolean field_82190_bM;
     private float field_82191_bN;
 
-    /**
-     * a villagers recipe list is intialized off this list ; the 2 params are min/max amount they will trade for 1
-     * emerald
-     */
     public static final Map villagerStockList = new HashMap();
+    
+    public static final ResourceLocation mobAkatonian = new ResourceLocation("remula", "textures/entities/mobakatonian.png");
+    public static final ResourceLocation mobAkatonianFarmer = new ResourceLocation("remula", "textures/entities/mobakatonianfarmer.png");
 
-    /**
-     * Selling list of Blacksmith items. negative numbers mean 1 emerald for n items, positive numbers are n emeralds
-     * for 1 item
-     */
     public static final Map blacksmithSellingList = new HashMap();
 
     public EntityAkatonian(World par1World)
@@ -97,8 +90,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         this.isPlaying = false;
         this.villageObj = null;
         this.setProfession(par2);
-        this.texture = "/co/uk/silvania/Remula/resources/mobakatonian.png";
-        this.moveSpeed = 0.5F;
         this.getNavigator().setBreakDoors(true);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -108,7 +99,7 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         this.tasks.addTask(2, new EntityAIMoveIndoors(this));
         this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(5, new EntityAIMoveTwardsRestriction(this, 0.3F));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.3F));
         this.tasks.addTask(6, new AkatoeMate(this));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityAkatonian.class, 5.0F, 0.02F));
@@ -116,17 +107,11 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
     }
 
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
     public boolean isAIEnabled()
     {
         return true;
     }
 
-    /**
-     * main AI tick function, replaces updateEntityActionState
-     */
     protected void updateAITick()
     {
         if (--this.randomTickDivider <= 0)
@@ -192,9 +177,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         super.updateAITick();
     }
 
-    /**
-     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
-     */
     public boolean interact(EntityPlayer par1EntityPlayer)
     {
         ItemStack var2 = par1EntityPlayer.inventory.getCurrentItem();
@@ -227,9 +209,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         return 20;
     }
 
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeEntityToNBT(par1NBTTagCompound);
@@ -242,9 +221,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         }
     }
 
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readEntityFromNBT(par1NBTTagCompound);
@@ -259,16 +235,12 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
     }
 
     @SideOnly(Side.CLIENT)
-
-    /**
-     * Returns the texture's file path as a String.
-     */
     public String getTexture()
     {
         switch (this.getProfession())
         {
             case 0:
-                return "/co/uk/silvania/Remula/resources/mobakatonianfarmer.png";
+                return mobAkatonianFarmer;
             case 1:
                 return "/co/uk/silvania/Remula/resources/mobakatonianlibrarian.png";
             case 2:
@@ -282,33 +254,21 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         }
     }
 
-    /**
-     * Determines if an entity can be despawned, used on idle far away entities
-     */
     protected boolean canDespawn()
     {
         return false;
     }
 
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
     protected String getLivingSound()
     {
         return "mob.villager.default";
     }
 
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
     protected String getHurtSound()
     {
         return "mob.villager.defaulthurt";
     }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
     protected String getDeathSound()
     {
         return "mob.villager.defaultdeath";
@@ -371,9 +331,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         }
     }
 
-    /**
-     * Called when the mob's health reaches 0.
-     */
     public void onDeath(DamageSource par1DamageSource)
     {
         if (this.villageObj != null)
@@ -461,10 +418,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         return var2 > 0.9F ? 0.9F - (var2 - 0.9F) : var2;
     }
 
-    /**
-     * based on the villagers profession add items, equipment, and recipies adds par1 random items to the list of things
-     * that the villager wants to buy. (at most 1 of each wanted type is added)
-     */
     private void addDefaultEquipmentAndRecipies(int par1)
     {
         if (this.buyingList != null)
@@ -504,7 +457,7 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
                 addBlacksmithItem(var2, Remula.skitterling.itemID, this.rand, this.func_82188_j(0.5F));
                 addBlacksmithItem(var2, Remula.skitterlingDead.itemID, this.rand, this.func_82188_j(0.5F));
                 addBlacksmithItem(var2, Remula.rawSkitterlingStick.itemID, this.rand, this.func_82188_j(0.5F));
-                addBlacksmithItem(var2, Remula.cookedSkitterlingStick.itemID, this.rand, this.func_82188_j(0.5F));*/
+                addBlacksmithItem(var2, Remula.cookedSkitterlingStick.itemID, this.rand, this.func_82188_j(0.5F));
 
                 if (this.rand.nextFloat() < this.func_82188_j(0.5F))
                 {
@@ -619,9 +572,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
     @SideOnly(Side.CLIENT)
     public void setRecipes(MerchantRecipeList par1MerchantRecipeList) {}
 
-    /**
-     * each recipie takes a random stack from villagerStockList and offers it for 1 emerald
-     */
     public static void addMerchantItem(MerchantRecipeList par0MerchantRecipeList, int par1, Random par2Random, float par3)
     {
         if (par2Random.nextFloat() < par3)
@@ -635,9 +585,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         return new ItemStack(par0, getRandomCountForItem(par0, par1Random), 0);
     }
 
-    /**
-     * default to 1, and villagerStockList contains a min/max amount for each index
-     */
     private static int getRandomCountForItem(int par0, Random par1Random)
     {
         Tuple var2 = (Tuple)villagerStockList.get(Integer.valueOf(par0));
@@ -696,9 +643,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
 
     @SideOnly(Side.CLIENT)
 
-    /**
-     * par1 is the particleName
-     */
     private void generateRandomParticles(String par1Str)
     {
         for (int var2 = 0; var2 < 5; ++var2)
@@ -710,9 +654,6 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         }
     }
 
-    /**
-     * Initialize this creature.
-     */
     public void initCreature()
     {
         AkatoeVillagerRegistry.applyRandomTrade(this, worldObj.rand);
@@ -802,4 +743,11 @@ public class EntityAkatonian extends EntityAgeable implements INpc, IMerchant
         blacksmithSellingList.put(Integer.valueOf(Item.eyeOfEnder.itemID), new Tuple(Integer.valueOf(7), Integer.valueOf(11)));
         blacksmithSellingList.put(Integer.valueOf(Item.arrow.itemID), new Tuple(Integer.valueOf(-12), Integer.valueOf(-8)));
     }
+
+	@Override
+	public void func_110297_a_(ItemStack itemstack) {
+		// TODO Auto-generated method stub
+		
+	}
 }
+/**/

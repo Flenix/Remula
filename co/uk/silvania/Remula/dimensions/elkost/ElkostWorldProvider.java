@@ -47,7 +47,7 @@ public class ElkostWorldProvider extends WorldProvider {
 		return 123456;
 	}
 	
-    public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)
+    /*public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)
     {
     	EntityPlayerMP thePlayer = (EntityPlayerMP) mp;
     	
@@ -63,7 +63,7 @@ public class ElkostWorldProvider extends WorldProvider {
     		}
         }
     	return true;
-    }
+    }*/
     
     public float calculateCelestialAngle(long par1, float par3)
     {

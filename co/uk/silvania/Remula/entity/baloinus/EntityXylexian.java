@@ -3,6 +3,7 @@ package co.uk.silvania.Remula.entity.baloinus;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -18,14 +19,13 @@ public class EntityXylexian extends EntityMob {
 
 	public EntityXylexian(World world) {
 		super(world);
-		this.texture = "/co/uk/silvania/Remula/resources/mobxylexian.png";
-		this.moveSpeed = 0.5F;
+		//this.texture = "/co/uk/silvania/Remula/resources/mobxylexian.png";
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
+		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 3.0D, false));
 		this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
+		this.tasks.addTask(3, new EntityAIWander(this, 3.0D));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 32.0F, 0, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
 	
 	public int getTotalArmorValue() {
@@ -37,14 +37,9 @@ public class EntityXylexian extends EntityMob {
 	}
 	
 
-	@Override
-	public int getMaxHealth() {
-		return 300;
-	}
-	
-	@Override
-	public int getAttackStrength(Entity entity) {
-		return 12;
+	protected void func_110147_ax() {
+		super.func_110147_ax();
+		this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(300.0D); 
 	}
 	
 	public EnumCreatureAttribute getCreatureAttribute() {

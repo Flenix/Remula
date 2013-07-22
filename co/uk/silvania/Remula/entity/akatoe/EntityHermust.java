@@ -3,6 +3,7 @@ package co.uk.silvania.Remula.entity.akatoe;
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIFollowParent;
@@ -31,7 +32,7 @@ public class EntityHermust extends EntityAnimal {
 	
 	public EntityHermust(World par1World) {
 		super(par1World);
-		this.texture = "/co/uk/silvania/Remula/resources/mobhermust.png";
+		//this.texture = "/co/uk/silvania/Remula/resources/mobhermust.png";
 		this.getNavigator().setAvoidsWater(true);
 		this.setSize(1.5F, 0.9F);
         this.isImmuneToFire = true;
@@ -49,8 +50,9 @@ public class EntityHermust extends EntityAnimal {
 		return true;
 	}
 	
-	public int getMaxHealth() {
-		return 3;
+	protected void func_110147_ax() {
+		super.func_110147_ax();
+		this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(15.0D); 
 	}
 	
 	protected String getLivingSound() {

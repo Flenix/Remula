@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.entity.akatoe;
+/*package co.uk.silvania.Remula.entity.akatoe;
 
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,9 +13,6 @@ public class AkatoeLookAtTradePlayer extends EntityAIWatchClosest
         this.theMerchant = par1EntityAkatonian;
     }
 
-    /**
-     * Returns whether the EntityAIBase should begin execution.
-     */
     public boolean shouldExecute()
     {
         if (this.theMerchant.isTrading())
@@ -29,3 +26,4 @@ public class AkatoeLookAtTradePlayer extends EntityAIWatchClosest
         }
     }
 }
+/**/

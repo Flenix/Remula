@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.entity.akatoe;
+/*package co.uk.silvania.Remula.entity.akatoe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +20,6 @@ import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.common.FMLLog;
 
-/**
- * Registry for villager trading control
- *
- * @author cpw
- *
- */
 public class AkatoeVillagerRegistry
 {
     private static final AkatoeVillagerRegistry INSTANCE = new AkatoeVillagerRegistry();
@@ -35,60 +29,22 @@ public class AkatoeVillagerRegistry
     private Map<Integer, String> newVillagers = Maps.newHashMap();
     private List<Integer> newVillagerIds = Lists.newArrayList();
 
-    /**
-     * Allow access to the {@link net.minecraft.world.gen.structure.StructureVillagePieces} array controlling new village
-     * creation so you can insert your own new village pieces
-     *
-     * @author cpw
-     *
-     */
     public interface IVillageCreationHandler
     {
-        /**
-         * Called when {@link net.minecraft.world.gen.structure.MapGenVillage} is creating a new village
-         *
-         * @param random
-         * @param i
-         */
+
         StructureVillagePieceWeight getVillagePieceWeight(Random random, int i);
 
-        /**
-         * The class of the root structure component to add to the village
-         */
+
         Class<?> getComponentClass();
 
 
-        /**
-         * Build an instance of the village component {@link net.minecraft.world.gen.structure.StructureVillagePieces}
-         * @param villagePiece
-         * @param startPiece
-         * @param pieces
-         * @param random
-         * @param p1
-         * @param p2
-         * @param p3
-         * @param p4
-         * @param p5
-         */
         Object buildComponent(StructureVillagePieceWeight villagePiece, ComponentVillageStartPiece startPiece, List pieces, Random random, int p1,
                 int p2, int p3, int p4, int p5);
     }
 
-    /**
-     * Allow access to the {@link MerchantRecipeList} for a villager type for manipulation
-     *
-     * @author cpw
-     *
-     */
     public interface IVillageTradeHandler
     {
-        /**
-         * Called to allow changing the content of the {@link MerchantRecipeList} for the villager
-         * supplied during creation
-         *
-         * @param villager
-         * @param recipeList
-         */
+
         void manipulateTradesForVillager(EntityAkatonian villager, MerchantRecipeList recipeList, Random random);
     }
 
@@ -97,12 +53,7 @@ public class AkatoeVillagerRegistry
         return INSTANCE;
     }
 
-    /**
-     * Register a new skin for a villager type
-     *
-     * @param villagerId
-     * @param villagerSkin
-     */
+
     public void registerVillagerType(int villagerId, String villagerSkin)
     {
         if (newVillagers.containsKey(villagerId))
@@ -114,33 +65,16 @@ public class AkatoeVillagerRegistry
         newVillagerIds.add(villagerId);
     }
 
-    /**
-     * Register a new village creation handler
-     *
-     * @param handler
-     */
     public void registerVillageCreationHandler(IVillageCreationHandler handler)
     {
         villageCreationHandlers.put(handler.getComponentClass(), handler);
     }
 
-    /**
-     * Register a new villager trading handler for the specified villager type
-     *
-     * @param villagerId
-     * @param handler
-     */
     public void registerVillageTradeHandler(int villagerId, IVillageTradeHandler handler)
     {
         tradeHandlers.put(villagerId, handler);
     }
 
-    /**
-     * Callback to setup new villager types
-     *
-     * @param villagerType
-     * @param defaultSkin
-     */
     public static String getVillagerSkin(int villagerType, String defaultSkin)
     {
         if (instance().newVillagers.containsKey(villagerType))
@@ -150,23 +84,11 @@ public class AkatoeVillagerRegistry
         return defaultSkin;
     }
 
-    /**
-     * Returns a list of all added villager types
-     *
-     * @return newVillagerIds
-     */
     public static Collection<Integer> getRegisteredVillagers()
     {
         return Collections.unmodifiableCollection(instance().newVillagerIds);
     }
-    /**
-     * Callback to handle trade setup for villagers
-     *
-     * @param recipeList
-     * @param villager
-     * @param villagerType
-     * @param random
-     */
+
     public static void manageVillagerTrades(MerchantRecipeList recipeList, EntityAkatonian villager, int villagerType, Random random)
     {
         for (IVillageTradeHandler handler : instance().tradeHandlers.get(villagerType))
@@ -216,3 +138,4 @@ public class AkatoeVillagerRegistry
         villager.setProfession(trade < 5 ? trade : instance().newVillagerIds.get(trade - 5));
     }
 }
+/**/

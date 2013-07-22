@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.entity.akatoe;
+/*package co.uk.silvania.Remula.entity.akatoe;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -21,9 +21,6 @@ public class AkatoeMate extends EntityAIBase
         this.setMutexBits(3);
     }
 
-    /**
-     * Returns whether the EntityAIBase should begin execution.
-     */
     public boolean shouldExecute()
     {
         if (this.akatonianObj.getGrowingAge() != 0)
@@ -63,18 +60,12 @@ public class AkatoeMate extends EntityAIBase
         }
     }
 
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
     public void startExecuting()
     {
         this.matingTimeout = 300;
         this.akatonianObj.setMating(true);
     }
 
-    /**
-     * Resets the task
-     */
     public void resetTask()
     {
         this.villageObj = null;
@@ -82,17 +73,11 @@ public class AkatoeMate extends EntityAIBase
         this.akatonianObj.setMating(false);
     }
 
-    /**
-     * Returns whether an in-progress EntityAIBase should continue executing
-     */
     public boolean continueExecuting()
     {
         return this.matingTimeout >= 0 && this.checkSufficientDoorsPresentForNewVillager() && this.akatonianObj.getGrowingAge() == 0;
     }
 
-    /**
-     * Updates the task
-     */
     public void updateTask()
     {
         --this.matingTimeout;
@@ -137,3 +122,4 @@ public class AkatoeMate extends EntityAIBase
         this.worldObj.setEntityState(var1, (byte)12);
     }
 }
+/**/

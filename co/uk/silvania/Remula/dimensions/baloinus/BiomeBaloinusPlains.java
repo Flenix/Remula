@@ -3,8 +3,6 @@ package co.uk.silvania.Remula.dimensions.baloinus;
 import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
-import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
-import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
@@ -24,7 +22,7 @@ public class BiomeBaloinusPlains extends BiomeGenBase {
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityGlog.class, 10, 4, 4));
+        //this.spawnableCreatureList.add(new SpawnListEntry(EntityGlog.class, 10, 4, 4));
 		this.topBlock = (byte) Remula.baloinusStone.blockID;
 		this.fillerBlock = (byte) Remula.baloinusStone.blockID;
 		this.maxHeight = 0.5F;

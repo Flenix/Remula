@@ -60,7 +60,7 @@ public class DeepSpaceWorldProvider extends WorldProvider {
 		return 000000;
 	}
 	
-    public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)
+    /*public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)
     {
     	EntityPlayerMP thePlayer = (EntityPlayerMP) mp;
     	
@@ -76,7 +76,7 @@ public class DeepSpaceWorldProvider extends WorldProvider {
     		}
         }
     	return true;
-    }
+    }*/
     
     public float calculateCelestialAngle(long par1, float par3)
     {

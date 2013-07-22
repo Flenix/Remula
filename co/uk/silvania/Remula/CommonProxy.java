@@ -1,7 +1,7 @@
 package co.uk.silvania.Remula;
 
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
-import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
+//import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;

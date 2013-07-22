@@ -2,6 +2,7 @@ package co.uk.silvania.Remula.entity.akatoe;
 
 import co.uk.silvania.Remula.Remula;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -24,18 +25,19 @@ public class EntityGarfin extends EntityWaterMob {
 
 	public EntityGarfin(World par1World) {
 		super(par1World);
-        this.texture = "/co/uk/silvania/Remula/resources/mobgarfin.png";
+        //this.texture = "/co/uk/silvania/Remula/resources/mobgarfin.png";
         this.setSize(0.95F, 0.95F);
         this.field_70864_bA = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
+        this.setEntityHealth(16.0F);
+	}
+	
+	protected void func_110147_ax() {
+		super.func_110147_ax();
+		this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(6.0D); 
 	}
 	
     private float field_70864_bA = 0.0F;
 
-	@Override
-	public int getMaxHealth() {
-		return 16;
-	}
-	
 	/*protected int getDropItemId() {
 		return Remula.rawGarfinMeat.itemID;
 	}*/

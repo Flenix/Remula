@@ -11,7 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import co.uk.silvania.Remula.Remula;
-import co.uk.silvania.Remula.tileentity.TileEntitySilvaniteChest;
+import co.uk.silvania.Remula.tileentity.TileEntityTecmoniumChest;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
@@ -40,13 +40,13 @@ public class PacketHandler implements IPacketHandler {
         }
         World world = Remula.proxy.getClientWorld();
         TileEntity te = world.getBlockTileEntity(x, y, z);
-        if (te instanceof TileEntitySilvaniteChest)
+        if (te instanceof TileEntityTecmoniumChest)
         {
-            TileEntitySilvaniteChest tesc = (TileEntitySilvaniteChest) te;
+            TileEntityTecmoniumChest tesc = (TileEntityTecmoniumChest) te;
         }
     }
 
-    public static Packet getPacket(TileEntitySilvaniteChest tileEntityIronChest)
+    public static Packet getPacket(TileEntityTecmoniumChest tileEntityIronChest)
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream(140);
         DataOutputStream dos = new DataOutputStream(bos);

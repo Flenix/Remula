@@ -59,7 +59,7 @@ public class XylexiaWorldProvider extends WorldProvider {
 		return 123123;
 	}
 	
-    public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)
+    /*public boolean onTickInGame(float f, Minecraft minecraft, EntityPlayerMP mp)
     {
     	EntityPlayerMP thePlayer = (EntityPlayerMP) mp;
     	
@@ -75,7 +75,7 @@ public class XylexiaWorldProvider extends WorldProvider {
     		}
         }
     	return true;
-    }
+    }*/
     
     public boolean canCoordinateBeSpawn(int par1, int par2)
     {

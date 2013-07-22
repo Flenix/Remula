@@ -21,24 +21,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityAdvRobot extends EntityTameable implements IInventory {
+public class EntityAdvRobot extends EntityTameable {
 	
 	public EntityAdvRobot(World par1World) {
 		super(par1World);
-		this.texture = "/co/uk/silvania/Remula/resources/robot.png";
+		//this.texture = "/co/uk/silvania/Remula/resources/robot.png";
 		this.getNavigator().setAvoidsWater(true);
 		this.setTamed(true);
 		this.setSize(0.4F,  2.0F);
         this.isImmuneToFire = true;
 		float var2 = 0.25F;
-        this.tasks.addTask(1, new EntityAIFollowOwner(this, this.moveSpeed, 10.0F, 2.0F));
+        //this.tasks.addTask(1, new EntityAIFollowOwner(this, this.moveSpeed, 10.0F, 2.0F));
 		this.tasks.addTask(2, new EntityAIWander(this, var2));
 		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(4, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntitySpider.class, 16.0F, 200, false));
+        this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntitySpider.class, 200, false));
 
 	}
 	
@@ -99,70 +99,4 @@ public class EntityAdvRobot extends EntityTameable implements IInventory {
         }
     }*/
 	
-//Inventory stuff
-	@Override
-	public int getSizeInventory() {
-		return 27;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int var1) {
-		return null;
-	}
-
-	@Override
-	public ItemStack decrStackSize(int var1, int var2) {
-		return null;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int var1) {
-		return null;
-	}
-
-	@Override
-	public void setInventorySlotContents(int var1, ItemStack var2) {
-		
-	}
-
-	@Override
-	public String getInvName() {
-		return null;
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 0;
-	}
-
-	@Override
-	public void onInventoryChanged() {
-		
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer var1) {
-		return true;
-	}
-
-	@Override
-	public void openChest() {
-	}
-
-	@Override
-	public void closeChest() {
-	}
-
-	@Override
-	public boolean isInvNameLocalized() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

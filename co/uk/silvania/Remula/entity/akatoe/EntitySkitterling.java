@@ -31,7 +31,7 @@ public class EntitySkitterling extends EntityAnimal {
 	
 	public EntitySkitterling(World par1World) {
 		super(par1World);
-		this.texture = "/co/uk/silvania/Remula/resources/mobskitterling.png";
+		//this.texture = "/co/uk/silvania/Remula/resources/mobskitterling.png";
 		this.getNavigator().setAvoidsWater(true);
 		this.setSize(1.5F, 0.9F);
         this.isImmuneToFire = true;

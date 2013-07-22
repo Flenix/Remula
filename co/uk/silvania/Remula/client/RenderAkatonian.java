@@ -1,4 +1,4 @@
-package co.uk.silvania.Remula.client;
+/*package co.uk.silvania.Remula.client;
 
 
 import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
@@ -6,6 +6,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderAkatonian extends RenderLiving {
 	
@@ -24,4 +25,10 @@ public class RenderAkatonian extends RenderLiving {
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
 		this.renderRobot((EntityAkatonian)par1Entity, par2, par4, par6, par8, par9);
 	}
-}
+
+	@Override
+	protected ResourceLocation func_110775_a(Entity entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}*/
