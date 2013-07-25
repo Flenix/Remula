@@ -269,7 +269,6 @@ public class Remula {
     //Akatoe Natural Stuff
     public static Block akatoeStone;
     public static Block akatoeGrass;
-    public static Block akatoeDirt;
     public static Block akatoeSand;
     public static Block akatoeLogs;
     public static Block akatoeLeaves;
@@ -422,16 +421,17 @@ public class Remula {
         
         //Akatoe Natural Stuff
         akatoeStone = new AkatoeStone(200, Material.rock).setUnlocalizedName("akatoeStone");
-        akatoeGrass = new AkatoeGrass(201).setUnlocalizedName("akatoeGrass");
-        akatoeDirt = new AkatoeDirt(202).setUnlocalizedName("akatoeGround");
         akatoeSand = new AkatoeSand(203, Material.sand).setUnlocalizedName("akatoeSand");
         akatoeLogs = new AkatoeLogs(240).setUnlocalizedName("akatoeLogs");
         akatoeLeaves = new AkatoeLeaves(241).setUnlocalizedName("akatoeLeaves");
         akatoeSaplings = new AkatoeSaplings(242, 0).setUnlocalizedName("akatoeSaplings");
+        akatoeGrass = new AkatoeGrass(201).setUnlocalizedName("akatoeGrass");
     }
 	public static WorldGen worldGen = new WorldGen();
 	public static EnumArmorMaterial SpaceSuit1 = EnumHelper.addArmorMaterial("SpaceSuit1", 15, new int[]{1, 1, 1, 1}, 0);
 	
+    //public final static Block akatoeGrass = new AkatoeGrass(201).setUnlocalizedName("akatoeGrass");
+    public final static Block akatoeDirt = new AkatoeDirt(202).setUnlocalizedName("akatoeGround");
     //Blocks (IDs 1800-2000 to avoid clash with top 100 mods)
     
     //Reactor Part 1827

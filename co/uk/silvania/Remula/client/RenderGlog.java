@@ -1,33 +1,31 @@
 package co.uk.silvania.Remula.client;
 
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderGlog extends RenderLiving {
-	
-	public RenderGlog(ModelBase par1ModelBase, float par2) {
-		super(par1ModelBase, par2);
-	}
-	
-	public void renderGlog(EntityGlog par1EntityGlog, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(par1EntityGlog,  par2,  par4,  par6, par8,  par9);
-	}
-	
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		this.renderGlog((EntityGlog)par1EntityLiving, par2, par4, par6, par8, par9);
-	}
-	
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		this.renderGlog((EntityGlog)par1Entity, par2, par4, par6, par8, par9);
-	}
-	
-	@Override
-	protected ResourceLocation func_110775_a(Entity entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+@SideOnly(Side.CLIENT)
+public class RenderGlog extends RenderLiving
+{
+    private static final ResourceLocation field_110833_a = new ResourceLocation("remula", "textures/entities/mobglog.png");
+
+    public RenderGlog(ModelBase par1ModelBase, float par2)
+    {
+        super(par1ModelBase, par2);
+    }
+
+    protected ResourceLocation func_110832_a(EntityGlog entity)
+    {
+        return field_110833_a;
+    }
+
+    protected ResourceLocation func_110775_a(Entity entity)
+    {
+        return this.func_110832_a((EntityGlog)entity);
+    }
 }

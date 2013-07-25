@@ -1,6 +1,7 @@
 package co.uk.silvania.Remula.entity.akatoe;
 
 import co.uk.silvania.Remula.Remula;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -26,13 +27,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class EntityGlog extends EntityAnimal {
 	
 	public EntityGlog(World par1World) {
 		super(par1World);
-		//this.texture = "/co/uk/silvania/Remula/resources/mobglog.png";
 		this.getNavigator().setAvoidsWater(true);
 		this.setSize(1.5F, 0.9F);
         this.isImmuneToFire = false;
