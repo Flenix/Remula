@@ -2,7 +2,7 @@ package co.uk.silvania.Remula.dimensions.akatoe;
 
 import java.util.Random;
 
-import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -27,8 +27,8 @@ public class BiomeAkatoePlains extends BiomeGenBase {
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(EntityGlog.class, 10, 4, 4));
-		this.topBlock = (byte) Remula.akatoeGrass.blockID;
-		this.fillerBlock = (byte) Remula.akatoeDirt.blockID;
+		this.topBlock = (byte) RemulaBlocks.akatoeGrass.blockID;
+		this.fillerBlock = (byte) RemulaBlocks.akatoeDirt.blockID;
 		this.maxHeight = 0.5F;
 		this.minHeight = 0.0F;
 		this.waterColorMultiplier = 0X00FF21;

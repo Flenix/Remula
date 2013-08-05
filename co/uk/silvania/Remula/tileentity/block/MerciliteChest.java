@@ -33,10 +33,6 @@ public class MerciliteChest extends BlockContainer {
         		//this.currentTexture = "/co/uk/silvania/Remula/resources/SilvaniteChest1.png";
         }
         
-        public String getTextureFile() {
-            return CommonProxy.BLOCK_PNG;
-        }
-
         @Override
         public boolean onBlockActivated(World world, int x, int y, int z,
                         EntityPlayer player, int i, float j, float k, float l) {

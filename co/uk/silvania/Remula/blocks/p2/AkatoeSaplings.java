@@ -1,14 +1,21 @@
 package co.uk.silvania.Remula.blocks.p2;
 
+import java.util.List;
 import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 import co.uk.silvania.Remula.dimensions.akatoe.WorldGenAkatoeTrees;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.main.Main;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenForest;
@@ -18,7 +25,10 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class AkatoeSaplings extends BlockFlower {
 	
-	public static final String[] WOOD_TYPES = new String[] {"Tutorial"};
+	public static final String[] WOOD_TYPES = new String[] {"AkatoeLogs"};
+	
+	@SideOnly(Side.CLIENT)
+	private Icon[] icons;
 	
 	public AkatoeSaplings(int i, int j) {
 		super(i);
@@ -38,7 +48,7 @@ public class AkatoeSaplings extends BlockFlower {
 	
 	public void func_96477_c(World par1World, int par2, int par3, int par4, Random par5Random) {
 		int l = par1World.getBlockMetadata(par2, par3, par4);
-		if ((l & 8) == Remula.akatoeGrass.blockID) {
+		if ((l & 8) == RemulaBlocks.akatoeGrass.blockID) {
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
 		} else {
 			this.growTree(par1World, par2, par3, par4, par5Random);
@@ -107,6 +117,28 @@ public class AkatoeSaplings extends BlockFlower {
 	}
 
 	protected boolean canThisPlantGrowOnThisBlockID(int par1) {
-		return par1 == Remula.akatoeGrass.blockID || par1 == Block.dirt.blockID || par1 == Block.tilledField.blockID;
+		return par1 == RemulaBlocks.akatoeGrass.blockID || par1 == Block.dirt.blockID || par1 == Block.tilledField.blockID;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+		icons = new Icon[4];
+		
+		for(int i = 0; i < icons.length; i++) {
+			icons[i] = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)) + i);
+		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int par1, int par2) {
+		return icons[par2];
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+		par3List.add(new ItemStack(par1, 1, 0));
+		par3List.add(new ItemStack(par1, 1, 1));
+		par3List.add(new ItemStack(par1, 1, 2));
+		par3List.add(new ItemStack(par1, 1, 3));
 	}
 }

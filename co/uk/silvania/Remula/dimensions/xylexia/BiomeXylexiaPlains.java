@@ -1,6 +1,7 @@
 package co.uk.silvania.Remula.dimensions.xylexia;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
 
@@ -14,8 +15,8 @@ public class BiomeXylexiaPlains extends BiomeGenBase {
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         //this.spawnableCreatureList.add(new SpawnListEntry(EntityGlog.class, 10, 4, 4));
-		this.topBlock = (byte) Remula.xylexianStone.blockID;
-		this.fillerBlock = (byte) Remula.xylexianStone.blockID;
+		this.topBlock = (byte) RemulaBlocks.xylexianStone.blockID;
+		this.fillerBlock = (byte) RemulaBlocks.xylexianStone.blockID;
 		this.maxHeight = 0.5F;
 		this.minHeight = 0.0F;
 		this.waterColorMultiplier = 0X00FF21;

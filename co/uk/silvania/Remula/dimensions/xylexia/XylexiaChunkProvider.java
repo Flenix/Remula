@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -194,7 +195,7 @@ public class XylexiaChunkProvider implements IChunkProvider
                             {
                                 if ((var47 += var49) > 0.0D)
                                 {
-                                    par3ArrayOfByte[var43 += var44] = (byte)Remula.xylexianStone.blockID;
+                                    par3ArrayOfByte[var43 += var44] = (byte)RemulaBlocks.xylexianStone.blockID;
                                 }
                                 else if (var12 * 8 + var31 < var6)
                                 {
@@ -260,14 +261,14 @@ public class XylexiaChunkProvider implements IChunkProvider
                         {
                             var13 = -1;
                         }
-                        else if (var18 != Remula.xylexianStone.blockID)
+                        else if (var18 != RemulaBlocks.xylexianStone.blockID)
                         {
                             if (var13 == -1)
                             {
                                 if (var12 <= 0)
                                 {
                                     var14 = 0;
-                                    var15 = (byte)Remula.xylexianStone.blockID;
+                                    var15 = (byte)RemulaBlocks.xylexianStone.blockID;
                                 }
                                 else if (var16 >= var5 - 4 && var16 <= var5 + 1)
                                 {

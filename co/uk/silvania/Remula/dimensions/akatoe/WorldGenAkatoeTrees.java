@@ -3,6 +3,7 @@ package co.uk.silvania.Remula.dimensions.akatoe;
 import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 import co.uk.silvania.Remula.blocks.p2.AkatoeSaplings;
 
 import net.minecraft.block.Block;
@@ -52,10 +53,10 @@ public class WorldGenAkatoeTrees extends WorldGenerator implements IWorldGenerat
 					for (j1 = par5 - b0; j1 <= par5 + b0 && flag; ++j1) {
 						if (i1 >= 0 && i1 < 256) {
 							k1 = par1World.getBlockId(l1, i1 -1, j1);
-							Block block = Remula.akatoeGrass;
+							Block block = RemulaBlocks.akatoeGrass;
 							if (k1 != 0 && !block.isLeaves(par1World, l1, i1, j1)
 	
-									&& k1 != Remula.akatoeGrass.blockID
+									&& k1 != RemulaBlocks.akatoeGrass.blockID
 									&& k1 != Block.dirt.blockID
 									&& !block.isWood(par1World, l1, i1, j1)) {
 								flag = false;
@@ -71,8 +72,8 @@ public class WorldGenAkatoeTrees extends WorldGenerator implements IWorldGenerat
 			} else {
 				i1 = par1World.getBlockId(par3, par4 - 1, par5);
 	
-				Block soil = Remula.akatoeGrass;
-				boolean isSoil = (soil != null && soil.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (AkatoeSaplings)Remula.akatoeSaplings));
+				Block soil = RemulaBlocks.akatoeGrass;
+				boolean isSoil = (soil != null && soil.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (AkatoeSaplings)RemulaBlocks.akatoeSaplings));
 				if (isSoil && par4 < 256 - l - 1) {
 					soil.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);
 					b0 = 3;
@@ -91,7 +92,7 @@ public class WorldGenAkatoeTrees extends WorldGenerator implements IWorldGenerat
 									int j3 = par1World.getBlockId(j2, j1, l2);
 									Block block = Block.blocksList[j3];
 									if (block == null || block.canBeReplacedByLeaves(par1World, j2, j1, l2)) {
-										this.setBlockAndMetadata(par1World, j2, j1, l2, Remula.akatoeLeaves.blockID, this.metaLeaves);
+										this.setBlockAndMetadata(par1World, j2, j1, l2, RemulaBlocks.akatoeLeaves.blockID, this.metaLeaves);
 									}
 								}
 							}
@@ -101,7 +102,7 @@ public class WorldGenAkatoeTrees extends WorldGenerator implements IWorldGenerat
 						k1 = par1World.getBlockId(par3, par4 + j1, par5);
 						Block block = Block.blocksList[k1];
 						if (k1 == 0 || block == null || block.isLeaves(par1World, par3, par4 + j1, par5)) {
-							this.setBlockAndMetadata(par1World, par3, par4 + j1, par5, Remula.akatoeLogs.blockID, this.metaWood);
+							this.setBlockAndMetadata(par1World, par3, par4 + j1, par5, RemulaBlocks.akatoeLogs.blockID, this.metaWood);
 						}
 					}
 					if (par2Random.nextInt(5) == 0 && l > 5) {

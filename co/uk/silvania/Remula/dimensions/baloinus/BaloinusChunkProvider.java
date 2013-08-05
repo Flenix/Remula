@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -194,7 +195,7 @@ public class BaloinusChunkProvider implements IChunkProvider
                             {
                                 if ((var47 += var49) > 0.0D)
                                 {
-                                    par3ArrayOfByte[var43 += var44] = (byte)Remula.baloinusStone.blockID;
+                                    par3ArrayOfByte[var43 += var44] = (byte)RemulaBlocks.baloinusStone.blockID;
                                 }
                                 else if (var12 * 8 + var31 < var6)
                                 {
@@ -260,14 +261,14 @@ public class BaloinusChunkProvider implements IChunkProvider
                         {
                             var13 = -1;
                         }
-                        else if (var18 != Remula.baloinusStone.blockID)
+                        else if (var18 != RemulaBlocks.baloinusStone.blockID)
                         {
                             if (var13 == -1)
                             {
                                 if (var12 <= 0)
                                 {
                                     var14 = 0;
-                                    var15 = (byte)Remula.baloinusStone.blockID;
+                                    var15 = (byte)RemulaBlocks.baloinusStone.blockID;
                                 }
                                 else if (var16 >= var5 - 4 && var16 <= var5 + 1)
                                 {

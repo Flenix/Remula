@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
@@ -260,60 +261,6 @@ public class TileEntityMerciliteChest extends TileEntityChest implements IInvent
         }
     }
 
-    /**
-     * Performs the check for adjacent Chests to determine if this Chest is double or not.
-     */
-    public void checkForAdjacentChests()
-    {
-        if (!this.adjacentChestChecked)
-        {
-            this.adjacentChestChecked = true;
-            this.adjacentChestZNeg = null;
-            this.adjacentChestXPos = null;
-            this.adjacentChestXNeg = null;
-            this.adjacentChestZPosition = null;
-
-            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Remula.merciliteChest.blockID)
-            {
-                this.adjacentChestXNeg = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord - 1, this.yCoord, this.zCoord);
-            }
-
-            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Remula.merciliteChest.blockID)
-            {
-                this.adjacentChestXPos = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord + 1, this.yCoord, this.zCoord);
-            }
-
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Remula.merciliteChest.blockID)
-            {
-                this.adjacentChestZNeg = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord - 1);
-            }
-
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Remula.merciliteChest.blockID)
-            {
-                this.adjacentChestZPosition = (TileEntityMerciliteChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord + 1);
-            }
-
-            if (this.adjacentChestZNeg != null)
-            {
-                this.adjacentChestZNeg.func_90009_a(this, 0);
-            }
-
-            if (this.adjacentChestZPosition != null)
-            {
-                this.adjacentChestZPosition.func_90009_a(this, 2);
-            }
-
-            if (this.adjacentChestXPos != null)
-            {
-                this.adjacentChestXPos.func_90009_a(this, 1);
-            }
-
-            if (this.adjacentChestXNeg != null)
-            {
-                this.adjacentChestXNeg.func_90009_a(this, 3);
-            }
-        }
-    }
 
     /**
      * Allows the entity to update its state. Overridden in most subclasses, e.g. the mob spawner uses this to count
@@ -435,13 +382,13 @@ public class TileEntityMerciliteChest extends TileEntityChest implements IInvent
     public void openChest()
     {
         ++this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.merciliteChest.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, RemulaBlocks.merciliteChest.blockID, 1, this.numUsingPlayers);
     }
 
     public void closeChest()
     {
         --this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, Remula.merciliteChest.blockID, 1, this.numUsingPlayers);
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, RemulaBlocks.merciliteChest.blockID, 1, this.numUsingPlayers);
     }
 
     /**

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -94,8 +95,8 @@ public class TeleporterIndiku extends Teleporter {
 					double var24 = (double) var23 + 0.5D - par1Entity.posZ;
 
 					for (int var26 = this.worldServerInstance.getActualHeight() - 1; var26 >= 0; --var26) {
-						if (this.worldServerInstance.getBlockId(var48, var26, var23) == Remula.indikuPortal.blockID) {
-							while (this.worldServerInstance.getBlockId(var48, var26 - 1, var23) == Remula.indikuPortal.blockID) {
+						if (this.worldServerInstance.getBlockId(var48, var26, var23) == RemulaBlocks.indikuPortal.blockID) {
+							while (this.worldServerInstance.getBlockId(var48, var26 - 1, var23) == RemulaBlocks.indikuPortal.blockID) {
 								--var26;
 							}
 
@@ -125,19 +126,19 @@ public class TeleporterIndiku extends Teleporter {
 			var27 = (double) var14 + 0.5D;
 			int var50 = -1;
 
-			if (this.worldServerInstance.getBlockId(var12 - 1, var13, var14) == Remula.indikuPortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12 - 1, var13, var14) == RemulaBlocks.indikuPortal.blockID) {
 				var50 = 2;
 			}
 
-			if (this.worldServerInstance.getBlockId(var12 + 1, var13, var14) == Remula.indikuPortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12 + 1, var13, var14) == RemulaBlocks.indikuPortal.blockID) {
 				var50 = 0;
 			}
 
-			if (this.worldServerInstance.getBlockId(var12, var13, var14 - 1) == Remula.indikuPortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12, var13, var14 - 1) == RemulaBlocks.indikuPortal.blockID) {
 				var50 = 3;
 			}
 
-			if (this.worldServerInstance.getBlockId(var12, var13, var14 + 1) == Remula.indikuPortal.blockID) {
+			if (this.worldServerInstance.getBlockId(var12, var13, var14 + 1) == RemulaBlocks.indikuPortal.blockID) {
 				var50 = 1;
 			}
 
@@ -412,7 +413,7 @@ public class TeleporterIndiku extends Teleporter {
      var23 = var15 + var21;
      var24 = var16 + (var20 - 1) * var18;
      var33 = var20 == 0 || var20 == 3 || var21 == -1 || var21 == 3;
-     this.worldServerInstance.setBlock(var22, var23, var24, var33 ? Block.sandStone.blockID : Remula.indikuPortal.blockID);
+     this.worldServerInstance.setBlock(var22, var23, var24, var33 ? Block.sandStone.blockID : RemulaBlocks.indikuPortal.blockID);
     }
    }
 

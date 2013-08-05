@@ -4,6 +4,7 @@ import co.uk.silvania.Remula.Remula;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MathHelper;
@@ -13,19 +14,23 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.common.DimensionManager;
 
 public class AkatoeWorldProvider extends WorldProvider {
 	
 	private float[] colorsSunriseSunset = new float[4];
 	
 	public void registerWorldChunkManager()	{
-		this.worldChunkMgr = new WorldChunkManagerHell(Remula.akatoePlainsBiome, this.dimensionId, this.dimensionId);
-		this.dimensionId = Remula.akatoeDimension;
+		this.worldChunkMgr = new AkatoeChunkManager(worldObj.getSeed(), terrainType);//(Remula.akatoePlainsBiome, this.dimensionId, this.dimensionId);
 		this.hasNoSky = false;
 	}
 	
 	public IChunkProvider createChunkGenerator() {
 		return new AkatoeChunkProvider(this.worldObj, this.worldObj.getSeed(), false);
+	}
+	
+	public static WorldProvider getProviderForDimension(int id) {
+		return DimensionManager.createProviderFor(Remula.akatoeDimension);
 	}
 	
 	public int getAverageGroundLevel() {
@@ -67,11 +72,6 @@ public class AkatoeWorldProvider extends WorldProvider {
 	
 	public float setMoonSize() {
 		return 8.0F;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public boolean isSkyColored() {
-		return true;
 	}
 	
 	public boolean canRespawnHere() {
@@ -167,5 +167,15 @@ public class AkatoeWorldProvider extends WorldProvider {
 		f4 *= (f2 * 0.0F + 0.15F);
 		f5 *= (f2 * 0.0F + 0.15F);
 		return this.worldObj.getWorldVec3Pool().getVecFromPool(f3, f4, f5);
+	}
+	
+	@Override
+	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks) {
+	         return this.worldObj.getWorldVec3Pool().getVecFromPool(0, 0.7, 0.4);
+	}
+
+	@Override
+	public boolean isSkyColored() {
+	         return true;
 	}
 }
