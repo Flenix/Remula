@@ -14,8 +14,8 @@ import net.minecraft.util.Icon;
 
 public class IndikuTerrainBlocks extends Block {
 
-	public IndikuTerrainBlocks(int id, Material material) {
-		super(id, material);
+	public IndikuTerrainBlocks(int id) {
+		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
 	}
 	

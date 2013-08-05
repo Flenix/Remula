@@ -14,8 +14,8 @@ import net.minecraft.util.Icon;
 
 public class AkatoeTerrainBlocks extends Block {
 
-	public AkatoeTerrainBlocks(int id, Material material) {
-		super(id, material);
+	public AkatoeTerrainBlocks(int id) {
+		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
 	}
 	

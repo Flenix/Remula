@@ -1,6 +1,7 @@
 package co.uk.silvania.Remula.items.weapons;
 
 import co.uk.silvania.Remula.Remula;
+import co.uk.silvania.Remula.RemulaItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.Item;
@@ -16,7 +17,7 @@ public class ItemP1Pistol extends Item {
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
-		if (!player.capabilities.isCreativeMode || player.inventory.consumeInventoryItem(Remula.p1IronBullet.itemID)) {
+		if (!player.capabilities.isCreativeMode || player.inventory.consumeInventoryItem(RemulaItems.p1IronBullet.itemID)) {
 			--itemStack.stackSize;
 		}
 		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));

@@ -14,8 +14,8 @@ import net.minecraft.util.Icon;
 
 public class XylexiaTerrainBlocks extends Block {
 
-	public XylexiaTerrainBlocks(int id, Material material) {
-		super(id, material);
+	public XylexiaTerrainBlocks(int id) {
+		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
 	}
 	

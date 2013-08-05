@@ -10,6 +10,7 @@ import co.uk.silvania.Remula.blocks.p6.*;
 import co.uk.silvania.Remula.blocks.p7.*;
 import co.uk.silvania.Remula.blocks.p8.*;
 import co.uk.silvania.Remula.blocks.p9.*;
+import co.uk.silvania.Remula.blocks.shipparts.TileEntityShipComputerBlock;
 import co.uk.silvania.Remula.dimensions.akatoe.AkatoePortalBlock;
 import co.uk.silvania.Remula.dimensions.baloinus.BaloinusPortalBlock;
 import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceBrownAsteroid;
@@ -32,6 +33,7 @@ public class RemulaBlocks {
 	private static RemulaConfig config;
 	
     public static Block p1CraftingTable;
+    public static Block shipComputer;
     
 	public static Block p1Liquidizer;
     public static Block p1T1StorageUnit;
@@ -82,6 +84,13 @@ public class RemulaBlocks {
     public static Block akatoeTerrainBlocks;
     public static Block akatoeOreBlocks;
     public static Block akatoePortal;
+    public static Block akatoeTilledDirt;
+    
+    //public static Block porinCrop;
+    //public static Block ulinCrop;
+    //public static Block cirCrop;
+    //public static Block boskinCrop;
+	public static Block plantFuxii;
     
     public static Block baloinusTerrainBlocks;
     public static Block baloinusOreBlocks;
@@ -110,6 +119,15 @@ public class RemulaBlocks {
     public static Block indikuStone;
     public static Block indikuDirt;
     public static Block indikuGrass;
+    public static Block indikuTilledDirt;
+    
+    public static Block indikuLogs1;
+    public static Block indikuLogs2;
+    public static Block indikuLeaves1;
+    public static Block indikuLeaves2;
+    public static Block indikuSaplings1;
+    public static Block indikuSaplings2;
+    
     
     
     public static Block p4Liquidizer;
@@ -131,6 +149,7 @@ public class RemulaBlocks {
     public static Block elkostTerrainBlocks;
     public static Block elkostOreBlocks;
     public static Block elkostSand;
+    public static Block elkostGlassPane;
     
     
     
@@ -152,8 +171,9 @@ public class RemulaBlocks {
     public static Block xylexiaPortal;
     public static Block xylexiaTerrainBlocks;
     public static Block xylexiaOreBlocks;
-    public static Block xylexianStone;
-    public static Block xylexianSand;
+    public static Block xylexiaStone;
+    public static Block xylexiaSand;
+    public static Block xylexiaGlassPane;
 
     
     
@@ -242,6 +262,9 @@ public class RemulaBlocks {
 	
 	private static void initGeneralBlocks() {
 		p1CraftingTable = new P1CraftingTable(config.p1CraftingTableID).setUnlocalizedName("p1CraftingTable");
+		shipComputer = new TileEntityShipComputerBlock(config.shipComputerID).setUnlocalizedName("shipComputer");
+        //Liquids: Silvanite, Mercilite, Remula, Redstone, Lapis, Porinite, Pilk, Tritanite, Ventiium, Athirium, Zirinium, Boria, Tristinium, Grinist, Heri, Skatha, Kzori 
+        // + 12 more, + any planitary unique liquids
 	}
 	
 	private static void initEarthBlocks() {
@@ -262,11 +285,11 @@ public class RemulaBlocks {
     	rubberLog = new RubberLog(config.rubberLogID).setUnlocalizedName("rubberLog");
     	rubberSapling = new RubberSapling(config.rubberSaplingID).setUnlocalizedName("rubberSapling");
     	rubberLeaves = new RubberLeaves(config.rubberLeavesID).setUnlocalizedName("rubberLeaves");
-	    tecmoniumChest = new TecmoniumChest(1830).setUnlocalizedName("tecmoniumChest");
-	    merciliteChest = new MerciliteChest(1831).setUnlocalizedName("merciliteChest");
-	    silvaniteChest = new SilvaniteChest(1832).setUnlocalizedName("silvaniteChest");
+	    tecmoniumChest = new TecmoniumChest(config.tecmoniumChestID).setUnlocalizedName("tecmoniumChest");
+	    merciliteChest = new MerciliteChest(config.merciliteChestID).setUnlocalizedName("merciliteChest");
+	    silvaniteChest = new SilvaniteChest(config.silvaniteChestID).setUnlocalizedName("silvaniteChest");
     	
-    	earthOreBlocks = new EarthOreBlocks(1920).setUnlocalizedName("earthOreBlocks");
+    	earthOreBlocks = new EarthOreBlocks(config.earthOreBlocksID).setUnlocalizedName("earthOreBlocks");
 	}
 	
 	private static void initAkatoeBlocks() {
@@ -284,25 +307,32 @@ public class RemulaBlocks {
         p2Extractor = new P2Extractor(config.p2ExtractorID).setUnlocalizedName("p2Extractor");
         p2Crusher = new P2Crusher(config.p2CrusherID).setUnlocalizedName("p2Crusher");
         
-        akatoeStone = new AkatoeStone(200, Material.rock).setUnlocalizedName("akatoeStone");
-        akatoeSand = new AkatoeSand(203, Material.sand).setUnlocalizedName("akatoeSand");
-        akatoeLogs = new AkatoeLogs(240).setUnlocalizedName("akatoeLogs");
-        akatoeLeaves = new AkatoeLeaves(241).setUnlocalizedName("akatoeLeaves");
-        akatoeSaplings = new AkatoeSaplings(242, 0).setUnlocalizedName("akatoeSaplings");
-        akatoeGrass = new AkatoeGrass(201).setUnlocalizedName("akatoeGrass");
-        akatoeDirt = new AkatoeDirt(202).setUnlocalizedName("akatoeDirt");
+        akatoeStone = new AkatoeStone(config.akatoeStoneID).setUnlocalizedName("akatoeStone");
+        akatoeGrass = new AkatoeGrass(config.akatoeGrassID).setUnlocalizedName("akatoeGrass");
+        akatoeDirt = new AkatoeDirt(config.akatoeDirtID).setUnlocalizedName("akatoeDirt");
+        akatoeSand = new AkatoeSand(config.akatoeSandID).setUnlocalizedName("akatoeSand");
+        akatoeLogs = new AkatoeLogs(config.akatoeLogsID).setUnlocalizedName("akatoeLogs");
+        akatoeLeaves = new AkatoeLeaves(config.akatoeLeavesID).setUnlocalizedName("akatoeLeaves");
+        akatoeSaplings = new AkatoeSaplings(config.akatoeSaplingsID, 0).setUnlocalizedName("akatoeSaplings");
+        akatoeTilledDirt = new AkatoeTilledDirt(config.akatoeTilledDirtID).setUnlocalizedName("akatoeTilledDirt");
         
-        akatoeTerrainBlocks = new AkatoeTerrainBlocks(1900, Material.rock).setUnlocalizedName("akatoeTerrainBlocks");
-        akatoeOreBlocks = new AkatoeOreBlocks(1921).setUnlocalizedName("akatoeOreBlocks");
-        akatoePortal = new AkatoePortalBlock(1851).setUnlocalizedName("akatoePortal");
+        akatoeTerrainBlocks = new AkatoeTerrainBlocks(config.akatoeTerrainBlocksID).setUnlocalizedName("akatoeTerrainBlocks");
+        akatoeOreBlocks = new AkatoeOreBlocks(config.akatoeOreBlocksID).setUnlocalizedName("akatoeOreBlocks");
+        akatoePortal = new AkatoePortalBlock(config.akatoePortalID).setUnlocalizedName("akatoePortal");
+        
+        //porinCrop = new PorinCrop(1920).setUnlocalizedName("porinCrop");
+        //ulinCrop = new UlinCrop(1921).setUnlocalizedName("ulinCrop");
+        //cirCrop = new CirCrop(1922).setUnlocalizedName("cirCrop");
+        //boskinCrop = new BoskinCrop(1923).setUnlocalizedName("boskinCrop");
+    	plantFuxii = new PlantFuxii(config.plantFuxiiID).setUnlocalizedName("plantFuxii");
 	}
 	
 	private static void initBaloinusBlocks() {
-        baloinusPortal = new BaloinusPortalBlock(1852).setUnlocalizedName("baloinusPortal");
-        baloinusTerrainBlocks = new BaloinusTerrainBlocks(1901, Material.rock).setUnlocalizedName("baloinusTerrainBlocks");
-        baloinusOreBlocks = new BaloinusOreBlocks(1923).setUnlocalizedName("baloinusOreBlocks");
+        baloinusPortal = new BaloinusPortalBlock(config.baloinusPortalID).setUnlocalizedName("baloinusPortal");
+        baloinusTerrainBlocks = new BaloinusTerrainBlocks(config.baloinusTerrainBlocksID, Material.rock).setUnlocalizedName("baloinusTerrainBlocks");
+        baloinusOreBlocks = new BaloinusOreBlocks(config.baloinusOreBlocksID).setUnlocalizedName("baloinusOreBlocks");
         
-        baloinusStone = new BaloinusStone(205, Material.rock);
+        baloinusStone = new BaloinusStone(config.baloinusStoneID);
 	}
 	
 	private static void initIndikuBlocks() {
@@ -320,12 +350,21 @@ public class RemulaBlocks {
         p3Extractor = new P3Extractor(config.p3ExtractorID).setUnlocalizedName("p3Extractor");
         p3Crusher = new P3Crusher(config.p3CrusherID).setUnlocalizedName("p3Crusher");
         
-        indikuPortal = new IndikuPortalBlock(1853).setUnlocalizedName("indikuPortal");
-        indikuTerrainBlocks = new IndikuTerrainBlocks(1902, Material.rock).setUnlocalizedName("indikuTerrainBlocks");
-        indikuOreBlocks = new IndikuOreBlocks(1925).setUnlocalizedName("indikuOreBlocks");
-        indikuStone = new IndikuStone(206, Material.rock).setUnlocalizedName("indikuStone");
-        indikuDirt = new IndikuDirt(207).setUnlocalizedName("indikuDirt");
-        indikuGrass = new IndikuGrass(208).setUnlocalizedName("indikuGrass");
+        indikuPortal = new IndikuPortalBlock(config.indikuPortalID).setUnlocalizedName("indikuPortal");
+        indikuTerrainBlocks = new IndikuTerrainBlocks(config.indikuTerrainBlocksID).setUnlocalizedName("indikuTerrainBlocks");
+        indikuOreBlocks = new IndikuOreBlocks(config.indikuOreBlocksID).setUnlocalizedName("indikuOreBlocks");
+        indikuStone = new IndikuStone(config.indikuStoneID).setUnlocalizedName("indikuStone");
+        indikuDirt = new IndikuDirt(config.indikuDirtID).setUnlocalizedName("indikuDirt");
+        indikuGrass = new IndikuGrass(config.indikuGrassID).setUnlocalizedName("indikuGrass");
+        indikuTilledDirt = new IndikuTilledDirt(config.indikuTilledDirtID).setUnlocalizedName("indikuTilledDirt");
+        
+        indikuLogs1 = new IndikuLogs1(config.indikuLogs1ID).setUnlocalizedName("indikuLogs1");
+        indikuLogs2 = new IndikuLogs2(config.indikuLogs2ID).setUnlocalizedName("indikuLogs2");
+        indikuLeaves1 = new IndikuLeaves1(config.indikuLeaves1ID).setUnlocalizedName("indikuLeaves1");
+        indikuLeaves2 = new IndikuLeaves2(config.indikuLeaves2ID).setUnlocalizedName("indikuLeaves2");
+        indikuSaplings1 = new IndikuSaplings1(config.indikuSaplings1ID, 0).setUnlocalizedName("indikuSaplings1");
+        indikuSaplings2 = new IndikuSaplings2(config.indikuSaplings2ID, 0).setUnlocalizedName("indikuSaplings2");
+        //TODO - 8 crops, 16 plants
    	}
 	
 	private static void initElkostBlocks() {
@@ -343,10 +382,11 @@ public class RemulaBlocks {
         p4Extractor = new P4Extractor(config.p4ExtractorID).setUnlocalizedName("p4Extractor");
         p4Crusher = new P4Crusher(config.p4CrusherID).setUnlocalizedName("p4Crusher");
         
-        elkostPortal = new ElkostPortalBlock(1854).setUnlocalizedName("elkostPortal");
-        elkostTerrainBlocks = new ElkostTerrainBlocks(1903, Material.rock).setUnlocalizedName("elkostTerrainBlocks");
-        elkostOreBlocks = new ElkostOreBlocks(1927).setUnlocalizedName("elkostOreBlocks");
-        elkostSand = new ElkostSand(209, Material.sand).setUnlocalizedName("elkostSand");
+        elkostPortal = new ElkostPortalBlock(config.elkostPortalID).setUnlocalizedName("elkostPortal");
+        elkostTerrainBlocks = new ElkostTerrainBlocks(config.elkostTerrainBlocksID).setUnlocalizedName("elkostTerrainBlocks");
+        elkostOreBlocks = new ElkostOreBlocks(config.elkostOreBlocksID).setUnlocalizedName("elkostOreBlocks");
+        elkostSand = new ElkostSand(config.elkostSandID).setUnlocalizedName("elkostSand");
+        elkostGlassPane = new ElkostGlassPane(config.elkostGlassPaneID, Material.glass).setUnlocalizedName("elkostGlassPane");
 	}
 
 	private static void initXylexiaBlocks() {
@@ -364,11 +404,12 @@ public class RemulaBlocks {
         p5Extractor = new P5Extractor(config.p5ExtractorID).setUnlocalizedName("p5Extractor");
         p5Crusher = new P5Crusher(config.p5CrusherID).setUnlocalizedName("p5Crusher");
         
-        xylexiaPortal = new XylexiaPortalBlock(1855).setUnlocalizedName("xylexiaPortal");
-        xylexiaTerrainBlocks = new XylexiaTerrainBlocks(1904, Material.rock).setUnlocalizedName("xylexiaTerrainBlocks");
-        xylexiaOreBlocks = new XylexiaOreBlocks(1929).setUnlocalizedName("xylexiaOreBlocks");
-        xylexianStone = new XylexianStone(210, Material.iron).setUnlocalizedName("xylexianStone");
-        xylexianSand = new XylexianSand(211, Material.sand).setUnlocalizedName("xylexianSand");
+        xylexiaPortal = new XylexiaPortalBlock(config.xylexiaPortalID).setUnlocalizedName("xylexiaPortal");
+        xylexiaTerrainBlocks = new XylexiaTerrainBlocks(config.xylexiaTerrainBlocksID).setUnlocalizedName("xylexiaTerrainBlocks");
+        xylexiaOreBlocks = new XylexiaOreBlocks(config.xylexiaOreBlocksID).setUnlocalizedName("xylexiaOreBlocks");
+        xylexiaStone = new XylexianStone(config.xylexiaStoneID).setUnlocalizedName("xylexianStone");
+        xylexiaSand = new XylexianSand(config.xylexiaSandID).setUnlocalizedName("xylexianSand");
+        xylexiaGlassPane = new XylexianGlassPane(config.xylexiaGlassPaneID, Material.glass).setUnlocalizedName("xylexianGlassPane");
 	}
 	
 	private static void initPhase6Blocks() {
@@ -436,13 +477,13 @@ public class RemulaBlocks {
 	}
 	
 	private static void initDeepSpaceBlocks() {
-		deepSpacePortal = new DeepSpacePortalBlock(1856).setUnlocalizedName("deepSpacePortal");
-		deepSpaceTerrainBlocks = new DeepSpaceTerrainBlocks(1905, Material.rock).setUnlocalizedName("deepSpaceTerrainBlocks");
-        deepSpaceBrownOreBlocks = new DeepSpaceBrownOreBlocks(1931).setUnlocalizedName("deepSpaceBrownOreBlocks");
-        deepSpaceWhiteOreBlocks = new DeepSpaceWhiteOreBlocks(1932).setUnlocalizedName("deepSpaceWhiteOreBlocks");
+		deepSpacePortal = new DeepSpacePortalBlock(config.deepSpacePortalID).setUnlocalizedName("deepSpacePortal");
+		deepSpaceTerrainBlocks = new DeepSpaceTerrainBlocks(config.deepSpaceTerrainBlocksID, Material.rock).setUnlocalizedName("deepSpaceTerrainBlocks");
+        deepSpaceBrownOreBlocks = new DeepSpaceBrownOreBlocks(config.deepSpaceBrownOreBlocksID).setUnlocalizedName("deepSpaceBrownOreBlocks");
+        deepSpaceWhiteOreBlocks = new DeepSpaceWhiteOreBlocks(config.deepSpaceWhiteOreBlocksID).setUnlocalizedName("deepSpaceWhiteOreBlocks");
         //public final static Block deepSpaceExtraOreBlocks = new DeepSpaceExtraOreBlocks(1933).setUnlocalizedName("deepSpaceExtraOreBlocks");
         
-        deepSpaceBrownAsteroidRock = new DeepSpaceBrownAsteroid(220, Material.rock).setUnlocalizedName("deepSpaceAsteroidRock");
-        deepSpaceWhiteAsteroidRock = new DeepSpaceWhiteAsteroid(221, Material.rock).setUnlocalizedName("deepSpaceMeteoriteRock");
+        deepSpaceBrownAsteroidRock = new DeepSpaceBrownAsteroid(config.deepSpaceBrownAsteroidRockID).setUnlocalizedName("deepSpaceAsteroidRock");
+        deepSpaceWhiteAsteroidRock = new DeepSpaceWhiteAsteroid(config.deepSpaceWhiteAsteroidRockID).setUnlocalizedName("deepSpaceMeteoriteRock");
 	}
 }

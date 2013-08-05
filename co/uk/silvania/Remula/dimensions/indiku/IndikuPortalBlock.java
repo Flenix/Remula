@@ -150,8 +150,7 @@ public class IndikuPortalBlock extends BlockPortal {
 		
 	}
 	
-	public void registerIcons(IconRegister iconRegister)
-	{
+	public void registerIcons(IconRegister iconRegister) {
 	         blockIcon = iconRegister.registerIcon("Remula:IndikuPortalBlock");
 	}
 

@@ -9,8 +9,8 @@ import co.uk.silvania.Remula.Remula;
 
 public class ElkostSand extends BlockSand {
 	
-    public ElkostSand(int id, Material material) {
-		super(id, material);
+    public ElkostSand(int id) {
+		super(id, Material.sand);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);

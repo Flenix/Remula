@@ -30,11 +30,11 @@ public class XylexiaPortalBlock extends BlockPortal {
 		byte var5 = 0;
 		byte var6 = 0;
 		
-			if (par1World.getBlockId(par2 - 1, par3, par4) == RemulaBlocks.xylexianStone.blockID || par1World.getBlockId(par2 + 1, par3, par4) == RemulaBlocks.xylexianStone.blockID) {
+			if (par1World.getBlockId(par2 - 1, par3, par4) == RemulaBlocks.xylexiaStone.blockID || par1World.getBlockId(par2 + 1, par3, par4) == RemulaBlocks.xylexiaStone.blockID) {
 				var5 = 1;
 			}
 			
-			if (par1World.getBlockId(par2, par3, par4 - 1) == RemulaBlocks.xylexianStone.blockID || par1World.getBlockId(par2, par3, par4 + 1) == RemulaBlocks.xylexianStone.blockID) {
+			if (par1World.getBlockId(par2, par3, par4 - 1) == RemulaBlocks.xylexiaStone.blockID || par1World.getBlockId(par2, par3, par4 + 1) == RemulaBlocks.xylexiaStone.blockID) {
 				var6 = 1;
 			}
 			
@@ -57,7 +57,7 @@ public class XylexiaPortalBlock extends BlockPortal {
 							int var10 = par1World.getBlockId(par2 + var5 * var7, par3 + var8, par4 + var6 * var7);
 							
 							if (var9) {
-								if (var10 != RemulaBlocks.xylexianStone.blockID) {
+								if (var10 != RemulaBlocks.xylexiaStone.blockID) {
 									return false;
 								}
 							}
@@ -99,7 +99,7 @@ public class XylexiaPortalBlock extends BlockPortal {
 					;
 				}
 
-			if (par1World.getBlockId(par2, var8 - 1, par4) != RemulaBlocks.xylexianStone.blockID) {
+			if (par1World.getBlockId(par2, var8 - 1, par4) != RemulaBlocks.xylexiaStone.blockID) {
 				par1World.setBlock(par2, par3, par4, 0);
 			}
 			else
@@ -110,7 +110,7 @@ public class XylexiaPortalBlock extends BlockPortal {
 				;
 			}
 
-			if (var9 == 3 && par1World.getBlockId(par2, var8 + var9, par4) == RemulaBlocks.xylexianStone.blockID) {
+			if (var9 == 3 && par1World.getBlockId(par2, var8 + var9, par4) == RemulaBlocks.xylexiaStone.blockID) {
 				boolean var10 = par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID;
 				boolean var11 = par1World.getBlockId(par2, par3, par4 - 1) == this.blockID || par1World.getBlockId(par2, par3, par4 + 1) == this.blockID;
 
@@ -119,7 +119,7 @@ public class XylexiaPortalBlock extends BlockPortal {
 					}
 					else
 					{
-						if ((par1World.getBlockId(par2 + var6, par3, par4 + var7) != RemulaBlocks.xylexianStone.blockID || par1World.getBlockId(par2 - var6, par3, par4 - var7) != this.blockID) && (par1World.getBlockId(par2 - var6, par3, par4 - var7) != RemulaBlocks.xylexianStone.blockID || par1World.getBlockId(par2 + var6, par3, par4 + var7) != this.blockID)) {
+						if ((par1World.getBlockId(par2 + var6, par3, par4 + var7) != RemulaBlocks.xylexiaStone.blockID || par1World.getBlockId(par2 - var6, par3, par4 - var7) != this.blockID) && (par1World.getBlockId(par2 - var6, par3, par4 - var7) != RemulaBlocks.xylexiaStone.blockID || par1World.getBlockId(par2 + var6, par3, par4 + var7) != this.blockID)) {
 							par1World.setBlock(par2, par3, par4, 0);
 						}
 					}

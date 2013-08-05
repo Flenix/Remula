@@ -3,6 +3,8 @@ package co.uk.silvania.Remula.blocks.p2;
 import java.util.List;
 import java.util.Random;
 
+import co.uk.silvania.Remula.Remula;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -16,7 +18,7 @@ import net.minecraft.util.Icon;
 public class AkatoeLeaves extends Block {
 	public AkatoeLeaves(int par1) {
 		super(par1, Material.leaves);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(Remula.tabWorlds);
 		this.setStepSound(soundGrassFootstep);
 		this.setHardness(0.2F);
 	}

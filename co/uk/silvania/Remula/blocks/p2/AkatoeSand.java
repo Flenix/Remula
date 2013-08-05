@@ -9,8 +9,8 @@ import co.uk.silvania.Remula.Remula;
 
 public class AkatoeSand extends BlockSand {
 	
-    public AkatoeSand(int id, Material material) {
-		super(id, material);
+    public AkatoeSand(int id) {
+		super(id, Material.sand);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundSandFootstep);

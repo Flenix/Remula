@@ -55,7 +55,7 @@ public class AkatoeBiomeDecorator {
         //this.ironGen = new WorldGenMinable(Remula.akatoeIron.blockID, 8);
         //this.goldGen = new WorldGenMinable(Remula.akatoeGold.blockID, 8);
         //this.lapisGen = new WorldGenMinable(Remula.akatoeLapis.blockID, 6);
-        this.plantFuxiiGen = new WorldGenFlowers(Remula.plantFuxii.blockID);
+        this.plantFuxiiGen = new WorldGenFlowers(RemulaBlocks.plantFuxii.blockID);
         this.treesPerChunk = 0;
         this.flowersPerChunk = 2;
         this.grassPerChunk = 1;

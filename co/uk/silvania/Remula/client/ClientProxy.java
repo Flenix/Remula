@@ -7,6 +7,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import co.uk.silvania.Remula.blocks.p1.P1SolarPanel;
+import co.uk.silvania.Remula.blocks.shipparts.*;
 import co.uk.silvania.Remula.client.models.ModelAkatonian;
 import co.uk.silvania.Remula.client.models.ModelGarfin;
 import co.uk.silvania.Remula.client.models.ModelGlog;
@@ -39,6 +40,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTecmoniumChest.class, new TileEntityTecmoniumChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMerciliteChest.class, new TileEntityMerciliteChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySilvaniteChest.class, new TileEntitySilvaniteChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShipComputerEntity.class, new TileEntityShipComputerRenderer());
 		
 		EntityRegistry.registerGlobalEntityID(EntityAdvRobot.class, "Robot", EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
 		//EntityRegistry.registerGlobalEntityID(EntityAkatonian.class, "Akatonian", EntityRegistry.findGlobalUniqueEntityId(), 1234567, 12345);

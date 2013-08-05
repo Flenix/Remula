@@ -15,8 +15,8 @@ public class BiomeXylexiaPlains extends BiomeGenBase {
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         //this.spawnableCreatureList.add(new SpawnListEntry(EntityGlog.class, 10, 4, 4));
-		this.topBlock = (byte) RemulaBlocks.xylexianStone.blockID;
-		this.fillerBlock = (byte) RemulaBlocks.xylexianStone.blockID;
+		this.topBlock = (byte) RemulaBlocks.xylexiaStone.blockID;
+		this.fillerBlock = (byte) RemulaBlocks.xylexiaStone.blockID;
 		this.maxHeight = 0.5F;
 		this.minHeight = 0.0F;
 		this.waterColorMultiplier = 0X00FF21;

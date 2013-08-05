@@ -8,8 +8,8 @@ import co.uk.silvania.Remula.Remula;
 
 public class XylexianStone extends Block {
 	
-    public XylexianStone(int id, Material material) {
-		super(id, material);
+    public XylexianStone(int id) {
+		super(id, Material.iron);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundMetalFootstep);

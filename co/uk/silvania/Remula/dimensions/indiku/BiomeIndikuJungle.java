@@ -15,10 +15,10 @@ public class BiomeIndikuJungle extends BiomeGenBase {
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         //this.spawnableCreatureList.add(new SpawnListEntry(EntityGlog.class, 10, 4, 4));
-		//this.topBlock = (byte) RemulaBlocks.indikuGrass.blockID;
-		//this.fillerBlock = (byte) RemulaBlocks.indikuDirt.blockID;
+		this.topBlock = (byte) RemulaBlocks.indikuGrass.blockID;
+		this.fillerBlock = (byte) RemulaBlocks.indikuDirt.blockID;
 		this.maxHeight = 0.5F;
 		this.minHeight = 0.0F;
-		this.waterColorMultiplier = 0X00FF21;
+		this.waterColorMultiplier = 0X002000;
 	}
 }

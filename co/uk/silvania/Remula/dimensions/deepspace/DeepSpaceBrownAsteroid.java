@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class DeepSpaceBrownAsteroid extends Block {
 
-	public DeepSpaceBrownAsteroid(int id, Material material) {
-		super(id, material);
+	public DeepSpaceBrownAsteroid(int id) {
+		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(1.0F);
 	}

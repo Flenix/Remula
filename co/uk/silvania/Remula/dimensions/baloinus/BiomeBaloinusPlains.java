@@ -18,14 +18,14 @@ public class BiomeBaloinusPlains extends BiomeGenBase {
 	
 	public BiomeBaloinusPlains(int id) {
 		super(id);
-		this.setBiomeName("Akatonian Plain");
+		this.setBiomeName("Baloinus Plains");
 		this.setDisableRain();
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         //this.spawnableCreatureList.add(new SpawnListEntry(EntityGlog.class, 10, 4, 4));
-		//this.topBlock = (byte) RemulaBlocks.baloinusStone.blockID;
-		//this.fillerBlock = (byte) RemulaBlocks.baloinusStone.blockID;
+		this.topBlock = (byte) RemulaBlocks.baloinusStone.blockID;
+		this.fillerBlock = (byte) RemulaBlocks.baloinusStone.blockID;
 		this.maxHeight = 0.5F;
 		this.minHeight = 0.0F;
 		this.waterColorMultiplier = 0X7F0000;

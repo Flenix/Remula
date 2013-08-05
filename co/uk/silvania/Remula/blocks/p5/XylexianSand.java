@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class XylexianSand extends Block {
 
-	public XylexianSand(int id, Material material) {
-		super(id, material);
+	public XylexianSand(int id) {
+		super(id, Material.sand);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);

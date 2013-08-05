@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class BaloinusStone extends Block {
 
-	public BaloinusStone(int id, Material material) {
-		super(id, material);
+	public BaloinusStone(int id) {
+		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);

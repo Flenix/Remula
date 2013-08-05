@@ -21,12 +21,14 @@ import co.uk.silvania.Remula.blocks.p2.P2T1StorageUnit;
 import co.uk.silvania.Remula.blocks.p2.P2T2StorageUnit;
 import co.uk.silvania.Remula.blocks.p2.P2T3StorageUnit;
 import co.uk.silvania.Remula.blocks.p2.P2ThermalGenerator;
+import co.uk.silvania.Remula.blocks.p3.IndikuTilledDirt;
 import co.uk.silvania.Remula.blocks.p3.ItemIndikuOreBlocks;
 import co.uk.silvania.Remula.blocks.p3.ItemIndikuTerrainBlocks;
 import co.uk.silvania.Remula.blocks.p4.ItemElkostOreBlocks;
 import co.uk.silvania.Remula.blocks.p4.ItemElkostTerrainBlocks;
 import co.uk.silvania.Remula.blocks.p5.ItemXylexiaOreBlocks;
 import co.uk.silvania.Remula.blocks.p5.ItemXylexiaTerrainBlocks;
+import co.uk.silvania.Remula.blocks.shipparts.TileEntityShipComputerEntity;
 import co.uk.silvania.Remula.dimensions.akatoe.AkatoeWorldProvider;
 import co.uk.silvania.Remula.dimensions.akatoe.WorldGenAkatoeTrees;
 import co.uk.silvania.Remula.dimensions.baloinus.BaloinusWorldProvider;
@@ -38,12 +40,19 @@ import co.uk.silvania.Remula.dimensions.elkost.ElkostWorldProvider;
 import co.uk.silvania.Remula.dimensions.indiku.IndikuWorldProvider;
 import co.uk.silvania.Remula.dimensions.xylexia.XylexiaWorldProvider;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
+import co.uk.silvania.Remula.entity.akatoe.EntityGarfin;
 //import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
 import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
+import co.uk.silvania.Remula.entity.akatoe.EntityHermust;
+import co.uk.silvania.Remula.entity.akatoe.EntityLignis;
+import co.uk.silvania.Remula.entity.akatoe.EntitySkitterling;
+import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import co.uk.silvania.Remula.tileentity.TileEntityLITable;
 import co.uk.silvania.Remula.tileentity.TileEntityMerciliteChest;
 import co.uk.silvania.Remula.tileentity.TileEntitySilvaniteChest;
 import co.uk.silvania.Remula.tileentity.TileEntityTecmoniumChest;
+import net.minecraft.block.Block;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -98,10 +107,12 @@ public class CommonProxy implements IGuiHandler {
     
     public void registerGeneralBlocks() {
     	GameRegistry.registerBlock(RemulaBlocks.p1CraftingTable, "p1CraftingTable");
+    	GameRegistry.registerBlock(RemulaBlocks.shipComputer, "shipComputer");
     }
     
     public void addGeneralNames() {
-    	LanguageRegistry.addName(RemulaBlocks.p1CraftingTable, "Liquid Infusion Table");    	
+    	LanguageRegistry.addName(RemulaBlocks.p1CraftingTable, "Liquid Infusion Table");
+    	LanguageRegistry.addName(RemulaBlocks.shipComputer, "Ship Computer");
     }
     
     public void registerEarthBlocks() {
@@ -172,6 +183,14 @@ public class CommonProxy implements IGuiHandler {
     	GameRegistry.registerBlock(RemulaBlocks.akatoeLogs, "akatoeLogs");
     	GameRegistry.registerBlock(RemulaBlocks.akatoeLeaves, "akatoeLeaves");
     	GameRegistry.registerBlock(RemulaBlocks.akatoeSaplings, "akatoeSaplings");
+    	GameRegistry.registerBlock(RemulaBlocks.akatoeTilledDirt, "akatoeTilledDirt");
+    	
+    	//TODO plants
+    	//GameRegistry.registerBlock(RemulaBlocks.porinCrop, "porinCrop");
+    	//GameRegistry.registerBlock(RemulaBlocks.ulinCrop, "ulinCrop");
+    	//GameRegistry.registerBlock(RemulaBlocks.cirCrop, "cirCrop");
+    	//GameRegistry.registerBlock(RemulaBlocks.boskinCrop, "boskinCrop");
+		GameRegistry.registerBlock(RemulaBlocks.plantFuxii, "plantFuxii");
     	
     	GameRegistry.registerBlock(RemulaBlocks.akatoePortal, "akatoePortal");
     	GameRegistry.registerBlock(RemulaBlocks.akatoeTerrainBlocks, ItemAkatoeTerrainBlocks.class, "Remula" + (RemulaBlocks.akatoeTerrainBlocks.getUnlocalizedName().substring(5)));
@@ -218,6 +237,13 @@ public class CommonProxy implements IGuiHandler {
     	LanguageRegistry.addName(RemulaBlocks.akatoeLeaves, "Temporary Name");
     	LanguageRegistry.addName(RemulaBlocks.akatoeSaplings, "Temporary Name");
     	LanguageRegistry.addName(RemulaBlocks.akatoePortal, "Akatoe Portal");
+    	LanguageRegistry.addName(RemulaBlocks.akatoeTilledDirt, "Akatonian Tilled Dirt");
+    	
+    	//LanguageRegistry.addName(RemulaBlocks.porinCrop, "Porin Crop");
+    	//LanguageRegistry.addName(RemulaBlocks.ulinCrop, "Ulin Crop");
+    	//LanguageRegistry.addName(RemulaBlocks.cirCrop, "Cir Crop");
+    	//LanguageRegistry.addName(RemulaBlocks.boskinCrop, "Boskin Crop");
+    	LanguageRegistry.addName(RemulaBlocks.plantFuxii, "Fuxii");
     }
     
     public void registerBaloinusBlocks() {
@@ -266,8 +292,18 @@ public class CommonProxy implements IGuiHandler {
     	GameRegistry.registerBlock(RemulaBlocks.indikuStone, "indikuStone");
     	GameRegistry.registerBlock(RemulaBlocks.indikuDirt, "indikuDirt");
     	GameRegistry.registerBlock(RemulaBlocks.indikuGrass, "indikuGrass");
+    	GameRegistry.registerBlock(RemulaBlocks.indikuTilledDirt, "indikuTilledDirt");
     	GameRegistry.registerBlock(RemulaBlocks.indikuTerrainBlocks, ItemIndikuTerrainBlocks.class, "Remula" + (RemulaBlocks.indikuTerrainBlocks.getUnlocalizedName().substring(5)));
     	GameRegistry.registerBlock(RemulaBlocks.indikuOreBlocks, ItemIndikuOreBlocks.class, "Remula" + (RemulaBlocks.indikuOreBlocks.getUnlocalizedName().substring(5)));
+    	
+    	GameRegistry.registerBlock(RemulaBlocks.indikuLogs1, "indikuLogs1");
+    	GameRegistry.registerBlock(RemulaBlocks.indikuLogs2, "indikuLogs2");
+    	GameRegistry.registerBlock(RemulaBlocks.indikuLeaves1, "indikuLeaves1");
+    	GameRegistry.registerBlock(RemulaBlocks.indikuLeaves2, "indikuLeaves2");
+    	GameRegistry.registerBlock(RemulaBlocks.indikuSaplings1, "indikuSaplings1");
+    	GameRegistry.registerBlock(RemulaBlocks.indikuSaplings2, "indikuSaplings2");
+    	
+    	GameRegistry.registerBlock(RemulaBlocks.indikuPortal, "indikuPortal");
     }
     
     public void addIndikuNames() {
@@ -284,28 +320,31 @@ public class CommonProxy implements IGuiHandler {
     	LanguageRegistry.addName(RemulaBlocks.p3Extractor, "Phase 3 Extractor");
     	LanguageRegistry.addName(RemulaBlocks.p3Crusher, "Phase 3 Crusher");
     	
-    	LanguageRegistry.addName(RemulaBlocks.indikuStone, "Indiku Stone");
-    	LanguageRegistry.addName(RemulaBlocks.indikuDirt, "Indiku Dirt");
-    	LanguageRegistry.addName(RemulaBlocks.indikuGrass, "Indiku Grass");
+    	LanguageRegistry.addName(RemulaBlocks.indikuStone, "Indikian Stone");
+    	LanguageRegistry.addName(RemulaBlocks.indikuDirt, "Indikian Dirt");
+    	LanguageRegistry.addName(RemulaBlocks.indikuGrass, "Indikian Grass");
+    	LanguageRegistry.addName(RemulaBlocks.indikuTilledDirt, "Indikian Tilled Dirt");
+    	
+    	LanguageRegistry.addName(RemulaBlocks.indikuPortal, "Indiku Portal");
 
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 0), "Indiku Cobblestone");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 1), "Indiku Bricks");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 2), "Indiku Small Bricks");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 3), "Indiku Decorative Bricks");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 4), "Indiku Refined Stone");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 5), "Indiku Sand");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 6), "Indiku Glass");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 0), "Indiku Coal Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 1), "Indiku Copper Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 2), "Indiku Tin Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 3), "Indiku Iron Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 4), "Indiku Gold Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 5), "Indiku Lapis Lazuli Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 6), "Indiku Silvanite Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 7), "Indiku Tritanite Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 8), "Indiku Ventiium Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 9), "Indiku Arithium Ore");
-        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 10), "Indiku Zirinium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 0), "Indikian Cobblestone");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 1), "Indikian Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 2), "Indikian Small Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 3), "Indikian Decorative Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 4), "Indikian Refined Stone");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 5), "Indikian Sand");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuTerrainBlocks, 1, 6), "Indikian Glass");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 0), "Indikian Coal Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 1), "Indikian Copper Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 2), "Indikian Tin Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 3), "Indikian Iron Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 4), "Indikian Gold Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 5), "Indikian Lapis Lazuli Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 6), "Indikian Silvanite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 7), "Indikian Tritanite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 8), "Indikian Ventiium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 9), "Indikian Arithium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 10), "Indikian Zirinium Ore");
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.indikuOreBlocks, 1, 11), "Indikite Ore");
     }
     
@@ -325,6 +364,8 @@ public class CommonProxy implements IGuiHandler {
     	
     	GameRegistry.registerBlock(RemulaBlocks.elkostTerrainBlocks, ItemElkostTerrainBlocks.class, "Remula" + (RemulaBlocks.elkostTerrainBlocks.getUnlocalizedName().substring(5)));
     	GameRegistry.registerBlock(RemulaBlocks.elkostOreBlocks, ItemElkostOreBlocks.class, "Remula" + (RemulaBlocks.elkostOreBlocks.getUnlocalizedName().substring(5)));
+    	GameRegistry.registerBlock(RemulaBlocks.elkostGlassPane, "elkostGlassPane");
+    	GameRegistry.registerBlock(RemulaBlocks.elkostSand, "elkostSand");
     }
     
     public void addElkostNames() {
@@ -360,6 +401,9 @@ public class CommonProxy implements IGuiHandler {
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.elkostOreBlocks, 1, 10), "Elkost Tristanium Ore");
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.elkostOreBlocks, 1, 11), "Elkost Grinist Ore");
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.elkostOreBlocks, 1, 12), "Elkost Elkostium Ore");
+        
+        LanguageRegistry.addName(RemulaBlocks.elkostGlassPane, "Elkost Glass Pane");
+        LanguageRegistry.addName(RemulaBlocks.elkostSand, "Elkostian Sand");
     }
     
     public void registerXylexiaBlocks() {
@@ -378,6 +422,10 @@ public class CommonProxy implements IGuiHandler {
     	
     	GameRegistry.registerBlock(RemulaBlocks.xylexiaTerrainBlocks, ItemXylexiaTerrainBlocks.class, "Remula" + (RemulaBlocks.xylexiaTerrainBlocks.getUnlocalizedName().substring(5)));
     	GameRegistry.registerBlock(RemulaBlocks.xylexiaOreBlocks, ItemXylexiaOreBlocks.class, "Remula" + (RemulaBlocks.xylexiaOreBlocks.getUnlocalizedName().substring(5)));
+    	
+    	GameRegistry.registerBlock(RemulaBlocks.xylexiaStone, "xylexiaStone");
+    	GameRegistry.registerBlock(RemulaBlocks.xylexiaSand, "xylexiaSand");
+    	GameRegistry.registerBlock(RemulaBlocks.xylexiaGlassPane, "xylexiaGlassPane");
     }
     
     public void addXylexiaNames() {
@@ -414,16 +462,277 @@ public class CommonProxy implements IGuiHandler {
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.xylexiaOreBlocks, 1, 11), "Xylexian Skatha Ore");
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.xylexiaOreBlocks, 1, 12), "Xylexian Kzori Ore");
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.xylexiaOreBlocks, 1, 13), "Xylexite Ore");
+        
+        LanguageRegistry.addName(RemulaBlocks.xylexiaStone, "Xylexian Stone");
+        LanguageRegistry.addName(RemulaBlocks.xylexiaSand, "Xylexian Sand");
+        LanguageRegistry.addName(RemulaBlocks.xylexiaGlassPane, "Xylexian Glass Pane");
     }
     
     public void registerDeepSpaceBlocks() {
+    	GameRegistry.registerBlock(RemulaBlocks.deepSpacePortal, "deepSpacePortal");
+    	GameRegistry.registerBlock(RemulaBlocks.deepSpaceBrownAsteroidRock, "deepSpaceBrownAsteroidRock");
+    	GameRegistry.registerBlock(RemulaBlocks.deepSpaceWhiteAsteroidRock, "deepSpaceWhiteAsteroidRock");
+    	
+    	GameRegistry.registerBlock(RemulaBlocks.deepSpaceTerrainBlocks, ItemDeepSpaceTerrainBlocks.class, "Remula" + (RemulaBlocks.deepSpaceTerrainBlocks.getUnlocalizedName().substring(5)));
+    	GameRegistry.registerBlock(RemulaBlocks.deepSpaceBrownOreBlocks, ItemDeepSpaceBrownOreBlocks.class, "Remula" + (RemulaBlocks.deepSpaceBrownOreBlocks.getUnlocalizedName().substring(5)));
+    	GameRegistry.registerBlock(RemulaBlocks.deepSpaceWhiteOreBlocks, ItemDeepSpaceWhiteOreBlocks.class, "Remula" + (RemulaBlocks.deepSpaceWhiteOreBlocks.getUnlocalizedName().substring(5)));
     	
     }
     
     public void addDeepSpaceNames() {
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 0), "Brown Asteroid Rubble");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 1), "Brown Asteroid Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 2), "Brown Asteroid Small Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 3), "Brown Asteroid Decorative Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 4), "Refined Brown Asteroid");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 5), "Brown Asteroid Dust");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 6), "Null");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 7), "Null");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 8), "White Asteroid Rubble");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 9), "White Asteroid Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 10), "White Asteroid Small Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 11), "White Asteroid Decorative Bricks");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 12), "Refined White Asteroid ");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 13), "White Asteroid Dust");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 14), "Null");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceTerrainBlocks, 1, 15), "Null");
+        
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 0), "Brown Asteroid Copper Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 1), "Brown Asteroid Tin Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 2), "Brown Asteroid Iron Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 3), "Brown Asteroid Silvanite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 4), "Brown Asteroid Mercilite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 5), "Brown Asteroid Porinite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 6), "Brown Asteroid Zinc Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 7), "Brown Asteroid Thori Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 8), "Brown Asteroid Ventiium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 9), "Brown Asteroid Farithium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 10), "Brown Asteroid Boria Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 11), "Brown Asteroid Heri Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 12), "Brown Asteroid Paladixium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 13), "Brown Asteroid Aerolian Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 14), "Brown Asteroid Technolium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceBrownOreBlocks, 1, 15), "Brown Asteroid P9 Ore");
+        
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 0), "White Asteroid Copper Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 1), "White Asteroid Tin Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 2), "White Asteroid Iron Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 3), "White Asteroid Silvanite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 4), "White Asteroid Mercilite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 5), "White Asteroid Porinite Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 6), "White Asteroid Zinc Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 7), "White Asteroid Thori Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 8), "White Asteroid Ventiium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 9), "White Asteroid Farithium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 10), "White Asteroid Boria Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 11), "White Asteroid Heri Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 12), "White Asteroid Paladixium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 13), "White Asteroid Aerolian Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 14), "White Asteroid Technolium Ore");
+        LanguageRegistry.addName(new ItemStack(RemulaBlocks.deepSpaceWhiteOreBlocks, 1, 15), "White Asteroid P9 Ore");
+        LanguageRegistry.addName(RemulaBlocks.deepSpacePortal, "Deep-Space Portal");
+        LanguageRegistry.addName(RemulaBlocks.deepSpaceBrownAsteroidRock, "Asteroid Rock");
+        LanguageRegistry.addName(RemulaBlocks.deepSpaceWhiteAsteroidRock, "Asteroid Rock");
+    }
+    
+    public void registerMineralItems() {
+        GameRegistry.registerItem(RemulaItems.emptyCell, "emptyCell");
+        GameRegistry.registerItem(RemulaItems.copperCell, "copperCell");
+        GameRegistry.registerItem(RemulaItems.tinCell, "tinCell");
+        GameRegistry.registerItem(RemulaItems.coalCell, "coalCell");
+        GameRegistry.registerItem(RemulaItems.ironCell, "ironCell");
+        GameRegistry.registerItem(RemulaItems.goldCell, "goldCell");
+        GameRegistry.registerItem(RemulaItems.lapisLazuliCell, "lapisLazuliCell");
+        GameRegistry.registerItem(RemulaItems.redstoneCell, "redstoneCell");
+        GameRegistry.registerItem(RemulaItems.diamondCell, "diamondCell");
+        GameRegistry.registerItem(RemulaItems.tecmoniumCell, "tecmoniumCell");
+        GameRegistry.registerItem(RemulaItems.merciliteCell, "merciliteCell");
+        GameRegistry.registerItem(RemulaItems.silvaniteCell, "silvaniteCell");
+        GameRegistry.registerItem(RemulaItems.poriniteCell, "poriniteCell");
+        GameRegistry.registerItem(RemulaItems.pilkCell, "pilkCell");
+        GameRegistry.registerItem(RemulaItems.tritaniteCell, "tritaniteCell");
+        GameRegistry.registerItem(RemulaItems.akatiteCell, "akatiteCell");
+        GameRegistry.registerItem(RemulaItems.balumCell, "balumCell");
+        GameRegistry.registerItem(RemulaItems.ventiiumCell, "ventiiumCell");
+        GameRegistry.registerItem(RemulaItems.arithiumCell, "arithiumCell");
+        GameRegistry.registerItem(RemulaItems.ziriniumCell, "ziriniumCell");
+        GameRegistry.registerItem(RemulaItems.elkostiumCell, "elkostiumCell");
+        GameRegistry.registerItem(RemulaItems.heriCell, "heriCell");
+        GameRegistry.registerItem(RemulaItems.skathaCell, "skathaCell");
+        GameRegistry.registerItem(RemulaItems.kzoriCell, "kzoriCell");
+        GameRegistry.registerItem(RemulaItems.xylexiteCell, "xylexiteCell");
+        
+        GameRegistry.registerItem(RemulaItems.copperDust, "copperDust");
+        GameRegistry.registerItem(RemulaItems.tinDust, "tinDust");
+        GameRegistry.registerItem(RemulaItems.coalDust, "coalDust");
+        GameRegistry.registerItem(RemulaItems.ironDust, "ironDust");
+        GameRegistry.registerItem(RemulaItems.goldDust, "goldDust");
+        GameRegistry.registerItem(RemulaItems.diamondDust, "diamondDust");
+        GameRegistry.registerItem(RemulaItems.tecmoniumDust, "tecmoniumDust");
+        GameRegistry.registerItem(RemulaItems.merciliteDust, "mercliteDust");
+        GameRegistry.registerItem(RemulaItems.silvaniteDust, "silvaniteDust");
+        GameRegistry.registerItem(RemulaItems.poriniteDust, "poriniteDust");
+        GameRegistry.registerItem(RemulaItems.pilkDust, "pilkDust");
+        GameRegistry.registerItem(RemulaItems.tritaniteDust, "tritaniteDust");
+        GameRegistry.registerItem(RemulaItems.akatiteDust, "akatiteDust");
+        GameRegistry.registerItem(RemulaItems.balumDust, "balumDust");
+        GameRegistry.registerItem(RemulaItems.ventiiumDust, "ventiiumDust");
+        GameRegistry.registerItem(RemulaItems.arithiumDust, "arithiumDust");
+        GameRegistry.registerItem(RemulaItems.ziriniumDust, "ziriniumDust");
+        GameRegistry.registerItem(RemulaItems.elkostiumDust, "elkostiumDust");
+        GameRegistry.registerItem(RemulaItems.heriDust, "heriDust");
+        GameRegistry.registerItem(RemulaItems.skathaDust, "skathaDust");
+        GameRegistry.registerItem(RemulaItems.kzoriDust, "kzoriDust");
+        GameRegistry.registerItem(RemulaItems.xylexiteDust, "xylexiteDust");
+        
+        GameRegistry.registerItem(RemulaItems.copperIngot, "copperIngot");
+        GameRegistry.registerItem(RemulaItems.tinIngot, "tinIngot");
+        GameRegistry.registerItem(RemulaItems.tecmoniumIngot, "tecmoniumIngot");
+        GameRegistry.registerItem(RemulaItems.merciliteIngot, "mercliteIngot");
+        GameRegistry.registerItem(RemulaItems.silvaniteIngot, "silvaniteIngot");
+        GameRegistry.registerItem(RemulaItems.poriniteIngot, "poriniteIngot");
+        GameRegistry.registerItem(RemulaItems.pilkIngot, "pilkIngot");
+        GameRegistry.registerItem(RemulaItems.tritaniteIngot, "tritaniteIngot");
+        GameRegistry.registerItem(RemulaItems.akatiteIngot, "akatiteIngot");
+        GameRegistry.registerItem(RemulaItems.balumIngot, "balumIngot");
+        GameRegistry.registerItem(RemulaItems.ventiiumIngot, "ventiiumIngot");
+        GameRegistry.registerItem(RemulaItems.arithiumIngot, "arithiumIngot");
+        GameRegistry.registerItem(RemulaItems.ziriniumIngot, "ziriniumIngot");
+        GameRegistry.registerItem(RemulaItems.elkostiumIngot, "elkostiumIngot");
+        GameRegistry.registerItem(RemulaItems.heriIngot, "heriIngot");
+        GameRegistry.registerItem(RemulaItems.skathaIngot, "skathaIngot");
+        GameRegistry.registerItem(RemulaItems.kzoriIngot, "kzoriIngot");
+        GameRegistry.registerItem(RemulaItems.xylexiteIngot, "xylexiteIngot");
+
+        //GameRegistry.registerItem(merciliteBucket, "merciliteBucket");
+        //GameRegistry.registerItem(silvaniteBucket, "silvaniteBucket");
+    }
+    
+    public void addMineralNames() {
+        LanguageRegistry.addName(RemulaItems.emptyCell, "Empty Cell");
+        LanguageRegistry.addName(RemulaItems.copperCell, "Copper Cell");
+        LanguageRegistry.addName(RemulaItems.tinCell, "Tin Cell");
+        LanguageRegistry.addName(RemulaItems.coalCell, "Coal Cell");
+        LanguageRegistry.addName(RemulaItems.ironCell, "Iron Cell");
+        LanguageRegistry.addName(RemulaItems.goldCell, "Gold Cell");
+        LanguageRegistry.addName(RemulaItems.lapisLazuliCell, "Lapis Lazuli Cell");
+        LanguageRegistry.addName(RemulaItems.redstoneCell, "Redstone Cell");
+        LanguageRegistry.addName(RemulaItems.diamondCell, "Diamond Cell");
+        LanguageRegistry.addName(RemulaItems.tecmoniumCell, "Tecmonium Cell");
+        LanguageRegistry.addName(RemulaItems.merciliteCell, "Mercilite Cell");
+        LanguageRegistry.addName(RemulaItems.silvaniteCell, "Silvanite Cell");
+        LanguageRegistry.addName(RemulaItems.poriniteCell, "Porinite Cell");
+        LanguageRegistry.addName(RemulaItems.pilkCell, "Pilk Cell");
+        LanguageRegistry.addName(RemulaItems.tritaniteCell, "Tritanite Cell");
+        LanguageRegistry.addName(RemulaItems.akatiteCell, "Akatite Cell");
+        LanguageRegistry.addName(RemulaItems.balumCell, "Balum Cell");
+        LanguageRegistry.addName(RemulaItems.ventiiumCell, "Ventiium Cell");
+        LanguageRegistry.addName(RemulaItems.arithiumCell, "Arithium Cell");
+        LanguageRegistry.addName(RemulaItems.ziriniumCell, "Zirinium Cell");
+        LanguageRegistry.addName(RemulaItems.elkostiumCell, "Elkostium Cell");
+        LanguageRegistry.addName(RemulaItems.heriCell, "Heri Cell");
+        LanguageRegistry.addName(RemulaItems.skathaCell, "Skatha Cell");
+        LanguageRegistry.addName(RemulaItems.kzoriCell, "Kzori Cell");
+        LanguageRegistry.addName(RemulaItems.xylexiteCell, "Xylexite Cell");
+        
+        LanguageRegistry.addName(RemulaItems.copperDust, "Copper Dust");
+        LanguageRegistry.addName(RemulaItems.tinDust, "Tin Dust");
+        LanguageRegistry.addName(RemulaItems.coalDust, "Coal Dust");
+        LanguageRegistry.addName(RemulaItems.ironDust, "Iron Dust");
+        LanguageRegistry.addName(RemulaItems.goldDust, "Gold Dust");
+        LanguageRegistry.addName(RemulaItems.diamondDust, "Diamond Dust");
+        LanguageRegistry.addName(RemulaItems.tecmoniumDust, "Tecmonium Dust");
+        LanguageRegistry.addName(RemulaItems.merciliteDust, "Merclite Dust");
+        LanguageRegistry.addName(RemulaItems.silvaniteDust, "Silvanite Dust");
+        LanguageRegistry.addName(RemulaItems.poriniteDust, "Porinite Dust");
+        LanguageRegistry.addName(RemulaItems.pilkDust, "Pilk Dust");
+        LanguageRegistry.addName(RemulaItems.tritaniteDust, "Tritanite Dust");
+        LanguageRegistry.addName(RemulaItems.akatiteDust, "Akatite Dust");
+        LanguageRegistry.addName(RemulaItems.balumDust, "Balum Dust");
+        LanguageRegistry.addName(RemulaItems.ventiiumDust, "Ventiium Dust");
+        LanguageRegistry.addName(RemulaItems.arithiumDust, "Arithium Dust");
+        LanguageRegistry.addName(RemulaItems.ziriniumDust, "Zirinium Dust");
+        LanguageRegistry.addName(RemulaItems.elkostiumDust, "Elkostium Dust");
+        LanguageRegistry.addName(RemulaItems.heriDust, "Heri Dust");
+        LanguageRegistry.addName(RemulaItems.skathaDust, "Skatha Dust");
+        LanguageRegistry.addName(RemulaItems.kzoriDust, "Kzori Dust");
+        LanguageRegistry.addName(RemulaItems.xylexiteDust, "Xylexite Dust");
+        
+        LanguageRegistry.addName(RemulaItems.copperIngot, "Copper Ingot");
+        LanguageRegistry.addName(RemulaItems.tinIngot, "Tin Ingot");
+        LanguageRegistry.addName(RemulaItems.tecmoniumIngot, "Tecmonium Ingot");
+        LanguageRegistry.addName(RemulaItems.merciliteIngot, "Merclite Ingot");
+        LanguageRegistry.addName(RemulaItems.silvaniteIngot, "Silvanite Ingot");
+        LanguageRegistry.addName(RemulaItems.poriniteIngot, "Porinite Ingot");
+        LanguageRegistry.addName(RemulaItems.pilkIngot, "Pilk Ingot");
+        LanguageRegistry.addName(RemulaItems.tritaniteIngot, "Tritanite Ingot");
+        LanguageRegistry.addName(RemulaItems.akatiteIngot, "Akatite Ingot");
+        LanguageRegistry.addName(RemulaItems.balumIngot, "Balum Ingot");
+        LanguageRegistry.addName(RemulaItems.ventiiumIngot, "Ventiium Ingot");
+        LanguageRegistry.addName(RemulaItems.arithiumIngot, "Arithium Ingot");
+        LanguageRegistry.addName(RemulaItems.ziriniumIngot, "Zirinium Ingot");
+        LanguageRegistry.addName(RemulaItems.elkostiumIngot, "Elkostium Ingot");
+        LanguageRegistry.addName(RemulaItems.heriIngot, "Heri Ingot");
+        LanguageRegistry.addName(RemulaItems.skathaIngot, "Skatha Ingot");
+        LanguageRegistry.addName(RemulaItems.kzoriIngot, "Kzori Ingot");
+        LanguageRegistry.addName(RemulaItems.xylexiteIngot, "Xylexite Ingot");
+    }
+    
+    public void registerEquipmentItems() {
     	
     }
     
+    public void addEquipmentNames() {
+    	
+    }
+    
+    public void registerFoodItems() {
+    	
+    }
+    
+    public void addFoodNames() {
+    	
+    }
+    
+    public void registerNaturalItems() {
+    	
+    }
+    
+    public void addNaturalNames() {
+    	
+    }
+    
+    public void registerPowerGridItems() {
+    	
+    }
+    
+    public void addPowerGridNames() {
+    	
+    }
+    
+    public void registerCraftingIngredientItems() {
+    	GameRegistry.registerItem(RemulaItems.t1TecmoniumChip, "t1TecmoniumChip");
+    	GameRegistry.registerItem(RemulaItems.t2TecmoniumChip, "t2TecmoniumChip");
+    	GameRegistry.registerItem(RemulaItems.t3TecmoniumChip, "t3TecmoniumChip");
+    	GameRegistry.registerItem(RemulaItems.t1MerciliteChip, "t1MerciliteChip");
+    	GameRegistry.registerItem(RemulaItems.t2MerciliteChip, "t2MerciliteChip");
+    	GameRegistry.registerItem(RemulaItems.t3MerciliteChip, "t3MerciliteChip");
+    	GameRegistry.registerItem(RemulaItems.t1SilvaniteChip, "t1SilvaniteChip");
+    	GameRegistry.registerItem(RemulaItems.t2SilvaniteChip, "t2SilvaniteChip");
+    	GameRegistry.registerItem(RemulaItems.t3SilvaniteChip, "t3SilvaniteChip");
+    }
+    
+    public void addCraftingIngredientNames() {
+    	LanguageRegistry.addName(RemulaItems.t1TecmoniumChip, "t1TecmoniumChip");
+    	LanguageRegistry.addName(RemulaItems.t2TecmoniumChip, "t2TecmoniumChip");
+    	LanguageRegistry.addName(RemulaItems.t3TecmoniumChip, "t3TecmoniumChip");
+    	LanguageRegistry.addName(RemulaItems.t1MerciliteChip, "t1MerciliteChip");
+    	LanguageRegistry.addName(RemulaItems.t2MerciliteChip, "t2MerciliteChip");
+    	LanguageRegistry.addName(RemulaItems.t3MerciliteChip, "t3MerciliteChip");
+    	LanguageRegistry.addName(RemulaItems.t1SilvaniteChip, "t1SilvaniteChip");
+    	LanguageRegistry.addName(RemulaItems.t2SilvaniteChip, "t2SilvaniteChip");
+    	LanguageRegistry.addName(RemulaItems.t3SilvaniteChip, "t3SilvaniteChip");
+    }
     
     public void oreDictionary() {
         OreDictionary.registerOre("woodRubber", new ItemStack (RemulaBlocks.rubberLog));
@@ -455,24 +764,32 @@ public class CommonProxy implements IGuiHandler {
         DimensionManager.registerDimension(Remula.xylexiaDimension, Remula.xylexiaDimension);
     }
     
+    public void stringLocalization() {
+        LanguageRegistry.instance().addStringLocalization("entity.instance.Akatonian.name", "Akatonian");
+        LanguageRegistry.instance().addStringLocalization("entity.instance.Glog.name", "Glog");
+        LanguageRegistry.instance().addStringLocalization("entity.instance.AdvancedRobot.name", "Flendroid 5000");
+        LanguageRegistry.instance().addStringLocalization("entity.instance.Xylexian.name", "Xylexian");
+        LanguageRegistry.instance().addStringLocalization("entity.instance.Skitterling.name", "Skitterling");
+        LanguageRegistry.instance().addStringLocalization("entity.instance.Hermust.name", "Hermust");
+        LanguageRegistry.instance().addStringLocalization("entity.instance.Garfin.name", "Garfin");
+        LanguageRegistry.instance().addStringLocalization("entity.instance.Lignis.name", "Lignis");
+        
+        LanguageRegistry.instance().addStringLocalization("itemGroup.tabRemula", "en_US", "Remula");
+        LanguageRegistry.instance().addStringLocalization("itemGroup.tabMinerals", "en_US", "Minerals");
+        LanguageRegistry.instance().addStringLocalization("itemGroup.tabMachines", "en_US", "Machines [WIP - IGNORE]");
+        LanguageRegistry.instance().addStringLocalization("itemGroup.tabWorlds", "en_US", "Worlds");
+        LanguageRegistry.instance().addStringLocalization("itemGroup.tabEquip", "en_US", "Equipment [WIP - IGNORE]");
+        LanguageRegistry.instance().addStringLocalization("itemGroup.tabMisc", "en_US", "Misc");
+    }
     
+    public void tileEntities() {
+        GameRegistry.registerTileEntity(TileEntityTecmoniumChest.class, "tileEntitySilvaniteChest");
+        GameRegistry.registerTileEntity(TileEntityMerciliteChest.class, "tileEntityMerciliteChest");
+        GameRegistry.registerTileEntity(TileEntitySilvaniteChest.class, "tileEntityRemulaChest");
+        GameRegistry.registerTileEntity(TileEntityLITable.class, "tileEntityLITable");
+        GameRegistry.registerTileEntity(TileEntityShipComputerEntity.class, "tileEntityShipComputer");
+    }
     
-    
-    /*public void registerBlocks() {
-    	 LanguageRegistry.addName(rubberLog, "Rubber Log");
-         LanguageRegistry.addName(rubberLeaves, "Rubber Leaves");
-         LanguageRegistry.addName(rubberSapling, "Rubber Sapling");
-         
-         
-         //Powergrid
-         LanguageRegistry.addName(p1T1StorageUnit, "Tier 1 RSU");
-         LanguageRegistry.addName(p1T2StorageUnit, "Tier 2 RSU");
-         LanguageRegistry.addName(p1T3StorageUnit, "Tier 3 RSU");
-         LanguageRegistry.addName(p1Generator, "Remula Generator");
-         LanguageRegistry.addName(p1SolarPanel, "Remula Solar Panel");
-         LanguageRegistry.addName(p1ThermalGenerator, "Thermal Generator");
-         LanguageRegistry.addName(p1Grinder, "Grinder");
-         LanguageRegistry.addName(p1ReactorCore, "Reactor Core");
          
          //Nature and Plant Stuff
          /*LanguageRegistry.addName(porinCrop, "Porin Crop");
@@ -506,118 +823,6 @@ public class CommonProxy implements IGuiHandler {
          GameRegistry.registerBlock(merciliteChest, "merciliteChest");
          GameRegistry.registerBlock(tecmoniumChest, "tecmoniumChest");
 
-         GameRegistry.registerBlock(akatoeTilledDirt, "akatoeTilledDirt");
-         
-         LanguageRegistry.addName(akatoePortal, "Akatoe Portal");
-         LanguageRegistry.addName(akatoeStone, "Akatonian Stone");
-         LanguageRegistry.addName(akatoeGrass, "Akatonian Grass");
-         LanguageRegistry.addName(akatoeDirt, "Akatonian Dirt");
-         LanguageRegistry.addName(akatoeSand, "Akatonian Sand");
-         LanguageRegistry.addName(akatoeTilledDirt, "Akatonian Tilled Dirt");
-         
-         //Indiku
-         GameRegistry.registerBlock(indikuTerrainBlocks, ItemIndikuTerrainBlocks.class, "Remula" + (indikuTerrainBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(indikuOreBlocks, ItemIndikuOreBlocks.class, "Remula" + (indikuOreBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(indikuPortal, "indikuPortal");
-         GameRegistry.registerBlock(indikuStone, "indikuStone");
-         GameRegistry.registerBlock(indikuDirt, "indikuDirt");
-         GameRegistry.registerBlock(indikuGrass, "indikuGrass");
-         GameRegistry.registerBlock(indikuTilledDirt, "indikuTilledDirt");
-         
-         
-         LanguageRegistry.addName(indikuStone, "Indiku Stone");
-         LanguageRegistry.addName(indikuDirt, "Indiku Dirt");
-         LanguageRegistry.addName(indikuGrass, "Indiku Grass");
-         LanguageRegistry.addName(indikuTilledDirt, "Indiku Tilled Dirt");
-         LanguageRegistry.addName(indikuPortal, "Indiku Portal");
-         
-         
-         //Elkost
-         GameRegistry.registerBlock(elkostTerrainBlocks, ItemElkostTerrainBlocks.class, "Remula" + (elkostTerrainBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(elkostOreBlocks, ItemElkostOreBlocks.class, "Remula" + (elkostOreBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(elkostPortal, "elkostPortal");
-         GameRegistry.registerBlock(elkostSand, "elkostSand");
-         GameRegistry.registerBlock(elkostGlassPane, "elkostGlassPane");
-                     
-         LanguageRegistry.addName(elkostSand, "Elkost Sand");
-         LanguageRegistry.addName(elkostGlassPane, "Elkost Glass Pane");
-         LanguageRegistry.addName(elkostPortal, "Elkost Portal");
-         
-         
-         //Xylexia
-         GameRegistry.registerBlock(xylexiaTerrainBlocks, ItemXylexiaTerrainBlocks.class, "Remula" + (xylexiaTerrainBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(xylexiaOreBlocks, ItemXylexiaOreBlocks.class, "Remula" + (xylexiaOreBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(xylexiaPortal, "xylexiaPortal");
-         GameRegistry.registerBlock(xylexianSand, "xylexianSand");
-         GameRegistry.registerBlock(xylexianStone, "xylexianStone");
-         GameRegistry.registerBlock(xylexianGlassPane, "xylexianGlassPane");
-         
-         LanguageRegistry.addName(xylexianSand, "Xylexian Sand");
-         LanguageRegistry.addName(xylexianStone, "Impure Xylexite");
-         LanguageRegistry.addName(xylexianGlassPane, "Xylexian Glass Pane");
-         
-         //Deep Space
-         GameRegistry.registerBlock(deepSpaceTerrainBlocks, ItemDeepSpaceTerrainBlocks.class, "Remula" + (deepSpaceTerrainBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(deepSpaceBrownOreBlocks, ItemDeepSpaceBrownOreBlocks.class, "Remula" + (deepSpaceBrownOreBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(deepSpaceWhiteOreBlocks, ItemDeepSpaceWhiteOreBlocks.class, "Remula" + (deepSpaceWhiteOreBlocks.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(deepSpacePortal, "deepSpacePortal");
-         GameRegistry.registerBlock(deepSpaceBrownAsteroidRock, "deepSpaceAsteroidRock");
-         GameRegistry.registerBlock(deepSpaceWhiteAsteroidRock, "deepSpaceMeteoriteRock");
-         
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 0), "Brown Asteroid Rubble");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 1), "Brown Asteroid Bricks");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 2), "Brown Asteroid Small Bricks");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 3), "Brown Asteroid Decorative Bricks");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 4), "Refined Brown Asteroid");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 5), "Brown Asteroid Dust");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 6), "Null");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 7), "Null");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 8), "White Asteroid Rubble");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 9), "White Asteroid Bricks");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 10), "White Asteroid Small Bricks");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 11), "White Asteroid Decorative Bricks");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 12), "Refined White Asteroid ");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 13), "White Asteroid Dust");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 14), "Null");
-         LanguageRegistry.addName(new ItemStack(deepSpaceTerrainBlocks, 1, 15), "Null");
-         
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 0), "Brown Asteroid Copper Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 1), "Brown Asteroid Tin Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 2), "Brown Asteroid Iron Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 3), "Brown Asteroid Silvanite Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 4), "Brown Asteroid Mercilite Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 5), "Brown Asteroid Porinite Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 6), "Brown Asteroid Zinc Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 7), "Brown Asteroid Thori Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 8), "Brown Asteroid Ventiium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 9), "Brown Asteroid Farithium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 10), "Brown Asteroid Boria Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 11), "Brown Asteroid Heri Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 12), "Brown Asteroid Paladixium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 13), "Brown Asteroid Aerolian Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 14), "Brown Asteroid Technolium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceBrownOreBlocks, 1, 15), "Brown Asteroid P9 Ore");
-         
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 0), "White Asteroid Copper Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 1), "White Asteroid Tin Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 2), "White Asteroid Iron Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 3), "White Asteroid Silvanite Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 4), "White Asteroid Mercilite Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 5), "White Asteroid Porinite Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 6), "White Asteroid Zinc Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 7), "White Asteroid Thori Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 8), "White Asteroid Ventiium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 9), "White Asteroid Farithium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 10), "White Asteroid Boria Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 11), "White Asteroid Heri Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 12), "White Asteroid Paladixium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 13), "White Asteroid Aerolian Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 14), "White Asteroid Technolium Ore");
-         LanguageRegistry.addName(new ItemStack(deepSpaceWhiteOreBlocks, 1, 15), "White Asteroid P9 Ore");
-         LanguageRegistry.addName(deepSpacePortal, "Deep-Space Portal");
-         LanguageRegistry.addName(deepSpaceBrownAsteroidRock, "Asteroid Rock");
-         LanguageRegistry.addName(deepSpaceWhiteAsteroidRock, "Asteroid Rock");
-         
          //Ore Mining Requirements
          /*MinecraftForge.setBlockHarvestLevel(silvaniteOre, "pickaxe", 1);
          MinecraftForge.setBlockHarvestLevel(merciliteOre, "pickaxe", 2);
@@ -637,41 +842,7 @@ public class CommonProxy implements IGuiHandler {
          MinecraftForge.setBlockHarvestLevel(baloinusStone, "pickaxe", 0);
          MinecraftForge.setBlockHarvestLevel(deepSpaceBrownAsteroidRock, "pickaxe", 0);
          MinecraftForge.setBlockHarvestLevel(deepSpaceWhiteAsteroidRock, "pickaxe", 0);
-         
-         //Items
-         //Ingots Etc
-         LanguageRegistry.addName(emptyCell, "Empty Storage Cell");
-         LanguageRegistry.addName(silvaniteDust, "Silvanite Dust");
-         LanguageRegistry.addName(silvaniteIngot, "Silvanite Ingot");
-         //LanguageRegistry.addName(silvaniteBucket, "Silvanite Bucket");
-         LanguageRegistry.addName(silvaniteCell, "Silvanite Cell");
-         LanguageRegistry.addName(merciliteDust, "Mercilite Dust");
-         LanguageRegistry.addName(merciliteIngot, "Mercilite Ingot");
-         //LanguageRegistry.addName(merciliteBucket, "Mercilite Bucket");
-         LanguageRegistry.addName(merciliteCell, "Mercilite Cell");
-         LanguageRegistry.addName(remulaDust, "Remula Dust");
-         LanguageRegistry.addName(remulaIngot, "Remula Ingot");
-         LanguageRegistry.addName(remulaCell, "RemulaCell");
-         LanguageRegistry.addName(poriniteCell, "Porinite Cell");
-         LanguageRegistry.addName(pilkCell, "Pilk Cell");
-         LanguageRegistry.addName(akatiteCell, "Akatite Cell");
-         LanguageRegistry.addName(poriniteDust, "Porinite Dust");
-         LanguageRegistry.addName(pilkDust, "Pilk Dust");
-         LanguageRegistry.addName(akatiteDust, "Akatite Dust");
-         LanguageRegistry.addName(poriniteIngot, "Porinite Ingot");
-         LanguageRegistry.addName(pilkIngot, "Pilk Ingot");
-         LanguageRegistry.addName(akatiteIngot, "Akatite Ingot");
-         
-         //General Items            
-         LanguageRegistry.addName(simpleSilvaniteChip, "Simple Silvanite Chip");
-         //LanguageRegistry.addName(midSilvaniteChip, "Mid Silvanite Chip");
-         LanguageRegistry.addName(advancedSilvaniteChip, "Advanced Silvanite Chip");
-         LanguageRegistry.addName(simpleMerciliteChip, "Simple Mercilite Chip");
-         //LanguageRegistry.addName(midMerciliteChip, "Mid Mercilite Chip");
-         LanguageRegistry.addName(advancedMerciliteChip, "Advanced Mercilite Chip");
-         LanguageRegistry.addName(simpleRemulaChip, "Simple Remula Chip");
-         //LanguageRegistry.addName(midRemulaChip, "Mid Remula Chip");
-         LanguageRegistry.addName(advancedRemulaChip, "Advanced Remula Chip");
+
          //LanguageRegistry.addName(remDrill, "Rem Drill");
          LanguageRegistry.addName(drillTransformerUpgrade, "Drill Transformer Upgrade");
          LanguageRegistry.addName(drillSilkTouchUpgrade, "Drill Silk Touch Upgrade");
@@ -732,37 +903,7 @@ public class CommonProxy implements IGuiHandler {
          
          //GameRegistry
          //Ingots Etc
-         GameRegistry.registerItem(emptyCell, "emptyCell");
-         GameRegistry.registerItem(silvaniteDust, "silvaniteDust");
-         GameRegistry.registerItem(silvaniteIngot, "silvaniteIngot");
-         //GameRegistry.registerItem(silvaniteBucket, "silvaniteBucket");
-         GameRegistry.registerItem(silvaniteCell, "silvaniteCell");
-         GameRegistry.registerItem(merciliteDust, "mercliteDust");
-         GameRegistry.registerItem(merciliteIngot, "merciliteIngot");
-         //GameRegistry.registerItem(merciliteBucket, "merciliteBucket");
-         GameRegistry.registerItem(merciliteCell, "merciliteCell");
-         GameRegistry.registerItem(remulaDust, "remulaDust");
-         GameRegistry.registerItem(remulaIngot, "remulaIngot");
-         GameRegistry.registerItem(remulaCell, "remulaCell");
-         GameRegistry.registerItem(poriniteCell, "poriniteCell");
-         GameRegistry.registerItem(pilkCell, "pilkCell");
-         GameRegistry.registerItem(akatiteCell, "akatiteCell");
-         GameRegistry.registerItem(poriniteDust, "poriniteDust");
-         GameRegistry.registerItem(pilkDust, "pilkDust");
-         GameRegistry.registerItem(akatiteDust, "akatiteDust");
-         GameRegistry.registerItem(poriniteIngot, "poriniteIngot");
-         GameRegistry.registerItem(pilkIngot, "pilkIngot");
-         GameRegistry.registerItem(akatiteIngot, "akatiteIngot");
          
-         GameRegistry.registerItem(simpleSilvaniteChip, "simpleSilvaniteChip");
-         //GameRegistry.registerItem(midSilvaniteChip, "midSilvaniteChip");
-         GameRegistry.registerItem(advancedSilvaniteChip, "advancedSilvaniteChip");
-         GameRegistry.registerItem(simpleMerciliteChip, "simpleMerciliteChip");
-         //GameRegistry.registerItem(midMerciliteChip, "midMerciliteChip");
-         GameRegistry.registerItem(advancedMerciliteChip, "advancedMerciliteChip");
-         GameRegistry.registerItem(simpleRemulaChip, "simpleRemulaChip");
-         //GameRegistry.registerItem(midRemulaChip, "midRemulaChip);
-         GameRegistry.registerItem(advancedRemulaChip, "advancedRemulaChip");
          //GameRegistry.registerItem(remDrill, "remDrill");
          GameRegistry.registerItem(drillTransformerUpgrade, "drillTransformerUpgrade");
          GameRegistry.registerItem(drillSilkTouchUpgrade, "drillSilkTouchUpgrade");
@@ -820,13 +961,6 @@ public class CommonProxy implements IGuiHandler {
          GameRegistry.registerItem(simplePRSU, "simplePRSU");
          GameRegistry.registerItem(midPRSU, "midPRSU");
          GameRegistry.registerItem(advancedPRSU, "advancedPRSU");
-         
-         
-         //Tile Entities
-         GameRegistry.registerTileEntity(TileEntityTecmoniumChest.class, "tileEntitySilvaniteChest");
-         GameRegistry.registerTileEntity(TileEntityMerciliteChest.class, "tileEntityMerciliteChest");
-         GameRegistry.registerTileEntity(TileEntitySilvaniteChest.class, "tileEntityRemulaChest");
-         GameRegistry.registerTileEntity(TileEntityLITable.class, "tileEntityLITable");
          
          //Other Registry Stuff
          

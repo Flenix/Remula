@@ -8,8 +8,8 @@ import co.uk.silvania.Remula.Remula;
 
 public class IndikuStone extends Block {
 	
-    public IndikuStone(int id, Material material) {
-		super(id, material);
+    public IndikuStone(int id) {
+		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundStoneFootstep);

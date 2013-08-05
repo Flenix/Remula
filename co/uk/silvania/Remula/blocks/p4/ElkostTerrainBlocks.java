@@ -14,8 +14,8 @@ import net.minecraft.util.Icon;
 
 public class ElkostTerrainBlocks extends Block {
 
-	public ElkostTerrainBlocks(int id, Material material) {
-		super(id, material);
+	public ElkostTerrainBlocks(int id) {
+		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
 	}
 	

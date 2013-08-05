@@ -34,7 +34,6 @@ public class AkatoeChunkManager extends WorldChunkManager {
 	
 	public AkatoeChunkManager(long seed, WorldType worldtype) {
 		this();
-		// i changed this to my GenLayerTutorial
 		GenLayer[] agenlayer = AkatoeGenLayer.makeTheWorld(seed);
 		this.myGenBiomes = agenlayer[0];
 		this.myBiomeIndexLayer = agenlayer[1];
