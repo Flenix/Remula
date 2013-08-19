@@ -18,7 +18,7 @@ public class AkatoeSand extends BlockSand {
 
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:AkatoeSand");
+	         blockIcon = iconRegister.registerIcon("Remula:akatoeSand");
 	}
 
 }

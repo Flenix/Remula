@@ -367,18 +367,6 @@ public class TileEntityLITable extends TileEntityChest implements IInventory
             return super.receiveClientEvent(par1, par2);
         }
     }
-
-    public void openChest()
-    {
-        ++this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, RemulaBlocks.p1CraftingTable.blockID, 1, this.numUsingPlayers);
-    }
-
-    public void closeChest()
-    {
-        --this.numUsingPlayers;
-        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, RemulaBlocks.p1CraftingTable.blockID, 1, this.numUsingPlayers);
-    }
     
     public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) {
         return par2ItemStack != null && par2ItemStack.getItem() != null && ContainerLITable.validItems.contains(par2ItemStack.getItem());

@@ -35,6 +35,10 @@ public class RemulaItems {
 	public static Item ventiiumCell;
 	public static Item arithiumCell;
 	public static Item ziriniumCell;
+	public static Item indikiteCell;
+	public static Item boriaCell;
+	public static Item tristaniumCell;
+	public static Item grinistCell;
 	public static Item elkostiumCell;
 	public static Item heriCell;
 	public static Item skathaCell;
@@ -58,6 +62,10 @@ public class RemulaItems {
 	public static Item ventiiumDust;
 	public static Item arithiumDust;
 	public static Item ziriniumDust;
+	public static Item indikiteDust;
+	public static Item boriaDust;
+	public static Item tristaniumDust;
+	public static Item grinistDust;
 	public static Item elkostiumDust;
 	public static Item heriDust;
 	public static Item skathaDust;
@@ -77,6 +85,10 @@ public class RemulaItems {
 	public static Item ventiiumIngot;
 	public static Item arithiumIngot;
 	public static Item ziriniumIngot;
+	public static Item indikiteIngot;
+	public static Item boriaIngot;
+	public static Item tristaniumIngot;
+	public static Item grinistIngot;
 	public static Item elkostiumIngot;
 	public static Item heriIngot;
 	public static Item skathaIngot;
@@ -149,10 +161,14 @@ public class RemulaItems {
 	
 	
 	public static Item p1HudUnit = new P1HUDUnit(17071, SpaceSuit1, 1, 0, false).setUnlocalizedName("p1HudUnit");
-	//public static Item p1SpaceSuitHelmet = new P1SpaceSuit(17056, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 0).setUnlocalizedName("p1SpaceSuitHelmet");
-	//public static Item p1SpaceSuitBody = new P1SpaceSuit(17057, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 1).setUnlocalizedName("p1SpaceSuitBody");
-	//public static Item p1SpaceSuitLegs = new P1SpaceSuit(17058, EnumArmorMaterial.CLOTH, proxy.addArmor("P1SpaceSuit"), 2).setUnlocalizedName("p1SpaceSuitLegs");
-	//public static Item p1SpaceSuitBoots = new P1SpaceSuit(17059, SpaceSuit1, proxy.addArmor("P1SpaceSuit"), 3).setUnlocalizedName("p1SpaceSuitBoots");
+	public static Item p1SpaceSuitHelmet;
+	public static Item p1SpaceSuitBody;
+	public static Item p1SpaceSuitLegs;
+	public static Item p1SpaceSuitBoots;
+	
+	public static EnumArmorMaterial tecmoniumAlloyArmor = EnumHelper.addArmorMaterial("TecmoniumAlloy", 32, new int[] {1, 3, 2, 1}, 0);
+	
+	
 	//public static Item p1HeadUI = new P1HeadUI(17060).setUnlocalizedName("p1HeadUI");
 	public static Item p1Pistol = new ItemP1Pistol(17042).setUnlocalizedName("p1Pistol");
 	public static Item p1IronBullet = new P1IronBullet(17043).setUnlocalizedName("p1IronBullet");
@@ -180,9 +196,9 @@ public class RemulaItems {
 	    redstoneCell = new RemulaCells(config.redstoneCellID).setUnlocalizedName("redstoneCell");
 	    lapisLazuliCell = new RemulaCells(config.lapisLazuliCellID).setUnlocalizedName("lapisLazuliCell");
 	    diamondCell = new RemulaCells(config.diamondCellID).setUnlocalizedName("diamondCell");
-		tecmoniumCell = new RemulaCells(config.tecmoniumCellID).setUnlocalizedName("silvaniteCell"); 
+		tecmoniumCell = new RemulaCells(config.tecmoniumCellID).setUnlocalizedName("tecmoniumCell"); 
 		merciliteCell = new RemulaCells(config.merciliteCellID).setUnlocalizedName("merciliteCell");
-		silvaniteCell = new RemulaCells(config.silvaniteCellID).setUnlocalizedName("remulaCell");
+		silvaniteCell = new RemulaCells(config.silvaniteCellID).setUnlocalizedName("silvaniteCell");
 		poriniteCell = new RemulaCells(config.poriniteCellID).setUnlocalizedName("poriniteCell");
 		pilkCell = new RemulaCells(config.pilkCellID).setUnlocalizedName("pilkCell");
 		tritaniteCell = new RemulaCells(config.tritaniteCellID).setUnlocalizedName("tritaniteCell");
@@ -191,6 +207,10 @@ public class RemulaItems {
 		ventiiumCell = new RemulaCells(config.ventiiumCellID).setUnlocalizedName("ventiiumCell");
 		arithiumCell = new RemulaCells(config.arithiumCellID).setUnlocalizedName("arithiumCell");
 		ziriniumCell = new RemulaCells(config.ziriniumCellID).setUnlocalizedName("ziriniumCell");
+		indikiteCell = new RemulaCells(config.indikiteCellID).setUnlocalizedName("indikiteCell");
+		boriaCell = new RemulaCells(config.boriaCellID).setUnlocalizedName("boriaCell");
+		tristaniumCell = new RemulaCells(config.tristaniumCellID).setUnlocalizedName("tristaniumCell");
+		grinistCell = new RemulaCells(config.grinistCellID).setUnlocalizedName("grinistCell");
 		elkostiumCell = new RemulaCells(config.elkostiumCellID).setUnlocalizedName("elkostiumCell");
 		heriCell = new RemulaCells(config.heriCellID).setUnlocalizedName("heriCell");
 		skathaCell = new RemulaCells(config.skathaCellID).setUnlocalizedName("skathaCell");
@@ -203,9 +223,9 @@ public class RemulaItems {
 		ironDust = new RemulaDusts(config.ironDustID).setUnlocalizedName("ironDust");
 		goldDust = new RemulaDusts(config.goldDustID).setUnlocalizedName("goldDust");
 		diamondDust = new RemulaDusts(config.diamondDustID).setUnlocalizedName("diamondDust");
-		tecmoniumDust = new RemulaDusts(config.tecmoniumDustID).setUnlocalizedName("silvaniteDust");
+		tecmoniumDust = new RemulaDusts(config.tecmoniumDustID).setUnlocalizedName("tecmoniumDust");
 		merciliteDust = new RemulaDusts(config.merciliteDustID).setUnlocalizedName("merciliteDust");
-		silvaniteDust = new RemulaDusts(config.silvaniteDustID).setUnlocalizedName("remulaDust");
+		silvaniteDust = new RemulaDusts(config.silvaniteDustID).setUnlocalizedName("silvaniteDust");
 		poriniteDust = new RemulaDusts(config.poriniteDustID).setUnlocalizedName("poriniteDust");
 		pilkDust = new RemulaDusts(config.pilkDustID).setUnlocalizedName("pilkDust");
 		tritaniteDust = new RemulaDusts(config.tritaniteDustID).setUnlocalizedName("tritaniteDust");
@@ -214,6 +234,10 @@ public class RemulaItems {
 		ventiiumDust = new RemulaDusts(config.ventiiumDustID).setUnlocalizedName("ventiiumDust");
 		arithiumDust = new RemulaDusts(config.arithiumDustID).setUnlocalizedName("arithiumDust");
 		ziriniumDust = new RemulaDusts(config.ziriniumDustID).setUnlocalizedName("ziriniumDust");
+		indikiteDust = new RemulaDusts(config.indikiteDustID).setUnlocalizedName("indikiteDust");
+		boriaDust = new RemulaDusts(config.boriaDustID).setUnlocalizedName("boriaDust");
+		tristaniumDust = new RemulaDusts(config.tristaniumDustID).setUnlocalizedName("tristaniumDust");
+		grinistDust = new RemulaDusts(config.grinistDustID).setUnlocalizedName("grinistDust");
 		elkostiumDust = new RemulaDusts(config.elkostiumDustID).setUnlocalizedName("elkostiumDust");
 		heriDust = new RemulaDusts(config.heriDustID).setUnlocalizedName("heriDust");
 		skathaDust = new RemulaDusts(config.skathaDustID).setUnlocalizedName("skathaDust");
@@ -222,9 +246,9 @@ public class RemulaItems {
 
 	    copperIngot = new RemulaIngots(config.copperIngotID).setUnlocalizedName("copperIngot");
 	    tinIngot = new RemulaIngots(config.tinIngotID).setUnlocalizedName("tinIngot");
-		tecmoniumIngot = new RemulaIngots(config.tecmoniumIngotID).setUnlocalizedName("silvaniteIngot"); 
+		tecmoniumIngot = new RemulaIngots(config.tecmoniumIngotID).setUnlocalizedName("tecmoniumIngot"); 
 		merciliteIngot = new RemulaIngots(config.merciliteIngotID).setUnlocalizedName("merciliteIngot");
-		silvaniteIngot = new RemulaIngots(config.silvaniteIngotID).setUnlocalizedName("remulaIngot");
+		silvaniteIngot = new RemulaIngots(config.silvaniteIngotID).setUnlocalizedName("silvaniteIngot");
 		poriniteIngot = new RemulaIngots(config.poriniteIngotID).setUnlocalizedName("poriniteIngot");
 		pilkIngot = new RemulaIngots(config.pilkIngotID).setUnlocalizedName("pilkIngot");
 		tritaniteIngot = new RemulaIngots(config.tritaniteIngotID).setUnlocalizedName("tritaniteIngot");
@@ -233,6 +257,10 @@ public class RemulaItems {
 		ventiiumIngot = new RemulaIngots(config.ventiiumIngotID).setUnlocalizedName("ventiiumIngot");
 		arithiumIngot = new RemulaIngots(config.arithiumIngotID).setUnlocalizedName("arithiumIngot");
 		ziriniumIngot = new RemulaIngots(config.ziriniumIngotID).setUnlocalizedName("ziriniumIngot");
+		indikiteIngot = new RemulaIngots(config.indikiteIngotID).setUnlocalizedName("indikiteIngot");
+		boriaIngot = new RemulaIngots(config.boriaIngotID).setUnlocalizedName("boriaIngot");
+		tristaniumIngot = new RemulaIngots(config.tristaniumIngotID).setUnlocalizedName("tristaniumIngot");
+		grinistIngot = new RemulaIngots(config.grinistIngotID).setUnlocalizedName("grinistIngot");
 		elkostiumIngot = new RemulaIngots(config.elkostiumIngotID).setUnlocalizedName("elkostiumIngot");
 		heriIngot = new RemulaIngots(config.heriIngotID).setUnlocalizedName("heriIngot");
 		skathaIngot = new RemulaIngots(config.skathaIngotID).setUnlocalizedName("skathaIngot");
@@ -241,7 +269,10 @@ public class RemulaItems {
 	}
 	
 	public static void initEquipment() {
-		
+		p1SpaceSuitHelmet = new P1SpaceSuit(17056, tecmoniumAlloyArmor, 0, 0).setUnlocalizedName("p1SpaceSuitHelmet");
+		p1SpaceSuitBody = new P1SpaceSuit(17057, tecmoniumAlloyArmor, 0, 1).setUnlocalizedName("p1SpaceSuitBody");
+		p1SpaceSuitLegs = new P1SpaceSuit(17058, tecmoniumAlloyArmor, 0, 2).setUnlocalizedName("p1SpaceSuitLegs");
+		p1SpaceSuitBoots = new P1SpaceSuit(17059, tecmoniumAlloyArmor, 0, 3).setUnlocalizedName("p1SpaceSuitBoots");
 	}
 	
 	public static void initFood() {

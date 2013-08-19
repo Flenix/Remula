@@ -48,6 +48,7 @@ public class RemulaBlocks {
     public static Block p1Furnace;
     public static Block p1Extractor;
     public static Block p1Crusher;
+    public static Block copperCable;
     
     public static Block tecmoniumChest;
     public static Block merciliteChest;
@@ -268,6 +269,7 @@ public class RemulaBlocks {
 	}
 	
 	private static void initEarthBlocks() {
+		copperCable = new CopperCable(500).setUnlocalizedName("copperCable");
 		p1Liquidizer = new P1Liquidizer(config.p1LiquidizerID).setUnlocalizedName("p1Liquidizer");
         p1T1StorageUnit = new P1T1StorageUnit(config.p1T1StorageUnitID).setUnlocalizedName("p1T1StorageUnit");
         p1T2StorageUnit = new P1T2StorageUnit(config.p1T2StorageUnitID).setUnlocalizedName("p1T2StorageUnit");
@@ -283,7 +285,7 @@ public class RemulaBlocks {
         p1Crusher = new P1Crusher(config.p1CrusherID).setUnlocalizedName("p1Crusher");
         
     	rubberLog = new RubberLog(config.rubberLogID).setUnlocalizedName("rubberLog");
-    	rubberSapling = new RubberSapling(config.rubberSaplingID).setUnlocalizedName("rubberSapling");
+    	rubberSapling = new RubberSapling(config.rubberSaplingID, 0).setUnlocalizedName("rubberSapling");
     	rubberLeaves = new RubberLeaves(config.rubberLeavesID).setUnlocalizedName("rubberLeaves");
 	    tecmoniumChest = new TecmoniumChest(config.tecmoniumChestID).setUnlocalizedName("tecmoniumChest");
 	    merciliteChest = new MerciliteChest(config.merciliteChestID).setUnlocalizedName("merciliteChest");

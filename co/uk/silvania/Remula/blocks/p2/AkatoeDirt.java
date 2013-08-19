@@ -18,7 +18,7 @@ public class AkatoeDirt extends BlockDirt {
     
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:AkatoeDirt");
+	         blockIcon = iconRegister.registerIcon("Remula:akatoeDirt");
 	}
 
 }

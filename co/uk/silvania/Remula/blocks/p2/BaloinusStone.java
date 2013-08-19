@@ -17,7 +17,7 @@ public class BaloinusStone extends Block {
    
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:BaloinusStone");
+	         blockIcon = iconRegister.registerIcon("Remula:baloinusStone");
 	}
 
 }

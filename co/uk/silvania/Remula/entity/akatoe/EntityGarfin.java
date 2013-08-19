@@ -25,7 +25,6 @@ public class EntityGarfin extends EntityWaterMob {
 
 	public EntityGarfin(World par1World) {
 		super(par1World);
-        //this.texture = "/co/uk/silvania/Remula/resources/mobgarfin.png";
         this.setSize(0.95F, 0.95F);
         this.field_70864_bA = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
         this.setEntityHealth(16.0F);

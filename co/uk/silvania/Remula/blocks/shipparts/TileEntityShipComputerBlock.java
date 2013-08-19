@@ -2,6 +2,8 @@ package co.uk.silvania.Remula.blocks.shipparts;
 
 import co.uk.silvania.Remula.Remula;
 import co.uk.silvania.Remula.dimensions.TeleporterAkatoe;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -56,6 +58,7 @@ public class TileEntityShipComputerBlock extends BlockContainer {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon) {
 		blockIcon = icon.registerIcon("Remula:ShipComputer");
 	}

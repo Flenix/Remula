@@ -27,12 +27,13 @@ public class AkatoeTerrainBlocks extends Block {
 		icons = new Icon[6];
 		
 		for(int i = 0; i < icons.length; i++) {
-			icons[i] = iconRegister.registerIcon("Remula:AkatoeTerrainBlocks" + i);
+			icons[i] = iconRegister.registerIcon("Remula:akatoeTerrainBlocks" + i);
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2) {
+		System.out.println("This method is now being called");
 		return icons[par2];
 	}
 	

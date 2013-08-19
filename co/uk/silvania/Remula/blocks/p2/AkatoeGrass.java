@@ -34,9 +34,9 @@ public class AkatoeGrass extends Block {
 	private Icon base;
 
 	public void registerIcons(IconRegister iconRegister) {
-        this.sides = iconRegister.registerIcon("Remula:AkatoeGrassSide");
-        this.top = iconRegister.registerIcon("Remula:AkatoeGrassTop");
-        this.base = iconRegister.registerIcon("Remula:AkatoeDirt");
+        this.sides = iconRegister.registerIcon("Remula:akatoeGrassSide");
+        this.top = iconRegister.registerIcon("Remula:akatoeGrassTop");
+        this.base = iconRegister.registerIcon("Remula:akatoeDirt");
 	}
    
     @SideOnly(Side.CLIENT)

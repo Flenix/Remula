@@ -65,17 +65,17 @@ public class Remula {
 	};
 	public static CreativeTabs tabMinerals = new CreativeTabs("tabMinerals") {
 		public ItemStack getIconItemStack() {
-			return new ItemStack(Block.stone/*Remula.earthOreBlocks*/, 1, 6);
+			return new ItemStack(RemulaBlocks.earthOreBlocks, 1, 6);
 		}
 	};
 	public static CreativeTabs tabMachines = new CreativeTabs("tabMachines") {
 		public ItemStack getIconItemStack() {
-			return new ItemStack(Block.stone, 1, 0);
+			return new ItemStack(RemulaBlocks.shipComputer, 1, 0);
 		}
 	};
 	public static CreativeTabs tabWorlds = new CreativeTabs("tabWorlds") {
 		public ItemStack getIconItemStack() {
-			return new ItemStack(Block.stone/*Remula.xylexiaTerrainBlocks*/, 1, 1);
+			return new ItemStack(RemulaBlocks.xylexiaTerrainBlocks, 1, 1);
 		}
 	};
 	public static CreativeTabs tabEquip = new CreativeTabs("tabEquip") {
@@ -117,9 +117,6 @@ public class Remula {
     public static BiomeGenBase openSpaceBiome;
     public static BiomeGenBase whiteAsteroidBiome;
     public static BiomeGenBase brownAsteroidBiome;
-    
-    //public static int blockRemulaID;
-    @SideOnly(Side.CLIENT)
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -205,6 +202,7 @@ public class Remula {
             EntityRegistry.addSpawn(EntityXylexian.class, 5, 1, 1, EnumCreatureType.monster, Remula.xylexiaPlainsBiome);
           
             MinecraftForge.EVENT_BUS.register(new AkatoeBonemealEventClass());
+            MinecraftForge.EVENT_BUS.register(new RubberTreeBonemealEvent());
     }
 
 

@@ -17,7 +17,7 @@ public class XylexianSand extends Block {
    
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:XylexiaSand");
+	         blockIcon = iconRegister.registerIcon("Remula:xylexiaSand");
 	}
 
 }

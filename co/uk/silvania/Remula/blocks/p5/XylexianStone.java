@@ -17,7 +17,7 @@ public class XylexianStone extends Block {
 
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:XylexiaStone");
+	         blockIcon = iconRegister.registerIcon("Remula:xylexiaStone");
 	}
 
 }

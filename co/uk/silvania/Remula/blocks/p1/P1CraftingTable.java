@@ -33,6 +33,7 @@ public class P1CraftingTable extends BlockContainer {
 		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 	}
         
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
 		blockIcon = iconRegister.registerIcon("Remula:RemulaCraftingTable");
 	}

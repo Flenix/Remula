@@ -16,7 +16,7 @@ public class DeepSpaceBrownAsteroid extends Block {
    
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:DeepSpaceBrownAsteroid");
+	         blockIcon = iconRegister.registerIcon("Remula:deepSpaceBrownAsteroid");
 	}
 
 }

@@ -1,51 +1,19 @@
 package co.uk.silvania.Remula;
 
-import co.uk.silvania.Remula.blocks.p1.ItemEarthOreBlocks;
-import co.uk.silvania.Remula.blocks.p2.ItemAkatoeLeaves;
-import co.uk.silvania.Remula.blocks.p2.ItemAkatoeLogs;
-import co.uk.silvania.Remula.blocks.p2.ItemAkatoeOreBlocks;
-import co.uk.silvania.Remula.blocks.p2.ItemAkatoeSaplings;
-import co.uk.silvania.Remula.blocks.p2.ItemAkatoeTerrainBlocks;
-import co.uk.silvania.Remula.blocks.p2.ItemBaloinusOreBlocks;
-import co.uk.silvania.Remula.blocks.p2.ItemBaloinusTerrainBlocks;
-import co.uk.silvania.Remula.blocks.p2.P2Compressor;
-import co.uk.silvania.Remula.blocks.p2.P2Crusher;
-import co.uk.silvania.Remula.blocks.p2.P2Extractor;
-import co.uk.silvania.Remula.blocks.p2.P2Furnace;
-import co.uk.silvania.Remula.blocks.p2.P2Generator;
-import co.uk.silvania.Remula.blocks.p2.P2Grinder;
-import co.uk.silvania.Remula.blocks.p2.P2Liquidizer;
-import co.uk.silvania.Remula.blocks.p2.P2ReactorCore;
-import co.uk.silvania.Remula.blocks.p2.P2SolarPanel;
-import co.uk.silvania.Remula.blocks.p2.P2T1StorageUnit;
-import co.uk.silvania.Remula.blocks.p2.P2T2StorageUnit;
-import co.uk.silvania.Remula.blocks.p2.P2T3StorageUnit;
-import co.uk.silvania.Remula.blocks.p2.P2ThermalGenerator;
-import co.uk.silvania.Remula.blocks.p3.IndikuTilledDirt;
-import co.uk.silvania.Remula.blocks.p3.ItemIndikuOreBlocks;
-import co.uk.silvania.Remula.blocks.p3.ItemIndikuTerrainBlocks;
-import co.uk.silvania.Remula.blocks.p4.ItemElkostOreBlocks;
-import co.uk.silvania.Remula.blocks.p4.ItemElkostTerrainBlocks;
-import co.uk.silvania.Remula.blocks.p5.ItemXylexiaOreBlocks;
-import co.uk.silvania.Remula.blocks.p5.ItemXylexiaTerrainBlocks;
-import co.uk.silvania.Remula.blocks.shipparts.TileEntityShipComputerEntity;
-import co.uk.silvania.Remula.dimensions.akatoe.AkatoeWorldProvider;
-import co.uk.silvania.Remula.dimensions.akatoe.WorldGenAkatoeTrees;
-import co.uk.silvania.Remula.dimensions.baloinus.BaloinusWorldProvider;
-import co.uk.silvania.Remula.dimensions.deepspace.DeepSpaceWorldProvider;
-import co.uk.silvania.Remula.dimensions.deepspace.ItemDeepSpaceBrownOreBlocks;
-import co.uk.silvania.Remula.dimensions.deepspace.ItemDeepSpaceTerrainBlocks;
-import co.uk.silvania.Remula.dimensions.deepspace.ItemDeepSpaceWhiteOreBlocks;
-import co.uk.silvania.Remula.dimensions.elkost.ElkostWorldProvider;
-import co.uk.silvania.Remula.dimensions.indiku.IndikuWorldProvider;
-import co.uk.silvania.Remula.dimensions.xylexia.XylexiaWorldProvider;
+import co.uk.silvania.Remula.blocks.p1.*;
+import co.uk.silvania.Remula.blocks.p2.*;
+import co.uk.silvania.Remula.blocks.p3.*;
+import co.uk.silvania.Remula.blocks.p4.*;
+import co.uk.silvania.Remula.blocks.p5.*;
+import co.uk.silvania.Remula.blocks.shipparts.*;
+import co.uk.silvania.Remula.dimensions.akatoe.*;
+import co.uk.silvania.Remula.dimensions.baloinus.*;
+import co.uk.silvania.Remula.dimensions.deepspace.*;
+import co.uk.silvania.Remula.dimensions.elkost.*;
+import co.uk.silvania.Remula.dimensions.indiku.*;
+import co.uk.silvania.Remula.dimensions.xylexia.*;
 import co.uk.silvania.Remula.entity.EntityAdvRobot;
-import co.uk.silvania.Remula.entity.akatoe.EntityGarfin;
-//import co.uk.silvania.Remula.entity.akatoe.EntityAkatonian;
-import co.uk.silvania.Remula.entity.akatoe.EntityGlog;
-import co.uk.silvania.Remula.entity.akatoe.EntityHermust;
-import co.uk.silvania.Remula.entity.akatoe.EntityLignis;
-import co.uk.silvania.Remula.entity.akatoe.EntitySkitterling;
+import co.uk.silvania.Remula.entity.akatoe.*;
 import co.uk.silvania.Remula.entity.baloinus.EntityXylexian;
 import co.uk.silvania.Remula.tileentity.TileEntityLITable;
 import co.uk.silvania.Remula.tileentity.TileEntityMerciliteChest;
@@ -116,6 +84,7 @@ public class CommonProxy implements IGuiHandler {
     }
     
     public void registerEarthBlocks() {
+    	GameRegistry.registerBlock(RemulaBlocks.copperCable, "copperCable");
     	GameRegistry.registerBlock(RemulaBlocks.p1Liquidizer, "p1Liquidizer");
     	GameRegistry.registerBlock(RemulaBlocks.p1T1StorageUnit, "p1T1StorageUnit");
     	GameRegistry.registerBlock(RemulaBlocks.p1T2StorageUnit, "p1T2StorageUnit");
@@ -133,6 +102,10 @@ public class CommonProxy implements IGuiHandler {
         GameRegistry.registerBlock(RemulaBlocks.tecmoniumChest, "tecmoniumChest");
         GameRegistry.registerBlock(RemulaBlocks.merciliteChest, "merciliteChest");
         GameRegistry.registerBlock(RemulaBlocks.silvaniteChest, "silvaniteChest");
+        
+        GameRegistry.registerBlock(RemulaBlocks.rubberLog, "rubberLog");
+        GameRegistry.registerBlock(RemulaBlocks.rubberLeaves, "rubberLeaves");
+        GameRegistry.registerBlock(RemulaBlocks.rubberSapling, "rubberSapling");
     }
     
     public void addEarthNames() {
@@ -160,6 +133,10 @@ public class CommonProxy implements IGuiHandler {
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.earthOreBlocks, 1, 4), "Tecmonium Ore");
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.earthOreBlocks, 1, 5), "Mercilite Ore");
         LanguageRegistry.addName(new ItemStack(RemulaBlocks.earthOreBlocks, 1, 6), "Silvanite Ore");
+        
+        LanguageRegistry.addName(RemulaBlocks.rubberLog, "Rubber Log");
+        LanguageRegistry.addName(RemulaBlocks.rubberLeaves, "Rubber Leaves");
+        LanguageRegistry.addName(RemulaBlocks.rubberSapling, "Rubber Sapling");
     }
     
     public void registerAkatoeBlocks() {
@@ -556,6 +533,10 @@ public class CommonProxy implements IGuiHandler {
         GameRegistry.registerItem(RemulaItems.ventiiumCell, "ventiiumCell");
         GameRegistry.registerItem(RemulaItems.arithiumCell, "arithiumCell");
         GameRegistry.registerItem(RemulaItems.ziriniumCell, "ziriniumCell");
+        GameRegistry.registerItem(RemulaItems.indikiteCell, "indikiteCell");
+        GameRegistry.registerItem(RemulaItems.boriaCell, "boriaCell");
+        GameRegistry.registerItem(RemulaItems.tristaniumCell, "tristaniumCell");
+        GameRegistry.registerItem(RemulaItems.grinistCell, "grinistCell");
         GameRegistry.registerItem(RemulaItems.elkostiumCell, "elkostiumCell");
         GameRegistry.registerItem(RemulaItems.heriCell, "heriCell");
         GameRegistry.registerItem(RemulaItems.skathaCell, "skathaCell");
@@ -579,6 +560,10 @@ public class CommonProxy implements IGuiHandler {
         GameRegistry.registerItem(RemulaItems.ventiiumDust, "ventiiumDust");
         GameRegistry.registerItem(RemulaItems.arithiumDust, "arithiumDust");
         GameRegistry.registerItem(RemulaItems.ziriniumDust, "ziriniumDust");
+        GameRegistry.registerItem(RemulaItems.indikiteDust, "indikiteDust");
+        GameRegistry.registerItem(RemulaItems.boriaDust, "boriaDust");
+        GameRegistry.registerItem(RemulaItems.tristaniumDust, "tristaniumDust");
+        GameRegistry.registerItem(RemulaItems.grinistDust, "grinistDust");
         GameRegistry.registerItem(RemulaItems.elkostiumDust, "elkostiumDust");
         GameRegistry.registerItem(RemulaItems.heriDust, "heriDust");
         GameRegistry.registerItem(RemulaItems.skathaDust, "skathaDust");
@@ -598,6 +583,10 @@ public class CommonProxy implements IGuiHandler {
         GameRegistry.registerItem(RemulaItems.ventiiumIngot, "ventiiumIngot");
         GameRegistry.registerItem(RemulaItems.arithiumIngot, "arithiumIngot");
         GameRegistry.registerItem(RemulaItems.ziriniumIngot, "ziriniumIngot");
+        GameRegistry.registerItem(RemulaItems.indikiteIngot, "indikiteIngot");
+        GameRegistry.registerItem(RemulaItems.boriaIngot, "boriaIngot");
+        GameRegistry.registerItem(RemulaItems.tristaniumIngot, "tristaniumIngot");
+        GameRegistry.registerItem(RemulaItems.grinistIngot, "grinistIngot");
         GameRegistry.registerItem(RemulaItems.elkostiumIngot, "elkostiumIngot");
         GameRegistry.registerItem(RemulaItems.heriIngot, "heriIngot");
         GameRegistry.registerItem(RemulaItems.skathaIngot, "skathaIngot");
@@ -679,10 +668,17 @@ public class CommonProxy implements IGuiHandler {
     }
     
     public void registerEquipmentItems() {
-    	
+    	GameRegistry.registerItem(RemulaItems.p1SpaceSuitHelmet, "p1SpaceSuitHelmet");
+    	GameRegistry.registerItem(RemulaItems.p1SpaceSuitBody, "p1SpaceSuitBody");
+    	GameRegistry.registerItem(RemulaItems.p1SpaceSuitLegs, "p1SpaceSuitLegs");
+    	GameRegistry.registerItem(RemulaItems.p1SpaceSuitBoots, "p1SpaceSuitBoots");
     }
     
     public void addEquipmentNames() {
+    	LanguageRegistry.addName(RemulaItems.p1SpaceSuitHelmet, "Phase 1 Space Suit Helmet");
+    	LanguageRegistry.addName(RemulaItems.p1SpaceSuitBody, "Phase 1 Space Suit Body");
+    	LanguageRegistry.addName(RemulaItems.p1SpaceSuitLegs, "Phase 1 Space Suit Legs");
+    	LanguageRegistry.addName(RemulaItems.p1SpaceSuitBoots, "Phase 1 Space Suit Boots");
     	
     }
     
@@ -805,12 +801,6 @@ public class CommonProxy implements IGuiHandler {
 
          //Register Blocks
          //Plants and Nature
-         GameRegistry.registerBlock(akatoeLogs, ItemAkatoeLogs.class, "Remula" + (akatoeLogs.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(akatoeLeaves, ItemAkatoeLeaves.class, "Remula" + (akatoeLeaves.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(akatoeSaplings, ItemAkatoeSaplings.class, "Remula" + (akatoeSaplings.getUnlocalizedName().substring(5)));
-         GameRegistry.registerBlock(rubberLog, "rubberLog");
-         //GameRegistry.registerBlock(rubberLeaves, "rubberLeaves");
-         GameRegistry.registerBlock(rubberSapling, "rubberSapling");
          /*GameRegistry.registerBlock(porinCrop, "porinCrop");
          GameRegistry.registerBlock(ulinCrop, "ulinCrop");
          GameRegistry.registerBlock(cirCrop, "cirCrop");

@@ -17,7 +17,7 @@ public class AkatoeStone extends Block {
 
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:AkatoeStone");
+	         blockIcon = iconRegister.registerIcon("Remula:akatoeStone");
 	}
 }
 

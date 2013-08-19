@@ -250,6 +250,10 @@ public class RemulaConfig {
 	public static int ventiiumCellID;
 	public static int arithiumCellID;
 	public static int ziriniumCellID;
+	public static int indikiteCellID;
+	public static int boriaCellID;
+	public static int tristaniumCellID;
+	public static int grinistCellID;
 	public static int elkostiumCellID;
 	public static int heriCellID;
 	public static int skathaCellID;
@@ -273,6 +277,10 @@ public class RemulaConfig {
 	public static int ventiiumDustID;
 	public static int arithiumDustID;
 	public static int ziriniumDustID;
+	public static int indikiteDustID;
+	public static int boriaDustID;
+	public static int tristaniumDustID;
+	public static int grinistDustID;
 	public static int elkostiumDustID;
 	public static int heriDustID;
 	public static int skathaDustID;
@@ -292,6 +300,10 @@ public class RemulaConfig {
 	public static int ventiiumIngotID;
 	public static int arithiumIngotID;
 	public static int ziriniumIngotID;
+	public static int indikiteIngotID;
+	public static int boriaIngotID;
+	public static int tristaniumIngotID;
+	public static int grinistIngotID;
 	public static int elkostiumIngotID;
 	public static int heriIngotID;
 	public static int skathaIngotID;
@@ -609,11 +621,15 @@ public class RemulaConfig {
 		ventiiumCellID = config.getItem("Ventiium Cell", 17017).getInt();
 		arithiumCellID = config.getItem("Arithium Cell", 17018).getInt();
 		ziriniumCellID = config.getItem("Zirinium Cell", 17019).getInt();
-		elkostiumCellID = config.getItem("Elkostium Cell", 17020).getInt();
-		heriCellID = config.getItem("Heri Cell", 17021).getInt();
-		skathaCellID = config.getItem("Skatha Cell", 17022).getInt();
-		kzoriCellID = config.getItem("Kzori Cell", 17023).getInt();
-		xylexiteCellID = config.getItem("Xylexite Cell", 17024).getInt();
+		indikiteCellID = config.getItem("Indikite Cell", 17020).getInt();
+		boriaCellID = config.getItem("Boria Cell", 17021).getInt();
+		tristaniumCellID = config.getItem("Tristanium Cell", 17022).getInt();
+		grinistCellID = config.getItem("Grinist Cell", 17023).getInt();
+		elkostiumCellID = config.getItem("Elkostium Cell", 17024).getInt();
+		heriCellID = config.getItem("Heri Cell", 17025).getInt();
+		skathaCellID = config.getItem("Skatha Cell", 17026).getInt();
+		kzoriCellID = config.getItem("Kzori Cell", 17027).getInt();
+		xylexiteCellID = config.getItem("Xylexite Cell", 17028).getInt();
 		    
 		copperDustID = config.getItem("Copper Dust", 17051).getInt();
 		tinDustID = config.getItem("Tin Dust", 17052).getInt();
@@ -632,11 +648,15 @@ public class RemulaConfig {
 		ventiiumDustID = config.getItem("Ventiium Dust", 17065).getInt();
 		arithiumDustID = config.getItem("Arithium Dust", 17066).getInt();
 		ziriniumDustID = config.getItem("Zirinium Dust", 17067).getInt();
-		elkostiumDustID = config.getItem("Elkost Dust", 17068).getInt();
-		heriDustID = config.getItem("Heri Dust", 17069).getInt();
-		skathaDustID = config.getItem("Skatha Dust", 17070).getInt();
-		kzoriDustID = config.getItem("Kzori Dust", 17071).getInt();
-		xylexiteDustID = config.getItem("Xylexite Dust", 17072).getInt();
+		indikiteDustID = config.getItem("Indikite Dust", 17068).getInt();
+		boriaDustID = config.getItem("Boria Dust", 17069).getInt();
+		tristaniumDustID = config.getItem("Tristanium Dust", 17070).getInt();
+		grinistDustID = config.getItem("Grinist Dust", 17071).getInt();
+		elkostiumDustID = config.getItem("Elkost Dust", 17072).getInt();
+		heriDustID = config.getItem("Heri Dust", 17073).getInt();
+		skathaDustID = config.getItem("Skatha Dust", 17074).getInt();
+		kzoriDustID = config.getItem("Kzori Dust", 17075).getInt();
+		xylexiteDustID = config.getItem("Xylexite Dust", 17076).getInt();
 		
 	    copperIngotID = config.getItem("Copper Ingot", 17101).getInt();
 	    tinIngotID = config.getItem("Tin Ingot", 17102).getInt();
@@ -651,11 +671,15 @@ public class RemulaConfig {
 		ventiiumIngotID = config.getItem("Ventiium Ingot", 17111).getInt();
 		arithiumIngotID = config.getItem("Arithium Ingot", 17112).getInt();
 		ziriniumIngotID = config.getItem("Zirinium Ingot", 17113).getInt();
-		elkostiumIngotID = config.getItem("Elkostium Ingot", 17114).getInt();
-		heriIngotID = config.getItem("Heri Ingot", 17115).getInt();
-		skathaIngotID = config.getItem("Skatha Ingot", 17116).getInt();
-		kzoriIngotID = config.getItem("Kzori Ingot", 17117).getInt();
-		xylexiteIngotID = config.getItem("Xylexite Ingot", 17118).getInt();
+		indikiteIngotID = config.getItem("Indikite Ingot", 17114).getInt();
+		boriaIngotID = config.getItem("Boria Ingot", 17115).getInt();
+		tristaniumIngotID = config.getItem("Tristanium Ingot", 17116).getInt();
+		grinistIngotID = config.getItem("Grinist Ingot", 17117).getInt();
+		elkostiumIngotID = config.getItem("Elkostium Ingot", 17118).getInt();
+		heriIngotID = config.getItem("Heri Ingot", 17119).getInt();
+		skathaIngotID = config.getItem("Skatha Ingot", 17120).getInt();
+		kzoriIngotID = config.getItem("Kzori Ingot", 17121).getInt();
+		xylexiteIngotID = config.getItem("Xylexite Ingot", 17122).getInt();
 		
 		t1TecmoniumChipID = config.getItem("T1 Tecmonium Chip", 17151).getInt();
 		t2TecmoniumChipID = config.getItem("T2 Tecmonium Chip", 17152).getInt();

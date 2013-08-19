@@ -17,7 +17,7 @@ public class IndikuStone extends Block {
 
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:IndikuStone");
+	         blockIcon = iconRegister.registerIcon("Remula:indikuStone");
 	}
 
 }
