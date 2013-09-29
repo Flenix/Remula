@@ -54,7 +54,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid="Remula", name="Remula", version="0.0.2")
+@Mod(modid="Remula", name="Remula", version="0.0.4")
 @NetworkMod(channels = { "Remula" }, clientSideRequired=true, serverSideRequired=false, packetHandler = PacketHandler.class)
 public class Remula { 
 	
@@ -203,6 +203,8 @@ public class Remula {
           
             MinecraftForge.EVENT_BUS.register(new AkatoeBonemealEventClass());
             MinecraftForge.EVENT_BUS.register(new RubberTreeBonemealEvent());
+            
+            GameRegistry.registerWorldGenerator(new WorldGen());
     }
 
 

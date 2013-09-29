@@ -23,8 +23,6 @@ public class WorldGen implements IWorldGenerator {
                 generateSurface(world, random, chunkX * 16, chunkZ * 16);
             case -1:
                 generateEnd(world, random, chunkX * 16, chunkZ * 16);
-            case 20:
-            	generateAkatoe(world, random, chunkX * 16, chunkZ * 16);
 		}
 		
 	}
@@ -34,27 +32,41 @@ public class WorldGen implements IWorldGenerator {
 	}
     
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ) {
+		//Zinc
 		for(int i = 0; i < 5; i++){
+			int xCoord = chunkX + random.nextInt(16);
+			int yCoord = random.nextInt(32);
+			int zCoord = chunkZ + random.nextInt(16);
+			
+			(new WorldGenMinableRemula(RemulaBlocks.earthOreBlocks.blockID, 2, 5)).generate(world, random, xCoord, yCoord, zCoord);
+		}
+		//Silver
+		for(int i = 0; i < 5; i++){
+			int xCoord = chunkX + random.nextInt(16);
+			int yCoord = random.nextInt(28);
+			int zCoord = chunkZ + random.nextInt(16);
+			
+			(new WorldGenMinableRemula(RemulaBlocks.earthOreBlocks.blockID, 3, 5)).generate(world, random, xCoord, yCoord, zCoord);
+		}
+		//Mercilite
+		for(int i = 0; i < 4; i++){
 			int xCoord = chunkX + random.nextInt(16);
 			int yCoord = random.nextInt(20);
 			int zCoord = chunkZ + random.nextInt(16);
 			
-			//(new WorldGenMinable(Remula.remulaOre.blockID, 5)).generate(world, random, xCoord, yCoord, zCoord);
+			(new WorldGenMinableRemula(RemulaBlocks.earthOreBlocks.blockID, 5, 4)).generate(world, random, xCoord, yCoord, zCoord);
+		}
+		//Silvanite
+		for(int i = 0; i < 3; i++){
+			int xCoord = chunkX + random.nextInt(16);
+			int yCoord = random.nextInt(20);
+			int zCoord = chunkZ + random.nextInt(16);
+			
+			(new WorldGenMinableRemula(RemulaBlocks.earthOreBlocks.blockID, 6, 5)).generate(world, random, xCoord, yCoord, zCoord);
 		}
 	}
     
 	private void generateNether(World world, Random random, int chunkX, int chunkZ) {
 		
-	}
-	
-	private void generateAkatoe(World world, Random random, int chunkX, int chunkZ) {
-		for(int i = 0; i < 32; i++) {
-			int xCoord = chunkX + random.nextInt(16);
-			int yCoord = random.nextInt(80);
-			int zCoord = chunkZ + random.nextInt(16);
-			
-			//(new WorldGenMinable(Block.oreIron.blockID, 50)).generate(world, random, xCoord, yCoord, zCoord);
-		}
-	}
-    
+	}    
 }

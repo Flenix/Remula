@@ -269,10 +269,10 @@ public class RemulaItems {
 	}
 	
 	public static void initEquipment() {
-		p1SpaceSuitHelmet = new P1SpaceSuit(17056, tecmoniumAlloyArmor, 0, 0).setUnlocalizedName("p1SpaceSuitHelmet");
-		p1SpaceSuitBody = new P1SpaceSuit(17057, tecmoniumAlloyArmor, 0, 1).setUnlocalizedName("p1SpaceSuitBody");
-		p1SpaceSuitLegs = new P1SpaceSuit(17058, tecmoniumAlloyArmor, 0, 2).setUnlocalizedName("p1SpaceSuitLegs");
-		p1SpaceSuitBoots = new P1SpaceSuit(17059, tecmoniumAlloyArmor, 0, 3).setUnlocalizedName("p1SpaceSuitBoots");
+		p1SpaceSuitHelmet = new P1SpaceSuit(17056, tecmoniumAlloyArmor, 1, 0).setUnlocalizedName("p1SpaceSuitHelmet");
+		p1SpaceSuitBody = new P1SpaceSuit(17057, tecmoniumAlloyArmor, 1, 1).setUnlocalizedName("p1SpaceSuitBody");
+		p1SpaceSuitLegs = new P1SpaceSuit(17058, tecmoniumAlloyArmor, 2, 2).setUnlocalizedName("p1SpaceSuitLegs");
+		p1SpaceSuitBoots = new P1SpaceSuit(17059, tecmoniumAlloyArmor, 1, 3).setUnlocalizedName("p1SpaceSuitBoots");
 	}
 	
 	public static void initFood() {

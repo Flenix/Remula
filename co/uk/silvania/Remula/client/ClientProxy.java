@@ -7,7 +7,6 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import co.uk.silvania.Remula.CommonProxy;
 import co.uk.silvania.Remula.Remula;
 import co.uk.silvania.Remula.RemulaBlocks;
-import co.uk.silvania.Remula.blocks.p1.CopperCable;
 import co.uk.silvania.Remula.blocks.p1.P1SolarPanel;
 import co.uk.silvania.Remula.blocks.shipparts.*;
 import co.uk.silvania.Remula.client.models.*;

@@ -84,7 +84,6 @@ public class CommonProxy implements IGuiHandler {
     }
     
     public void registerEarthBlocks() {
-    	GameRegistry.registerBlock(RemulaBlocks.copperCable, "copperCable");
     	GameRegistry.registerBlock(RemulaBlocks.p1Liquidizer, "p1Liquidizer");
     	GameRegistry.registerBlock(RemulaBlocks.p1T1StorageUnit, "p1T1StorageUnit");
     	GameRegistry.registerBlock(RemulaBlocks.p1T2StorageUnit, "p1T2StorageUnit");

@@ -48,7 +48,6 @@ public class RemulaBlocks {
     public static Block p1Furnace;
     public static Block p1Extractor;
     public static Block p1Crusher;
-    public static Block copperCable;
     
     public static Block tecmoniumChest;
     public static Block merciliteChest;
@@ -269,7 +268,6 @@ public class RemulaBlocks {
 	}
 	
 	private static void initEarthBlocks() {
-		copperCable = new CopperCable(500).setUnlocalizedName("copperCable");
 		p1Liquidizer = new P1Liquidizer(config.p1LiquidizerID).setUnlocalizedName("p1Liquidizer");
         p1T1StorageUnit = new P1T1StorageUnit(config.p1T1StorageUnitID).setUnlocalizedName("p1T1StorageUnit");
         p1T2StorageUnit = new P1T2StorageUnit(config.p1T2StorageUnitID).setUnlocalizedName("p1T2StorageUnit");
