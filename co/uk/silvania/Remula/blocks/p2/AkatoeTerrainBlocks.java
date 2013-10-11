@@ -17,6 +17,7 @@ public class AkatoeTerrainBlocks extends Block {
 	public AkatoeTerrainBlocks(int id) {
 		super(id, Material.rock);
 		this.setCreativeTab(Remula.tabWorlds);
+		this.setHardness(1.0F);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -33,7 +34,6 @@ public class AkatoeTerrainBlocks extends Block {
 	
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2) {
-		System.out.println("This method is now being called");
 		return icons[par2];
 	}
 	
@@ -42,5 +42,10 @@ public class AkatoeTerrainBlocks extends Block {
 		for (int var4 = 0; var4 < 6; ++var4) {
 			list.add(new ItemStack(par1, 1, var4));
 		}
+	}
+	
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
 	}
 }

@@ -460,9 +460,6 @@ public class BaloinusChunkProvider implements IChunkProvider {
 		return true;
 	}
 
-	public void func_104112_b() {
-	}
-
 	public boolean unloadQueuedChunks() {
 		return false;
 	}
@@ -495,5 +492,11 @@ public class BaloinusChunkProvider implements IChunkProvider {
 			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
 			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
 		}
+	}
+
+	@Override
+	public void saveExtraData() {
+		// TODO Auto-generated method stub
+		
 	}
 }

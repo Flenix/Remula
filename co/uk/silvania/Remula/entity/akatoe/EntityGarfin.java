@@ -27,12 +27,12 @@ public class EntityGarfin extends EntityWaterMob {
 		super(par1World);
         this.setSize(0.95F, 0.95F);
         this.field_70864_bA = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
-        this.setEntityHealth(16.0F);
+        this.setHealth(16.0F);
 	}
 	
-	protected void func_110147_ax() {
-		super.func_110147_ax();
-		this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(6.0D); 
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth); 
 	}
 	
     private float field_70864_bA = 0.0F;

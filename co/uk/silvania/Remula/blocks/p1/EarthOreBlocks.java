@@ -17,6 +17,7 @@ public class EarthOreBlocks extends BlockOre {
 	public EarthOreBlocks(int id) {
 		super(id);
 		this.setCreativeTab(Remula.tabMinerals);
+		this.setHardness(3.0F);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -41,5 +42,10 @@ public class EarthOreBlocks extends BlockOre {
 		for (int var4 = 0; var4 < 7; ++var4) {
 			list.add(new ItemStack(par1, 1, var4));
 		}
+	}
+	
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
 	}
 }

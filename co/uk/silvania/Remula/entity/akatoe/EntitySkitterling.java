@@ -49,10 +49,6 @@ public class EntitySkitterling extends EntityAnimal {
 		return true;
 	}
 	
-	public int getMaxHealth() {
-		return 3;
-	}
-	
 	protected String getLivingSound() {
 		return "mob.skitterling.say";
 	}

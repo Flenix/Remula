@@ -137,12 +137,12 @@ public class XylexiaPortalBlock extends BlockPortal {
 			if (par5Entity instanceof EntityPlayerMP) {
 				EntityPlayerMP thePlayer = (EntityPlayerMP) par5Entity;
 				if (par5Entity.dimension != Remula.xylexiaDimension) {
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.xylexiaDimension, new TeleporterXylexia(thePlayer.mcServer.worldServerForDimension(Remula.xylexiaDimension)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.xylexiaDimension);
 				}
 				else
 				{
 					//thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.xylexianDimension, new TeleporterXylexia(thePlayer.mcServer.worldServerForDimension(Remula.xylexianDimension)));
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterXylexia(thePlayer.mcServer.worldServerForDimension(0)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0);
 					
 				}
 			}

@@ -37,9 +37,9 @@ public class EntityXylexian extends EntityMob {
 	}
 	
 
-	protected void func_110147_ax() {
-		super.func_110147_ax();
-		this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(300.0D); 
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth); 
 	}
 	
 	public EnumCreatureAttribute getCreatureAttribute() {

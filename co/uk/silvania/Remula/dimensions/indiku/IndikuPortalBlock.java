@@ -137,12 +137,12 @@ public class IndikuPortalBlock extends BlockPortal {
 			if (par5Entity instanceof EntityPlayerMP) {
 				EntityPlayerMP thePlayer = (EntityPlayerMP) par5Entity;
 				if (par5Entity.dimension != Remula.indikuDimension) {
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.indikuDimension, new TeleporterIndiku(thePlayer.mcServer.worldServerForDimension(Remula.indikuDimension)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.indikuDimension);
 				}
 				else
 				{
 					//thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.indikuDimension, new TeleporterIndiku(thePlayer.mcServer.worldServerForDimension(Remula.indikuDimension)));
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterIndiku(thePlayer.mcServer.worldServerForDimension(0)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0);
 					
 				}
 			}

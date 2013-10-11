@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 import co.uk.silvania.Remula.Remula;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.Material;
@@ -129,10 +128,14 @@ public class AkatoeLogs extends BlockRotatedPillar {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	protected Icon func_111048_c(int i) {
+	protected Icon getSideIcon(int i) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
 	}
 }
 

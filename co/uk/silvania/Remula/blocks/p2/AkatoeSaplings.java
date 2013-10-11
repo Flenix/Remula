@@ -8,7 +8,6 @@ import co.uk.silvania.Remula.RemulaBlocks;
 import co.uk.silvania.Remula.dimensions.akatoe.WorldGenAkatoeTrees;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.main.Main;
@@ -140,5 +139,10 @@ public class AkatoeSaplings extends BlockFlower {
 		par3List.add(new ItemStack(par1, 1, 1));
 		par3List.add(new ItemStack(par1, 1, 2));
 		par3List.add(new ItemStack(par1, 1, 3));
+	}
+	
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
 	}
 }

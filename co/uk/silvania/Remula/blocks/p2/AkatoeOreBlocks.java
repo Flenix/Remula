@@ -17,6 +17,7 @@ public class AkatoeOreBlocks extends BlockOre {
 	public AkatoeOreBlocks(int id) {
 		super(id);
 		this.setCreativeTab(Remula.tabMinerals);
+		this.setHardness(3.0F);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -42,4 +43,10 @@ public class AkatoeOreBlocks extends BlockOre {
 			list.add(new ItemStack(par1, 1, var4));
 		}
 	}
+	
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
+	}
+
 }

@@ -160,14 +160,13 @@ public class BaloinusWorldProvider extends WorldProvider {
 		f5 *= (f2 * 0.0F + 0.15F);
 		return this.worldObj.getWorldVec3Pool().getVecFromPool(f3, f4, f5);
 	}
-	
-	@Override
+
 	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks) {
-	         return this.worldObj.getWorldVec3Pool().getVecFromPool(0, 0.7, 0.4);
+		return this.worldObj.getWorldVec3Pool().getVecFromPool(0, 0.7, 0.4);
 	}
 
 	@Override
 	public boolean isSkyColored() {
-	         return true;
+		return true;
 	}
 }

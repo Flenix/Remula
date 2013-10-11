@@ -130,7 +130,7 @@ public class IndikuLogs1 extends BlockRotatedPillar {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	protected Icon func_111048_c(int i) {
+	protected Icon getSideIcon(int i) {
 		return null;
 	}
 }

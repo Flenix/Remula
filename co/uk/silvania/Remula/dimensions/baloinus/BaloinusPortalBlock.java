@@ -136,12 +136,12 @@ public class BaloinusPortalBlock extends BlockPortal {
 			if (par5Entity instanceof EntityPlayerMP) {
 				EntityPlayerMP thePlayer = (EntityPlayerMP) par5Entity;
 				if (par5Entity.dimension != Remula.baloinusDimension) {
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.baloinusDimension, new TeleporterBaloinus(thePlayer.mcServer.worldServerForDimension(Remula.baloinusDimension)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.baloinusDimension);
 				}
 				else
 				{
 					//thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.akatoeDimension, new TeleporterAkatoe(thePlayer.mcServer.worldServerForDimension(Remula.akatoeDimension)));
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterBaloinus(thePlayer.mcServer.worldServerForDimension(0)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0);
 					
 				}
 			}

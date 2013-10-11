@@ -55,10 +55,6 @@ public class EntityLignis extends EntityAnimal {
 	public boolean isAIEnabled() {
 		return true;
 	}
-		
-	public int getMaxHealth() {
-		return 45;
-	}
 	
     public boolean canBePushed()
     {

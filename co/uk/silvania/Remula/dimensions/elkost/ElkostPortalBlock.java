@@ -137,12 +137,12 @@ public class ElkostPortalBlock extends BlockPortal {
 			if (par5Entity instanceof EntityPlayerMP) {
 				EntityPlayerMP thePlayer = (EntityPlayerMP) par5Entity;
 				if (par5Entity.dimension != Remula.elkostDimension) {
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.elkostDimension, new TeleporterElkost(thePlayer.mcServer.worldServerForDimension(Remula.elkostDimension)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.elkostDimension);
 				}
 				else
 				{
 					//thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Remula.elkostDimension, new TeleporterElkost(thePlayer.mcServer.worldServerForDimension(Remula.elkostDimension)));
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterElkost(thePlayer.mcServer.worldServerForDimension(0)));
+					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0);
 					
 				}
 			}

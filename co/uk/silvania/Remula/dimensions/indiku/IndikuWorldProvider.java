@@ -161,7 +161,6 @@ public class IndikuWorldProvider extends WorldProvider {
 		return this.worldObj.getWorldVec3Pool().getVecFromPool(f3, f4, f5);
 	}
 	
-	@Override
 	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks) {
 	         return this.worldObj.getWorldVec3Pool().getVecFromPool(0, 0.2, 0.0);
 	}

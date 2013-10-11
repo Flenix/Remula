@@ -59,10 +59,6 @@ public class EntityAdvRobot extends EntityTameable {
 		return true;
 	}
 	
-	public int getMaxHealth() {
-		return 300;
-	}
-	
 	protected String getLivingSound() {
 		return "mob.robot.say";
 	}

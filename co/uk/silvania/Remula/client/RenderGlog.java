@@ -12,20 +12,18 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class RenderGlog extends RenderLiving
 {
-    private static final ResourceLocation field_110833_a = new ResourceLocation("remula", "textures/entities/mobglog.png");
+    private static final ResourceLocation getTexture = new ResourceLocation("remula", "textures/entities/mobglog.png");
 
-    public RenderGlog(ModelBase par1ModelBase, float par2)
-    {
+    public RenderGlog(ModelBase par1ModelBase, float par2) {
         super(par1ModelBase, par2);
     }
 
-    protected ResourceLocation func_110832_a(EntityGlog entity)
-    {
-        return field_110833_a;
+    protected ResourceLocation setTexture(EntityGlog entity) {
+        return getTexture;
     }
 
-    protected ResourceLocation func_110775_a(Entity entity)
-    {
-        return this.func_110832_a((EntityGlog)entity);
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity) {
+        return this.setTexture((EntityGlog)entity);
     }
 }

@@ -10,22 +10,19 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
-public class RenderSkitterling extends RenderLiving
-{
-    private static final ResourceLocation field_110833_a = new ResourceLocation("remula", "textures/entities/mobskitterling.png");
+public class RenderSkitterling extends RenderLiving {
+    private static final ResourceLocation getTexture = new ResourceLocation("remula", "textures/entities/mobskitterling.png");
 
-    public RenderSkitterling(ModelBase par1ModelBase, float par2)
-    {
+    public RenderSkitterling(ModelBase par1ModelBase, float par2) {
         super(par1ModelBase, par2);
     }
 
-    protected ResourceLocation func_110832_a(EntitySkitterling entity)
-    {
-        return field_110833_a;
+    protected ResourceLocation setTexture(EntitySkitterling entity) {
+        return getTexture;
     }
 
-    protected ResourceLocation func_110775_a(Entity entity)
-    {
-        return this.func_110832_a((EntitySkitterling)entity);
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity) {
+        return this.setTexture((EntitySkitterling)entity);
     }
 }

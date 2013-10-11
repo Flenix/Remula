@@ -460,7 +460,7 @@ public class ElkostChunkProvider implements IChunkProvider {
 		return true;
 	}
 
-	public void func_104112_b() {
+	public void saveExtraData() {
 	}
 
 	public boolean unloadQueuedChunks() {
