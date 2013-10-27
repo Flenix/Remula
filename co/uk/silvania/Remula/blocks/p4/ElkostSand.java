@@ -18,7 +18,7 @@ public class ElkostSand extends BlockSand {
 
 	public void registerIcons(IconRegister iconRegister)
 	{
-	         blockIcon = iconRegister.registerIcon("Remula:elkostSand");
+	         blockIcon = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 
 }

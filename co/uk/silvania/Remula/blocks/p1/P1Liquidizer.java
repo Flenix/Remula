@@ -16,6 +16,6 @@ public class P1Liquidizer extends Block {
 	}
 	
 	public void registerIcons(IconRegister iconRegister) {
-	         blockIcon = iconRegister.registerIcon("Remula:RemulaLiquidizer");
+	         blockIcon = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 }

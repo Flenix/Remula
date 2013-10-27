@@ -71,12 +71,12 @@ public class AkatoeLogs extends BlockRotatedPillar {
 		icons = new Icon[16];
 		
 		for(int i = 0; i < icons.length; i++) {
-			icons[i] = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)) + i);
+			icons[i] = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
 		}
-		redtop = iconRegister.registerIcon("Remula:akatoeLogsTop0");
-		greentop = iconRegister.registerIcon("Remula:akatoeLogsTop1");
-		browntop = iconRegister.registerIcon("Remula:akatoeLogsTop2");
-		yellowtop = iconRegister.registerIcon("Remula:akatoeLogsTop3");
+		redtop = iconRegister.registerIcon("remula:akatoeLogsTop0");
+		greentop = iconRegister.registerIcon("remula:akatoeLogsTop1");
+		browntop = iconRegister.registerIcon("remula:akatoeLogsTop2");
+		yellowtop = iconRegister.registerIcon("remula:akatoeLogsTop3");
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -35,7 +35,7 @@ public class P1CraftingTable extends BlockContainer {
         
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon("Remula:RemulaCraftingTable");
+		blockIcon = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 
 	@Override

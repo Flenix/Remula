@@ -63,9 +63,9 @@ public class RubberLog extends BlockRotatedPillar {
 		icons = new Icon[16];
 		
 		for(int i = 0; i < icons.length; i++) {
-			icons[i] = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)) + i);
+			icons[i] = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
 		}
-		logtop = iconRegister.registerIcon("Remula:rubberLogTop");
+		logtop = iconRegister.registerIcon("remula:rubberLogTop");
 	}
 	
 	@SideOnly(Side.CLIENT)

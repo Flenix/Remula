@@ -16,6 +16,6 @@ public class P1T1StorageUnit extends Block {
 	}
 	
 	public void registerIcons(IconRegister iconRegister) {
-        blockIcon = iconRegister.registerIcon("Remula:P1T1StorageUnit");
+        blockIcon = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 }

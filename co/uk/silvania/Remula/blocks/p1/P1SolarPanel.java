@@ -39,7 +39,7 @@ public class P1SolarPanel extends BlockContainer {
 	
 
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon("Remula:P1SolarPanel");
+		blockIcon = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
     
 	@Override

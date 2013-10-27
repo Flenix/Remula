@@ -16,6 +16,6 @@ public class P1ThermalGenerator extends Block {
 	}
 	
 	public void registerIcons(IconRegister iconRegister) {
-        blockIcon = iconRegister.registerIcon("Remula:P1ThermalGenerator");
+        blockIcon = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 }

@@ -32,8 +32,8 @@ import net.minecraft.util.Icon;
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
-		sides = iconRegister.registerIcon("Remula:indikuDirt");
-		top = iconRegister.registerIcon("Remula:indikuTilledDirt");
+		sides = iconRegister.registerIcon("remula:indikuDirt");
+		top = iconRegister.registerIcon("remula:indikuTilledDirt");
 	}
 	
     @SideOnly(Side.CLIENT)

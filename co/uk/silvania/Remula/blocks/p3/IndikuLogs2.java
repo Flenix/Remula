@@ -72,12 +72,12 @@ public class IndikuLogs2 extends BlockRotatedPillar {
 		icons = new Icon[16];
 		
 		for(int i = 0; i < icons.length; i++) {
-			icons[i] = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)) + i);
+			icons[i] = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
 		}
-		redtop = iconRegister.registerIcon("Remula:AkatoeLogsTop0");
-		greentop = iconRegister.registerIcon("Remula:AkatoeLogsTop1");
-		browntop = iconRegister.registerIcon("Remula:AkatoeLogsTop2");
-		yellowtop = iconRegister.registerIcon("Remula:AkatoeLogsTop3");
+		redtop = iconRegister.registerIcon("remula:AkatoeLogsTop0");
+		greentop = iconRegister.registerIcon("remula:AkatoeLogsTop1");
+		browntop = iconRegister.registerIcon("remula:AkatoeLogsTop2");
+		yellowtop = iconRegister.registerIcon("remula:AkatoeLogsTop3");
 	}
 	
 	@SideOnly(Side.CLIENT)

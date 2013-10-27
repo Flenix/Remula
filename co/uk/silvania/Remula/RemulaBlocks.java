@@ -332,7 +332,7 @@ public class RemulaBlocks {
         baloinusTerrainBlocks = new BaloinusTerrainBlocks(config.baloinusTerrainBlocksID, Material.rock).setUnlocalizedName("baloinusTerrainBlocks");
         baloinusOreBlocks = new BaloinusOreBlocks(config.baloinusOreBlocksID).setUnlocalizedName("baloinusOreBlocks");
         
-        baloinusStone = new BaloinusStone(config.baloinusStoneID);
+        baloinusStone = new BaloinusStone(config.baloinusStoneID).setUnlocalizedName("baloinusStone");
 	}
 	
 	private static void initIndikuBlocks() {
@@ -407,8 +407,8 @@ public class RemulaBlocks {
         xylexiaPortal = new XylexiaPortalBlock(config.xylexiaPortalID).setUnlocalizedName("xylexiaPortal");
         xylexiaTerrainBlocks = new XylexiaTerrainBlocks(config.xylexiaTerrainBlocksID).setUnlocalizedName("xylexiaTerrainBlocks");
         xylexiaOreBlocks = new XylexiaOreBlocks(config.xylexiaOreBlocksID).setUnlocalizedName("xylexiaOreBlocks");
-        xylexiaStone = new XylexianStone(config.xylexiaStoneID).setUnlocalizedName("xylexianStone");
-        xylexiaSand = new XylexianSand(config.xylexiaSandID).setUnlocalizedName("xylexianSand");
+        xylexiaStone = new XylexianStone(config.xylexiaStoneID).setUnlocalizedName("xylexiaStone");
+        xylexiaSand = new XylexianSand(config.xylexiaSandID).setUnlocalizedName("xylexiaSand");
         xylexiaGlassPane = new XylexianGlassPane(config.xylexiaGlassPaneID, Material.glass).setUnlocalizedName("xylexianGlassPane");
 	}
 	

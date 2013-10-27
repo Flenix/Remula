@@ -33,9 +33,9 @@ public class IndikuGrass extends Block {
 	private Icon base;
 
 	public void registerIcons(IconRegister iconRegister) {
-        sides = iconRegister.registerIcon("Remula:indikuGrassSide");
-        top = iconRegister.registerIcon("Remula:indikuGrassTop");
-        base = iconRegister.registerIcon("Remula:indikuDirt");
+        sides = iconRegister.registerIcon("remula:indikuGrassSide");
+        top = iconRegister.registerIcon("remula:indikuGrassTop");
+        base = iconRegister.registerIcon("remula:indikuDirt");
 	}
    
     @SideOnly(Side.CLIENT)

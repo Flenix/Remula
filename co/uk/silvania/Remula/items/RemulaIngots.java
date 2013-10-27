@@ -13,6 +13,6 @@ public class RemulaIngots extends Item {
 	}
 	
 	public void registerIcons(IconRegister iconRegister) {
-		itemIcon = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)));
+		itemIcon = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 }

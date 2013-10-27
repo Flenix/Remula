@@ -54,9 +54,11 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid="Remula", name="Remula", version="0.0.4")
+@Mod(modid=Remula.modid, name="Remula", version="0.0.6")
 @NetworkMod(channels = { "Remula" }, clientSideRequired=true, serverSideRequired=false, packetHandler = PacketHandler.class)
-public class Remula { 
+public class Remula {
+	
+	public static final String modid = "remula";
 	
 	public static CreativeTabs tabRemula = new CreativeTabs("tabRemula") {
 		public ItemStack getIconItemStack() {

@@ -27,7 +27,7 @@ public class ElkostTerrainBlocks extends Block {
 		icons = new Icon[6];
 		
 		for(int i = 0; i < icons.length; i++) {
-			icons[i] = iconRegister.registerIcon("Remula:" + (this.getUnlocalizedName().substring(5)) + i);
+			icons[i] = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
 		}
 	}
 	

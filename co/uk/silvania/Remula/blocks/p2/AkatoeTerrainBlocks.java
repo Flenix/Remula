@@ -28,7 +28,7 @@ public class AkatoeTerrainBlocks extends Block {
 		icons = new Icon[6];
 		
 		for(int i = 0; i < icons.length; i++) {
-			icons[i] = iconRegister.registerIcon("Remula:akatoeTerrainBlocks" + i);
+			icons[i] = iconRegister.registerIcon(Remula.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
 		}
 	}
 	
